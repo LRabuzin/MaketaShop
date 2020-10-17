@@ -6,6 +6,7 @@
 /dokumentacija/*.pdf
 /dokumentacija/*.synctex.gz
 /dokumentacija/*.toc
+/dokumentacija/.DS_Store
 
 .vscode/*
 !.vscode/settings.json
