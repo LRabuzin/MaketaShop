@@ -2,20 +2,14 @@
 		
 	\section{Funkcionalni zahtjevi}
 			
-			\textbf{\textit{dio 1. revizije}}\\
-			
-			\textit{Navesti \textbf{dionike} koji imaju \textbf{interes u ovom sustavu} ili  \textbf{su nositelji odgovornosti}. To su prije svega korisnici, ali i administratori sustava, naručitelji, razvojni tim.}\\
-				
-			\textit{Navesti \textbf{aktore} koji izravno \textbf{koriste} ili \textbf{komuniciraju sa sustavom}. Oni mogu imati inicijatorsku ulogu, tj. započinju određene procese u sustavu ili samo sudioničku ulogu, tj. obavljaju određeni posao. Za svakog aktora navesti funkcionalne zahtjeve koji se na njega odnose.}\\
-			
 			
 			\noindent \textbf{Dionici:}
 			
 			\begin{packed_enum}
 				
-				\item Dionik 1
-				\item Dionik 2				
-				\item ...
+				\item Osoba koja izrađuje makete (administrator)
+				\item Korisnici aplikacije		
+				\item Razvojni tim
 				
 			\end{packed_enum}
 			
@@ -23,28 +17,70 @@
 			
 			
 			\begin{packed_enum}
-				\item  \underbar{Aktor 1 (inicijator) može:}
+				\item  \underbar{Neregistrirani korisnik (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
-					\begin{packed_enum}
-						
-						\item  podfunkcionalnost 1 
-						\item  podfunkcionalnost 2
-				
-					\end{packed_enum}
-					\item  funkcionalnost 3
-					
+					\item Vidjeti “thumbnailove” objavljenih priča
+					\item Kliknuti na priču i detaljnije pregledati sav sadržaj
+					\item Komentirati priču
+					\item Vidjeti broj pozitivnih i negativnih ocjena priče
+					\item Registrirati se
+					\item Pregledati thumbnails maketa dostupnih u webshopu
+					\item Svaku maketu detaljno pregledati
+					\item Kupiti maketu iz webshopa, pritom unoseći svoje podatke
+					\item Kupiti jedinstvenu maketu iz priče, pritom unoseći svoje podatke
 				\end{packed_enum}
 			
-				\item  \underbar{Aktor 2 (sudionik) može:}
+				\item  \underbar{Registrirani korisnik (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
+					\item Sve što može i neregistrirani
+					\item Predložiti temu administratoru kroz formular
+					\item Predložiti priču administratoru kroz formular
+					\item Ocijeniti priču
+					\item Postaviti vlastitu profilnu sliku
+					\item Vidjeti profile drugih korisnika
+					\item Upravljati postavkama o privatnosti
+					\item Uređivati vlastite podatke
+					\item Obrisati vlastiti profil
+					\item Kupiti maketu iz webshopa bez da unosi podatke
+					\item Kupiti maketu iz priče bez da unosi podatke
+					\item Ocijeniti maketu u webshopu
+					\item Naručiti custom maketu kroz formular
+					\item Prihvatiti ili odbiti cijenu za custom maketu
+
+				\end{packed_enum}
+							\item  \underbar{Administrator (inicijator) može:}
+			
+				\begin{packed_enum}
+					
+					\item Objaviti priču
+					\item Pregledati predložene teme i priče
+					\item Odgovoriti na predloženu temu
+					\item Objaviti predloženu priču
+					\item Komentirati priče
+					\item Omogućiti prodaju jedinstvene makete iz priče
+					\item Pregledati profile registriranih korisnika
+					\item Vidjeti tko je kako ocijenio pojedinu priču
+					\item Zabraniti pristup svakom pojedinom korisniku
+					\item Uređivati makete u web trgovini
+					\item Dodavati makete u web trgovinu
+					\item Uklanjati makete iz web trgovine
+					\item Pregledati zahtjeve za custom makete
+					\item Ponuditi cijenu za zahtjev ili ga odbiti
+					\item Pregledati povijest svih transakcija
+					
+				\end{packed_enum}
+							\item  \underbar{Baza podataka (sudionik):}
+		
+				\begin{packed_enum}
+					
+					\item Pohranjuje podatke o korisnicima i administratoru
+					\item Pohranjuje priče i komentare
+					\item Pohranjuje podatke o maketama za prodaju
+					\item Pohranjuje podatke o svim transakcijama
 					
 				\end{packed_enum}
 			\end{packed_enum}
@@ -55,48 +91,717 @@
 				
 			\subsection{Obrasci uporabe}
 				
-				\textbf{\textit{dio 1. revizije}}
 				
-				\subsubsection{Opis obrazaca uporabe}
-					\textit{Funkcionalne zahtjeve razraditi u obliku obrazaca uporabe. Svaki obrazac je potrebno razraditi prema donjem predlošku. Ukoliko u nekom koraku može doći do odstupanja, potrebno je to odstupanje opisati i po mogućnosti ponuditi rješenje kojim bi se tijek obrasca vratio na osnovni tijek.}\\
-					
-
-					\noindent \underbar{\textbf{UC$<$broj obrasca$>$ -$<$ime obrasca$>$}}
+			
+				
+					\noindent \underbar{\textbf{UC1 - pregled priča}}
 					\begin{packed_item}
-	
-						\item \textbf{Glavni sudionik: }$<$sudionik$>$
-						\item  \textbf{Cilj:} $<$cilj$>$
-						\item  \textbf{Sudionici:} $<$sudionici$>$
-						\item  \textbf{Preduvjet:} $<$preduvjet$>$
+
+						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
+						\item  \textbf{Cilj:} Pregledati jednu ili više priča
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Nema
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
-	
-							\item $<$opis korak jedan$>$
-							\item $<$opis korak dva$>$
-							\item $<$opis korak tri$>$
-							\item $<$opis korak četiri$>$
-							\item $<$opis korak pet$>$
+							
+							\item Pregled priče je prikazan kada se učita aplikacija
+						\end{packed_enum}
+		
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC2 - detaljan pregled priča}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
+						\item  \textbf{Cilj:} Pregledati jednu priču detaljno, zajedno sa svim multimedijskim sadržajima koji su dio priče
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Nema
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabire priču klikom
+							\item Priča je prikazana na zaslonu
 						\end{packed_enum}
 						
+					\end{packed_item}
+					\noindent \underbar{\textbf{UC3 - komentiranje priče}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
+						\item  \textbf{Cilj:} Ostaviti komentar na određenu priču
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Nema
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik upiše svoj komentar u namijenjeni prostor
+							\item Korisnik pritisne gumb za objavljivanje komentara
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC4 - registracija korisnika}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Neregistrirani korisnik
+						\item  \textbf{Cilj:} Unjeti korisnikove podatke u bazu podataka
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Nema
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik unese svoje podatke
+							\item Pritisne gumb za slanje podataka 
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC5 - pregled maketa u webshopu}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
+						\item  \textbf{Cilj:} Otvaranje pregleda maketa na stranici webshopa
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Nema
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik klikne na poveznicu za otvaranje webshopa
+						\end{packed_enum}
+						
+					\end{packed_item}
+						
+					\noindent \underbar{\textbf{UC6 - detaljni pregled makete u webshopu}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
+						\item  \textbf{Cilj:} Omogućuje detaljni pregled na maketu u webshopu
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Nema
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabire detaljan pregled makete
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC7 - kupnja makete iz webshopa}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
+						\item  \textbf{Cilj:} Kupnja makete
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Postojanje makete
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik dodaje maketu u košaricu
+							\item Korisnik potvrđuje narudžbu
+							\item Narudžba se prikazuje u listi aktivnih narudžbi administratora
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC8 - kupnja makete iz priče}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
+						\item  \textbf{Cilj:} Kupnja makete
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Postojanje makete
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik dodaje maketu u košaricu
+							\item Korisnik potvrđuje narudžbu
+							\item Narudžba se prikazuje u listi aktivnih narudžbi administratora
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC9 - Unošenje podataka o kupnji}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
+						\item  \textbf{Cilj:} Naručivanje makete
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Odabir željenih proizvoda
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabire jednu ili više maketa koje želi kupiti
+							\item Unosi osobne podatke u formular narudžbe
+							\item Potvrđuje narudžbu
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC10 - Predlaganje teme administratoru}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik
+						\item  \textbf{Cilj:} Predlaganje teme za priču
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabire opciju za predlaganje nove teme
+							\item Korisnik popunjava obrazac za predlaganje teme
+							\item Korisnik sprema promjene
+							\item Baza podataka se ažurira
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC11 - predlaganje priče administratoru}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik
+						\item  \textbf{Cilj:} Predlaganje teme za priču
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabire opciju za predlaganje nove priče
+							\item Korisnik popunjava obrazac za predlaganje priče
+							\item Korisnik sprema promjene
+							\item Baza podataka se ažurira
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC12 - Ocjenjivanje priče}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik
+						\item  \textbf{Cilj:} Korisnik želi ocijeniti priču
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Korisnik gleda priču
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik ocijenjuje priču
+						\end{packed_enum}
+						
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC13 - Naručivanje personalizirane makete}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik
+						\item  \textbf{Cilj:} Zahtjev za personaliziranom maketom
+						\item  \textbf{Sudionici:} Administrator, baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik pritišće gumb za slanje zahtjeva o personaliziranoj maketi
+							\item Korisnik ispunjava formular o specifičnostima željene makete te prilaže svoje skice, slike i tekstualne opise
+							\item Zahtjev se šalje administratoru na razmatranje
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC14 - Upravljanje vlastitim profilom}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Registrirani korisnik
+						\item  \textbf{Cilj:} Urediti podatke profila
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odlazi u postavke profila
+							\item Mijenja podatke koje želi
+							\item Potvrđuje izmjene
+							\item Izmjene se pohranjuju u bazi podataka
+							\item Korisniku se ažurira profil
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC15 - Objavljivanje priče}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Administrator
+						\item  \textbf{Cilj:} Napisati i objaviti novu priču
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabire opciju za dodavanje priče
+							\item Korisnik ispunjava obrazac
+							\item Korisnik sprema promjene
+							\item Baza podataka se ažurira
+						\end{packed_enum}
+					
 						\item  \textbf{Opis mogućih odstupanja:}
 						
 						\item[] \begin{packed_item}
-	
-							\item[2.a] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
+							
+							\item[2.a] Korisnik ispunjava obrazac, ali ne odabere opciju “Spremi promjenu”
 							\item[] \begin{packed_enum}
 								
-								\item $<$opis rješenja mogućeg scenarija korak 1$>$
-								\item $<$opis rješenja mogućeg scenarija korak 2$>$
+								\item Sustav obavještava korisnika da nije spremio podatke prije izlaska iz prozora
 								
 							\end{packed_enum}
-							\item[2.b] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[3.a] $<$opis mogućeg scenarija odstupanja  u koraku 3$>$
+							
+						\end{packed_item}
+				
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC16 - Pregledavanje predloženih tema}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Administrator
+						\item  \textbf{Cilj:} Pregledati predložene teme
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Otvoriti pregled predloženih tema 
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC17 - Pregledavanje predloženih priča}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Administrator
+						\item  \textbf{Cilj:} Pregledati predloženu priču
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator, postojanje predloženih priča
+						\item  \textbf{Opis osnovnog tijeka:} 
+						
+						\item[] \begin{packed_enum}
+							
+							\item Otvoriti pregled predloženih priča
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC18 - Odgovor na predloženu temu}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Administrator
+						\item  \textbf{Cilj:} Prihvatiti ili odbiti predloženu temu
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Stisnuti gumb prihvati ili odbi
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC19 - Objavljivanje predložene priče}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Administrator
+						\item  \textbf{Cilj:} Objavljivanje predložene priče
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Administrator pregledava predložene priče
+							\item Administrator objavljuje priču
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC20 - Komentiranje priče}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Administrator i korisnici
+						\item  \textbf{Cilj:} Komentirati priču
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Započinje kada korisnik pregledava priču
+							\item Korisnik piše komentar u prostor za unos teksta
+							\item Korisnik potvrđuje da nije robot
+							\item Korisnik potvrđuje svoj komentar
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC21 - Omogućavanje prodaje jednistvene makete iz priče}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Administrator
+						\item  \textbf{Cilj:} Pružiti korisnicima mogućnost kupnje jedinstvenih maketa koje je napravio administrator
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator, kreirana je priča i u priči se radi o novoj maketi
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Administrator odabire opciju dodavanja cijene
+							\item Administrator definira cijenu i specifikacije makete
+							\item Administrator potvrđuje svoj odabir
+							\item Prikazuje se opcija za kupnju na dnu priče
+						\end{packed_enum}
+						\item  \textbf{Opis mogućih odstupanja:}
+					
+						\item[] \begin{packed_item}
+							
+							\item[2.a] Administrator odustaje od definiranja cijene
+							
+							\item[] \begin{packed_enum}
+								
+								\item Ne spremaju se promjene i administrator se vraća na pogled cijele priče
+								
+							\end{packed_enum}
 							
 						\end{packed_item}
 					\end{packed_item}
 				
+					\noindent \underbar{\textbf{UC22 - Uređivanje vlastitih podataka}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Registrirani korisnik
+						\item  \textbf{Cilj:} Korisnik mijenja ili dodaje vlastite podatke
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik mijenja ili dodaje svoje podatke
+							\item Korisnik potvrđuje promjenu podataka
+							\item Korisnik upisuje lozinku
+						\end{packed_enum}
+						
+					\end{packed_item}
+			
+					\noindent \underbar{\textbf{UC23 - Upravljanje postavkama o privatnosti}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Registrirani korisnik
+						\item  \textbf{Cilj:} Personaliziranje postavki privatnosti
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik se registrira u svoj profil
+							\item U postavkama mijenja željene postavke privatnosti
+							\item Potvrđuje željene izmjene
+							\item Izmjene se spremaju u bazu podataka
+							\item Ažurira se korisnikov profil
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+				
+					\noindent \underbar{\textbf{UC24 - Promjena profilne slike}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Registrirani korisnik
+						\item  \textbf{Cilj:} Promijeniti sliku profila
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran ili u procesu registracije
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabere opciju promjene profila
+							\item Korisnik mijenja sliku profila
+							\item Korisnik sprema promjenu
+							\item Baza podataka se ažurira
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC25 - Brisanje vlastitog profila}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Registrirani korisnik
+						\item  \textbf{Cilj:} Brisanje korisnikovih podataka iz sustava
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabire opciju brisanja svojeg profila
+							\item Korisnikovi se podatci brišu iz baze podataka
+							\item Korisnik u komentarima postaje vidljiv kao anonimni korisnik
+						\end{packed_enum}
+						
+					\end{packed_item}
 					
+					
+					\noindent \underbar{\textbf{UC26 - Uređivanje makete u web trgovini}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Administrator
+						\item  \textbf{Cilj:} Izmjena podataka o maketi
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Administrator odabire opciju za uređivanje
+							\item Administrator odabire specifikacije koje treba promijeniti
+							\item Promjena se pohranjuje u bazu podataka
+							\item Promjena postaje vidljiva na web trgovini
+						\end{packed_enum}
+						\item  \textbf{Opis mogućih odstupanja:}
+						
+						\item[] \begin{packed_item}
+							
+							\item[2.a] Administrator nije odabrao spremi opciju
+							
+							\item[] \begin{packed_enum}
+								
+								\item Poruka upozorenja da uređeni podaci nisu spremljeni
+								
+							\end{packed_enum}
+							
+						\end{packed_item}
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC27 - Dodavanje makete u web trgovinu}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Administrator
+						\item  \textbf{Cilj:} Dodati maketu u trgovinu
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Odabir opcije za dodavanje makete u web shop
+							\item Maketa dostupna u web shopu za kupnju
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC28 - Uklanjanje makete iz web trgovine}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Administrator
+						\item  \textbf{Cilj:} Uklanjanje makete iz web trgovina
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Administrator pregledava makete u web trgovini
+							\item Administrator uklanja maketu iz web trgovine
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+				
+				
+					\noindent \underbar{\textbf{UC29 - Ocjenjivanje makete u web-shopu}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Registrirani korisnik
+						\item  \textbf{Cilj:} Ocjeniti maketu
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran, postojanje makete
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Unijeti ocjenu
+							\item Poslati putem gumba
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC30 - Naručivanje custom makete ispunjavanjem formulara}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Registrirani korisnik i neregistrirani korisnik
+						\item  \textbf{Cilj:} Naručiti maketu
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran, maketa na zalihi u web-trgovini
+						
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Ispunjavanje formulara
+							\item Slanje formulara putem gumba
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC31 - Pregled profila registriranih korisnika}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Registrirani i neregistriran korisnik
+						\item  \textbf{Cilj:} Pregledati profil registriranog korisnika
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti registriran, postojanje profila koji želimo pregledati
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Pritisak na gumb pregled profila
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC32 - Pregled ocjena}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Administrator
+						\item  \textbf{Cilj:} Pregledati ocjene
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator, postojanje ocjena
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Odabrati opciju za pregled ocjena
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC33 - Moderiranje pristupa korisnicima}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Administrator
+						\item  \textbf{Cilj:} Moderirati pristup korisnicima
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator, postojanje korisnika
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Odabrati opciju za upravljanje postavkama pristupa korisnika
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC34 - Uređivanje makete u web trgovini}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Administrator
+						\item  \textbf{Cilj:} Urediti maketu u web-trgovini
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator, postojanje makete u web-trgovini
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Pritisak na gumb uredi
+							\item Obavljanje potrebnih promjena
+							\item Spremanje promjena u bazi podataka pritiskom na gumb
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC35 - Pregled zahtjeva za personaliziranom maketom}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Administrator
+						\item  \textbf{Cilj:} Administrator gleda korisnikov zahjev za personaliziranom maketom
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator, postavljen zahtjev za personaliziranu maketu
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Administrator gleda na postavljen zahtjev
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC36 - Odluka o zahtjevu za personaliziranom maketom}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Administrator
+						\item  \textbf{Cilj:} Administrator potvrđuje ili odbija zahtjev o personaliziranoj maketi
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator, postavljen zahtjev za personaliziranu maketu
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Administrator upisuje ponuđenu cijenu za maketu
+							\item Administrator šalje odluku
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC37 - Pregled povijesti transakcija}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Administrator
+						\item  \textbf{Cilj:} Uvid u povijest svih transakcija
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Administrator bira pregled povijesti transakcija
+							\item Dohvaćaju se podaci iz baze podataka
+							\item Prikazuju se podaci o transakcijama
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC38 - Prihvaćanje ili odbijanje cijene za custom maketu}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Administrator
+						\item  \textbf{Cilj:} Davanje povratne informacije administratoru je li prihvaćena njegova cijena ili ne
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Biti administrator, inicijaliziran je postupak naručivanja custom makete, korisnik je poslao skicu, a administrator je kreirao cijenu
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik otvara sučelje za komunikaciju s administratorom
+							\item Korisnik prihvaća ili odbija ponuđenu cijenu
+							\item Administratoru dolazi potvrda o odbijanju ili potvrđivanju ponuđene cijene
+							\item Administrator šalje maketu korisniku
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+				
 				\subsubsection{Dijagrami obrazaca uporabe}
 					
 					\textit{Prikazati odnos aktora i obrazaca uporabe odgovarajućim UML dijagramom. Nije nužno nacrtati sve na jednom dijagramu. Modelirati po razinama apstrakcije i skupovima srodnih funkcionalnosti.}
