@@ -436,21 +436,20 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC20 - Komentiranje priče}}
+					\noindent \underbar{\textbf{UC20 - Pregled košarice}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Administrator i korisnici
-						\item  \textbf{Cilj:} Komentirati priču
+						\item  \textbf{Cilj:} Pregledati proizvode košarice
 						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Biti administrator
+						\item  \textbf{Preduvjet:} -
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
 							
-							\item Započinje kada korisnik pregledava priču
-							\item Korisnik piše komentar u prostor za unos teksta
-							\item Korisnik potvrđuje da nije robot
-							\item Korisnik potvrđuje svoj komentar
+							\item Korisnik bira opciju pregleda košarice
+							\item Korisnik dobiva pregled proizvoda u košarici
+							\item Korisnik ima opciju pokretanja kupnje 
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -647,7 +646,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC30 - Naručivanje custom makete ispunjavanjem formulara}}
+					\noindent \underbar{\textbf{UC30 - Naručivanje personalizirane makete ispunjavanjem formulara}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Registrirani korisnik i neregistrirani korisnik
@@ -713,20 +712,19 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC34 - Uređivanje makete u web trgovini}}
+					\noindent \underbar{\textbf{UC34 - Predlaganje sadržaja}}
 					\begin{packed_item}
 						
-						\item \textbf{Glavni sudionik: } Administrator
-						\item  \textbf{Cilj:} Urediti maketu u web-trgovini
+						\item \textbf{Glavni sudionik: } Registrirani korisnik
+						\item  \textbf{Cilj:} Predložiti sadržaj administratoru
 						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Biti administrator, postojanje makete u web-trgovini
+						\item  \textbf{Preduvjet:} Biti registriran
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
 							
-							\item Pritisak na gumb uredi
-							\item Obavljanje potrebnih promjena
-							\item Spremanje promjena u bazi podataka pritiskom na gumb
+							\item Odabir opcije predlaganja sadržaja
+							\item Nudi se opcija predlaganja teme ili priče
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -782,13 +780,13 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC38 - Prihvaćanje ili odbijanje cijene za custom maketu}}
+					\noindent \underbar{\textbf{UC38 - Prihvaćanje ili odbijanje cijene za personaliziranu maketu}}
 					\begin{packed_item}
 						
-						\item \textbf{Glavni sudionik: } Administrator
+						\item \textbf{Glavni sudionik: } Registrirani korisnik
 						\item  \textbf{Cilj:} Davanje povratne informacije administratoru je li prihvaćena njegova cijena ili ne
 						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Biti administrator, inicijaliziran je postupak naručivanja custom makete, korisnik je poslao skicu, a administrator je kreirao cijenu
+						\item  \textbf{Preduvjet:} Biti registriran, inicijaliziran je postupak naručivanja custom makete, korisnik je poslao skicu, a administrator je kreirao cijenu
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
