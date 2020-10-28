@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="WebShop.css">
-    <link rel="stylesheet" href="index.css">
+    <!-- <link rel="stylesheet" href="index.css"> -->
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
@@ -18,7 +18,7 @@
             </button>
       
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
+              <ul class="navbar-nav m-1">
                 <li class="nav-item">
                   <a class="nav-link" href="index.html">Početna <span class="sr-only">(current)</span></a>
                 </li>
@@ -44,131 +44,216 @@
         </nav>
     </header>
 
-    <div class="container p-3">
-        <div class="card-deck">
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              
-            </div>
+    <div class="container p-2">
+      <div class="row">
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="./static/imgs/maketa1.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 1</h5>
+            <p class="card-text">Deskriptivni opis makete 1</p>
           </div>
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              
-            </div>
-          </div>
-		  <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Košarica</a>
             </div>
           </div>
         </div>
-		
-        <div class="card-deck">
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              
-            </div>
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="./static/imgs/maketa2.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 2</h5>
+            <p class="card-text">Deskriptivni opis makete 2</p>
           </div>
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              
-            </div>
-          </div>
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              
-            </div>
-          </div>
-		  <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh ali ovdje još malo teksta da vidim kak će funkcionirat</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Košarica</a>
             </div>
           </div>
         </div>
-		
-        <div class="card-deck">
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              
-            </div>
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="./static/imgs/maketa3.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 3</h5>
+            <p class="card-text">Deskriptivni opis makete 3</p>
           </div>
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              
-            </div>
-          </div>
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              
-            </div>
-          </div>
-		  <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Košarica</a>
             </div>
           </div>
         </div>
-		
-        <div class="card-deck">
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              
-            </div>
+      </div>
+      <div class="row">
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="./static/imgs/maketa4.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 4</h5>
+            <p class="card-text">Deskriptivni opis makete 4</p>
           </div>
-          <div class="card p-2 m-2">
-            <img class="card-img-top" src="./static/imgs/maketa1.jpg" alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Košarica</a>
             </div>
           </div>
         </div>
-
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="./static/imgs/maketa5.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 5</h5>
+            <p class="card-text">Deskriptivni opis makete 5</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh ali ovdje još malo teksta da vidim kak će funkcionirat</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Košarica</a>
+            </div>
+          </div>
+        </div>
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="./static/imgs/maketa6.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 6</h5>
+            <p class="card-text">Deskriptivni opis makete 6</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Košarica</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="./static/imgs/maketa1.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 7</h5>
+            <p class="card-text">Deskriptivni opis makete 7</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Košarica</a>
+            </div>
+          </div>
+        </div>
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="./static/imgs/maketa2.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 8</h5>
+            <p class="card-text">Deskriptivni opis makete 8</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh ali ovdje još malo teksta da vidim kak će funkcionirat</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Košarica</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    
 
     <footer class="mt-auto page-footer font-small pt-4 bg-secondary text-light">
         <div id="bottom" class="container">

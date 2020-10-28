@@ -4,3 +4,12 @@
     right: 45%;
     left: 45%
 }
+
+.shop-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    width: 22rem;
+    height: 16rem;
+}
