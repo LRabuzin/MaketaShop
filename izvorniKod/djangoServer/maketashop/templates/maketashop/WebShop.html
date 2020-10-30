@@ -1,0 +1,307 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'maketashop/WebShop.css' %}">
+    <!-- <link rel="stylesheet" href="index.css"> -->
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light d-flex justify-content-end">
+            <a class="navbar-brand" href="{% url 'index' %}">MaketaShop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <ul class="navbar-nav m-1">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Početna <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'webshop' %}">Webshop</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profil
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'profil' %}">Moj profil</a>
+                    <a class="dropdown-item" href="#">Sandučić</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'index' %}">Odjavi se</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'cart' %}" tabindex="-1" aria-disabled="true">Košarica: 3</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container p-2">
+      <div class="row">
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa1.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 1</h5>
+            <p class="card-text">Deskriptivni opis makete 1</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+            </div>
+          </div>
+        </div>
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa2.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 2</h5>
+            <p class="card-text">Deskriptivni opis makete 2</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh ali ovdje još malo teksta da vidim kak će funkcionirat</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+            </div>
+          </div>
+        </div>
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa3.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 3</h5>
+            <p class="card-text">Deskriptivni opis makete 3</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa4.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 4</h5>
+            <p class="card-text">Deskriptivni opis makete 4</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+            </div>
+          </div>
+        </div>
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa5.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 5</h5>
+            <p class="card-text">Deskriptivni opis makete 5</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh ali ovdje još malo teksta da vidim kak će funkcionirat</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+            </div>
+          </div>
+        </div>
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa6.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 6</h5>
+            <p class="card-text">Deskriptivni opis makete 6</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa1.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 7</h5>
+            <p class="card-text">Deskriptivni opis makete 7</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+            </div>
+          </div>
+        </div>
+        <div class="card p-2 m-1" style="width: 23rem;">
+          <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa2.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Maketa 8</h5>
+            <p class="card-text">Deskriptivni opis makete 8</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Veličina: 120cm x 120cm</li>
+            <li class="list-group-item">Neki drugi parametar makete idk tbh ali ovdje još malo teksta da vidim kak će funkcionirat</li>
+            <li class="list-group-item">Cijena: 500 kn</li>
+          </ul>
+          <div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Materijali
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Drvo</a>
+                  <a class="dropdown-item" href="#">Plastika</a>
+                  <a class="dropdown-item" href="#">Metal</a>
+                </div>
+              <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <footer class="mt-auto page-footer font-small pt-4 bg-secondary text-light">
+        <div id="bottom" class="container">
+            <button type="button" class="btn btn-success" disabled>Dovrši kupnju.</button>
+        </div>
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+              <div class="col-md-6 mt-md-0 mt-3">
+                <h5 class="text-uppercase">WeTried</h5>
+                <p>Mi smo tim FER-ovaca koji ne znaju što rade, ali bome se trudimo :)</p>
+              </div>
+              <hr class="clearfix w-100 d-md-none pb-3">
+              <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="text-uppercase">Frontend</h5>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="#!" class="text-light">Lovro Rabuzin</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-light">Sara Sičić</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-light">Ivona Šarić</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="text-uppercase">Backend</h5>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="#!" class="text-light">Tvrtko Hrestak</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-light">Leon Novački</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-light">Patrik Pažur</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-light">Filip Zmiša</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    </footer>
+    
+</body>
+</html>
