@@ -10,8 +10,9 @@
   </head>
   <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-light d-flex justify-content-end navbar-fixed-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-light d-flex {% if not empty_head %} justify-content-end {% endif %}navbar-fixed-top">
             <a class="navbar-brand" href="{% url 'index' %}">MaketaShop</a>
+            {% if not empty_head %}
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,26 +20,27 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
               <ul class="navbar-nav m-1">
                 <li class="nav-item">
-                  <a class="nav-link active" href="{% url 'index' %}">Početna <span class="sr-only">(current)</span></a>
+                  <a class="nav-link {% if link_active == 'pocetna' %}active{% endif %}" href="{% url 'index' %}">Početna <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'webshop' %}">Webshop</a>
+                  <a class="nav-link {% if link_active == 'webshop' %}active{% endif %}" href="{% url 'webshop' %}">Webshop</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle {% if link_active == 'profil' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Profil
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'profil' %}">Moj profil</a>
+                    <a class="dropdown-item " href="{% url 'profil' %}">Moj profil</a>
                     <a class="dropdown-item" href="#">Sandučić</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'index' %}">Odjavi se</a>
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'cart' %}" tabindex="-1" aria-disabled="true">Košarica: 3</a>
+                  <a class="nav-link {% if link_active == 'kosarica' %}active{% endif %}" href="{% url 'cart' %}" tabindex="-1" aria-disabled="true">Košarica: 3</a>
                 </li>
               </ul>
+              {% endif %}
             </div>
         </nav>
     </header>
