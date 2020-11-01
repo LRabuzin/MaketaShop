@@ -37,3 +37,6 @@ def transakcije(request):
 
 def inbox(request):
     return render(request, 'maketashop/inbox.html')
+
+def interakcija(request):
+    return render(request, 'maketashop/interakcija.html')

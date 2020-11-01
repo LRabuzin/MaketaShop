@@ -17,4 +17,5 @@ urlpatterns = [
     path('pregledKorisnika/', views.pregledKorisnika, name='pregledKorisnika'),
     path('transakcije/', views.transakcije, name='transakcije'),
     path('inbox/', views.inbox, name='inbox'),
+    path('interakcija/', views.interakcija, name='interakcija'),
 ]
