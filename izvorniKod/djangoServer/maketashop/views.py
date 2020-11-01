@@ -22,3 +22,7 @@ def webshop(request):
 
 def b_post(request):
     return render(request, 'maketashop/b_post.html')
+
+def checkout(request):
+    return render(request, 'maketashop/checkout.html')
+
