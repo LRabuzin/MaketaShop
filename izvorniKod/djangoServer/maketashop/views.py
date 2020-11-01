@@ -19,3 +19,6 @@ def signup(request):
 
 def webshop(request):
     return render(request, 'maketashop/WebShop.html')
+
+def b_post(request):
+    return render(request, 'maketashop/b_post.html')
