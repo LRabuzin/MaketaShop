@@ -34,3 +34,6 @@ def pregledKorisnika(request):
 
 def transakcije(request):
     return render(request, 'maketashop/transakcije.html')
+
+def inbox(request):
+    return render(request, 'maketashop/inbox.html')
