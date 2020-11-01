@@ -26,3 +26,6 @@ def b_post(request):
 def checkout(request):
     return render(request, 'maketashop/checkout.html')
 
+def maketa(request):
+    return render(request, 'maketashop/maketa.html')
+
