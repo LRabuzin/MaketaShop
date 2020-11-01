@@ -14,5 +14,6 @@ urlpatterns = [
     path('post/', views.b_post, name='b_post'),
     path('checkout/', views.checkout, name='checkout'),
     path('maketa/', views.maketa, name='maketa'),
-    path('pregledKorisnika/', views.pregledKorisnika, name='pregledKorisnika')
+    path('pregledKorisnika/', views.pregledKorisnika, name='pregledKorisnika'),
+    path('transakcije/', views.transakcije, name='transakcije'),
 ]

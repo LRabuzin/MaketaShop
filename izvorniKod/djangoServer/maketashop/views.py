@@ -32,3 +32,5 @@ def maketa(request):
 def pregledKorisnika(request):
     return render(request, 'maketashop/pregledKorisnika.html')
 
+def transakcije(request):
+    return render(request, 'maketashop/transakcije.html')
