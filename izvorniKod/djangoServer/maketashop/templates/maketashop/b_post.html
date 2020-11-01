@@ -38,12 +38,25 @@
 
         <hr>
 
+        
+          <form action="" class="d-flex flex-row justify-content-around p-3">
+            <button type="submit" class="btn btn-success">Sviđa mi se</button>
+            <button type="submit" class="btn btn-danger">Ne sviđa mi se </button>
+          </form>
+
       </div>
 
-      <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
+        <div class="card my-4">
+          <h5 class="card-header">
+            Ocjene:
+          </h5>
+          <ul class="list-group list-group-flush d-flex flex-column justify-content-center align-items-center">
+            <li class="list-group-item text-success">Sviđa mi se: 281</li>
+            <li class="list-group-item text-danger">Ne sviđa mi se: 17</li>
+          </ul>
+        </div>
 
-        <!-- Comments Form -->
         <div class="card my-4">
           <h5 class="card-header">Komentiraj:</h5>
           <div class="card-body">
@@ -88,9 +101,8 @@
           </div>
         </div>
       </div>
-
     </div>
-    <!-- /.row -->
 
   </div>
+</div>
 {% endblock content %}
