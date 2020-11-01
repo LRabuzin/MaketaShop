@@ -28,4 +28,7 @@ def checkout(request):
 
 def maketa(request):
     return render(request, 'maketashop/maketa.html')
+    
+def pregledKorisnika(request):
+    return render(request, 'maketashop/pregledKorisnika.html')
 

@@ -1,0 +1,36 @@
+{%extends "./base.html"%}
+{% load static %}
+{% block mycss %}  {% endblock mycss %}
+{% block content %}
+
+<div class="container">
+	<div>
+		<h5>Pretraži prema korisničkom imenu</h5>
+	</div>
+	<nav class="navbar navbar-light">
+	  <form class="form-inline">
+		<div class="input-group">
+		  <div class="input-group-prepend">
+			<span class="input-group-text" id="basic-addon1">@</span>
+		  </div>
+		  <input type="text" class="form-control" placeholder="Korisničko_ime" aria-label="Username" aria-describedby="basic-addon1">
+		</div>
+	  </form>
+	</nav>
+    <div class="row">
+		<div class="col">nekiKorisnik1</div>
+		<div class="btn-group">
+		  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Action
+		  </button>
+		  <div class="dropdown-menu">
+			<a class="dropdown-item" href="#">Zabrana rada do daljnjeg</a>
+			<a class="dropdown-item" href="#">Something else here</a>
+			<div class="dropdown-divider"></div>
+			<a class="dropdown-item" href="#">Separated link</a>
+		  </div>
+		</div>
+
+	</div>
+</div>
+{% endblock content %}
