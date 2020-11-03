@@ -6,6 +6,7 @@
 /dokumentacija/*.pdf
 /dokumentacija/*.synctex.gz
 /dokumentacija/*.toc
+/izvorniKod/djangoServer/maketashop/migrations/*
 
 .vscode/*
 !.vscode/settings.json
