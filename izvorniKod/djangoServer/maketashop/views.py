@@ -18,12 +18,32 @@ def cart(request):
         'empty_head': False
         })
 
+def logout(request):
+    if 'user' in request.session:
+        del request.session['user']
+        request.session['empty_head'] = False
+        return HttpResponseRedirect(reverse('index'))
+    else:
+        return HttpResponseRedirect(reverse('login'))
 def login(request):
-    return render(request, 'maketashop/login.html', {
-        'title': "login", 
-        'link_active': "login", 
-        'empty_head': False
-        })
+    if 'user' not in request.session:
+        if request.method == 'POST':
+
+            if Korisnik.objects.filter(email=request.POST.get('exampleInputEmail1')).exists():
+                mail = request.POST.get('exampleInputEmail1')
+                password = request.POST.get('exampleInputPassword1')
+                m = Korisnik.objects.get(email=request.POST.get('exampleInputEmail1'))
+                if m.lozinka == password:
+                    request.session['user'] = m.email
+                    return HttpResponseRedirect(reverse('index'))
+                else:
+                    return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponseRedirect(reverse('login'))
+        else:
+            return render(request, 'maketashop/login.html', {'title': "login", 'link_active': "login", 'empty_head': False})
+    else:
+       return HttpResponseRedirect(reverse('index'))
 
 def profil(request):
     return render(request, 'maketashop/profil.html', {

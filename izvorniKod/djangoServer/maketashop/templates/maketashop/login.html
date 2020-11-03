@@ -2,16 +2,17 @@
 {% load static %}
 {% block content %}
 	<div class="container p-4">
-		<form>
+		<form action="" method="post" name="login">
+			{% csrf_token %}
 		  <div class="form-group">
 		  <h1 class="h3 mb-3 font-weight-normal">Prijava korisnika</h1>
 			<label for="exampleInputEmail1">Email adresa</label>
-			<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Unesi email">
+			<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "exampleInputEmail1" placeholder="Unesi email">
 			
 		  </div>
 		  <div class="form-group">
 			<label for="exampleInputPassword1">Lozinka</label>
-			<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Unesi lozinku">
+			<input type="password" class="form-control" id="exampleInputPassword1" name = "exampleInputPassword1" placeholder="Unesi lozinku">
 		  </div>
 
 		  <button type="submit" class="btn btn-primary">Prijavi se</button>
