@@ -3,39 +3,39 @@ from django.db import models
 # Create your models here.
 
 class Media(models.Model):
-    mediaid = models.IntegerField(primary_key=True)
+    mediaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0) 
     vrstamedije = models.CharField(max_length=20)
     putdodatoteke = models.TextField(unique=True)
     
     class Meta:
-        managed = False
+        managed = True
         db_table = 'media'
 
 
 class Tema(models.Model):
-    temaid = models.IntegerField(primary_key=True)
+    temaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
     ime = models.CharField(max_length=100)
     teksttemeid = models.ForeignKey(Media, models.DO_NOTHING, db_column='teksttemeid')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'tema'
 
 class Materijal(models.Model):
-    materijalid = models.IntegerField(primary_key=True)
+    materijalid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
     ime = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'materijal'
 
 class Maketa(models.Model):
-    maketaid = models.IntegerField(primary_key=True)
+    maketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
     dimenzije = models.CharField(max_length=20)
     mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='mediaid')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'maketa'
 
 class Napravljenaod(models.Model):
@@ -44,12 +44,12 @@ class Napravljenaod(models.Model):
     cijena = models.FloatField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'napravljenaod'
         unique_together = (('maketaid', 'materijalid'),)
 
 class Transakcija(models.Model):
-    transakcijaid = models.IntegerField(primary_key=True)
+    transakcijaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
     ime = models.CharField(max_length=100)
     prezime = models.CharField(max_length=100)
     adresa = models.CharField(max_length=100)
@@ -57,7 +57,7 @@ class Transakcija(models.Model):
     ukupaniznos = models.FloatField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'transakcija'
 
 
@@ -65,48 +65,48 @@ class Maketakupljena(models.Model):
     transakcijaid = models.ForeignKey(Transakcija, models.DO_NOTHING, db_column='transakcijaid')
     maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid')
     materijalid = models.ForeignKey(Materijal, models.DO_NOTHING, db_column="materijalid")
-    kolicina = models.IntegerField()
+    kolicina = models.IntegerField(default = 0)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'maketakupljena'
         unique_together = (('transakcijaid', 'maketaid', 'materijalid'),)
 
 class Korisnik(models.Model):
-    korisnikid = models.IntegerField(primary_key=True)
-    email = models.CharField(unique=True, max_length=100);
+    korisnikid = models.AutoField(auto_created = True, primary_key = True, serialize = True)
+    email = models.CharField(unique=True, max_length=100)
     korisnickoime = models.CharField(unique=True, max_length=20)
     lozinka = models.CharField(max_length=20)
     razinaautoriteta = models.IntegerField()
-    adresa = models.CharField(max_length=100)
-    rodendan = models.DateField()
-    datumregistracije = models.DateField()
-    adresaprivatna = models.BooleanField()
-    rodendanprivatan = models.BooleanField()
-    datumregistracijeprivatan = models.BooleanField()
-    ime = models.CharField(max_length=50)
-    prezime = models.CharField(max_length=50)
-    dozvoljenpristup = models.BooleanField()
-    brojracuna = models.CharField(max_length=21)
-    profilnaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='profilnaid')
+    adresa = models.CharField(max_length=100, default=None, blank=True, null=True)
+    rodendan = models.DateField(default=None, blank=True, null=True)
+    datumregistracije = models.DateField(default=None, blank=True, null=True)
+    adresaprivatna = models.BooleanField(default=False, blank=True, null=True)
+    rodendanprivatan = models.BooleanField(default=False, blank=True, null=True)
+    datumregistracijeprivatan = models.BooleanField(default=False, blank=True, null=True)
+    ime = models.CharField(max_length=50, default=None, blank=True, null=True)
+    prezime = models.CharField(max_length=50, default=None, blank=True, null=True)
+    dozvoljenpristup = models.BooleanField(default=None, blank=True, null=True)
+    brojracuna = models.CharField(max_length=21, default=None, blank=True, null=True)
+    profilnaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='profilnaid', default=None, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'korisnik'
 
 class Prica(models.Model):
-    pricaid = models.IntegerField(primary_key=True)
-    brojlajkova = models.IntegerField()
-    brojdislajkova = models.IntegerField()
-    objavljena = models.BooleanField()
+    pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
+    brojlajkova = models.IntegerField(default = 0, blank = True)
+    brojdislajkova = models.IntegerField(default = 0, blank = True)
+    objavljena = models.BooleanField(default = False, blank = True)
     maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column="maketaid")
-    maketaprodana = models.BooleanField()
+    maketaprodana = models.BooleanField(default = False, blank = True)
     autorid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='autorid')
     tekstpriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='tekstpriceid', related_name="tekstprice")
     glavnaslikapriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='glavnaslikapriceid', related_name="glavnaslikaprice")
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'prica'
 
 class Multimedijaprice(models.Model):
@@ -115,30 +115,31 @@ class Multimedijaprice(models.Model):
     poredakuprici = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'multimedijaprice'
         unique_together = (('pricaid', 'mediaid'),)
 
 
 class Komentar(models.Model):
-    komentarid = models.IntegerField(primary_key=True)
+    komentarid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
     sadrzaj = models.CharField(max_length=300)
     korisnikid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='korisnikid')
     pricaid = models.ForeignKey(Prica, models.DO_NOTHING, db_column='pricaid')
 
     class Meta:
-        managed = False
-        db_table = 'komentari'
+        managed = True
+        db_table = 'komentar'
 
 class Custommaketa(models.Model):
+    custommaketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
     datumotvaranjazahtjeva = models.DateField()
     datumzatvaranjadatuma = models.DateField()
-    ponudenacijena = models.FloatField()
-    prihvaceno =  models.BooleanField()
+    ponudenacijena = models.FloatField(default=None, blank=True, null=True)
+    prihvaceno =  models.BooleanField(default=False, blank=True, null=True)
     tekstzahtjevaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='tekstzahtjevaid')
     korisnikid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='korisnikid')
     
     class Meta:
-        managed = False
+        managed = True
         db_table = 'custommaketa'
 

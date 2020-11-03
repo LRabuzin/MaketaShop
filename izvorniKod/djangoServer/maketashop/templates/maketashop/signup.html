@@ -13,6 +13,7 @@
          <div class="col-md-4 mx-auto" style="padding-bottom: 6rem; padding-top: 6rem;">
             <div class="myform form ">
                <form action="" method="post" name="login">
+                  {% csrf_token %}
                   <div class="form-group">
                      <input type="text" name="name"  class="form-control my-input" id="name" placeholder="Ime">
                   </div>
