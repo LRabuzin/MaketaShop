@@ -2,22 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from maketashop.models import Korisnik
 from django.urls import reverse
+from django.views.generic import TemplateView
 
 # Create your views here.
-def index(request):
-    return render(request, 'maketashop/index.html', {
-        'title': "index", 
-        'link_active': "index", 
-        'empty_head': False
-        })
-
 def cart(request):
     return render(request, 'maketashop/cart.html', {
         'title': "cart", 
         'link_active': "cart", 
         'empty_head': False
         })
-
+    
 def logout(request):
     if 'user' in request.session:
         del request.session['user']
