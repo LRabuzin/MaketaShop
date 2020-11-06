@@ -2,13 +2,13 @@ from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import render
 
-class Index(View):
-    template_name ="index.html"
+class WebShop(View):
+    template_name ="WebShop.html"
     def get(self, request):
         # <view logic>
         
-        return render(request, 'maketashop/index.html', {
-            'title': "index", 
-            'link_active': "index", 
+        return render(request, 'maketashop/WebShop.html', {
+            'title': "webshop", 
+            'link_active': "webshop", 
             'empty_head': False
             })
