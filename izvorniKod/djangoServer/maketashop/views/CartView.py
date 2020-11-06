@@ -3,11 +3,11 @@ from django.views.generic import View
 from django.shortcuts import render
 
 class Cart(View):
-    template_name ="cart.html"
+    template_name ="maketashop/cart.html"
     def get(self, request):
         # <view logic>
         
-        return render(request, 'maketashop/cart.html', {
+        return render(request, self.template_name, {
             'title': "cart", 
             'link_active': "cart", 
             'empty_head': False

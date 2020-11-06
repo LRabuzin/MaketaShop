@@ -6,10 +6,14 @@ from maketashop.models import Korisnik
 
 class Login(View):
    model_class = Korisnik
-   template_name ="login.html"
+   template_name ="maketashop/login.html"
    def get(self, request):
       if 'user' not in request.session:
-         return render(request, 'maketashop/login.html', {'title': "login", 'link_active': "login", 'empty_head': False})
+         return render(request, self.template_name, {
+            'title': "login", 
+            'link_active': "login", 
+            'empty_head': False
+            })
       else:
          return HttpResponseRedirect(reverse('index'))
    
