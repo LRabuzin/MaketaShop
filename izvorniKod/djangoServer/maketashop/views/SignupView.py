@@ -14,7 +14,7 @@ class Signup(View):
             return render(request, self.template_name, {
                 'title': "signup", 
                 'link_active': "signup", 
-                'empty_head': False,
+                'empty_head': True,
                 'form':form
                 })
         else:
@@ -42,5 +42,4 @@ class Signup(View):
                 korisnik.save()
 
                 request.session['user'] = korisnik.email
-                request.session['empty_head'] = True
                 return HttpResponseRedirect(reverse('index'))

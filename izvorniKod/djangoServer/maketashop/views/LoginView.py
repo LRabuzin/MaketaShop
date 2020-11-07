@@ -15,7 +15,7 @@ class Login(View):
          return render(request, self.template_name, {
             'title': "login", 
             'link_active': "login", 
-            'empty_head': True,
+            'empty_head': False,
             'form' : form
             })
       else:
@@ -30,7 +30,6 @@ class Login(View):
             m = self.model_class.objects.get(email=mail)
             if m.lozinka == password:
                request.session['user'] = m.email
-               request.session['empty_head'] = True
                return HttpResponseRedirect(reverse('index'))
             else:
                return HttpResponseRedirect(reverse('index'))

@@ -8,7 +8,6 @@ class Logout(View):
     def get(self, request):
       if 'user' in request.session:
          del request.session['user']
-         request.session['empty_head'] = False
          return HttpResponseRedirect(reverse('index'))
       else:
          return HttpResponseRedirect(reverse('login'))
