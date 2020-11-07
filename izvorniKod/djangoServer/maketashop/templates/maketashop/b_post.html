@@ -7,22 +7,24 @@
 
       <div class="col-lg-8">
 
-        <h1 class="mt-4">{{ baza_data.naslov }}</h1>
+        <h1 class="mt-4">{{ baza_data.naslovprice }}</h1>
 
         <p class="lead">
           autor:
           <a href="#">{{ baza_data.autorid.korisnickoime }}</a>
           <br>
-          na prijedlog:
-          <a href="#">{{ baza_data.predloziopricuid.korisnickoime }}</a>
+		  {% if baza_data.predloziopricuid %}
+			  na prijedlog:
+			  <a href="#">{{ baza_data.predloziopricuid.korisnickoime }}</a>
+		  {% endif %}
         </p>
 
         <hr>
-        <p>{{ baza_data.datumobjave }}</p>
+        <p>Datum objave: {{ baza_data.datumobjave }}</p>
 
         <hr>
 
-        <img class="img-fluid rounded" src="{% static 'maketashop/imgs/maketa2.jpg' %}" alt="">
+        <img class="img-fluid rounded" src="{% static baza_data.glavnaslikapriceid.putdodatoteke %}" alt="">
 
         <hr>
 
@@ -39,13 +41,14 @@
         <hr>
         <div class="d-flex flex-column justify-content-center align-items-center p-2">
 		
-		{% if baza_data.dostupnazaprodaju and not baza_data.maketaprodana %}
+		{% if baza_data.maketaid and not baza_data.maketaprodana %}
 			<h5 class="p-2">Ova je maketa dostupna za kupnju.</h5>
+			<h6 class="p-2">Cijena: {{ baza_data.maketaid.dimenzije }} kn</h6>
+			<button type="submit" class="btn btn-primary m-2">Kupi</button>
 		{% else %}
 			<h5 class="p-2">Ova maketa nije dostupna za kupnju.</h5>
 		{% endif %}
-          <h6 class="p-2">Cijena: ne znamo kako pristupiti cijeni kn</h6>
-          <button type="submit" class="btn btn-primary m-2">Kupi</button>
+          
         </div>
 
         <hr>

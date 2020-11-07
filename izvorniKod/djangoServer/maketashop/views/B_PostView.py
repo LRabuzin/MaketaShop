@@ -7,7 +7,7 @@ class B_Post(View):
     template_name ="maketashop/b_post.html"
     def get(self, request, id):
         # <view logic>
-        prica = Prica.objects.get(pricaid=id)
+        prica = Prica.objects.select_related().get(pricaid=id)
         return render(request, self.template_name, {
             'title': "b_post", 
             'link_active': "b_post", 
