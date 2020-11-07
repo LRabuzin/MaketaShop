@@ -3,17 +3,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 from maketashop.models import Korisnik
 from django.urls import reverse
 from django.views.generic import View
-
+from ..forms import SignupForm
 
 class Signup(View):
     template_name="maketashop/signup.html"
 
     def get(self, request):
+        form = SignupForm()
         if 'user' not in request.session:
             return render(request, self.template_name, {
                 'title': "signup", 
                 'link_active': "signup", 
-                'empty_head': False
+                'empty_head': False,
+                'form':form
                 })
         else:
             return HttpResponseRedirect(reverse('index'))
