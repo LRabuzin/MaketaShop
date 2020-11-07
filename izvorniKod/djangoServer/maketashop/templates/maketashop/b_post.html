@@ -11,14 +11,14 @@
 
         <p class="lead">
           autor:
-          <a href="#">{{ prica.autorid.korisnickoime }}</a>
+          <a href="#">{{ baza_data.autorid.korisnickoime }}</a>
           <br>
           na prijedlog:
-          <a href="#">{{ prica.predloziopricuid.korisnickoime }}</a>
+          <a href="#">{{ baza_data.predloziopricuid.korisnickoime }}</a>
         </p>
 
         <hr>
-        <p>{{ prica.datumobjave }}</p>
+        <p>{{ baza_data.datumobjave }}</p>
 
         <hr>
 
@@ -26,25 +26,26 @@
 
         <hr>
 
-        <p class="">{{ prica.tekstpriceid.putdodatoteke }}</p>
+        <p class="">{{ baza_data.tekstpriceid.putdodatoteke }}</p>
 
         <hr>
-          <form action="" method="POST" name="rate" class="d-flex flex-row justify-content-around p-3">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-success" name="rate" value="like">Sviđa mi se</button>
-            <button type="submit" class="btn btn-danger" name="rate" value="dislike">Ne sviđa mi se </button>
+
+        
+          <form action="" class="d-flex flex-row justify-content-around p-3">
+            <button type="submit" class="btn btn-success">Sviđa mi se</button>
+            <button type="submit" class="btn btn-danger">Ne sviđa mi se </button>
           </form>
+
         <hr>
         <div class="d-flex flex-column justify-content-center align-items-center p-2">
 		
-		{% if prica.maketaid and not prica.maketaprodana %}
-      <h5 class="p-2">Ova je maketa dostupna za kupnju.</h5>
-      <h6 class="p-2">Cijena: ne znamo kako pristupiti cijeni kn</h6>
-      <button type="submit" class="btn btn-primary m-2">Kupi</button>
+		{% if baza_data.dostupnazaprodaju and not baza_data.maketaprodana %}
+			<h5 class="p-2">Ova je maketa dostupna za kupnju.</h5>
 		{% else %}
 			<h5 class="p-2">Ova maketa nije dostupna za kupnju.</h5>
 		{% endif %}
-          
+          <h6 class="p-2">Cijena: ne znamo kako pristupiti cijeni kn</h6>
+          <button type="submit" class="btn btn-primary m-2">Kupi</button>
         </div>
 
         <hr>
@@ -57,18 +58,17 @@
             Ocjene:
           </h5>
           <ul class="list-group list-group-flush d-flex flex-column justify-content-center align-items-center">
-            <li class="list-group-item text-success">Sviđa mi se: {{ prica.brojlajkova }}</li>
-            <li class="list-group-item text-danger">Ne sviđa mi se: {{ prica.brojdislajkova }}</li>
+            <li class="list-group-item text-success">Sviđa mi se: {{ baza_data.brojlajkova }}</li>
+            <li class="list-group-item text-danger">Ne sviđa mi se: {{ baza_data.brojdislajkova }}</li>
           </ul>
         </div>
 
         <div class="card my-4">
           <h5 class="card-header">Komentiraj:</h5>
           <div class="card-body">
-            <form action="" method="POST" name="comment" class="d-flex flex-row justify-content-around p-3">
-              {% csrf_token %}
+            <form>
               <div class="form-group">
-                <textarea class="form-control" name="comment" rows="3"></textarea>
+                <textarea class="form-control" rows="3"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Objavi</button>
             </form>
