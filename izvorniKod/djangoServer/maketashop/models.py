@@ -97,14 +97,14 @@ class Korisnik(models.Model):
 class Prica(models.Model):
     pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
     naslovprice = models.CharField(max_length=100,default = "Priča")
-    datumprice = models.DateField()
+    datumprice = models.DateField(default= "1900-01-01", blank = True)
     brojlajkova = models.IntegerField(default = 0, blank = True)
     brojdislajkova = models.IntegerField(default = 0, blank = True)
     objavljena = models.BooleanField(default = False, blank = True)
     maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column="maketaid")
     maketaprodana = models.BooleanField(default = False, blank = True)
     autorid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='autorid', related_name="autorid")
-    predloziopricuid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='predloziopricuid', related_name="predloziopricuid")
+    predloziopricuid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='predloziopricuid', related_name="predloziopricuid", null=True)
     tekstpriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='tekstpriceid', related_name="tekstprice")
     glavnaslikapriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='glavnaslikapriceid', related_name="glavnaslikaprice")
 
