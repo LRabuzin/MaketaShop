@@ -20,3 +20,4 @@ class PrivacyForm(forms.Form):
     register_date = forms.BooleanField(label="Prikaži datum registracije", required=False)
     email = forms.BooleanField(label="Prikaži adresu e-pošte", required=False)
     address = forms.BooleanField(label="Prikaži adresu", required=False)
+
