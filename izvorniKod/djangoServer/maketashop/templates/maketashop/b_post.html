@@ -11,14 +11,14 @@
 
         <p class="lead">
           autor:
-          <a href="#">Admin</a>
+          <a href="#">{{ prica.autorid.korisnickoime }}</a>
           <br>
           na prijedlog:
-          <a href="#">Korisnik koji je predložio</a>
+          <a href="#">{{ prica.predloziopricuid.korisnickoime }}</a>
         </p>
 
         <hr>
-        <p>prica[datumObjave]</p>
+        <p>{{ prica.datumObjave }}</p>
 
         <hr>
 
@@ -26,7 +26,7 @@
 
         <hr>
 
-        <p class="">prica.tekstpriceid.putdodatoteke</p>
+        <p class="">{{ prica.tekstpriceid.putdodatoteke }}</p>
 
         <hr>
 
@@ -39,19 +39,17 @@
         <hr>
         <div class="d-flex flex-column justify-content-center align-items-center p-2">
 		
-		{% if {{ prica[dostupnaZaProdaju] }} and not {{ prica[maketaProdana] }} %}
+		{% if prica.dostupnaZaProdaju and not prica.maketaProdana %}
 			<h5 class="p-2">Ova je maketa dostupna za kupnju.</h5>
 		{% else %}
 			<h5 class="p-2">Ova maketa nije dostupna za kupnju.</h5>
 		{% endif %}
-          <h6 class="p-2">Cijena: 420 kn</h6>
+          <h6 class="p-2">Cijena: ne znamo kako pristupiti cijeni kn</h6>
           <button type="submit" class="btn btn-primary m-2">Kupi</button>
         </div>
 
         <hr>
         
-
-
       </div>
 
       <div class="col-md-4">
@@ -60,8 +58,8 @@
             Ocjene:
           </h5>
           <ul class="list-group list-group-flush d-flex flex-column justify-content-center align-items-center">
-            <li class="list-group-item text-success">Sviđa mi se: {{ prica[brojLajkova] }}</li>
-            <li class="list-group-item text-danger">Ne sviđa mi se: {{ prica[brojDislajkova] }}</li>
+            <li class="list-group-item text-success">Sviđa mi se: {{ prica.brojLajkova }}</li>
+            <li class="list-group-item text-danger">Ne sviđa mi se: {{ prica.brojDislajkova }}</li>
           </ul>
         </div>
 
