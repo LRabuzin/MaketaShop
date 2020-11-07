@@ -4,21 +4,27 @@
 {% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/profil.css' %}"> {% endblock mycss %}
 
 {% block content %}
-<div class="container">
+<form action="" method="POST" name="priv" class="container p-3">
+    {% csrf_token %}
   <div class="row">
       <div class="col-12">
           <div class="card">
               <div class="card-body">
-                  <div class="card-title">
-                      <div class="d-flex justify-content-start">
-                          <div class="image-container">
+                  <div class="card-title row align-items-center justify-content-between">
+                      
+                          <div class="image-container col-3">
                               <img src="{% static 'maketashop/imgs/cat.jfif' %}" style="width: 150px; height: 150px" />
-                              <div class="middle">
-                                  <input type="button" class="btn btn-secondary" value="Promjeni sliku" />
-                              </div>
-                          </div>
+                            </div>
+                            <div class="col-3">
+                                      <input type="button" class="btn btn-secondary" value="Promijeni sliku" />
+                            </div>
+                            <div class="form-check col-3">
+                                {{ form.pic }}
+                                {{ form.pic.label_tag }}
+                            </div>
+                                  
                           
-                      </div>
+                      
                   </div>
                   <div class="row">
                       <div class="col-12">
@@ -29,43 +35,94 @@
                               <div>
                         
                                   <div class="row">
-                                      <div class="col-sm-3 col-md-2 col-5">
+                                      <div class="col-6">
                                           <label style="font-weight:bold;">Ime Prezime</label>
                                       </div>
-                                      <div class="col-md-8 col-6">
+                                      <div class="col-3">
                                           Imenko Prezimenjakovic
+                                      </div>
+                                      <div class="form-check col-3">
+                                        {{ form.name_surname }}
+                                        {{ form.name_surname.label_tag }}
                                       </div>
                                   </div>
                                   <hr />
                                   <div class="row">
-                                      <div class="col-sm-3 col-md-2 col-5">
+                                      <div class="col-6">
                                           <label style="font-weight:bold;">Korisnicko ime</label>
                                       </div>
-                                      <div class="col-md-8 col-6">
+                                      <div class="col-3">
                                           korisnik99
                                       </div>
                                   </div>
                                   <hr />
+
+                                  <div class="row">
+                                    <div class="col-6">
+                                        <label style="font-weight:bold;">Datum rođenja</label>
+                                    </div>
+                                    <div class="col-3">
+                                        1.1.2001.
+                                    </div>
+                                    <div class="form-check col-3">
+                                        {{ form.birth_date }}
+                                        {{ form.birth_date.label_tag }}
+                                      </div>
+                                    </div>
+                                  <hr />
+
+                                  <div class="row">
+                                    <div class="col-6">
+                                        <label style="font-weight:bold;">Datum registracije</label>
+                                    </div>
+                                    <div class="col-3">
+                                        1.1.2001.
+                                    </div>
+                                    <div class="form-check col-3">
+                                        {{ form.register_date }}
+                                        {{ form.register_date.label_tag }}
+                                      </div>
+                                    </div>
+                                  <hr />
                                   
                                   <div class="row">
-                                      <div class="col-sm-3 col-md-2 col-5">
+                                      <div class="col-6">
                                           <label style="font-weight:bold;">Adresa elektronicke poste</label>
                                       </div>
-                                      <div class="col-md-8 col-6">
+                                      <div class="col-3">
                                           koko99@gmail.com
+                                      </div>
+                                      <div class="form-check col-3">
+                                        {{ form.email }}
+                                        {{ form.email.label_tag }}
                                       </div>
                                   </div>
                                   <hr />
                                   <div class="row">
-                                      <div class="col-sm-3 col-md-2 col-5">
-                                          <label style="font-weight:bold;">Mjesto stanovanja</label>
+                                      <div class="col-6">
+                                          <label style="font-weight:bold;">Adresa</label>
                                       </div>
-                                      <div class="col-md-8 col-6">
+                                      <div class="col-3">
                                           Zagreb
+                                      </div>
+                                      <div class="form-check col-3">
+                                        {{ form.address }}
+                                        {{ form.address.label_tag }}
                                       </div>
                                   </div>
                                   <hr />
-                                  <input type="button" class="btn btn-secondary" value="Uredi informacije" />
+                                  <div class="row justify-content-around">
+                                      <div class="col-6">
+                                        <input type="button" class="btn btn-secondary" value="Uredi informacije" />
+                                      </div>
+                                      <div class="col-3">
+
+                                      </div>
+                                      <div class="col-3">
+                                        <button type="submit" class="btn btn-primary">Spremi postavke privatnosti</button>
+
+                                      </div>
+                                  </div>
 
                               </div>
                     
@@ -79,5 +136,5 @@
           </div>
       </div>
   </div>
-</div>
+</form>
 {% endblock content %}
