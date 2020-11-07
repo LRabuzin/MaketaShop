@@ -29,12 +29,20 @@
                   <a class="nav-link dropdown-toggle {% if link_active == 'profil' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Profil
                   </a>
+                  {% if session.user %}
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item " href="{% url 'profil' %}">Moj profil</a>
                     <a class="dropdown-item" href="{% url 'inbox' %}">Sandučić</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'logout' %}">Odjavi se</a>
                   </div>
+                  {% else %}
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'login' %}">Prijavi se</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'signup' %}">Kreiraj profil</a>
+                  </div>
+                  {% endif %}
                 </li>
                 <li class="nav-item">
                   <a class="nav-link {% if link_active == 'kosarica' %}active{% endif %}" href="{% url 'cart' %}" tabindex="-1" aria-disabled="true">Košarica: 3</a>
