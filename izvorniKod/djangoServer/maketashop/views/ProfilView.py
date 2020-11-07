@@ -9,9 +9,11 @@ class Profil(View):
         # <view logic>
         form = PrivacyForm()
         
+        korisnik = Korisnik.objects.get(email=request.session['user'])
         return render(request, self.template_name, {
             'title': "profil", 
             'link_active': "profil", 
             'empty_head': False,
-            'form' : form
+            'form' : form,
+            'baza_data': korisnik
             })
