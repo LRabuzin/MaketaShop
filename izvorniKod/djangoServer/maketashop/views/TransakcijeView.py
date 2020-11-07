@@ -11,5 +11,6 @@ class Transakcije(View):
         return render(request, self.template_name, {
             'title': "transakcije", 
             'link_active': "transakcije", 
-            'empty_head': False
+            'empty_head': False,
+            'session': request.session
             })

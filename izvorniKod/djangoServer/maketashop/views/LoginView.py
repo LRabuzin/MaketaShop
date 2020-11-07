@@ -16,7 +16,8 @@ class Login(View):
             'title': "login", 
             'link_active': "login", 
             'empty_head': False,
-            'form' : form
+            'form' : form,
+            'session': request.session
             })
       else:
          return HttpResponseRedirect(reverse('index'))

@@ -10,5 +10,6 @@ class WebShop(View):
         return render(request, self.template_name, {
             'title': "webshop", 
             'link_active': "webshop", 
-            'empty_head': False
+            'empty_head': False,
+            'session': request.session
             })

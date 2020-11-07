@@ -12,4 +12,5 @@ class Index(View):
             'link_active': "index", 
             'empty_head': False,
             'baza_data': price,
+            'session': request.session
             })

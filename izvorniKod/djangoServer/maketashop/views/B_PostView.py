@@ -12,6 +12,7 @@ class B_Post(View):
         prica = Prica.objects.select_related().get(pricaid=id)
         napod = Napravljenaod.objects.get(maketaid=prica.maketaid)
         koment = Komentar.objects.filter(pricaid=prica.pricaid)
+        
         return render(request, self.template_name, {
             'title': "b_post", 
             'link_active': "b_post", 
@@ -19,4 +20,5 @@ class B_Post(View):
             'baza_data': prica,
             'baza_data_2': napod,
             'baza_data_3': koment,
+            'session': request.session
             })

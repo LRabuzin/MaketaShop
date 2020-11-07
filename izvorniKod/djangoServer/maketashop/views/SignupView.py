@@ -15,7 +15,8 @@ class Signup(View):
                 'title': "signup", 
                 'link_active': "signup", 
                 'empty_head': True,
-                'form':form
+                'form':form,
+                'session': request.session
                 })
         else:
             return HttpResponseRedirect(reverse('index'))

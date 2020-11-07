@@ -10,5 +10,6 @@ class Cart(View):
         return render(request, self.template_name, {
             'title': "cart", 
             'link_active': "cart", 
-            'empty_head': False
+            'empty_head': False,
+            'session': request.session
             })

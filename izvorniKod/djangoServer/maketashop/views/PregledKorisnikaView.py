@@ -11,5 +11,6 @@ class PregledKorisnika(View):
         return render(request, self.template_name, {
             'title': "pregledKorisnika", 
             'link_active': "pregledKorisnika", 
-            'empty_head': False
+            'empty_head': False,
+            'session': request.session
             })

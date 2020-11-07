@@ -11,5 +11,6 @@ class Checkout(View):
         return render(request, self.template_name, {
             'title': "checkout", 
             'link_active': "checkout", 
-            'empty_head': False
+            'empty_head': False,
+            'session': request.session
             })

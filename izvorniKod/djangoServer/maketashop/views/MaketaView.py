@@ -11,5 +11,6 @@ class Maketa(View):
         return render(request, self.template_name, {
             'title': "maketa", 
             'link_active': "maketa", 
-            'empty_head': False
+            'empty_head': False,
+            'session': request.session
             })

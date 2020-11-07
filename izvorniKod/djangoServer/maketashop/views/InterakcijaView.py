@@ -10,5 +10,6 @@ class Interakcija(View):
         return render(request, self.template_name, {
             'title': "interakcija", 
             'link_active': "interakcija", 
-            'empty_head': False
+            'empty_head': False,
+            'session': request.session
             })

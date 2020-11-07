@@ -10,5 +10,6 @@ class Inbox(View):
         return render(request, self.template_name, {
             'title': "inbox", 
             'link_active': "inbox", 
-            'empty_head': False
+            'empty_head': False,
+            'session': request.session
             })

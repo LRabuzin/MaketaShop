@@ -16,5 +16,6 @@ class Profil(View):
             'link_active': "profil", 
             'empty_head': False,
             'form' : form,
-            'baza_data': korisnik
+            'baza_data': korisnik,
+            'session': request.session
             })
