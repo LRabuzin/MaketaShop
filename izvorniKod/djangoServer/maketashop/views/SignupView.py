@@ -22,12 +22,11 @@ class Signup(View):
             return HttpResponseRedirect(reverse('signup'))
         else:
             korisnik = Korisnik()
-            korisnik.korisnickoime = request.POST.get('email')
+            korisnik.ime = request.POST.get('ime')
+            korisnik.prezime = request.POST.get('prezime')
             korisnik.email = request.POST.get('email')
             korisnik.lozinka = request.POST.get('pass1')
             korisnik.razinaautoriteta = 1
-            korisnik.rodendan = "1999-10-15"
-            korisnik.datumregistracije = "1999-10-15"
             korisnik.save()
 
             request.session['user'] = korisnik.email
