@@ -11,7 +11,7 @@ class B_Post(View):
         # <view logic>
         prica = Prica.objects.select_related().get(pricaid=id)
         napod = Napravljenaod.objects.get(maketaid=prica.maketaid)
-        koment = Komentar.objects.get(pricaid=prica.pricaid)
+        koment = Komentar.objects.filter(pricaid=prica.pricaid)
         return render(request, self.template_name, {
             'title': "b_post", 
             'link_active': "b_post", 
