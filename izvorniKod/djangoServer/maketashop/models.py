@@ -73,7 +73,7 @@ class Maketakupljena(models.Model):
         unique_together = (('transakcijaid', 'maketaid', 'materijalid'),)
 
 class Korisnik(models.Model):
-    korisnikid = models.AutoField(auto_created = True, primary_key = True, serialize = True)
+    korisnikid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
     email = models.CharField(unique=True, max_length=100)
     korisnickoime = models.CharField(unique=True, max_length=20)
     lozinka = models.CharField(max_length=20)
@@ -96,12 +96,16 @@ class Korisnik(models.Model):
 
 class Prica(models.Model):
     pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
+    naslovprice = models.CharField(max_length=100,default = "Priča")
+    datumprice = models.models.DateField()
     brojlajkova = models.IntegerField(default = 0, blank = True)
     brojdislajkova = models.IntegerField(default = 0, blank = True)
     objavljena = models.BooleanField(default = False, blank = True)
     maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column="maketaid")
+    custommaketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column="maketaid")
     maketaprodana = models.BooleanField(default = False, blank = True)
     autorid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='autorid')
+    predloziopricuid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='predloziopricuid')
     tekstpriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='tekstpriceid', related_name="tekstprice")
     glavnaslikapriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='glavnaslikapriceid', related_name="glavnaslikaprice")
 
