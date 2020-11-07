@@ -13,7 +13,7 @@
                   <div class="card-title row align-items-center justify-content-between">
                       
                           <div class="image-container col-3">
-                              <img src="{% static 'maketashop/imgs/cat.jfif' %}" style="width: 150px; height: 150px" />
+                              <img src="{% static baza_data.profilnaid %}" style="width: 150px; height: 150px" />
                             </div>
                             <div class="col-3">
                                       <input type="button" class="btn btn-secondary" value="Promijeni sliku" />
@@ -39,7 +39,8 @@
                                           <label style="font-weight:bold;">Ime Prezime</label>
                                       </div>
                                       <div class="col-3">
-                                          Imenko Prezimenjakovic
+                                        {{ baza_data.ime }}
+                                        {{ baza_data.prezime }}
                                       </div>
                                       <div class="form-check col-3">
                                         {{ form.name_surname }}
@@ -52,7 +53,7 @@
                                           <label style="font-weight:bold;">Korisnicko ime</label>
                                       </div>
                                       <div class="col-3">
-                                          korisnik99
+                                        {{ baza_data.korisnickoime }}
                                       </div>
                                   </div>
                                   <hr />
@@ -62,7 +63,7 @@
                                         <label style="font-weight:bold;">Datum rođenja</label>
                                     </div>
                                     <div class="col-3">
-                                        1.1.2001.
+                                        {{ baza_data.rodendan }}
                                     </div>
                                     <div class="form-check col-3">
                                         {{ form.birth_date }}
@@ -76,7 +77,7 @@
                                         <label style="font-weight:bold;">Datum registracije</label>
                                     </div>
                                     <div class="col-3">
-                                        1.1.2001.
+                                        {{ baza_data.datumregistracije }}
                                     </div>
                                     <div class="form-check col-3">
                                         {{ form.register_date }}
@@ -90,7 +91,7 @@
                                           <label style="font-weight:bold;">Adresa elektronicke poste</label>
                                       </div>
                                       <div class="col-3">
-                                          koko99@gmail.com
+                                        {{ baza_data.email }}
                                       </div>
                                       <div class="form-check col-3">
                                         {{ form.email }}
@@ -103,7 +104,7 @@
                                           <label style="font-weight:bold;">Adresa</label>
                                       </div>
                                       <div class="col-3">
-                                          Zagreb
+                                        {{ baza_data.adresa }}
                                       </div>
                                       <div class="form-check col-3">
                                         {{ form.address }}
