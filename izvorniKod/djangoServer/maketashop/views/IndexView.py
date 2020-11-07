@@ -6,7 +6,7 @@ from maketashop.models import Prica
 class Index(View):
     template_name ="maketashop/index.html"
     def get(self, request):
-        price = Prica.objects.all().values
+        price = Prica.objects.all().select_related()
         return render(request, self.template_name, {
             'title': "index", 
             'link_active': "index", 
