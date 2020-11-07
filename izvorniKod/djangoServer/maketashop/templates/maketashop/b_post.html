@@ -79,45 +79,23 @@
         </div>
 
 		<div class="overflow-auto p-3 bg-light" style="max-width: 360px; max-height: 500px;">
+		{% if baza_data_3 %}
+			{% for komentar in baza_data_3 %}
+				<div class="media mb-4">
+				  <img class="d-flex mr-3 rounded-circle" src="{% static komentar.korisnikid.profilnaid.putdodatoteke %}" alt="">
+				  <div class="media-body">
+					<h5 class="mt-0">{{ komentar.korisnikid.korisnickoime }}</h5>
+					{{ komentar.sadrzaj }}
+				  </div>
+				</div>
+			{% endfor %}
+		{% else %}
 			<div class="media mb-4">
-			  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-			  <div class="media-body">
-				<h5 class="mt-0">Ime Prezime</h5>
-				Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-			  </div>
+				  <div class="media-body">
+					<h5 class="mt-0">Nema komentara za prikazati.</h5>
+				  </div>
 			</div>
-
-			<div class="media mb-4">
-			  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-			  <div class="media-body">
-				<h5 class="mt-0">Ime Prezime</h5>
-				Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-			  </div>
-			</div>
-			
-			<div class="media mb-4">
-			  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-			  <div class="media-body">
-				<h5 class="mt-0">Ime Prezime</h5>
-				Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-			  </div>
-			</div>
-			
-			<div class="media mb-4">
-			  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-			  <div class="media-body">
-				<h5 class="mt-0">Ime Prezime</h5>
-				Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-			  </div>
-			</div>
-			
-			<div class="media mb-4">
-			  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-			  <div class="media-body">
-				<h5 class="mt-0">Ime Prezime</h5>
-				Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-			  </div>
-			</div>
+		{% endif %}
 		</div>
       </div>
     </div>
