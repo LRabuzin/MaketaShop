@@ -18,7 +18,7 @@
         </p>
 
         <hr>
-        <p>{{ prica.datumObjave }}</p>
+        <p>{{ prica.datumobjave }}</p>
 
         <hr>
 
@@ -39,7 +39,7 @@
         <hr>
         <div class="d-flex flex-column justify-content-center align-items-center p-2">
 		
-		{% if prica.dostupnaZaProdaju and not prica.maketaProdana %}
+		{% if prica.dostupnazaprodaju and not prica.maketaprodana %}
 			<h5 class="p-2">Ova je maketa dostupna za kupnju.</h5>
 		{% else %}
 			<h5 class="p-2">Ova maketa nije dostupna za kupnju.</h5>
@@ -58,8 +58,8 @@
             Ocjene:
           </h5>
           <ul class="list-group list-group-flush d-flex flex-column justify-content-center align-items-center">
-            <li class="list-group-item text-success">Sviđa mi se: {{ prica.brojLajkova }}</li>
-            <li class="list-group-item text-danger">Ne sviđa mi se: {{ prica.brojDislajkova }}</li>
+            <li class="list-group-item text-success">Sviđa mi se: {{ prica.brojlajkova }}</li>
+            <li class="list-group-item text-danger">Ne sviđa mi se: {{ prica.brojdislajkova }}</li>
           </ul>
         </div>
 
