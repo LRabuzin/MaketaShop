@@ -15,22 +15,25 @@ class Login(View):
          return render(request, self.template_name, {
             'title': "login", 
             'link_active': "login", 
-            'empty_head': False,
+            'empty_head': True,
             'form' : form
             })
       else:
          return HttpResponseRedirect(reverse('index'))
    
    def post(self, request):
-      if self.model_class.objects.filter(email=request.POST.get('exampleInputEmail1')).exists():
-         mail = request.POST.get('exampleInputEmail1')
-         password = request.POST.get('exampleInputPassword1')
-         m = self.model_class.objects.get(email=request.POST.get('exampleInputEmail1'))
-         if m.lozinka == password:
-            request.session['user'] = m.email
-            return HttpResponseRedirect(reverse('index'))
+      form = LoginForm(request.POST)
+      if form.is_valid():
+         mail = form.cleaned_data['email']
+         password = form.cleaned_data['pass1']
+         if self.model_class.objects.filter(email=mail).exists():
+            m = self.model_class.objects.get(email=mail)
+            if m.lozinka == password:
+               request.session['user'] = m.email
+               request.session['empty_head'] = True
+               return HttpResponseRedirect(reverse('index'))
+            else:
+               return HttpResponseRedirect(reverse('index'))
          else:
-            return HttpResponseRedirect(reverse('index'))
-      else:
-         return HttpResponseRedirect(reverse('login'))
+            return HttpResponseRedirect(reverse('login'))
    
