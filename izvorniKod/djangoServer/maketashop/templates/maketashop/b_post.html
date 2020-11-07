@@ -43,7 +43,7 @@
 		
 		{% if baza_data.maketaid and not baza_data.maketaprodana %}
 			<h5 class="p-2">Ova je maketa dostupna za kupnju.</h5>
-			<h6 class="p-2">Cijena: {{ baza_data.maketaid.dimenzije }} kn</h6>
+			<h6 class="p-2">Cijena: {{ baza_data_2.cijena }} kn</h6>
 			<button type="submit" class="btn btn-primary m-2">Kupi</button>
 		{% else %}
 			<h5 class="p-2">Ova maketa nije dostupna za kupnju.</h5>
@@ -78,7 +78,7 @@
           </div>
         </div>
 
-		<div class="overflow-auto p-3 bg-light" style="max-width: 360px; max-height: 800px;">
+		<div class="overflow-auto p-3 bg-light" style="max-width: 360px; max-height: 500px;">
 			<div class="media mb-4">
 			  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
 			  <div class="media-body">
