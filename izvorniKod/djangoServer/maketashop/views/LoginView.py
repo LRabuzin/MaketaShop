@@ -3,16 +3,20 @@ from django.views.generic import View
 from django.shortcuts import render
 from django.urls import reverse
 from maketashop.models import Korisnik
+from ..forms import LoginForm
 
 class Login(View):
    model_class = Korisnik
    template_name ="maketashop/login.html"
+   
    def get(self, request):
+      form = LoginForm()
       if 'user' not in request.session:
          return render(request, self.template_name, {
             'title': "login", 
             'link_active': "login", 
-            'empty_head': False
+            'empty_head': False,
+            'form' : form
             })
       else:
          return HttpResponseRedirect(reverse('index'))
