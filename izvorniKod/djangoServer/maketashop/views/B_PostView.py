@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import View
 from django.shortcuts import render
 from maketashop.models import Prica
@@ -22,3 +22,14 @@ class B_Post(View):
             'baza_data_3': koment,
             'session': request.session
             })
+
+    def post(self, request, id):
+        if (request.POST[rate] == 1):
+            obj = Prica.objects.select_related(get(pricaid=id))
+            obj.brojlajkova = obj.brojlajkova + 1
+            obj.save();
+        elif (request.POST[rate] == 2):
+            obj = Prica.objects.select_related(get(pricaid=id))
+            obj.brojlajkova = obj.brojlajkova - 1
+            obj.save();
+        return HttpResponseRedirect(self.request.path_info)

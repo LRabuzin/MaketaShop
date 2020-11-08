@@ -28,14 +28,15 @@
 
         <hr>
 
-        <p class="">{{ baza_data.tekstpriceid.putdodatoteke }}</p>
+        <embed src="{% static baza_data.tekstpriceid.putdodatoteke %}" alt="">
 
         <hr>
 
         
-          <form action="" class="d-flex flex-row justify-content-around p-3">
-            <button type="submit" class="btn btn-success">Sviđa mi se</button>
-            <button type="submit" class="btn btn-danger">Ne sviđa mi se </button>
+          <form action="" method="post" name="rate" class="d-flex flex-row justify-content-around p-3">
+			{% csrf_token %}
+            <button type="submit" class="btn btn-success" name="rate" value="1">Sviđa mi se</button>
+            <button type="submit" class="btn btn-danger" name="rate" value="2">Ne sviđa mi se</button>
           </form>
 
         <hr>

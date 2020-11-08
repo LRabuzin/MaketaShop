@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'WeTried.wsgi.application'
 #ovo je za POSTGRESQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'weTriedDatabase',
         'USER': 'admin',
         'PASSWORD': 'wetried',
