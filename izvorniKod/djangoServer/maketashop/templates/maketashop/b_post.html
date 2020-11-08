@@ -1,5 +1,9 @@
 {%extends "./base.html"%}
 {% load static %}
+
+{% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/b_post.css' %}">
+{% endblock mycss %}
+
 {% block content %}
 <div class="container">
 
@@ -20,7 +24,7 @@
         </p>
 
         <hr>
-        <p>Datum objave: {{ baza_data.datumobjave }}</p>
+        <p>Datum objave: {{ baza_data.datumprice|date:"d.m.Y." }}</p>
 
         <hr>
 
@@ -84,7 +88,7 @@
 		{% if baza_data_3 %}
 			{% for komentar in baza_data_3 %}
 				<div class="media mb-4">
-				  <img class="d-flex mr-3 rounded-circle" src="{% static komentar.korisnikid.profilnaid.putdodatoteke %}" alt="">
+				  <img class="d-flex mr-3 comm-img rounded-circle" src="{% static komentar.korisnikid.profilnaid.putdodatoteke %}" alt="">
 				  <div class="media-body">
 					<h5 class="mt-0">{{ komentar.korisnikid.korisnickoime }}</h5>
 					{{ komentar.sadrzaj }}
