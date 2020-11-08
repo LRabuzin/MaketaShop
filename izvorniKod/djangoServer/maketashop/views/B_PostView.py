@@ -24,15 +24,14 @@ class B_Post(View):
             })
 
     def post(self, request, id):
-        print(request.POST);
-        if (request.POST["rate"] == '1'):
-            print("IF1");
+        if(request.POST.get("koment")):
+            print(request.POST.get("koment"))
+        if (request.POST.get("rate") == '1'):
             obj = Prica.objects.select_related().get(pricaid=id)
             obj.brojlajkova = obj.brojlajkova + 1
-            obj.save();
-        elif (request.POST["rate"] == '2'):
-            print("IF2");
+            obj.save()
+        elif (request.POST.get("rate") == '2'):
             obj = Prica.objects.select_related().get(pricaid=id)
             obj.brojdislajkova = obj.brojdislajkova + 1
-            obj.save();
+            obj.save()
         return HttpResponseRedirect(self.request.path_info)
