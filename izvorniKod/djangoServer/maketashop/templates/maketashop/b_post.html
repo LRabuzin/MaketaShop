@@ -35,8 +35,8 @@
         
           <form action="" method="post" name="rate" class="d-flex flex-row justify-content-around p-3">
 			{% csrf_token %}
-            <button type="submit" class="btn btn-success" name="rate" value="1">Sviđa mi se</button>
-            <button type="submit" class="btn btn-danger" name="rate" value="2">Ne sviđa mi se</button>
+            <button type="submit" class="btn btn-success" name="rate" value="1" {% if lajkao == 1 %} disabled {% endif %}>Sviđa mi se</button>
+            <button type="submit" class="btn btn-danger" name="rate" value="2" {% if lajkao == -1 %} disabled {% endif %}>Ne sviđa mi se</button>
           </form>
 
         <hr>

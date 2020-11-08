@@ -4,6 +4,7 @@ from django.shortcuts import render
 from maketashop.models import Prica
 from maketashop.models import Napravljenaod
 from maketashop.models import Komentar
+from maketashop.models import Korisnik
 
 class B_Post(View):
     template_name ="maketashop/b_post.html"
@@ -12,6 +13,13 @@ class B_Post(View):
         prica = Prica.objects.select_related().get(pricaid=id)
         napod = Napravljenaod.objects.get(maketaid=prica.maketaid)
         koment = Komentar.objects.filter(pricaid=prica.pricaid)
+        curr_user = Korisnik.objects.select_related().get(email=request.session["user"])
+        lajkao = 0
+        if(curr_user.lajkaopricu.all().filter(pricaid=prica.pricaid)):
+            lajkao = 1
+        elif(curr_user.dislajkaopricu.all().filter(pricaid=prica.pricaid)):
+            lajkao = -1
+
         
         return render(request, self.template_name, {
             'title': "b_post", 
