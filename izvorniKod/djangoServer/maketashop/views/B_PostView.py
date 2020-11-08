@@ -16,9 +16,9 @@ class B_Post(View):
         lajkao = 0
         if (request.session.get("user")):
             curr_user = Korisnik.objects.select_related().get(email=request.session.get("user"))
-            if(curr_user.lajkaopricu.all().filter(pricaid=prica.pricaid)):
+            if(curr_user.lajkaopricu.all().filter(pricaid=id)):
                 lajkao = 1
-            elif(curr_user.dislajkaopricu.all().filter(pricaid=prica.pricaid)):
+            elif(curr_user.dislajkaopricu.all().filter(pricaid=id)):
                 lajkao = -1
 
         
@@ -29,7 +29,8 @@ class B_Post(View):
             'baza_data': prica,
             'baza_data_2': napod,
             'baza_data_3': koment,
-            'session': request.session
+            'session': request.session,
+            'lajkao' : lajkao
             })
 
     def post(self, request, id):
@@ -37,10 +38,15 @@ class B_Post(View):
             korisnikObj = Korisnik.objects.select_related().get(email=request.session.get("user"))
         else:
             return HttpResponseRedirect(self.request.path_info)
-            
-        if(request.POST.get("koment")):
-            print(request.POST.get("koment"))
-            
+        
+        prica = Prica.objects.select_related().get(pricaid=id)
+
+        if(request.POST.get("comment_text")):
+            sadrzajK = request.POST.get("comment_text")
+
+            obj = Komentar(sadrzaj=sadrzajK, korisnikid = korisnikObj, pricaid = prica)
+            obj.save()
+
         if (request.POST.get("rate") == '1'):
             print("U lajk postu sam");
             if (korisnikObj.lajkaopricu.all().filter(pricaid=id)):

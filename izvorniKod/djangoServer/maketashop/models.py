@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Media(models.Model):
-    mediaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0) 
+    mediaid = models.AutoField(auto_created = True, primary_key = True, serialize = False) 
     vrstamedije = models.CharField(max_length=20)
     putdodatoteke = models.TextField(unique=True)
     
@@ -13,7 +13,7 @@ class Media(models.Model):
 
 
 class Tema(models.Model):
-    temaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
+    temaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     ime = models.CharField(max_length=100)
     teksttemeid = models.ForeignKey(Media, models.DO_NOTHING, db_column='teksttemeid')
 
@@ -22,7 +22,7 @@ class Tema(models.Model):
         db_table = 'tema'
 
 class Materijal(models.Model):
-    materijalid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
+    materijalid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     ime = models.CharField(max_length=100)
 
     class Meta:
@@ -30,7 +30,7 @@ class Materijal(models.Model):
         db_table = 'materijal'
 
 class Maketa(models.Model):
-    maketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
+    maketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     dimenzije = models.CharField(max_length=20)
     mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='mediaid')
 
@@ -49,7 +49,7 @@ class Napravljenaod(models.Model):
         unique_together = (('maketaid', 'materijalid'),)
 
 class Transakcija(models.Model):
-    transakcijaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
+    transakcijaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     ime = models.CharField(max_length=100)
     prezime = models.CharField(max_length=100)
     adresa = models.CharField(max_length=100)
@@ -73,7 +73,7 @@ class Maketakupljena(models.Model):
         unique_together = (('transakcijaid', 'maketaid', 'materijalid'),)
 
 class Korisnik(models.Model):
-    korisnikid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
+    korisnikid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     email = models.CharField(unique=True, max_length=100)
     korisnickoime = models.CharField(unique=True, max_length=20)
     lozinka = models.CharField(max_length=20)
@@ -84,6 +84,9 @@ class Korisnik(models.Model):
     adresaprivatna = models.BooleanField(default=False, blank=True, null=True)
     rodendanprivatan = models.BooleanField(default=False, blank=True, null=True)
     datumregistracijeprivatan = models.BooleanField(default=False, blank=True, null=True)
+    slikaprivatna = models.BooleanField(default=False, blank=True, null=True)
+    imeprezimeprivatno = models.BooleanField(default=False, blank=True, null=True)
+    emailprivatan = models.BooleanField(default=False, blank=True, null=True)
     ime = models.CharField(max_length=50, default=None, blank=True, null=True)
     prezime = models.CharField(max_length=50, default=None, blank=True, null=True)
     dozvoljenpristup = models.BooleanField(default=None, blank=True, null=True)
@@ -97,7 +100,7 @@ class Korisnik(models.Model):
         db_table = 'korisnik'
 
 class Prica(models.Model):
-    pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
+    pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     naslovprice = models.CharField(max_length=100,default = "Priča")
     datumprice = models.DateField(default= "1900-01-01", blank = True)
     brojlajkova = models.IntegerField(default = 0, blank = True)
@@ -126,7 +129,7 @@ class Multimedijaprice(models.Model):
 
 
 class Komentar(models.Model):
-    komentarid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
+    komentarid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     sadrzaj = models.CharField(max_length=300)
     korisnikid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='korisnikid')
     pricaid = models.ForeignKey(Prica, models.DO_NOTHING, db_column='pricaid')
@@ -136,7 +139,7 @@ class Komentar(models.Model):
         db_table = 'komentar'
 
 class Custommaketa(models.Model):
-    custommaketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False, default=0)
+    custommaketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     datumotvaranjazahtjeva = models.DateField()
     datumzatvaranjadatuma = models.DateField()
     ponudenacijena = models.FloatField(default=None, blank=True, null=True)

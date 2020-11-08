@@ -13,10 +13,10 @@ class Profil(View):
 
         data = {'address' : korisnik.adresaprivatna,
                 'register_date' : korisnik.datumregistracijeprivatan,
-                'birth_date' : korisnik.rodendanprivatan}
-                #picture
-                #surname
-                #email
+                'birth_date' : korisnik.rodendanprivatan,
+                'pic' : korisnik.slikaprivatna,
+                'name_surname' : korisnik.imeprezimeprivatno,
+                'email' : korisnik.emailprivatan}
         form = PrivacyForm(data)
 
         return render(request, self.template_name, {
@@ -35,13 +35,16 @@ class Profil(View):
             adresaprivatna = form.cleaned_data['address']
             registerprivatan = form.cleaned_data['register_date']
             rodendanprivatan = form.cleaned_data['birth_date']
-            #picture
-            #surname
-            #email
+            slikaprivatna = form.cleaned_data['pic']
+            imeprezimeprivatno = form.cleaned_data['name_surname']
+            emailprivatan = form.cleaned_data['email']
             korisnik = Korisnik.objects.get(email=request.session['user'])
             korisnik.adresaprivatna = adresaprivatna
             korisnik.datumregistracijeprivatan = registerprivatan
             korisnik.rodendanprivatan = rodendanprivatan
+            korisnik.slikaprivatna = slikaprivatna
+            korisnik.imeprezimeprivatno = imeprezimeprivatno
+            korisnik.emailprivatan = emailprivatan
             korisnik.save()
 
             return HttpResponseRedirect(reverse('profil'))
