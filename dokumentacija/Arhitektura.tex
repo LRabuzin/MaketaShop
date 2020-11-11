@@ -355,18 +355,31 @@
 			
 		\section{Dijagram razreda}
 		
-			\textit{Potrebno je priložiti dijagram razreda s pripadajućim opisom. Zbog preglednosti je moguće dijagram razlomiti na više njih, ali moraju biti grupirani prema sličnim razinama apstrakcije i srodnim funkcionalnostima.}\\
-			
-			\textbf{\textit{dio 1. revizije}}\\
-			
-			\textit{Prilikom prve predaje projekta, potrebno je priložiti potpuno razrađen dijagram razreda vezan uz \textbf{generičku funkcionalnost} sustava. Ostale funkcionalnosti trebaju biti idejno razrađene u dijagramu sa sljedećim komponentama: nazivi razreda, nazivi metoda i vrste pristupa metodama (npr. javni, zaštićeni), nazivi atributa razreda, veze i odnosi između razreda.}\\
-			
-			\textbf{\textit{dio 2. revizije}}\\			
-			
-			\textit{Prilikom druge predaje projekta dijagram razreda i opisi moraju odgovarati stvarnom stanju implementacije}
-			
-			
-			
+		Slike 4.2, 4.3 i 4.4 predstavljaju implementaciju razreda korištenih u backendu za prijenos podataka u korištenoj MTV arhitekturi. Slika 4.2 sadrži sve korištene razrede koji predstavljaju View tipove. Na slici 4.3 prikazane su Data Transfer Object tipovi podataka koji primaju podatake iz modela.  Slika 4.4 prikazuje razred modela onako kako su zapamćeni u bazi podataka te služe za direktnu interakciju s njom. WeTriedContext predstavlja sveukupan sadržaj korištene baze podataka.
+
+
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=1.1\linewidth, height=0.4\textheight]{slike/dijagram_razreda_1}
+			\caption{Dijagram razreda - Views}
+			\label{fig:dijagramrazreda1}
+		\end{figure}
+		
+		
+		
+		
+		\begin{figure}
+			\centering
+			\includegraphics[width=1.0\linewidth]{slike/dijagram_razreda_2}
+			\caption{Dijagram razreda - DTO}
+			\label{fig:dijagramrazreda2}
+		\end{figure}
+		\begin{figure}
+			\centering
+			\includegraphics[width=1.0\linewidth]{slike/dijagram_razreda_3}
+			\caption{Dijagram razreda - Models}
+			\label{fig:dijagramrazreda3}
+		\end{figure}
 			\eject
 		
 		\section{Dijagram stanja}
