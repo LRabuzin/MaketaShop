@@ -16,17 +16,17 @@
 		\underbar{Web poslužitelj} kao osnovnu zadaću ima ostvarivanje komunikacije između klijenta i aplikacije.  Ta komunikacija ostvarena je HTTP-om (engl. HyperText Transfer Protocol). Upravo je web poslužitelj temelj rada web aplikacije. On ju pokreće i prosljeđuje zahtjeve zaprimljene od web preglednika.
 		
 		\underbar{Web aplikacija} koju korisnik koristi obrađuje njegove zahtjeve. Ukoliko je potrebno za obradu zahtjeva, web aplikacija komunicira s poslužiteljem baze podataka koji joj dohvaća i prosljeđuje potrebne podatke. Potom web aplikacija vraća odgovor u obliku HTML dokumenta te web preglednik to prikazuje korisniku u odgovarajućem formatu.
-		\begin{figure}
-			\centering
-	      % \includegraphics[width=0.7\linewidth]{../../MVT}
-			\caption{MVT koncept}
-			\label{fig:mvt}
-		\end{figure}
+		
 		Za izradu naše web aplikacije odlučili smo se za programski jezik Python s njegovim radnim okvirom Django. Koristili smo Bootstrap, HTML, CSS i JavaScript za prikaz web-stranica. Baza podataka napisana je u PostgreSQL-u. Arhitektura sustava temeljit će se na MVT (engl. Model View Template) konceptu. S obzirom da je MVT koncept podržan od strane Djanga, na raspolaganju su nam gotovi predlošci te nam znatno olakšavaju razvoj web aplikacije.
 	
 		Zahvaljujući nezavisnosti razvoja pojedinih djelova aplikacije možemo jednostavnije ispitivati i razvijati sustav, kao i dodavati nova svojstva. Kao što se može pretpostaviti, MVT koncept sastoji se od triju komponenti. "Model" i "View" na strani su poslužitelja i nisu vidljivi korisniku, dok je "Template" vidljiv na korisnikovoj strani. "Model" središnja je komponenta sustava te pristupa bazi podataka. Pravilno formatira podatke dobivene od strane "View"-a te ih prosljeđuje bazi podataka i obrnuto. "View" prima podatke i zahtjeve kao što su "POST" i "GET" s klijentske strane. Također pravilno formatira primljene podatke te komunicira s druge dvije komponente MVT koncepta. "Template" služi za prikazivanje sadržaja na web-stranici. Sadrži statičke i dinamičke definicije prikaza sadržaja.
 		
-	
+		\begin{figure} [!h] %ovaj [!h] je potreban za fiksiranje slike točno na ovo mjesto u pdf-u.
+			\centering
+			\includegraphics[width=0.7\linewidth]{slike/MVT}
+			\caption{MVT koncept}
+			\label{fig:mvt}
+		\end{figure}
 		
 		
 
