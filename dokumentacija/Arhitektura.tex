@@ -307,12 +307,48 @@
 			ukupaniznos & FLOAT & Ukupan iznos transakcije \\ \hline 
 			
 		\end{longtabu}
+	
+		\begin{longtabu} to \textwidth {|X[10, l]|X[6, l]|X[20, l]|}
+			
+			\hline \multicolumn{3}{|c|}{\textbf{CustomMaketa}}	 \\[3pt] \hline
+			\endfirsthead
+			
+			\hline \multicolumn{3}{|c|}{\textbf{CustomMaketa}}	 \\[3pt] \hline
+			\endhead
+			
+			\hline 
+			\endlastfoot
+			
+			\cellcolor{LightGreen}custommaketaid & INT	&  	Redni broj makete na zahtjev (primarni ključ). 	\\      \hline			
+			datumotvaranja
+			zahtjeva & DATE & Datum slanja zahtjeva za maketu. \\ \hline 
+			datumzatvaranja
+			zahtjeva & DATE & Datum zaključavanja zahtjeva za maketu. \\ \hline 
+			ponudenacijena & FLOAT & Ponuđena cijena za navedenu maketu. \\ \hline 
+			prihvaceno & BOOL & Je li korisnik prihvatio ponuđenu cijenu? \\ \hline 
+			\cellcolor{LightBlue}
+			korisnikid & INT & Redni broj korisnika koji šalje zahtjev. (strani ključ) \\ \hline 
+			\cellcolor{LightBlue}
+			tekstzahtjevaid & INT & Redni broj medijske datoteke koja sadrži tekst zahtjeva. (strani ključ) \\ \hline 	
+			
+			
+		\end{longtabu}
 		
 			
 			
 			
 			\subsection{Dijagram baze podataka}
-				\textit{ U ovom potpoglavlju potrebno je umetnuti dijagram baze podataka. Primarni i strani ključevi moraju biti označeni, a tablice povezane. Bazu podataka je potrebno normalizirati. Podsjetite se kolegija "Baze podataka".}
+			\vspace{\baselineskip}
+			\vspace{\baselineskip}
+			\vspace{\baselineskip}
+			\vspace{\baselineskip}
+			\vspace{\baselineskip}
+			\vspace{\baselineskip}
+			\vspace{\baselineskip}
+			\vspace{\baselineskip}
+			\vspace{\baselineskip}
+			\vspace{\baselineskip}
+				\includegraphics[width=1\linewidth]{slike/bazaRelShem}
 			
 			\eject
 			
