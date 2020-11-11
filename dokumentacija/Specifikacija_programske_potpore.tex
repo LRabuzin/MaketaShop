@@ -808,9 +808,39 @@
 				
 			\subsection{Sekvencijski dijagrami}
 				
-				\textbf{\textit{dio 1. revizije}}\\
+				Korisnik naručuje personaliziranu maketu koristeći formular koji nudi web aplikacija. Kada unese potrebne podatke u formular, formular se sprema u bazu podataka i dostupna je administratoru koji će odgovoriti na narudžbu.
 				
-				\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
+				\begin{figure} [!h]
+					\centering
+					\includegraphics[scale=0.65]{"slike/seqdiag_01"}
+					\caption{Sekvencijski dijagram uz UC30}
+					\label{fig:seqdiag_01}
+				\end{figure}
+				\pagebreak
+				
+				Administrator preuzima sve postavljene narudžbe za personalizirane makete te ih prihvaća ili odbija. Za prihvaćene narudžbe navodi cijenu za koju je voljan napraviti maketu. Njegov odgovor se sprema u bazu podataka. 
+				
+				\begin{figure} [!h]
+					\centering
+					\includegraphics[scale=0.65]{"slike/seqdiag_02"}
+					\caption{Sekvencijski dijagram uz UC36}
+					\label{fig:seqdiag_02}
+				\end{figure}
+				\pagebreak
+				
+				Korisnik preuzima odgovor na njegovu narudžbu. Ako je naruđžba prihvaćena, korisnik može prihvatiti narudžbu po navedenoj cijeni, ili je odbiti. Njegov odgovor se sprema u bazu podataka.
+				
+				\begin{figure} [!h]
+					\centering
+					\includegraphics[scale=0.65]{"slike/seqdiag_03"}
+					\caption{Sekvencijski dijagram uz UC38}
+					\label{fig:seqdiag_03}
+				\end{figure}
+				\pagebreak
+				
+				%\textbf{\textit{dio 1. revizije}}\\
+				
+				%\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
 				\eject
 	
 		\section{Ostali zahtjevi}
