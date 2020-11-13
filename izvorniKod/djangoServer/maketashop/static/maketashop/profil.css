@@ -1,0 +1,15 @@
+.profile-img {
+    padding:10px;
+    border:5px solid #00000;
+    left:45%;
+    right:55%
+ }
+ #container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ .profile-container {
+    padding-right: .4em; padding-bottom: .2em; padding-top: .2em;
+    display: table-cell;
+  }

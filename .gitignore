@@ -6,11 +6,7 @@
 /dokumentacija/*.pdf
 /dokumentacija/*.synctex.gz
 /dokumentacija/*.toc
-<<<<<<< HEAD
 /izvorniKod/djangoServer/maketashop/migrations/*
-=======
-/dokumentacija/.DS_Store
->>>>>>> 6f67faae0d068a6d484212272a1f1ba89b5c99e4
 
 .vscode/*
 !.vscode/settings.json

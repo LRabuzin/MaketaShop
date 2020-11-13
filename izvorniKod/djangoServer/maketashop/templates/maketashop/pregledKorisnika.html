@@ -1,0 +1,53 @@
+{%extends "./base.html"%}
+{% load static %}
+{% block mycss %}  {% endblock mycss %}
+{% block content %}
+
+<div class="container">
+	<hr>
+	<div>
+		<h5>Pretraži prema korisničkom imenu</h5>
+	</div>
+	<nav class="navbar navbar-light">
+	  <form class="form-inline">
+		<div class="input-group">
+		  <div class="input-group-prepend">
+			<span class="input-group-text" id="basic-addon1">@</span>
+		  </div>
+		  <input type="text" class="form-control" placeholder="Korisničko_ime" aria-label="Username" aria-describedby="basic-addon1">
+		</div>
+	  </form>
+	</nav>
+	<hr>
+    <div class="row">
+		<div class="col">nekiKorisnik1</div>
+		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
+		<div class="w-100"></div>
+		<hr>
+		<div class="col">nekiKorisnik2</div>
+		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
+		<div class="w-100"></div>
+		<hr>
+		<div class="col">nekiKorisnik3</div>
+		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
+		<div class="w-100"></div>
+		<hr>
+		<div class="col">nekiKorisnik4</div>
+		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
+		<div class="w-100"></div>
+		<hr>
+		<div class="col">nekiKorisnik5</div>
+		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
+		<div class="w-100"></div>
+		<hr>
+		<div class="col">nekiKorisnik6</div>
+		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
+		<div class="w-100"></div>
+		<hr>
+		<div class="col">nekiKorisnik7</div>
+		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
+		
+	</div>
+	<hr>
+</div>
+{% endblock content %}
