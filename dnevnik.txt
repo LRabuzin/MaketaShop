@@ -1,9 +1,0 @@
-1. sastanak
-- Datum: 5. listopada 2020.
-- Prisustvovali: Ivona Šarić, Patrik Pažur, Sara Sičić, Leon Novački, Tvrtko Hrestak, Filip Zmiša, Lovro Rabuzin
-- Platforma: MS Teams
-- Teme sastanka:
-	- uvodni sastanak s asistentom
-	- opis i detaljnije objašnjenje projektnog zadatka
-	- osnovne informacije o organizaciji projekta
-	- razjašnjene osnovne dileme oko funkcionalnosti
