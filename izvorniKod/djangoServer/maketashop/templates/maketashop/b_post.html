@@ -1,0 +1,111 @@
+{%extends "./base.html"%}
+{% load static %}
+
+{% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/b_post.css' %}">
+{% endblock mycss %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-8">
+
+        <h1 class="mt-4">{{ baza_data.naslovprice }}</h1>
+
+        <p class="lead">
+          autor:
+          <a href="#">{{ baza_data.autorid.korisnickoime }}</a>
+          <br>
+		  {% if baza_data.predloziopricuid %}
+			  na prijedlog:
+			  <a href="#">{{ baza_data.predloziopricuid.korisnickoime }}</a>
+		  {% endif %}
+        </p>
+
+        <hr>
+        <p>Datum objave: {{ baza_data.datumprice|date:"d.m.Y." }}</p>
+
+        <hr>
+
+        <img class="img-fluid rounded" src="{% static baza_data.glavnaslikapriceid.putdodatoteke %}" alt="">
+
+        <hr>
+
+        <embed src="{% static baza_data.tekstpriceid.putdodatoteke %}" alt="" style="width:100%; height:30vw">
+
+        <hr>
+
+        
+          <form action="" method="post" name="rate" class="d-flex flex-row justify-content-around p-3">
+			{% csrf_token %}
+            <button type="submit" class="btn {% if lajkao >= 0 %} btn-success {% else %} btn-secondary {% endif %}" name="rate" value="1" >Sviđa mi se</button>
+            <button type="submit" class="btn {% if lajkao <= 0 %} btn-danger {% else %} btn-secondary {% endif %}" name="rate" value="2" >Ne sviđa mi se</button>
+          </form>
+
+        <hr>
+        <div class="d-flex flex-column justify-content-center align-items-center p-2">
+		
+		{% if baza_data.maketaid and not baza_data.maketaprodana %}
+			<h5 class="p-2">Ova je maketa dostupna za kupnju.</h5>
+			<h6 class="p-2">Cijena: {{ baza_data_2.cijena }} kn</h6>
+			<button type="submit" class="btn btn-primary m-2">Kupi</button>
+		{% else %}
+			<h5 class="p-2">Ova maketa nije dostupna za kupnju.</h5>
+		{% endif %}
+          
+        </div>
+
+        <hr>
+        
+      </div>
+
+      <div class="col-md-4">
+        <div class="card my-4">
+          <h5 class="card-header">
+            Ocjene:
+          </h5>
+          <ul class="list-group list-group-flush d-flex flex-column justify-content-center align-items-center">
+            <li class="list-group-item text-success">Sviđa mi se: {{ baza_data.brojlajkova }}</li>
+            <li class="list-group-item text-danger">Ne sviđa mi se: {{ baza_data.brojdislajkova }}</li>
+          </ul>
+        </div>
+
+        <div class="card my-4">
+          <h5 class="card-header">Komentiraj:</h5>
+          <div class="card-body">
+            <form action="" method="post" name="koment">
+              {% csrf_token %}
+              <div class="form-group">
+                <textarea class="form-control" rows="3" name="comment_text"></textarea>
+              </div>
+              <button type="submit" name="koment" class="btn btn-primary">Objavi</button>
+            </form>
+          </div>
+        </div>
+
+		<div class="overflow-auto p-3 bg-light" style="max-width: 360px; max-height: 500px;">
+		{% if baza_data_3 %}
+			{% for komentar in baza_data_3 %}
+				<div class="media mb-4">
+				  <img class="d-flex mr-3 comm-img rounded-circle" src="{% static komentar.korisnikid.profilnaid.putdodatoteke %}" alt="">
+				  <div class="media-body">
+					<h5 class="mt-0">{{ komentar.korisnikid.korisnickoime }}</h5>
+					{{ komentar.sadrzaj }}
+				  </div>
+				</div>
+			{% endfor %}
+		{% else %}
+			<div class="media mb-4">
+				  <div class="media-body">
+					<h5 class="mt-0">Nema komentara za prikazati.</h5>
+				  </div>
+			</div>
+		{% endif %}
+		</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock content %}
