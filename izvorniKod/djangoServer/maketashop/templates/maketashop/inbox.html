@@ -1,0 +1,87 @@
+{%extends "./base.html"%}
+{% load static %}
+{% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/inbox.css' %}"> {% endblock mycss %}
+{% block content %}
+<div class="container p-3">
+
+    <h2>Sandučić</h2>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card my-4 text-center">
+              <h5 class="card-header">
+                Filter
+              </h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-info text-light filter">Sve</li>  
+                <li class="list-group-item filter">Prijedlog teme</li>
+                <li class="list-group-item filter">Zahtjev za maketu</li>
+              </ul>
+            </div>
+    
+            <div class="card my-4">
+              <h5 class="card-header">Pošalji adminu:</h5>
+              <div class="card-body">
+                <form>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tip" id="tema" value="tema" checked>
+                        <label class="form-check-label" for="tema">
+                          Tema
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tip" id="maketa" value="maketa">
+                        <label class="form-check-label" for="maketa">
+                          Maketa
+                        </label>
+                      </div>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="3"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Pošalji</button>
+                </form>
+              </div>
+            </div>
+        </div>
+      <div class="col-md-8">
+        <div class="media mb-4 inter">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">Ime Prezime : Tema</h5>
+              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            </div>
+          </div>
+          <hr>
+          <div class="media mb-4 inter">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">Ime Prezime : Maketa</h5>
+              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            </div>
+          </div>
+          <hr>
+          <div class="media mb-4 inter">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">Ime Prezime : Maketa</h5>
+              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            </div>
+          </div>
+          <hr>
+          <div class="media mb-4 inter">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">Ime Prezime : Tema</h5>
+              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            </div>
+          </div>
+      </div>
+
+      
+    </div>
+
+  </div>
+</div>
+{% endblock content %}

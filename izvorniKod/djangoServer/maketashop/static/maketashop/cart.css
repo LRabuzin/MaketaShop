@@ -1,0 +1,8 @@
+.shop-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    width: 4rem;
+    height: 4rem;
+}
