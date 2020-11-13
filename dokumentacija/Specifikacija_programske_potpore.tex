@@ -7,7 +7,7 @@
 			
 			\begin{packed_enum}
 				
-				\item Osoba koja izrađuje makete (administrator)
+				\item Osoba koja izrađuje makete, ujedno i naručitelj (administrator)
 				\item Korisnici aplikacije		
 				\item Razvojni tim
 				
@@ -21,7 +21,7 @@
 				
 				\begin{packed_enum}
 					
-					\item Vidjeti minijature (“thumbnailove”) objavljenih priča
+					\item Vidjeti minijature (eng. \textit{thumbnailove}) objavljenih priča
 					\item Kliknuti na priču i detaljnije pregledati sav sadržaj
 					\item Komentirati priču
 					\item Vidjeti broj pozitivnih i negativnih ocjena priče
@@ -42,13 +42,13 @@
 					\item Ocijeniti priču
 					\item Postaviti vlastitu profilnu sliku
 					\item Gledati profilne stranice drugih korisnika
-					\item Upravljati postavkama o privatnosti
+					\item Upravljati vlastitim postavkama o privatnosti
 					\item Uređivati vlastite podatke
 					\item Obrisati vlastiti profil
 					\item Kupiti maketu iz webshopa bez da unosi podatke
 					\item Kupiti maketu iz priče bez da unosi podatke
 					\item Ocijeniti maketu u webshopu
-					\item Naručiti custom maketu kroz formular
+					\item Naručiti maketu po vlastitim specifikacijama kroz formular
 					\item Prihvatiti ili odbiti cijenu za custom maketu
 
 				\end{packed_enum}
@@ -56,20 +56,20 @@
 			
 				\begin{packed_enum}
 					
+					\item Sve što može i registrirani korisnik
 					\item Objaviti priču
 					\item Pregledati predložene teme i priče
 					\item Odgovoriti na predloženu temu
 					\item Objaviti predloženu priču
-					\item Komentirati priče
 					\item Omogućiti prodaju jedinstvene makete iz priče
 					\item Pregledati profile registriranih korisnika
-					\item Vidjeti koji korisnik je kako ocijenio pojedinu priču
-					\item Zabraniti pristup svakom pojedinom korisniku
+					\item Vidjeti kako je koji korisnik ocijenio pojedinu priču
+					\item Zabraniti pristup bilo kojem registriranom korisniku
 					\item Uređivati makete u web trgovini
 					\item Dodavati makete u web trgovinu
 					\item Uklanjati makete iz web trgovine
-					\item Pregledati zahtjeve za custom makete
-					\item Ponuditi cijenu za zahtjev ili ga odbiti
+					\item Pregledati zahtjeve za makete po specifikaciji registriranog korisnika
+					\item Ponuditi cijenu za zahtjev makete ili ga odbiti
 					\item Pregledati povijest svih transakcija
 					
 				\end{packed_enum}
@@ -123,6 +123,7 @@
 						\end{packed_enum}
 						
 					\end{packed_item}
+					
 					\noindent \underbar{\textbf{UC3 - Komentiranje priče}}
 					\begin{packed_item}
 						
@@ -133,29 +134,56 @@
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
+							\item Korisnik detaljno pregledava priču
 							\item Korisnik upiše svoj komentar u namijenjeni prostor
 							\item Korisnik pritisne gumb za objavljivanje komentara
+							\item Komentar se prikaže u prostoru za prikaz komentara, ispod ostalih komentara
 						\end{packed_enum}
 						
 					\end{packed_item}
-				
+					
 					\noindent \underbar{\textbf{UC4 - Registracija korisnika}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Neregistrirani korisnik
-						\item  \textbf{Cilj:} Unjeti korisnikove podatke u bazu podataka
+						\item  \textbf{Cilj:} Unijeti korisnikove podatke u bazu podataka
 						\item  \textbf{Sudionici:} Baza podataka
 						\item  \textbf{Preduvjet:} Nema
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
+							\item Korisnik se nalazi na stranici za registriranje
 							\item Korisnik unese svoje podatke
 							\item Pritisne gumb za slanje podataka 
+							\item Podaci se spremaju u bazu podataka
+							\item Korisnik je prijavljen i preusmjeren na početnu stranicu
 						\end{packed_enum}
+					
+						\item  \textbf{Opis mogućih odstupanja:}
+						
+						\item[] \begin{packed_item}
+							
+							\item[4.a] Korisnik je unio podatke koji su neispravni (npr. nevaljana e-mail adresa ili bilo koje od polja sadrži nedozvoljene znakove)
+							\item[] \begin{packed_enum}
+								
+								\item Sustav preusmjerava korisnika opet na stranicu za registriranje
+								\item Crvenim obrubom su označena neispravna polja i ispod njih je prikazano kratko objašnjenje što je neispravno
+								
+							\end{packed_enum}
+						
+							\item[4.b] Korisnik je unio e-mail adresu uz koju je već vezan račun
+							\item[] \begin{packed_enum}
+								
+								\item Sustav preusmjerava korisnika opet na stranicu za registriranje
+								\item Korisniku iskače prozor koji ga upozorava da račun s tom e-mail adresom već postoji te mu se nudi gumb za preusmjeravanje na stranicu za prijavu
+								
+							\end{packed_enum}
+							
+						\end{packed_item}
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC5 - Pregled maketa u webshopu}}
+					\noindent \underbar{\textbf{UC5 - Pregled maketa u web trgovini}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
@@ -166,7 +194,10 @@
 						
 						\item[] \begin{packed_enum}
 							
+							\item Korisnik se nalazi na početnoj stranici
 							\item Korisnik pritisne na poveznicu za otvaranje web trgovine
+							\item Korisniku je prikazana web trgovina
+							
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -175,14 +206,15 @@
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
-						\item  \textbf{Cilj:} Omogućuje detaljni pregled na maketu u web trgovini
+						\item  \textbf{Cilj:} Omogućuje detaljni pogled na maketu u web trgovini
 						\item  \textbf{Sudionici:} Baza podataka
 						\item  \textbf{Preduvjet:} Nema
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
-							
-							\item Korisnik odabire detaljan pregled makete
+							\item Korisnik se nalazi u web trgovini
+							\item Korisnik klikom na minijaturni prikaz makete odabire detaljan pregled makete
+							\item Korisniku je prikazan detaljan pregled makete sa svim specifikacijama
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -198,10 +230,25 @@
 						
 						\item[] \begin{packed_enum}
 							
-							\item Korisnik dodaje maketu u košaricu
-							\item Korisnik potvrđuje narudžbu
-							\item Narudžba se prikazuje u listi aktivnih narudžbi administratora
+							\item Korisnik se nalazi u web trgovini
+							\item Korisnik klikom na gumb ispod pojedine makete dodaje makete u košaricu
+							\item Korisnik klikom na košaricu pregledava sadržaj košarice
+							\item Korisnik klikom na gumb postavlja narudžbu
 						\end{packed_enum}
+					
+						\item  \textbf{Opis mogućih odstupanja:}
+						
+						\item[] \begin{packed_item}
+							
+							\item[4.a] Maketa koju je korisnik dodao u košaricu je u međuvremenu rasprodana i postala je nedostupna
+							\item[] \begin{packed_enum}
+								
+								\item Sustav preusmjerava korisnika opet na stranicu za pregled košarice iz koje je izbačena nedostupna maketa
+								\item Korisniku se prikazuje upozorenje da je maketa postala nedostupna te da je izbačena iz košarice
+								
+							\end{packed_enum}
+							
+						\end{packed_item}
 						
 					\end{packed_item}
 				
@@ -211,15 +258,30 @@
 						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
 						\item  \textbf{Cilj:} Kupnja makete
 						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Postojanje neprodane makete
+						\item  \textbf{Preduvjet:} Maketa iz priče još nije prodana
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
-							
-							\item Korisnik dodaje maketu u košaricu
-							\item Korisnik potvrđuje narudžbu
-							\item Narudžba se prikazuje u listi aktivnih narudžbi administratora
+							\item Korisnik detaljno pregledava priču
+							\item Korisnik klikom na gumb u dnu priče dodaje maketu u košaricu
+							\item Korisnik klikom na košaricu pregledava sadržaj košarice
+							\item Korisnik klikom na gumb postavlja narudžbu
 						\end{packed_enum}
+					
+					\item  \textbf{Opis mogućih odstupanja:}
+					
+					\item[] \begin{packed_item}
+						
+						\item[4.a] Maketa koju je korisnik dodao u košaricu je u međuvremenu prodana
+						\item[] \begin{packed_enum}
+							
+							\item Sustav preusmjerava korisnika opet na stranicu za pregled košarice iz koje je izbačena nedostupna maketa
+							\item Korisniku se prikazuje upozorenje da je maketa postala nedostupna te da je izbačena iz košarice
+							
+						\end{packed_enum}
+						
+					\end{packed_item}
+					
 						
 					\end{packed_item}
 				
@@ -229,14 +291,38 @@
 						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
 						\item  \textbf{Cilj:} Naručivanje makete
 						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Odabir željenih proizvoda
+						\item  \textbf{Preduvjet:} Postavljena je narudžba
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
-							\item Korisnik odabire jednu ili više maketa koje želi kupiti
-							\item Unosi osobne podatke u formular narudžbe
-							\item Potvrđuje narudžbu
+							\item Korisnik je postavio narudžbu
+							\item Korisnik unosi osobne podatke u formular
+							\item Korisnik unosi podatke o plaćanju u formular 
+							\item Korisnik zaključno potvrđuje narudžbu i s računa mu se skidaju novci
+							\item Na e-mail adresu korisnika se šalje potvrda o narudžbi
 						\end{packed_enum}
+					
+						\item  \textbf{Opis mogućih odstupanja:}
+					
+					\item[] \begin{packed_item}
+						
+						\item[4.a] Korisnik je unio neispravne podatke
+						\item[] \begin{packed_enum}
+							
+							\item Sustav preusmjerava korisnika opet na stranicu za unošenje podataka o kupnji
+							\item Neispravna polja su označena i prikazano je objašnjenje zašto su neispravna
+							
+						\end{packed_enum}
+					
+						\item[4.b] Nemoguće je skinuti sredstva s korisnikove kartice
+						\item[] \begin{packed_enum}
+							
+							\item Sustav preusmjerava korisnika opet na stranicu za unošenje podataka o kupnji
+							\item Korisniku se prikazuje poruka o grešci prilikom plaćanja
+							
+						\end{packed_enum}
+						
+					\end{packed_item}
 						
 					\end{packed_item}
 				
@@ -253,7 +339,7 @@
 							\item Korisnik odabire opciju za predlaganje nove teme
 							\item Korisnik popunjava obrazac za predlaganje teme
 							\item Korisnik sprema promjene
-							\item Baza podataka se ažurira
+							\item Ažurira se baza podataka
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -271,7 +357,7 @@
 							\item Korisnik odabire opciju za predlaganje nove priče
 							\item Korisnik popunjava obrazac za predlaganje priče
 							\item Korisnik sprema promjene
-							\item Baza podataka se ažurira
+							\item Ažurira se baza podataka
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -279,7 +365,7 @@
 					\noindent \underbar{\textbf{UC12 - Ocjenjivanje priče}}
 					\begin{packed_item}
 						\item \textbf{Glavni sudionik: }Registrirani korisnik
-						\item  \textbf{Cilj:} Korisnik želi ocijeniti priču
+						\item  \textbf{Cilj:} Korisnik priči daje ocjenu ovisno o tome sviđa li mu se priča ili ne
 						\item  \textbf{Sudionici:} Baza podataka
 						\item  \textbf{Preduvjet:} Korisnik gleda priču
 						\item  \textbf{Opis osnovnog tijeka:}
@@ -293,7 +379,7 @@
 					\noindent \underbar{\textbf{UC13 - Naručivanje personalizirane makete}}
 					\begin{packed_item}
 						\item \textbf{Glavni sudionik: }Registrirani korisnik
-						\item  \textbf{Cilj:} Zahtjev za personaliziranom maketom
+						\item  \textbf{Cilj:} Slanje zahtjeva za personaliziranom maketom
 						\item  \textbf{Sudionici:} Administrator, baza podataka
 						\item  \textbf{Preduvjet:} Nema
 						\item  \textbf{Opis osnovnog tijeka:}
@@ -368,7 +454,8 @@
 						
 						\item[] \begin{packed_enum}
 							
-							\item Otvoriti pregled predloženih tema 
+							\item Administrator otvara pregled predloženih tema
+							\item Na ekranu su prikazani svi prijedlozi tema koje su korisnici postavili 
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -384,7 +471,8 @@
 						
 						\item[] \begin{packed_enum}
 							
-							\item Otvoriti pregled predloženih priča
+							\item Administrator otvara pregled predloženih priča
+							\item Na ekranu su prikazane sve priče koje su korisnici predložili
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -395,12 +483,13 @@
 						\item \textbf{Glavni sudionik: }Administrator
 						\item  \textbf{Cilj:} Prihvatiti ili odbiti predloženu temu
 						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Nema
+						\item  \textbf{Preduvjet:} Administrator pregledava predložene teme
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
 							
-							\item Stisnuti gumb prihvati ili odbij
+							\item Administrator pritišće gumb za prihvaćanje određene teme
+							\item Administratora se preusmjerava na sučelje za sastavljanje priče
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -411,13 +500,13 @@
 						\item \textbf{Glavni sudionik: }Administrator
 						\item  \textbf{Cilj:} Objavljivanje predložene priče
 						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Nema
+						\item  \textbf{Preduvjet:} Administrator pregledava predložene priče
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
 							
-							\item Administrator pregledava predložene priče
-							\item Administrator objavljuje priču
+							\item Administrator pritišće gumb za objavljivanje određene priče
+							\item Administratoru se prikazuje osvježena stranica za pregled priča (bez priče koja je objavljena)
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -440,7 +529,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC21 - Omogućavanje prodaje jednistvene makete iz priče}}
+					\noindent \underbar{\textbf{UC21 - Omogućavanje prodaje jedinstvene makete iz priče}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Administrator
@@ -572,7 +661,7 @@
 							
 							\item[] \begin{packed_enum}
 								
-								\item Poruka upozorenja da uređeni podaci nisu spremljeni
+								\item Administratoru se prikazuje poruka upozorenja da uređeni podaci nisu spremljeni
 								
 							\end{packed_enum}
 							
@@ -590,8 +679,9 @@
 						
 						\item[] \begin{packed_enum}
 							
-							\item Odabir opcije za dodavanje makete u web trgovinu
-							\item Maketa dostupna u web trgovini za kupnju
+							\item Administrator odabire opciju za dodavanje nove makete u web trgovinu
+							\item Administrator ispunjava formular za dodavanje nove makete
+							\item Maketa postaje dostupna u web trgovini za kupnju
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -608,7 +698,8 @@
 						\item[] \begin{packed_enum}
 							
 							\item Administrator pregledava makete u web trgovini
-							\item Administrator uklanja maketu iz web trgovine
+							\item Administrator pritišće gumb za uklanjanje pojedine makete
+							\item Maketa je uklonjena iz web trgovine
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -619,13 +710,15 @@
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Registrirani korisnik
-						\item  \textbf{Cilj:} Ocjeniti maketu
+						\item  \textbf{Cilj:} Ocijeniti maketu
 						\item  \textbf{Sudionici:} Baza podataka
 						\item  \textbf{Preduvjet:} Postojanje makete
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
-							\item Odabrati ocjenu pritiskom na nju
+							\item Korisnik detaljno pregledava maketu
+							\item Korisnik odabire ocjenu pritiskom na nju
+							\item Ažurira se prikaz ocjena na maketi
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -633,17 +726,17 @@
 					\noindent \underbar{\textbf{UC30 - Naručivanje personalizirane makete ispunjavanjem formulara}}
 					\begin{packed_item}
 						
-						\item \textbf{Glavni sudionik: } Registrirani korisnik i neregistrirani korisnik
+						\item \textbf{Glavni sudionik: } Registrirani korisnik
 						\item  \textbf{Cilj:} Naručiti maketu
 						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Maketa na zalihi u web trgovini
+						\item  \textbf{Preduvjet:} Nema
 						
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
-							
-							\item Ispunjavanje formulara
-							\item Slanje formulara pritiskom na gumb
+							\item Korisnik pritišće na gumb za slanje zahtjeva za maketu po vlastitim specifikacijama
+							\item Korisnik ispunjava formular
+							\item Korisnik šalje formular pritiskom na gumb
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -651,14 +744,15 @@
 					\noindent \underbar{\textbf{UC31 - Pregled profila registriranih korisnika}}
 					\begin{packed_item}
 						
-						\item \textbf{Glavni sudionik: } Registrirani i neregistriran korisnik
+						\item \textbf{Glavni sudionik: } Registrirani korisnik
 						\item  \textbf{Cilj:} Pregledati profil registriranog korisnika
 						\item  \textbf{Sudionici:} Baza podataka
 						\item  \textbf{Preduvjet:} Postojanje profila koji želimo pregledati
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
-							\item Pritisak na gumb pregled profila
+							\item Korisnik pritišće na korisničko ime korisnika kojemu želi pogledati profil
+							\item Profil s javnim podacima se prikazuje korisniku
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -667,13 +761,15 @@
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Administrator
-						\item  \textbf{Cilj:} Pregledati ocjene
+						\item  \textbf{Cilj:} Pregledati koji korisnik je kako ocjenio priču
 						\item  \textbf{Sudionici:} Baza podataka
 						\item  \textbf{Preduvjet:} Nema
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
-							\item Odabrati opciju za pregled ocjena
+							\item Administrator detaljno pregledava priču
+							\item Administrator odabire gumb za pregled ocjena
+							\item Administratoru su prikazana sva korisnička imena korisnika koji su ocijenili priču i pokraj njih ocjena koju su dali
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -682,14 +778,16 @@
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Administrator
-						\item  \textbf{Cilj:} Moderirati pristup korisnicima
+						\item  \textbf{Cilj:} Ograničavanje pristupa korisnicima koji se neprimjereno ponašaju
 						\item  \textbf{Sudionici:} Baza podataka
 						\item  \textbf{Preduvjet:} Nema
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
 							
-							\item Odabrati opciju za upravljanje postavkama pristupa korisnika
+							\item Administrator pregledava popis svih registriranih korisnika
+							\item Administrator odabire gumb za ograničavanje pristupa pokraj korisničkog imena pojedinog korisnika
+							\item Administrator je preusmjeren natrag na pregled svih korisnika
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -705,7 +803,7 @@
 						
 						\item[] \begin{packed_enum}
 							
-							\item Odabir opcije predlaganja sadržaja
+							\item Korisnik odabire opciju predlaganja sadržaja
 							\item Nudi se opcija predlaganja teme ili priče
 						\end{packed_enum}
 						
@@ -721,7 +819,9 @@
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
-							\item Administrator gleda na postavljen zahtjev
+							\item Administrator pregeldava sve postavljene zahtjeve
+							\item Administrator odabire opciju detaljnog pregleda za određeni zahtjev
+							\item Administratoru je prikazan detaljni tekst prijedloga
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -779,12 +879,16 @@
 						
 					\end{packed_item}
 				
+				\eject
+				
 				
 				\subsubsection{Dijagrami obrazaca uporabe}
 					
-					\begin{figure}
+					
+					
+					\begin{figure}[h]
 						\centering
-						\includegraphics[scale=0.34]{"slike/Funkcionalnost neregistriranog korisnika"}
+						\includegraphics[scale=0.32]{"slike/Funkcionalnost neregistriranog korisnika"}
 						\caption{Dijagram obrasca uporabe funkcionalnosti neregistriranog korisnika}
 						\label{fig:funkcionalnost-neregistriranog-korisnika}   
 					\end{figure}
@@ -808,6 +912,8 @@
 				
 			\subsection{Sekvencijski dijagrami}
 				
+				\textbf{Obrazac uporabe UC30 - Naručivanje personalizirane makete ispunjavanjem formulara}
+				
 				Korisnik naručuje personaliziranu maketu koristeći formular koji nudi web aplikacija. Kada unese potrebne podatke u formular, formular se sprema u bazu podataka i dostupna je administratoru koji će odgovoriti na narudžbu.
 				
 				\begin{figure} [!h]
@@ -818,6 +924,8 @@
 				\end{figure}
 				\pagebreak
 				
+				\textbf{Obrazac uporabe UC36 - Odluka o zahtjevu za personaliziranom maketom}
+				
 				Administrator preuzima sve postavljene narudžbe za personalizirane makete te ih prihvaća ili odbija. Za prihvaćene narudžbe navodi cijenu za koju je voljan napraviti maketu. Njegov odgovor se sprema u bazu podataka. 
 				
 				\begin{figure} [!h]
@@ -827,6 +935,8 @@
 					\label{fig:seqdiag_02}
 				\end{figure}
 				\pagebreak
+				
+				\textbf{Obrazac uporabe UC38 - Prihvaćanje ili odbijanje cijene za personaliziranu maketu}
 				
 				Korisnik preuzima odgovor na njegovu narudžbu. Ako je naruđžba prihvaćena, korisnik može prihvatiti narudžbu po navedenoj cijeni, ili je odbiti. Njegov odgovor se sprema u bazu podataka.
 				
@@ -852,10 +962,11 @@
 			\item  Sustav treba zadržati svoju funkcionalnost i prilikom neispravnog korištenja korisničkog sučelja
 			\item  Sustav treba biti moguće nadograditi bez da se naruše postojeće funkcionalnosti
 			\item  Sustav treba omogućiti rad više korisnika u stvarnom vremenu
-			\item  Sutsav i korisničko sučelje trebaju podržavati dijakritičke znakove hrvatske abecede pri unosu i prikazu tekstualnog sadžaja
+			\item  Sustav i korisničko sučelje trebaju podržavati dijakritičke znakove hrvatske abecede pri unosu i prikazu tekstualnog sadžaja
 			\item  Sustav kao valutu koristi HRK
-			\item  Sustavu se treba moći pristupiti iz javne mreže pomoću HTTPS
+			\item  Sustavu se treba moći pristupiti iz javne mreže pomoću HTTPS protokola
 			\item  Veza s bazom podataka mora biti brza i kvalitetno zaštićena
+			\item  Podaci o plaćanju i lozinke u bazi moraju biti kriptirani radi sigurnosti
 			
 		\end{packed_item}
 			

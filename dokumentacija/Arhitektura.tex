@@ -11,15 +11,15 @@
 
 		Arhitektura našeg sustava dijeli se na tri podsustava: baza podataka, web aplikacija i web poslužitelj.
 			
-		\underbar{Web preglednik} program je koji služi kao posrednik između korisnika i web poslužitelja. Korisniku omogućuje pregled web-stranica te multimedijskih sadržaja vezanih uz njih. Svaka stranica pisana je u nekom kodu koji prosječnom korisniku ništa ne znači no kako je svaki internetski preglednik ujedno i prevoditelj, on prikazuje stranicu u obliku koja je svakome razumljiva. Na taj način korisnik šalje zahtjeve web poslužitelju.
+		\underbar{Web preglednik} program je koji služi kao posrednik između korisnika i web poslužitelja. Korisniku omogućuje pregled web-stranica te multimedijskih sadržaja vezanih uz njih. Svaka stranica pisana je u nekom kodu koji prosječnom korisniku ništa ne znači, no kako je svaki internetski preglednik ujedno i prevoditelj, on prikazuje stranicu u obliku koja je svakome razumljiva. Na taj način korisnik šalje zahtjeve web poslužitelju.
 		
 		\underbar{Web poslužitelj} kao osnovnu zadaću ima ostvarivanje komunikacije između klijenta i aplikacije.  Ta komunikacija ostvarena je HTTP-om (engl. HyperText Transfer Protocol). Upravo je web poslužitelj temelj rada web aplikacije. On ju pokreće i prosljeđuje zahtjeve zaprimljene od web preglednika.
 		
 		\underbar{Web aplikacija} koju korisnik koristi obrađuje njegove zahtjeve. Ukoliko je potrebno za obradu zahtjeva, web aplikacija komunicira s poslužiteljem baze podataka koji joj dohvaća i prosljeđuje potrebne podatke. Potom web aplikacija vraća odgovor u obliku HTML dokumenta te web preglednik to prikazuje korisniku u odgovarajućem formatu.
 		
-		Za izradu naše web aplikacije odlučili smo se za programski jezik Python s njegovim radnim okvirom Django. Koristili smo Bootstrap, HTML, CSS i JavaScript za prikaz web-stranica. Baza podataka napisana je u PostgreSQL-u. Arhitektura sustava temeljit će se na MVT (engl. Model View Template) konceptu. S obzirom da je MVT koncept podržan od strane Djanga, na raspolaganju su nam gotovi predlošci te nam znatno olakšavaju razvoj web aplikacije.
+		Za izradu naše web aplikacije odlučili smo se za programski jezik Python s njegovim radnim okvirom Django. Koristili smo Bootstrap, HTML, CSS i JavaScript za prikaz web-stranica. Baza podataka implementirana je kroz PostgreSQL. Arhitektura sustava temeljit će se na MVT (eng. \textit{Model View Template}) obrascu koji se tek marginalno razlikuje od MVC (eng. \textit{Model View Controller}) obrasca. S obzirom da je MVT koncept podržan od strane Djanga, na raspolaganju su nam gotovi predlošci te nam znatno olakšavaju razvoj web aplikacije.
 	
-		Zahvaljujući nezavisnosti razvoja pojedinih djelova aplikacije možemo jednostavnije ispitivati i razvijati sustav, kao i dodavati nova svojstva. Kao što se može pretpostaviti, MVT koncept sastoji se od triju komponenti. "Model" i "View" na strani su poslužitelja i nisu vidljivi korisniku, dok je "Template" vidljiv na korisnikovoj strani. "Model" središnja je komponenta sustava te pristupa bazi podataka. Pravilno formatira podatke dobivene od strane "View"-a te ih prosljeđuje bazi podataka i obrnuto. "View" prima podatke i zahtjeve kao što su "POST" i "GET" s klijentske strane. Također pravilno formatira primljene podatke te komunicira s druge dvije komponente MVT koncepta. "Template" služi za prikazivanje sadržaja na web-stranici. Sadrži statičke i dinamičke definicije prikaza sadržaja.
+		Zahvaljujući nezavisnosti razvoja pojedinih djelova aplikacije možemo jednostavnije ispitivati i razvijati sustav, kao i dodavati nova svojstva. Kao što se može pretpostaviti, MVT koncept sastoji se od triju komponenti. "Model" i "View" na strani su poslužitelja i nisu vidljivi korisniku, dok je "Template" vidljiv na korisničkoj strani. "Model" je središnja jkomponenta sustava te pristupa bazi podataka. Pravilno formatira podatke dobivene od strane "View"-a te ih prosljeđuje bazi podataka i obrnuto. "View" prima podatke i zahtjeve kao što su "POST" i "GET" s klijentske strane. Također pravilno formatira primljene podatke te komunicira s druge dvije komponente MVT koncepta. "Template" služi za prikazivanje sadržaja na web-stranici. Sadrži statičke i dinamičke definicije prikaza sadržaja.
 		
 		\begin{figure} [!h] %ovaj [!h] je potreban za fiksiranje slike točno na ovo mjesto u pdf-u.
 			\centering
@@ -28,12 +28,12 @@
 			\label{fig:mvt}
 		\end{figure}
 		
-		
+		\eject		
 
 				
 		\section{Baza podataka}
 			
-		Koristimo relacijsku bazu podataka napisanu u jeziku SQL te je ostvarujemo kroz postgreSQL. Pregled cijele baze imamo preko programa pgAdmin 4. Tamo gledamo spremaju li se promjene, jesu li one smislene te dodajemo specifičan sadržaj za testiranje. Django preko komponente "Models" pristupa bazi te je ona strukturno cijela sadržana u datoteci models.py.
+		Koristimo relacijsku bazu podataka napisanu u jeziku SQL te je ostvarujemo kroz postgreSQL. Pregled cijele baze imamo preko programa pgAdmin 4. Tamo gledamo spremaju li se promjene, jesu li one smislene te dodajemo specifičan sadržaj za testiranje. Django preko komponente "Model" pristupa bazi te je ona strukturno cijela sadržana u datoteci models.py.
 		
 			\subsection{Opis tablica}
 			
@@ -381,26 +381,3 @@
 			\label{fig:dijagramrazreda3}
 		\end{figure}
 			\eject
-		
-		\section{Dijagram stanja}
-			
-			
-			\textbf{\textit{dio 2. revizije}}\\
-			
-			\textit{Potrebno je priložiti dijagram stanja i opisati ga. Dovoljan je jedan dijagram stanja koji prikazuje \textbf{značajan dio funkcionalnosti} sustava. Na primjer, stanja korisničkog sučelja i tijek korištenja neke ključne funkcionalnosti jesu značajan dio sustava, a registracija i prijava nisu. }
-			
-			
-			\eject 
-		
-		\section{Dijagram aktivnosti}
-			
-			\textbf{\textit{dio 2. revizije}}\\
-			
-			 \textit{Potrebno je priložiti dijagram aktivnosti s pripadajućim opisom. Dijagram aktivnosti treba prikazivati značajan dio sustava.}
-			
-			\eject
-		\section{Dijagram komponenti}
-		
-			\textbf{\textit{dio 2. revizije}}\\
-		
-			 \textit{Potrebno je priložiti dijagram komponenti s pripadajućim opisom. Dijagram komponenti treba prikazivati strukturu cijele aplikacije.}
