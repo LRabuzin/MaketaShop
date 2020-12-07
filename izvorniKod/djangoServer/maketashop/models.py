@@ -117,6 +117,19 @@ class Prica(models.Model):
         managed = True
         db_table = 'prica'
 
+    def getPricaId(self):
+        return self.pricaid
+
+    def getSlika(self):
+        return self.glavnaslikapriceid.putdodatoteke
+
+    def getTekst(self):
+        return self.tekstpriceid.putdodatoteke
+    
+    def getNaslov(self):
+        return self.naslovprice
+
+
 class Multimedijaprice(models.Model):
     pricaid = models.ForeignKey(Prica, models.DO_NOTHING, db_column='pricaid')
     mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='mediaid')
