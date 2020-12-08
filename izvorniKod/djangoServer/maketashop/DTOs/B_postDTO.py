@@ -10,7 +10,8 @@ class B_postDTO():
         self.napod = Napravljenaod.objects.get(maketaid=self.prica.maketaid)
         self.komentari = Komentar.objects.filter(pricaid=self.prica.pricaid)
         self.lajk = lajkao;
-        self.brojLajkova = Prica.
+        self.brojLajkova = Prica.getBrojLajkova;
+        self.brojDislajkova = Prica.getBrojDislajkova;
     def getPrica(self):
         return self.prica
     def getNapod(self):
