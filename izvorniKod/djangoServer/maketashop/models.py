@@ -99,7 +99,7 @@ class Korisnik(models.Model):
     brojracuna = models.CharField(max_length=21, default=None, blank=True, null=True)
     profilnaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='profilnaid', default=None, blank=True, null=True)
     lajkaopricu = models.ManyToManyField("Prica", related_name = "lajkaopricu")
-    dislajkaopricu = models.ManyToManyField("Prica", related_name = "dislajkaopricu");
+    dislajkaopricu = models.ManyToManyField("Prica", related_name = "dislajkaopricu")
     
     class Meta:
         managed = True
