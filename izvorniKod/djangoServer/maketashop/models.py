@@ -38,6 +38,12 @@ class Maketa(models.Model):
         managed = True
         db_table = 'maketa'
 
+    def getDimenzije(self):
+        return self.dimenzije
+    
+    def getMedia(self):
+        return self.mediaid.putdodatoteke
+
 class Napravljenaod(models.Model):
     maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid')
     materijalid = models.ForeignKey(Materijal, models.DO_NOTHING, db_column='materijalid')

@@ -6,7 +6,6 @@ from django.views.generic import View
 class Inbox(View):
     template_name ="maketashop/inbox.html"
     def get(self, request):
-        
         return render(request, self.template_name, {
             'title': "inbox", 
             'link_active': "inbox", 
