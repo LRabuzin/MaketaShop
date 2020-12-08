@@ -104,24 +104,6 @@ class Korisnik(models.Model):
     class Meta:
         managed = True
         db_table = 'korisnik'
-
-    def getAdresaPrivatna(self):
-        return self.adresaprivatna
-
-    def getRodendanPrivatan(self):
-        return self.rodendanprivatan
-
-    def getDatumRegistracijePrivatan(self):
-        return self.datumregistracijeprivatan
-
-    def getSlikaPrivatna(self):
-        return self.slikaprivatna
-
-    def getImePrezimePrivatno(self):
-        return imeprezimeprivatno
-
-    def getEmailPrivatan(self):
-        return emailprivatan
     
 
 class Prica(models.Model):
