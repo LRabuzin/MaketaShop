@@ -40,7 +40,7 @@ class Maketa(models.Model):
 
     def getDimenzije(self):
         return self.dimenzije
-
+    
     def getMedia(self):
         return self.mediaid.putdodatoteke
 
@@ -102,7 +102,7 @@ class Korisnik(models.Model):
     brojracuna = models.CharField(max_length=21, default=None, blank=True, null=True)
     profilnaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='profilnaid', default=None, blank=True, null=True)
     lajkaopricu = models.ManyToManyField("Prica", related_name = "lajkaopricu")
-    dislajkaopricu = models.ManyToManyField("Prica", related_name = "dislajkaopricu");
+    dislajkaopricu = models.ManyToManyField("Prica", related_name = "dislajkaopricu")
     
     class Meta:
         managed = True
@@ -113,6 +113,24 @@ class Korisnik(models.Model):
 
     def getProfilnaSlika(self):
         return self.profilnaid.putdodatoteke
+
+    def getAdresaPrivatna(self):
+        return self.adresaprivatna
+
+    def getRodendanPrivatan(self):
+        return self.rodendanprivatan
+
+    def getDatumRegistracijePrivatan(self):
+        return self.datumregistracijeprivatan
+
+    def getSlikaPrivatna(self):
+        return self.slikaprivatna
+
+    def getImePrezimePrivatno(self):
+        return imeprezimeprivatno
+
+    def getEmailPrivatan(self):
+        return emailprivatan
 
 class Prica(models.Model):
     pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)

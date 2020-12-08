@@ -4,25 +4,27 @@ from django.shortcuts import render
 from django.urls import reverse
 from ..forms import PrivacyForm
 from maketashop.models import Korisnik
+from maketashop.DTOs.ProfilDTO import ProfilDTO
 
 class Profil(View):
     template_name ="maketashop/profil.html"
     def get(self, request):
         # <view logic>
-        korisnik = Korisnik.objects.get(email=request.session['user'])
+        korisnik = getKorisnik()
 
-        data = {'address' : korisnik.adresaprivatna,
-                'register_date' : korisnik.datumregistracijeprivatan,
-                'birth_date' : korisnik.rodendanprivatan,
-                'pic' : korisnik.slikaprivatna,
-                'name_surname' : korisnik.imeprezimeprivatno,
-                'email' : korisnik.emailprivatan}
+        data = {'address' : korisnik.getAdresaPrivatna(),
+                'register_date' : korisnik.getDatumRegistracijePrivatan(),
+                'birth_date' : korisnik.getRodendanPrivatan(),
+                'pic' : korisnik.getSlikaPrivatna(),
+                'name_surname' : korisnik.getImePrezimePrivatno(),
+                'email' : korisnik.getEmailPrivatan()}
         form = PrivacyForm(data)
 
         return render(request, self.template_name, {
             'title': "profil", 
             'link_active': "profil", 
             'empty_head': False,
+            'ProfilDTO' : ProfilDTO(),
             'form' : form,
             'baza_data': korisnik,
             'session': request.session
