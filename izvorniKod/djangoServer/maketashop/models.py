@@ -108,30 +108,6 @@ class Korisnik(models.Model):
         managed = True
         db_table = 'korisnik'
 
-    def getKorisnickoIme(self):
-        return self.korisnickoime
-
-    def getProfilnaSlika(self):
-        return self.profilnaid.putdodatoteke
-
-    def getAdresaPrivatna(self):
-        return self.adresaprivatna
-
-    def getRodendanPrivatan(self):
-        return self.rodendanprivatan
-
-    def getDatumRegistracijePrivatan(self):
-        return self.datumregistracijeprivatan
-
-    def getSlikaPrivatna(self):
-        return self.slikaprivatna
-
-    def getImePrezimePrivatno(self):
-        return imeprezimeprivatno
-
-    def getEmailPrivatan(self):
-        return emailprivatan
-
 class Prica(models.Model):
     pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     naslovprice = models.CharField(max_length=100,default = "Priča")
