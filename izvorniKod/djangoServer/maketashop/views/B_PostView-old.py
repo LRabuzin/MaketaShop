@@ -5,12 +5,14 @@ from maketashop.models import Prica
 from maketashop.models import Napravljenaod
 from maketashop.models import Komentar
 from maketashop.models import Korisnik
-from maketashop.DTOs.B_postDTO import B_postDTO
 
 class B_Post(View):
     template_name ="maketashop/b_post.html"
     def get(self, request, id):
         # <view logic>
+        prica = Prica.objects.select_related().get(pricaid=id)
+        napod = Napravljenaod.objects.get(maketaid=prica.maketaid)
+        koment = Komentar.objects.filter(pricaid=prica.pricaid)
         lajkao = 0
         if (request.session.get("user")):
             curr_user = Korisnik.objects.select_related().get(email=request.session.get("user"))
@@ -24,8 +26,11 @@ class B_Post(View):
             'title': "b_post", 
             'link_active': "b_post", 
             'empty_head': False,
-            'B_postDTO' : B_postDTO(id, lajkao),
+            'baza_data': prica,
+            'baza_data_2': napod,
+            'baza_data_3': koment,
             'session': request.session,
+            'lajkao' : lajkao
             })
 
     def post(self, request, id):

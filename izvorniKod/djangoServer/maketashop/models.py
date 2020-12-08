@@ -54,6 +54,9 @@ class Napravljenaod(models.Model):
         db_table = 'napravljenaod'
         unique_together = (('maketaid', 'materijalid'),)
 
+    def getCijena(self):
+        return self.cijena;
+
 class Transakcija(models.Model):
     transakcijaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     ime = models.CharField(max_length=100)
@@ -104,7 +107,30 @@ class Korisnik(models.Model):
     class Meta:
         managed = True
         db_table = 'korisnik'
-    
+
+    def getKorisnickoIme(self):
+        return self.korisnickoime
+
+    def getProfilnaSlika(self):
+        return self.profilnaid.putdodatoteke
+
+    def getAdresaPrivatna(self):
+        return self.adresaprivatna
+
+    def getRodendanPrivatan(self):
+        return self.rodendanprivatan
+
+    def getDatumRegistracijePrivatan(self):
+        return self.datumregistracijeprivatan
+
+    def getSlikaPrivatna(self):
+        return self.slikaprivatna
+
+    def getImePrezimePrivatno(self):
+        return imeprezimeprivatno
+
+    def getEmailPrivatan(self):
+        return emailprivatan
 
 class Prica(models.Model):
     pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
@@ -127,6 +153,12 @@ class Prica(models.Model):
     def getPricaId(self):
         return self.pricaid
 
+    def getPredlozioPricuId(self):
+        return self.predloziopricuid
+
+    def getAutorId(self):
+        return self.autorid
+
     def getSlika(self):
         return self.glavnaslikapriceid.putdodatoteke
 
@@ -136,7 +168,21 @@ class Prica(models.Model):
     def getNaslov(self):
         return self.naslovprice
 
+    def getDatumPrice(self):
+        return self.datumprice;
 
+    def getMaketaId(self):
+        return self.maketaid;
+
+    def getMaketaProdana(self):
+        return self.maketaprodana;
+
+    def getBrojLajkova(self):
+        return self.brojlajkova;
+
+    def getBrojDislajkova(self):
+        return self.brojdislajkova;
+    
 class Multimedijaprice(models.Model):
     pricaid = models.ForeignKey(Prica, models.DO_NOTHING, db_column='pricaid')
     mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='mediaid')
@@ -157,6 +203,9 @@ class Komentar(models.Model):
     class Meta:
         managed = True
         db_table = 'komentar'
+
+    def getKorisnikId(self):
+        return self.korisnikid;
 
 class Custommaketa(models.Model):
     custommaketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
