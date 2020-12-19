@@ -265,9 +265,9 @@ class Interakcija(models.Model):
     korisnikid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='korisnikid')
     naslovinterakcije = models.CharField(max_length=100)
     vrstainterakcije = models.CharField(max_length=6)
-    temaid = models.ForeignKey(Tema, models.DO_NOTHING, db_column='temaid')
-    maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid')
-    pricaid = models.ForeignKey(Prica, models.DO_NOTHING, db_column='pricaid')
+    temaid = models.ForeignKey(Tema, models.DO_NOTHING, db_column='temaid',blank=True, null=True)
+    maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid', blank=True, null=True)
+    pricaid = models.ForeignKey(Prica, models.DO_NOTHING, db_column='pricaid', blank=True, null=True)
     interakcijaotvorena = models.BooleanField(default=True, blank=True, null=True)
     
     class Meta:

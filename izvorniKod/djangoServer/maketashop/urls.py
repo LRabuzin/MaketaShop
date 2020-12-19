@@ -13,6 +13,7 @@ from maketashop.views.PregledKorisnikaView import PregledKorisnika
 from maketashop.views.TransakcijeView import Transakcije
 from maketashop.views.InboxView import Inbox
 from maketashop.views.InterakcijaView import Interakcija
+from maketashop.views.SubmitionTemaView import SubmitionTema
 
 from . import views
 
@@ -32,4 +33,5 @@ urlpatterns = [
     path('transakcije/', Transakcije.as_view(), name='transakcije'),
     path('inbox/', Inbox.as_view(), name='inbox'),
     path('interakcija/', Interakcija.as_view(), name='interakcija'),
+    path('temasubmit/', SubmitionTema.as_view(), name='temasubmit'),
 ]
