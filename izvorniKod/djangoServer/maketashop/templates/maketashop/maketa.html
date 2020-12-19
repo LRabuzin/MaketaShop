@@ -41,13 +41,13 @@ document.getElementById('textDiv').innerHTML = DivTxt[txtSelected];
             <hr>
 
             <h3>Cijena:</h3>
-            <p>500 kn</p>
+            <p>500 kn (ovo treba bit dinamicko u ovisnosti o materijalu)</p>
 
             <hr>
 
             <div class="d-flex flex-row justify-content-around">
-                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materijali
-                </a>
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" 
+                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materijali</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     {% for materijal in maketaDTO.getMaterijaliICijene %}
                         <a class="dropdown-item" href="#">{{ materijal }} </a>
