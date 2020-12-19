@@ -15,3 +15,6 @@ class Maketa(View):
             'maketaDTO':MaketaDTO(id),
             'session': request.session
             })
+
+    def post(self, request):
+        return HttpResponseRedirect(self.request.path_info)

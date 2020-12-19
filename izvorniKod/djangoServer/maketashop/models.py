@@ -59,7 +59,10 @@ class Napravljenaod(models.Model):
         unique_together = (('maketaid', 'materijalid'),)
 
     def getCijena(self):
-        return self.cijena;
+        return self.cijena
+
+    def getMaterijal(self):
+        return self.materijalid.ime
 
 class Transakcija(models.Model):
     transakcijaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
