@@ -78,8 +78,14 @@ class Napravljenaod(models.Model):
     def getCijena(self):
         return self.cijena
 
+    def getMaterijalId(self):
+        return self.materijalid;
+
     def getMaterijal(self):
         return self.materijalid.ime
+
+    def getMaketaId(self):
+        return self.maketaid
 
 class Transakcija(models.Model):
     transakcijaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
@@ -93,6 +99,25 @@ class Transakcija(models.Model):
         managed = True
         db_table = 'transakcija'
 
+    def getTransakcijaId(self):
+        return self.transakcijaid;
+
+    def getIme(self):
+        return self.ime;
+
+    def getPrezime(self):
+        return self.prezime;
+
+    def getAdresa(self):
+        return self.adresa;
+
+    def getBrojRacuna(self):
+        return self.brojracuna;
+
+    def getUkupanIznos(self):
+        return self.ukupaniznos;
+    
+
 
 class Maketakupljena(models.Model):
     transakcijaid = models.ForeignKey(Transakcija, models.DO_NOTHING, db_column='transakcijaid')
@@ -104,6 +129,19 @@ class Maketakupljena(models.Model):
         managed = True
         db_table = 'maketakupljena'
         unique_together = (('transakcijaid', 'maketaid', 'materijalid'),)
+
+    def getTransakcijaId(self):
+        return self.transakcijaid;
+
+    def getMaketaId(self):
+        return self.maketaid;
+
+    def getMaterijalId(self):
+        return self.materijalid;
+
+    def getKolicina(self):
+        return self.kolicina;
+    
 
 class Korisnik(models.Model):
     korisnikid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
