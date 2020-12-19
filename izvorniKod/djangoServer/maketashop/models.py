@@ -49,6 +49,9 @@ class Maketa(models.Model):
         managed = True
         db_table = 'maketa'
 
+    def getId(self):
+        return self.maketaid
+
     def getDimenzije(self):
         return self.dimenzije
     
