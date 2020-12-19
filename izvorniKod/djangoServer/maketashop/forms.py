@@ -1,4 +1,5 @@
 from django import forms
+from django.core import validators
 
 class SignupForm(forms.Form):
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
@@ -21,3 +22,40 @@ class PrivacyForm(forms.Form):
     email = forms.BooleanField(label="Prikaži adresu e-pošte", required=False)
     address = forms.BooleanField(label="Prikaži adresu", required=False)
 
+class BlogPostForm(forms.Form):
+    naslovprice = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov priče', 'class':'form-control my-input'}))
+    text1 = forms.CharField(widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input'}))
+    media1 = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])])
+    text2 = forms.CharField(widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input'}))
+    media2 = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])])
+    text3= forms.CharField(widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input'}))
+    media3 = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])])
+    text4 = forms.CharField(widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input'}))
+    media4 = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])])
+    text5 = forms.CharField(widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input'}))
+    
+class InteractionThemeForm(forms.Form):
+    naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
+    ime_teme = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov priče', 'class':'form-control my-input'}))
+    tekst_teme = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Sadržaj teme', 'class':'form-control my-input'}))
+
+class MaketaForm(forms.Form):
+    ime_makete = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime makete', 'class':'form-control my-input'}))
+    dimenzije = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Ime makete', 'class':'form-control my-input'}))
+    opis = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Ime makete', 'class':'form-control my-input'}))
+
+class InteractionBlogPostForm(BlogPostForm):
+    naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
+
+class AdminBlogPostForm(BlogPostForm, MaketaForm):
+    includes_maketa = forms.BooleanField(label="Uključuje maketu", required=False)
+
+class InteractionMaketaForm(MaketaForm):
+    naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
+
+class AdminMaketaForm(MaketaForm):
+    osnovna_slika = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])])
+    broj_na_skladistu = forms.IntegerField(min_value = 0)
+    drvo_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
+    plastika_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
+    aluminij_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)

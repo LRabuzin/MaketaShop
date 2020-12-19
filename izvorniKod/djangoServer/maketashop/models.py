@@ -168,7 +168,7 @@ class Korisnik(models.Model):
     prezime = models.CharField(max_length=50, default=None, blank=True, null=True)
     dozvoljenpristup = models.BooleanField(default=None, blank=True, null=True)
     brojracuna = models.CharField(max_length=21, default=None, blank=True, null=True)
-    profilnaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='profilnaid', default=None, blank=True, null=True)
+    profilnaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='profilnaid', default=1, blank=True, null=True)
     lajkaopricu = models.ManyToManyField("Prica", related_name = "lajkaopricu")
     dislajkaopricu = models.ManyToManyField("Prica", related_name = "dislajkaopricu")
     

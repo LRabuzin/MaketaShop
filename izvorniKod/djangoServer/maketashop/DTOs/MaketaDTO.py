@@ -4,7 +4,7 @@ from maketashop.models import Napravljenaod
 
 class MaketaDTO():
     def __init__(self, maketaID):
-        self.maketa=Maketa.objects.select_related.get(maketaid=maketaID)
+        self.maketa=Maketa.objects.select_related().get(maketaid=maketaID)
         self.materijali=Materijal.objects.all().select_related()
         self.napravljenaOd=Napravljenaod.objects.filter(maketaid=maketaID)
         self.rijecnik={}
