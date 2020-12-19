@@ -13,7 +13,7 @@
                   <div class="card-title row align-items-center justify-content-between">
                       
                           <div class="image-container col-3">
-                              <img src="{% static baza_data.profilnaid.putdodatoteke %}" style="width: 150px; height: 150px" />
+                              <img src="{% static ProfilDTO.profilnaid.putdodatoteke %}" style="width: 150px; height: 150px" />
                             </div>
                             <div class="col-3">
                                       <input type="button" class="btn btn-secondary" value="Promijeni sliku" />
@@ -39,8 +39,8 @@
                                           <label style="font-weight:bold;">Ime i prezime</label>
                                       </div>
                                       <div class="col-3">
-                                        {{ baza_data.ime }}
-                                        {{ baza_data.prezime }}
+                                        {{ ProfilDTO.getIme }}
+                                        {{ ProfilDTO.getPrezime }}
                                       </div>
                                       <div class="form-check col-3">
                                         {{ form.name_surname }}
@@ -53,7 +53,7 @@
                                           <label style="font-weight:bold;">Korisničko ime</label>
                                       </div>
                                       <div class="col-3">
-                                        {{ baza_data.korisnickoime }}
+                                        {{ ProfilDTO.getKorisnickoIme }}
                                       </div>
                                   </div>
                                   <hr />
@@ -63,7 +63,7 @@
                                         <label style="font-weight:bold;">Datum rođenja</label>
                                     </div>
                                     <div class="col-3">
-                                        {{ baza_data.rodendan }}
+                                        {{ ProfilDTO.getRodendan }}
                                     </div>
                                     <div class="form-check col-3">
                                         {{ form.birth_date }}
@@ -77,7 +77,7 @@
                                         <label style="font-weight:bold;">Datum registracije</label>
                                     </div>
                                     <div class="col-3">
-                                        {{ baza_data.datumregistracije }}
+                                        {{ ProfilDTO.getDatumRegistracije }}
                                     </div>
                                     <div class="form-check col-3">
                                         {{ form.register_date }}
@@ -91,7 +91,7 @@
                                           <label style="font-weight:bold;">Adresa elektronicke poste</label>
                                       </div>
                                       <div class="col-3">
-                                        {{ baza_data.email }}
+                                        {{ ProfilDTO.getEmail }}
                                       </div>
                                       <div class="form-check col-3">
                                         {{ form.email }}
@@ -104,7 +104,7 @@
                                           <label style="font-weight:bold;">Adresa</label>
                                       </div>
                                       <div class="col-3">
-                                        {{ baza_data.adresa }}
+                                        {{ ProfilDTO.getAdresa }}
                                       </div>
                                       <div class="form-check col-3">
                                         {{ form.address }}
