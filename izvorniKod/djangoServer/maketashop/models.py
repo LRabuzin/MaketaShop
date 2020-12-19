@@ -15,7 +15,7 @@ class Media(models.Model):
 class Tema(models.Model):
     temaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     ime = models.CharField(max_length=100)
-    teksttemeid = models.ForeignKey(Media, models.DO_NOTHING, db_column='teksttemeid')
+    tekstteme = models.CharField(max_length=160, default=None, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -31,7 +31,10 @@ class Materijal(models.Model):
 
 class Maketa(models.Model):
     maketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
+    ime = models.CharField(max_length=100, default="default ime")
     dimenzije = models.CharField(max_length=20)
+    opis = models.CharField(max_length=160, default=None, blank=True, null=True)
+    vrsta = models.CharField(max_length=7, default="webshop")
     mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='mediaid')
 
     class Meta:
@@ -48,6 +51,7 @@ class Napravljenaod(models.Model):
     maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid')
     materijalid = models.ForeignKey(Materijal, models.DO_NOTHING, db_column='materijalid')
     cijena = models.FloatField()
+    brojuskladistu = models.IntegerField(default = 0)
 
     class Meta:
         managed = True
@@ -115,12 +119,11 @@ class Prica(models.Model):
     brojlajkova = models.IntegerField(default = 0, blank = True)
     brojdislajkova = models.IntegerField(default = 0, blank = True)
     objavljena = models.BooleanField(default = False, blank = True)
-    maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column="maketaid")
-    maketaprodana = models.BooleanField(default = False, blank = True)
+    maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column="maketaid", default=None, blank=True, null=True)
     autorid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='autorid', related_name="autorid")
-    predloziopricuid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='predloziopricuid', related_name="predloziopricuid", null=True)
-    tekstpriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='tekstpriceid', related_name="tekstprice")
-    glavnaslikapriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='glavnaslikapriceid', related_name="glavnaslikaprice")
+    predloziotemuid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='predloziotemuid', related_name="predloziopricuid", null=True)
+    #tekstpriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='tekstpriceid', related_name="tekstprice")
+    #glavnaslikapriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='glavnaslikapriceid', related_name="glavnaslikaprice")
 
     class Meta:
         managed = True
@@ -183,16 +186,30 @@ class Komentar(models.Model):
     def getKorisnikId(self):
         return self.korisnikid;
 
-class Custommaketa(models.Model):
-    custommaketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
-    datumotvaranjazahtjeva = models.DateField()
-    datumzatvaranjadatuma = models.DateField()
-    ponudenacijena = models.FloatField(default=None, blank=True, null=True)
-    prihvaceno =  models.BooleanField(default=False, blank=True, null=True)
-    tekstzahtjevaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='tekstzahtjevaid')
+##class Custommaketa(models.Model):
+##    custommaketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
+##    datumotvaranjazahtjeva = models.DateField()
+##    datumzatvaranjadatuma = models.DateField()
+##    ponudenacijena = models.FloatField(default=None, blank=True, null=True)
+##    prihvaceno =  models.BooleanField(default=False, blank=True, null=True)
+##    tekstzahtjevaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='tekstzahtjevaid')
+##    korisnikid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='korisnikid')
+##    
+##    class Meta:
+##        managed = True
+##        db_table = 'custommaketa'
+
+class Interakcija(models.Model):
+    interakcijaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     korisnikid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='korisnikid')
+    naslovinterakcije = models.CharField(max_length=100)
+    vrstainterakcije = models.CharField(max_length=6)
+    temaid = models.ForeignKey(Tema, models.DO_NOTHING, db_column='temaid')
+    maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid')
+    pricaid = models.ForeignKey(Prica, models.DO_NOTHING, db_column='pricaid')
+    interakcijaotvorena = models.BooleanField(default=True, blank=True, null=True)
     
     class Meta:
         managed = True
-        db_table = 'custommaketa'
+        db_table = 'interakcija'
 
