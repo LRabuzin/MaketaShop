@@ -47,6 +47,15 @@ class Maketa(models.Model):
     def getMedia(self):
         return self.mediaid.putdodatoteke
 
+    def getIme(self):
+        return self.ime
+
+    def getOpis(self):
+        return self.opis
+
+    def getVrsta(self):
+        return self.vrsta
+
 class Napravljenaod(models.Model):
     maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid')
     materijalid = models.ForeignKey(Materijal, models.DO_NOTHING, db_column='materijalid')

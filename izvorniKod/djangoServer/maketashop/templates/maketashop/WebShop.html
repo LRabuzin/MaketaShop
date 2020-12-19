@@ -9,12 +9,10 @@
         {% for maketa in WebShopDTO.getMakete %}
         <a href="{% url 'maketa' %}" class="link-shop text-dark">
             <div class="card p-2 m-1" style="width: 23rem;">
-                <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa1.jpg' %}" alt="Card image cap">
+                <img class="card-img-top shop-img" src="{% static maketa.getMaketaSlika %}" alt="Card image cap">
                 <div class="card-body">
-                    <!--<h5 class="card-title"> {{ maketa.getIme }} </h5>
-                    <p class="card-text"> {{ maketa.getOpis }} </p>-->
-                    <h5 class="card-title">  ime makete  </h5>
-                    <p class="card-text">  opis makete  </p>
+                    <h5 class="card-title"> {{ maketa.getIme }} </h5>
+                    <p class="card-text"> {{ maketa.getOpis }} </p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Veličina: {{ maketa.getDimenzije }}</li>
@@ -26,9 +24,9 @@
                         <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materijali
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Drvo</a>
-                            <a class="dropdown-item" href="#">Plastika</a>
-                            <a class="dropdown-item" href="#">Metal</a>
+                            {% for materijal in maketa.getMaterijaliICijene %}
+                                <a class="dropdown-item" href="#"> {{ materijal }} </a>
+                            {% endfor %}
                         </div>
                         <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
                     </div>
