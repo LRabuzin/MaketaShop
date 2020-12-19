@@ -6,29 +6,23 @@
 {% block content %}
 <div class="container p-2">
     <div class="row">
-        {% for maketa in WebShopDTO.getMakete %}
-        <a href="{% url 'maketa' %}" class="link-shop text-dark">
+        {% for maketa, napravljenaod in webShopDTO.getMakete.items %}
+        <a href="{% url 'maketa' maketa.getId%}" class="link-shop text-dark">
             <div class="card p-2 m-1" style="width: 23rem;">
-                <img class="card-img-top shop-img" src="{% static maketa.getMaketaSlika %}" alt="Card image cap">
+                <img class="card-img-top shop-img" src="{% static maketa.getMedia %}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"> {{ maketa.getIme }} </h5>
-                    <p class="card-text"> {{ maketa.getOpis }} </p>
+                    <h5 class="card-title">{{ maketa.getIme }} </h5>
+                    <p class="card-text">{{ maketa.getOpis }} </p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Veličina: {{ maketa.getDimenzije }}</li>
                     <!--<li class="list-group-item">Neki drugi parametar makete idk tbh</li>-->
-                    <li class="list-group-item">Cijena: 500 kn</li>
+                    <li class="list-group-item">Cijena: {{ napravljenaod.getCijena }} kn</li>
+                    <li class="list-group-item">Materijal: {{ napravljenaod.getMaterijal }} </li>
                 </ul>
                 <div class="card-body">
                     <div class="row">
-                        <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materijali
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            {% for materijal in maketa.getMaterijaliICijene %}
-                                <a class="dropdown-item" href="#"> {{ materijal }} </a>
-                            {% endfor %}
-                        </div>
-                        <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+                     <a href="#" class="btn btn-success col-12">Kupi</a>
                     </div>
                 </div>
             </div>
