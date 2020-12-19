@@ -1,41 +1,56 @@
 {%extends "./base.html"%}
 {% load static %}
 {% block content %}
+
+<script language="JavaScript">
+
+var DivTxt = new Array()
+DivTxt[0] = "Please Select Priority"
+DivTxt[1] = "Priority Low: The selection is Low"
+DivTxt[2] = "Priority Normal: The selection is Normal"
+DivTxt[3] = "Priority High: The selection is High"
+DivTxt[3] = "Priority Critical: The selection is Critical"
+
+function getText(slction){
+txtSelected = slction.selectedIndex;
+document.getElementById('textDiv').innerHTML = DivTxt[txtSelected];
+}
+</script>
 <div class="container">
 
     <div class="row">
 
         <div class="col-12">
 
-            <h1 class="mt-4">MaketaDTO.getIme</h1>
+            <h1 class="mt-4">{{ maketaDTO.getIme }}</h1>
 
             <hr>
 
-            <img class="img-fluid rounded" src="{% static MaketaDTO.getMaketaSlika %}" alt="">
+            <img class="img-fluid rounded" src="{% static maketaDTO.getMaketaSlika %}" alt="">
 
             <hr>
 
             <h3>Opis:</h3>
-            <p>MaketaDTO.getOpis</p>
+            <p>{{ maketaDTO.getOpis }}</p>
 
             <hr>
 
             <h3>Dimenzije:</h3>
-            <p>MaketaDTO.getDimenzije</p>
+            <p>{{ maketaDTO.getDimenzije }}</p>
 
             <hr>
 
             <h3>Cijena:</h3>
-            <p>500 kn </p>
+            <p>500 kn (ovo treba bit dinamicko u ovisnosti o materijalu)</p>
 
             <hr>
 
             <div class="d-flex flex-row justify-content-around">
-                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materijali
-                </a>
+                <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" 
+                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materijali</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    {% for materijal in MaketaDTO.getMaterijaliICijene %}
-                        <a class="dropdown-item" href="#"> {{ materijal }} </a>
+                    {% for materijal in maketaDTO.getMaterijaliICijene %}
+                        <a class="dropdown-item" href="#">{{ materijal }} </a>
                     {% endfor %}
                 </div>
                 <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
