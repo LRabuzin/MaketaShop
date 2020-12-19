@@ -15,7 +15,7 @@ class MaketaDTO():
         return self.rijecnik
 
     def getMaketaSlika(self):
-        self.maketa.mediaid.putdodatoteke
+        return self.maketa.mediaid.putdodatoteke
 
     def getDimenzije(self):
         return self.maketa.getDimenzije()
