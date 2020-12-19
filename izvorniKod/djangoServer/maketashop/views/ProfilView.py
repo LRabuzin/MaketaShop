@@ -10,7 +10,8 @@ class Profil(View):
     template_name ="maketashop/profil.html"
     def get(self, request):
         # <view logic>
-        korisnik = getKorisnik()
+        email = request.session['user']
+        korisnik = ProfilDTO(email)
 
         data = {'address' : korisnik.getAdresaPrivatna(),
                 'register_date' : korisnik.getDatumRegistracijePrivatan(),
@@ -24,7 +25,7 @@ class Profil(View):
             'title': "profil", 
             'link_active': "profil", 
             'empty_head': False,
-            'ProfilDTO' : ProfilDTO(),
+            'ProfilDTO' : ProfilDTO(email),
             'form' : form,
             'baza_data': korisnik,
             'session': request.session

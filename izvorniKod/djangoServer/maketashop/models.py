@@ -29,12 +29,20 @@ class Materijal(models.Model):
         managed = True
         db_table = 'materijal'
 
+class Vrstamakete(models.Model):
+    vrstamaketeid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
+    ime = models.CharField(max_length=20)
+
+    class Meta:
+        managed = True
+        db_table = 'vrstamakete'
+    
 class Maketa(models.Model):
     maketaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     ime = models.CharField(max_length=100, default="default ime")
     dimenzije = models.CharField(max_length=20)
     opis = models.CharField(max_length=160, default=None, blank=True, null=True)
-    vrsta = models.CharField(max_length=7, default="webshop")
+    vrsta = models.ForeignKey(Vrstamakete, models.DO_NOTHING, db_column='vrsta')
     mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='mediaid')
 
     class Meta:
@@ -105,7 +113,7 @@ class Korisnik(models.Model):
     email = models.CharField(unique=True, max_length=100)
     korisnickoime = models.CharField(unique=True, max_length=20)
     lozinka = models.CharField(max_length=20)
-    razinaautoriteta = models.IntegerField()
+    jeadmin = models.BooleanField(default=False);
     adresa = models.CharField(max_length=100, default=None, blank=True, null=True)
     rodendan = models.DateField(default=None, blank=True, null=True)
     datumregistracije = models.DateField(default=None, blank=True, null=True)

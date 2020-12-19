@@ -2,8 +2,8 @@ from maketashop.models import Korisnik
 
 class ProfilDTO():
 
-   def __init__(self, korisnikId):
-      self.korisnik=Korisnik.objects.get(korisnikId)
+   def __init__(self, email):
+      self.korisnik=Korisnik.objects.get(email=email)
 
    def getEmail(self):
       return self.korisnik.email
@@ -31,3 +31,21 @@ class ProfilDTO():
       
    def getKorisnik(self):
       return self.korisnik.korisnickoime
+
+   def getAdresaPrivatna(self):
+      return self.korisnik.adresaprivatna
+	
+   def getRodendanPrivatan(self):
+      return self.korisnik.rodendanprivatan
+	
+   def getDatumRegistracijePrivatan(self):
+      return self.korisnik.datumregistracijeprivatan
+	
+   def getSlikaPrivatna(self):
+      return self.korisnik.slikaprivatna
+	
+   def getImePrezimePrivatno(self):
+      return self.korisnik.imeprezimeprivatno
+	
+   def getEmailPrivatan(self):
+      return self.korisnik.emailprivatan
