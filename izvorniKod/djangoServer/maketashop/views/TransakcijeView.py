@@ -5,7 +5,7 @@ from django.views.generic import View
 from maketashop.DTOs.TransakcijeDTO import TransakcijeDTO
 
 class Transakcije(View):
-    template_name ="maketashop/transakcija.html"
+    template_name ="maketashop/transakcije.html"
     def get(self, request):
         # <view logic>
         

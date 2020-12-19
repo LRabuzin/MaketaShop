@@ -23,11 +23,14 @@ class Tema(models.Model):
 
 class Materijal(models.Model):
     materijalid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
-    ime = models.CharField(max_length=100)
+    ime = models.CharField(max_length=100, default="default ime")
 
     class Meta:
         managed = True
         db_table = 'materijal'
+
+    def getIme(self):
+        return self.ime
 
 class Vrstamakete(models.Model):
     vrstamaketeid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
@@ -172,6 +175,9 @@ class Korisnik(models.Model):
     class Meta:
         managed = True
         db_table = 'korisnik'
+
+    def getSlika(self):
+        return self.profilnaid.putdodatoteke
 
 class Prica(models.Model):
     pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
