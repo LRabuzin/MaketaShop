@@ -1,230 +1,41 @@
 ﻿{%extends "./base.html"%}
 {% load static %}
-{% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/WebShop.css' %}"> {% endblock mycss %}
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'maketashop/WebShop.css' %}">
+{% endblock mycss %}
 {% block content %}
 <div class="container p-2">
-  <div class="row">
-    <a href="{% url 'maketa' %}" class="link-shop text-dark">
-    <div class="card p-2 m-1" style="width: 23rem;">
-      <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa1.jpg' %}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Maketa 1</h5>
-        <p class="card-text">Deskriptivni opis makete 1</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Veličina: 120cm x 120cm</li>
-        <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
-        <li class="list-group-item">Cijena: 500 kn</li>
-      </ul>
-      <div class="card-body">
-        <div class="row">
-            <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Materijali
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Drvo</a>
-              <a class="dropdown-item" href="#">Plastika</a>
-              <a class="dropdown-item" href="#">Metal</a>
+    <div class="row">
+        {% for maketa in WebShopDTO.getMakete %}
+        <a href="{% url 'maketa' %}" class="link-shop text-dark">
+            <div class="card p-2 m-1" style="width: 23rem;">
+                <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa1.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                    <!--<h5 class="card-title"> {{ maketa.getIme }} </h5>
+                    <p class="card-text"> {{ maketa.getOpis }} </p>-->
+                    <h5 class="card-title">  ime makete  </h5>
+                    <p class="card-text">  opis makete  </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Veličina: {{ maketa.getDimenzije }}</li>
+                    <!--<li class="list-group-item">Neki drugi parametar makete idk tbh</li>-->
+                    <li class="list-group-item">Cijena: 500 kn</li>
+                </ul>
+                <div class="card-body">
+                    <div class="row">
+                        <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materijali
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Drvo</a>
+                            <a class="dropdown-item" href="#">Plastika</a>
+                            <a class="dropdown-item" href="#">Metal</a>
+                        </div>
+                        <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+                    </div>
+                </div>
             </div>
-          <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
-        </div>
-      </div>
+        </a>
+        {% endfor %}
     </div>
-  </a>
-    <a href="{% url 'maketa' %}" class="link-shop text-dark">
-    <div class="card p-2 m-1" style="width: 23rem;">
-      <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa2.jpg' %}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Maketa 2</h5>
-        <p class="card-text">Deskriptivni opis makete 2</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Veličina: 120cm x 120cm</li>
-        <li class="list-group-item">Neki drugi parametar makete idk tbh ali ovdje još malo teksta da vidim kak će funkcionirat</li>
-        <li class="list-group-item">Cijena: 500 kn</li>
-      </ul>
-      <div class="card-body">
-        <div class="row">
-            <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Materijali
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Drvo</a>
-              <a class="dropdown-item" href="#">Plastika</a>
-              <a class="dropdown-item" href="#">Metal</a>
-            </div>
-          <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
-        </div>
-      </div>
-    </div>
-  </a>
-    <a href="{% url 'maketa' %}" class="link-shop text-dark">
-    <div class="card p-2 m-1" style="width: 23rem;">
-      <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa3.jpg' %}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Maketa 3</h5>
-        <p class="card-text">Deskriptivni opis makete 3</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Veličina: 120cm x 120cm</li>
-        <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
-        <li class="list-group-item">Cijena: 500 kn</li>
-      </ul>
-      <div class="card-body">
-        <div class="row">
-            <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Materijali
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Drvo</a>
-              <a class="dropdown-item" href="#">Plastika</a>
-              <a class="dropdown-item" href="#">Metal</a>
-            </div>
-          <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</a>
-  <div class="row">
-    <a href="{% url 'maketa' %}" class="link-shop text-dark">
-    <div class="card p-2 m-1" style="width: 23rem;">
-      <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa4.jpg' %}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Maketa 4</h5>
-        <p class="card-text">Deskriptivni opis makete 4</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Veličina: 120cm x 120cm</li>
-        <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
-        <li class="list-group-item">Cijena: 500 kn</li>
-      </ul>
-      <div class="card-body">
-        <div class="row">
-            <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Materijali
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Drvo</a>
-              <a class="dropdown-item" href="#">Plastika</a>
-              <a class="dropdown-item" href="#">Metal</a>
-            </div>
-          <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
-        </div>
-      </div>
-    </div>
-  </a>
-    <a href="{% url 'maketa' %}" class="link-shop text-dark">
-    <div class="card p-2 m-1" style="width: 23rem;">
-      <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa5.jpg' %}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Maketa 5</h5>
-        <p class="card-text">Deskriptivni opis makete 5</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Veličina: 120cm x 120cm</li>
-        <li class="list-group-item">Neki drugi parametar makete idk tbh ali ovdje još malo teksta da vidim kak će funkcionirat</li>
-        <li class="list-group-item">Cijena: 500 kn</li>
-      </ul>
-      <div class="card-body">
-        <div class="row">
-            <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Materijali
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Drvo</a>
-              <a class="dropdown-item" href="#">Plastika</a>
-              <a class="dropdown-item" href="#">Metal</a>
-            </div>
-          <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
-        </div>
-      </div>
-    </div>
-  </a>
-    <a href="{% url 'maketa' %}" class="link-shop text-dark">
-    <div class="card p-2 m-1" style="width: 23rem;">
-      <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa6.jpg' %}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Maketa 6</h5>
-        <p class="card-text">Deskriptivni opis makete 6</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Veličina: 120cm x 120cm</li>
-        <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
-        <li class="list-group-item">Cijena: 500 kn</li>
-      </ul>
-      <div class="card-body">
-        <div class="row">
-            <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Materijali
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Drvo</a>
-              <a class="dropdown-item" href="#">Plastika</a>
-              <a class="dropdown-item" href="#">Metal</a>
-            </div>
-          <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</a>
-  <div class="row">
-
-    <a href="{% url 'maketa' %}" class="link-shop text-dark">
-    <div class="card p-2 m-1" style="width: 23rem;">
-      <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa1.jpg' %}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Maketa 7</h5>
-        <p class="card-text">Deskriptivni opis makete 7</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Veličina: 120cm x 120cm</li>
-        <li class="list-group-item">Neki drugi parametar makete idk tbh</li>
-        <li class="list-group-item">Cijena: 500 kn</li>
-      </ul>
-      <div class="card-body">
-        <div class="row">
-            <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Materijali
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Drvo</a>
-              <a class="dropdown-item" href="#">Plastika</a>
-              <a class="dropdown-item" href="#">Metal</a>
-            </div>
-          <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
-        </div>
-      </div>
-    </div>
-  </a>
-    <a href="{% url 'maketa' %}" class="link-shop text-dark">
-    <div class="card p-2 m-1" style="width: 23rem;">
-      <img class="card-img-top shop-img" src="{% static 'maketashop/imgs/maketa2.jpg' %}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Maketa 8</h5>
-        <p class="card-text">Deskriptivni opis makete 8</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Veličina: 120cm x 120cm</li>
-        <li class="list-group-item">Neki drugi parametar makete idk tbh ali ovdje još malo teksta da vidim kak će funkcionirat</li>
-        <li class="list-group-item">Cijena: 500 kn</li>
-      </ul>
-      <div class="card-body">
-        <div class="row">
-            <a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Materijali
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Drvo</a>
-              <a class="dropdown-item" href="#">Plastika</a>
-              <a class="dropdown-item" href="#">Metal</a>
-            </div>
-          <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
-        </div>
-      </div>
-    </div>
-  </a>
-  </div>
 </div>
 {% endblock content %}
