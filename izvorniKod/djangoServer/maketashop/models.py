@@ -55,6 +55,14 @@ class Maketa(models.Model):
     def getMedia(self):
         return self.mediaid.putdodatoteke
 
+    def getIme(self):
+        return self.ime
+
+    def getOpis(self):
+        return self.opis
+
+    def getVrsta(self):
+        return self.vrsta
 
 class Napravljenaod(models.Model):
     maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid')
@@ -68,7 +76,10 @@ class Napravljenaod(models.Model):
         unique_together = (('maketaid', 'materijalid'),)
 
     def getCijena(self):
-        return self.cijena;
+        return self.cijena
+
+    def getMaterijal(self):
+        return self.materijalid.ime
 
 class Transakcija(models.Model):
     transakcijaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)

@@ -13,9 +13,18 @@ class MaketaDTO():
 
     def getMaterijaliICijene(self):
         return self.rijecnik
-
-    def getMaketaSlika(self):
-        return self.maketa.mediaid.putdodatoteke
+    
+    def getIme(self):
+        return self.maketa.ime
 
     def getDimenzije(self):
         return self.maketa.getDimenzije()
+
+    def getOpis(self):
+        return self.maketa.opis
+    
+    def getVrsta(self):
+        return self.maketa.vrsta
+
+    def getMaketaSlika(self):
+        return self.maketa.mediaid.putdodatoteke
