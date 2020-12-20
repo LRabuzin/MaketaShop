@@ -29,8 +29,8 @@
 
                                 <td>
                                     <input class="form-control" type="text" value="{{ kolicina }}" /></td>
-                                <td class="text-center">MATERIJAL</td>
-                                <td class="text-right">CIJENA</td>
+                                <td class="text-center">{{ maketa.getMaterijal }}</td>
+                                <td class="text-right">{{ maketa.getCijena }}</td>
                                 <td class="text-right">
                                     <button class="btn btn-sm btn-danger">X</button>
                                 </td>
@@ -42,7 +42,7 @@
                             <td></td>
                             <td></td>
                             <td class="text-right">Suma:</td>
-                            <td class="text-right">SUMA</td>
+                            <td class="text-right">{{ maketa.getSuma }}</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -50,7 +50,7 @@
                             <td></td>
                             <td></td>
                             <td class="text-right">Dostava:</td>
-                            <td class="text-right"> DOSTAVA </td>
+                            <td class="text-right"> {{ maketa.getDostava }} </td>
                         </tr>
                         <tr>
                             <td></td>
@@ -58,7 +58,7 @@
                             <td></td>
                             <td></td>
                             <td class="text-right"><strong>Ukupno:</strong></td>
-                            <td class="text-right"><strong> SUMA+DOSTAVA </strong></td>
+                            <td class="text-right"><strong> {{ maketa.getUkupno }} </strong></td>
                         </tr>
                     </tbody>
                 </table>
