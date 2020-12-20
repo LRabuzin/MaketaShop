@@ -14,6 +14,6 @@ class Cart(View):
             'title': "cart", 
             'link_active': "cart", 
             'empty_head': False,
-            'cart' : Cart,
+            'cartDTO' : Cart,
             'session': request.session
             })

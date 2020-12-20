@@ -2,7 +2,7 @@ from maketashop.models import Maketa
 
 class CartItem():
     def __init__(self, maketaID, materijal, cijena):
-        self.maketa=Maketa.objects.select_related.get(maketaid=maketaID)
+        self.maketa=Maketa.objects.select_related().get(maketaid=1)
         self.materijal=materijal
         self.cijena=cijena
 
@@ -16,8 +16,10 @@ class CartItem():
         return self.cijena
 
     def __eq__(self, obj):
-        return isinstace(obj, CartItem) and obj.maketa == self.maketa and obj.materijal == self.materijal and obj.cijena == self.cijena
+        return isinstance(obj, CartItem) and obj.maketa == self.maketa and obj.materijal == self.materijal and obj.cijena == self.cijena
 
+    def __hash__(self):
+        return hash((self.maketa, self.materijal, self.cijena))
 
 class CartDTO():
     def __init__(self):
@@ -29,22 +31,24 @@ class CartDTO():
         return self.inventory
 
     def addMaketa(self, maketaID, materijal, cijena, kolicina):
-        maketa = CartItem(Maketa.objects.select_related.get(maketaid=maketaID), materijal, cijena)
-        self.suma=suma + cijena * kolicina
-        brItema+=kolicina
+        maketa = CartItem(Maketa.objects.select_related().get(maketaid=maketaID), materijal, cijena)
+        self.suma=self.suma + cijena * kolicina
+        self.brItema=self.brItema+kolicina
         if maketa in self.inventory:
             self.inventory[maketa]=self.inventory[maketa]+kolicina
         else:
             self.inventory[maketa]=kolicina
+        return self
 
     def removeMaketa(self, maketaID, materijal, cijena, kolicina):
-        maketa = CartItem(Maketa.objects.select_related.get(maketaid=maketaID), materijal, cijena)
-        self.suma=suma - cijena * kolicina
-        brItema-=kolicina
+        maketa = CartItem(Maketa.objects.select_related().get(maketaid=maketaID), materijal, cijena)
+        self.suma=self.suma - cijena * kolicina
+        self.brItema-=kolicina
         if maketa in self.inventory:
             self.inventory[maketa]=self.inventory[maketa]-kolicina
         if self.inventory[maketa]<=0:
             self.inventory.pop(maketa)
+        return self
 
     def getSuma(self):
         return self.suma
@@ -53,7 +57,7 @@ class CartDTO():
         return self.suma * 0.05
 
     def getUkupno(self):
-        return getDostava() + getSuma()
+        return self.getDostava() + self.getSuma()
 
     def getBrItema(self):
         return self.brItema

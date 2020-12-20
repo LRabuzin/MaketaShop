@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from maketashop.DTOs.WebShopDTO import WebShopDTO
 from maketashop.DTOs.CartDTO import CartDTO
 
@@ -18,13 +19,14 @@ class WebShop(View):
             })
 
     def post(self, request):
-        if maketaId in request.POST:
-            maketaID = request.POST['maketaId']
-            cijena = request.POST['cijena']
+        if 'idMaketa' in request.POST:
+            maketaId = int(request.POST['idMaketa'])
+            cijena = float(request.POST['cijena'])
             materijal = request.POST['materijal']
 
             if not 'cart' in request.session:
                 request.session['cart']=CartDTO()
-            request.session['cart'].addMaketa(maketaID, cijena, materijal, 1)
-        else:
-             return HttpResponseRedirect(reverse('webshop'))
+            cart = request.session['cart']
+            cart.addMaketa(maketaId, materijal, cijena, 1)
+            request.session['cart']=cart
+        return HttpResponseRedirect(reverse('webshop'))
