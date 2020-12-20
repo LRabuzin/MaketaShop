@@ -158,7 +158,7 @@ class Korisnik(models.Model):
     email = models.CharField(unique=True, max_length=100, default='')
     korisnickoime = models.CharField(unique=True, max_length=20)
     lozinka = models.CharField(max_length=20)
-    jeadmin = models.BooleanField(default=False);
+    jeadmin = models.BooleanField(default=False)
     adresa = models.CharField(max_length=100, default=None, blank=True, null=True)
     rodendan = models.DateField(default=None, blank=True, null=True)
     datumregistracije = models.DateField(default=None, blank=True, null=True)
@@ -175,6 +175,10 @@ class Korisnik(models.Model):
     profilnaid = models.ForeignKey(Media, db_column='profilnaid', default=1, blank=True, null=True, on_delete=models.CASCADE)
     lajkaopricu = models.ManyToManyField("Prica", related_name = "lajkaopricu")
     dislajkaopricu = models.ManyToManyField("Prica", related_name = "dislajkaopricu")
+    kkpaypal = models.BooleanField(default=False)
+    kkimeprezime = models.CharField(max_length=27, default=None, blank=True, null=True)
+    kkbroj = models.IntegerField(default=None, blank=True, null=True)
+    kkistek = models.CharField(max_length=5, default=None, blank=True, null=True)
     
     class Meta:
         managed = True
@@ -188,12 +192,34 @@ class Korisnik(models.Model):
 
     def getKorisnickoIme(self):
         return self.korisnickoime
+    
+    def getDatum(self):
+        return self.datumregistracije
+
 
     def getIme(self):
         return self.ime
 
     def getPrezime(self):
         return self.prezime
+
+    def getSlikaBool(self):
+        return self.slikaprivatna
+
+    def getEmailBool(self):
+        return self.emailprivatan
+
+    def getDatumBool(self):
+        return self.datumregistracijeprivatan
+
+    def getRodendanBool(self):
+        return self.rodendanprivatan
+
+    def getAdresaBool(self):
+        return self.adresaprivatna
+
+    def getImePrezimeBool(self):
+        return self.imeprezimeprivatno
 
     
 

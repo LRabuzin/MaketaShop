@@ -12,6 +12,6 @@ class ProfilPregled(View):
             'title': "profilPregled", 
             'link_active': "profilPregled", 
             'empty_head': False,
-            'session': request.session
-            'profilPregledDTO' : ProfilPregledDTO(id);
+            'session': request.session,
+            'ProfilPregledDTO' : ProfilPregledDTO(id)
             })

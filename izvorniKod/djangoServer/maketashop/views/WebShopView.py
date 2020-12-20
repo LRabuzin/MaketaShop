@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotModified
 from django.urls import reverse
 from maketashop.DTOs.WebShopDTO import WebShopDTO
 from maketashop.DTOs.CartDTO import CartDTO
@@ -29,4 +29,4 @@ class WebShop(View):
             cart = request.session['cart']
             cart.addMaketa(maketaId, materijal, cijena, 1)
             request.session['cart']=cart
-        return HttpResponseRedirect(reverse('webshop'))
+        return HttpResponseNotModified()
