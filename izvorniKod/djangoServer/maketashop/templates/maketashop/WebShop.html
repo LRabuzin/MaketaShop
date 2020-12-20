@@ -20,9 +20,15 @@
                     <li class="list-group-item">Osnovni materijal: {{ napravljenaod.getMaterijal }} </li>
                 </ul>
                 <div class="card-body">
-                    <div class="row">
-                     <a href="#" class="btn btn-success col-12">Kupi</a>
-                    </div>
+                    <form action="" method="post" name="kupi">
+                        <div class="row form-group">
+                            {% csrf_token %}
+                            <input type="hidden" id="idMaketa" name="idMaketa" value="{{maketa.getId}}">
+                            <input type="hidden" id="cijena" name="cijena" value="{{napravljenaod.getCijena}}">
+                            <input type="hidden" id="materijal" name="materijal" value="{{napravljenaod.getMaterijal}}">
+                            <button type="submit" class="btn btn-success col-12">Kupi</button> 
+                        </div>
+                    </form>
                 </div>
             </div>
         </a>
