@@ -24,15 +24,15 @@ class PrivacyForm(forms.Form):
 
 class PostForm(forms.Form):
     naslovprice = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov priče', 'class':'form-control my-input', 'id':'naslovprice'}))
-    text1 = forms.CharField(widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput1', 'readonly':'True'}))
-    media1 = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput1', 'readonly':'True'}))
-    text2 = forms.CharField(widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput2', 'readonly':'True'}))
-    media2 = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput2', 'readonly':'True'}))
-    text3= forms.CharField(widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput3', 'readonly':'True'}))
-    media3 = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput3', 'readonly':'True'}))
-    text4 = forms.CharField(widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput4', 'readonly':'True'}))
-    media4 = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput4', 'readonly':'True'}))
-    text5 = forms.CharField(widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput5', 'readonly':'True'}))
+    text1 = forms.CharField(blank=True, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput1', 'readonly':'True'}))
+    media1 = forms.FileField(blank=True, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput1', 'readonly':'True'}))
+    text2 = forms.CharField(blank=True, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput2', 'readonly':'True'}))
+    media2 = forms.FileField(blank=True, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput2', 'readonly':'True'}))
+    text3= forms.CharField(blank=True, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput3', 'readonly':'True'}))
+    media3 = forms.FileField(blank=True, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput3', 'readonly':'True'}))
+    text4 = forms.CharField(blank=True, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput4', 'readonly':'True'}))
+    media4 = forms.FileField(blank=True, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput4', 'readonly':'True'}))
+    text5 = forms.CharField(blank=True, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput5', 'readonly':'True'}))
     
 class InteractionThemeForm(forms.Form):
     naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
