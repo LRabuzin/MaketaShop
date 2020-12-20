@@ -43,4 +43,4 @@ class SubmitionTema(View):
          interakcija.save()
 
 
-         return HttpResponseRedirect('submition')
+         return HttpResponseRedirect(reverse('index'))
