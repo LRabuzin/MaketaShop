@@ -188,12 +188,34 @@ class Korisnik(models.Model):
 
     def getKorisnickoIme(self):
         return self.korisnickoime
+    
+    def getDatum(self):
+        return self.datumregistracije
+
 
     def getIme(self):
         return self.ime
 
     def getPrezime(self):
         return self.prezime
+
+    def getSlikaBool(self):
+        return self.slikaprivatna
+
+    def getEmailBool(self):
+        return self.emailprivatan
+
+    def getDatumBool(self):
+        return self.datumregistracijeprivatan
+
+    def getRodendanBool(self):
+        return self.rodendanprivatan
+
+    def getAdresaBool(self):
+        return self.adresaprivatna
+
+    def getImePrezimeBool(self):
+        return self.imeprezimeprivatno
 
     
 
