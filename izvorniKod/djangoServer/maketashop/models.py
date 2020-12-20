@@ -100,6 +100,7 @@ class Transakcija(models.Model):
     adresa = models.CharField(max_length=100)
     brojracuna = models.CharField(max_length=21)
     ukupaniznos = models.FloatField()
+    korisnik = models.ForeignKey("Korisnik", models.DO_NOTHING, db_column='korisnik', related_name="korisnik", default=None)
 
     class Meta:
         managed = True
@@ -122,6 +123,9 @@ class Transakcija(models.Model):
 
     def getUkupanIznos(self):
         return self.ukupaniznos;
+
+    def getKorisnikId(self):
+        return self.korisnik;
     
 
 
@@ -178,6 +182,9 @@ class Korisnik(models.Model):
 
     def getSlika(self):
         return self.profilnaid.putdodatoteke
+
+    def getEmail(self):
+        return self.email
 
 class Prica(models.Model):
     pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
