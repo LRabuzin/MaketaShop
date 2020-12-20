@@ -4,6 +4,7 @@ from maketashop.views.CartView import Cart
 from maketashop.views.LoginView import Login
 from maketashop.views.LogoutView import Logout
 from maketashop.views.ProfilView import Profil
+from maketashop.views.ProfilPregledView import ProfilPregled
 from maketashop.views.SignupView import Signup
 from maketashop.views.WebShopView import WebShop
 from maketashop.views.B_PostView import B_Post
@@ -26,6 +27,7 @@ urlpatterns = [
     path('login/', Login.as_view(), name='login'),
     path('logout/', Logout.as_view(), name='logout'),
     path('profil/', Profil.as_view(), name='profil'),
+    path('profilpregled/<int:id>/', ProfilPregled.as_view(), name='profilpregled'),
     path('signup/', Signup.as_view(), name='signup'),
     path('webshop/', WebShop.as_view(), name='webshop'),
     path('post/<int:id>/', B_Post.as_view(), name='b_post'),
