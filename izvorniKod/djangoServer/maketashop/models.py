@@ -45,8 +45,8 @@ class Maketa(models.Model):
     ime = models.CharField(max_length=100, default="default ime")
     dimenzije = models.CharField(max_length=20)
     opis = models.CharField(max_length=160, default=None, blank=True, null=True)
-    vrsta = models.ForeignKey(Vrstamakete, models.DO_NOTHING, db_column='vrsta')
-    mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='mediaid', blank=True, null=True)
+    vrsta = models.ForeignKey(Vrstamakete, db_column='vrsta', on_delete=models.CASCADE)
+    mediaid = models.ForeignKey(Media, db_column='mediaid', on_delete=models.CASCADE, blank = True, null = True)
 
     class Meta:
         managed = True
@@ -71,8 +71,8 @@ class Maketa(models.Model):
         return self.vrsta
 
 class Napravljenaod(models.Model):
-    maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid')
-    materijalid = models.ForeignKey(Materijal, models.DO_NOTHING, db_column='materijalid')
+    maketaid = models.ForeignKey(Maketa, db_column='maketaid', on_delete=models.CASCADE)
+    materijalid = models.ForeignKey(Materijal, db_column='materijalid', on_delete=models.CASCADE)
     cijena = models.FloatField()
     brojuskladistu = models.IntegerField(default = 0)
 
@@ -100,7 +100,7 @@ class Transakcija(models.Model):
     adresa = models.CharField(max_length=100)
     brojracuna = models.CharField(max_length=21)
     ukupaniznos = models.FloatField()
-    korisnik = models.ForeignKey("Korisnik", models.DO_NOTHING, db_column='korisnik', related_name="korisnik", default=None)
+    korisnik = models.ForeignKey("Korisnik", db_column='korisnik', related_name="korisnik", default=None, on_delete=models.CASCADE)
 
     class Meta:
         managed = True
@@ -130,9 +130,9 @@ class Transakcija(models.Model):
 
 
 class Maketakupljena(models.Model):
-    transakcijaid = models.ForeignKey(Transakcija, models.DO_NOTHING, db_column='transakcijaid')
-    maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid')
-    materijalid = models.ForeignKey(Materijal, models.DO_NOTHING, db_column="materijalid")
+    transakcijaid = models.ForeignKey(Transakcija, db_column='transakcijaid', on_delete=models.CASCADE)
+    maketaid = models.ForeignKey(Maketa, db_column='maketaid', on_delete=models.CASCADE)
+    materijalid = models.ForeignKey(Materijal, db_column="materijalid", on_delete=models.CASCADE)
     kolicina = models.IntegerField(default = 0)
 
     class Meta:
@@ -155,7 +155,7 @@ class Maketakupljena(models.Model):
 
 class Korisnik(models.Model):
     korisnikid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
-    email = models.CharField(unique=True, max_length=100)
+    email = models.CharField(unique=True, max_length=100, default='')
     korisnickoime = models.CharField(unique=True, max_length=20)
     lozinka = models.CharField(max_length=20)
     jeadmin = models.BooleanField(default=False);
@@ -172,7 +172,7 @@ class Korisnik(models.Model):
     prezime = models.CharField(max_length=50, default=None, blank=True, null=True)
     dozvoljenpristup = models.BooleanField(default=None, blank=True, null=True)
     brojracuna = models.CharField(max_length=21, default=None, blank=True, null=True)
-    profilnaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='profilnaid', default=1, blank=True, null=True)
+    profilnaid = models.ForeignKey(Media, db_column='profilnaid', default=1, blank=True, null=True, on_delete=models.CASCADE)
     lajkaopricu = models.ManyToManyField("Prica", related_name = "lajkaopricu")
     dislajkaopricu = models.ManyToManyField("Prica", related_name = "dislajkaopricu")
     
@@ -185,7 +185,7 @@ class Korisnik(models.Model):
 
     def getEmail(self):
         return self.email
-    
+
     def getKorisnickoIme(self):
         return self.korisnickoime
 
@@ -195,6 +195,8 @@ class Korisnik(models.Model):
     def getPrezime(self):
         return self.prezime
 
+    
+
 class Prica(models.Model):
     pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     naslovprice = models.CharField(max_length=100,default = "Priča")
@@ -202,11 +204,11 @@ class Prica(models.Model):
     brojlajkova = models.IntegerField(default = 0, blank = True)
     brojdislajkova = models.IntegerField(default = 0, blank = True)
     objavljena = models.BooleanField(default = False, blank = True)
-    maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column="maketaid", default=None, blank=True, null=True)
-    autorid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='autorid', related_name="autorid")
-    predloziotemuid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='predloziotemuid', related_name="predloziopricuid", null=True)
-    #tekstpriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='tekstpriceid', related_name="tekstprice")
-    #glavnaslikapriceid = models.ForeignKey(Media, models.DO_NOTHING, db_column='glavnaslikapriceid', related_name="glavnaslikaprice")
+    maketaid = models.ForeignKey(Maketa, db_column="maketaid", default=None, blank=True, null=True, on_delete=models.CASCADE)
+    autorid = models.ForeignKey(Korisnik, db_column='autorid', related_name="autorid", on_delete=models.CASCADE)
+    predloziotemuid = models.ForeignKey(Korisnik, db_column='predloziotemuid', related_name="predloziopricuid", null=True, on_delete=models.CASCADE)
+    #tekstpriceid = models.ForeignKey(Media, db_column='tekstpriceid', related_name="tekstprice")
+    #glavnaslikapriceid = models.ForeignKey(Media, db_column='glavnaslikapriceid', related_name="glavnaslikaprice")
 
     class Meta:
         managed = True
@@ -246,8 +248,8 @@ class Prica(models.Model):
         return self.brojdislajkova;
     
 class Multimedijaprice(models.Model):
-    pricaid = models.ForeignKey(Prica, models.DO_NOTHING, db_column='pricaid')
-    mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='mediaid')
+    pricaid = models.ForeignKey(Prica, db_column='pricaid', on_delete=models.CASCADE)
+    mediaid = models.ForeignKey(Media, db_column='mediaid', on_delete=models.CASCADE)
     poredakuprici = models.IntegerField()
 
     class Meta:
@@ -259,8 +261,8 @@ class Multimedijaprice(models.Model):
 class Komentar(models.Model):
     komentarid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     sadrzaj = models.CharField(max_length=300)
-    korisnikid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='korisnikid')
-    pricaid = models.ForeignKey(Prica, models.DO_NOTHING, db_column='pricaid')
+    korisnikid = models.ForeignKey(Korisnik, db_column='korisnikid', on_delete=models.CASCADE)
+    pricaid = models.ForeignKey(Prica, db_column='pricaid', on_delete=models.CASCADE)
 
     class Meta:
         managed = True
@@ -275,8 +277,8 @@ class Komentar(models.Model):
 ##    datumzatvaranjadatuma = models.DateField()
 ##    ponudenacijena = models.FloatField(default=None, blank=True, null=True)
 ##    prihvaceno =  models.BooleanField(default=False, blank=True, null=True)
-##    tekstzahtjevaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='tekstzahtjevaid')
-##    korisnikid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='korisnikid')
+##    tekstzahtjevaid = models.ForeignKey(Media, db_column='tekstzahtjevaid')
+##    korisnikid = models.ForeignKey(Korisnik, db_column='korisnikid')
 ##    
 ##    class Meta:
 ##        managed = True
@@ -284,12 +286,12 @@ class Komentar(models.Model):
 
 class Interakcija(models.Model):
     interakcijaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
-    korisnikid = models.ForeignKey(Korisnik, models.DO_NOTHING, db_column='korisnikid')
+    korisnikid = models.ForeignKey(Korisnik, db_column='korisnikid', on_delete=models.CASCADE)
     naslovinterakcije = models.CharField(max_length=100)
     vrstainterakcije = models.CharField(max_length=6)
-    temaid = models.ForeignKey(Tema, models.DO_NOTHING, db_column='temaid',blank=True, null=True)
-    maketaid = models.ForeignKey(Maketa, models.DO_NOTHING, db_column='maketaid', blank=True, null=True)
-    pricaid = models.ForeignKey(Prica, models.DO_NOTHING, db_column='pricaid', blank=True, null=True)
+    temaid = models.ForeignKey(Tema, db_column='temaid',blank=True, null=True, on_delete=models.CASCADE)
+    maketaid = models.ForeignKey(Maketa, db_column='maketaid', blank=True, null=True, on_delete=models.CASCADE)
+    pricaid = models.ForeignKey(Prica, db_column='pricaid', blank=True, null=True, on_delete=models.CASCADE)
     interakcijaotvorena = models.BooleanField(default=True, blank=True, null=True)
     
     class Meta:

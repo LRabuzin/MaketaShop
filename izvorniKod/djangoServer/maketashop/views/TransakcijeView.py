@@ -9,12 +9,16 @@ class Transakcije(View):
     template_name ="maketashop/transakcije.html"
     def get(self, request):
         if (request.session.get("user")):
+            dto = TransakcijeDTO();
             curr_user = Korisnik.objects.select_related().get(email=request.session.get("user"))
+            print(curr_user.jeadmin);
+            if curr_user.jeadmin == True:
+                TransakcijeDTO.setAdmin(dto);
         return render(request, self.template_name, {
             'title': "transakcije", 
             'link_active': "transakcije", 
             'empty_head': False,
-            'TransakcijeDTO': TransakcijeDTO(),
+            'TransakcijeDTO': dto,
             'session': request.session
             })
     
