@@ -9,11 +9,20 @@ class CartItem():
     def getMaketa(self):
         return self.maketa
 
+    def getMaketaId(self):
+        return self.maketa.maketaid
+
     def getMaterijal(self):
         return self.materijal
     
     def getCijena(self):
         return self.cijena
+
+    def getMedia(self):
+        return self.maketa.mediaid.putdodatoteke
+    
+    def getIme(self):
+        return self.maketa.ime
 
     def __eq__(self, obj):
         return isinstance(obj, CartItem) and obj.maketa == self.maketa and obj.materijal == self.materijal and obj.cijena == self.cijena
@@ -47,8 +56,17 @@ class CartDTO():
         if maketa in self.inventory:
             self.inventory[maketa]=self.inventory[maketa]-kolicina
         if self.inventory[maketa]<=0:
+            self.brItema=self.brItema-self.inventory[maketa]
+            self.suma=self.suma - cijena * self.inventory[maketa]
             self.inventory.pop(maketa)
         return self
+
+    def removeSveOdMaketa(self, maketaID, materijal, cijena):
+        maketa = CartItem(Maketa.objects.select_related().get(maketaid=maketaID),materijal, cijena)
+        if maketa in self.inventory:
+            kolicina = self.inventory[maketa]
+            self.suma = self.suma - cijena*kolicina
+            self.brItema = self.brItema-kolicina
 
     def getSuma(self):
         return self.suma
