@@ -15,6 +15,9 @@ class CartItem():
     def getCijena(self):
         return self.cijena
 
+    def getMedia(self):
+        return self.maketa.mediaid.putdodatoteke
+
     def __eq__(self, obj):
         return isinstance(obj, CartItem) and obj.maketa == self.maketa and obj.materijal == self.materijal and obj.cijena == self.cijena
 
