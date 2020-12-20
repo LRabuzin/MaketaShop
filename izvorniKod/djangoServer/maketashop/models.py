@@ -154,7 +154,7 @@ class Korisnik(models.Model):
     email = models.CharField(unique=True, max_length=100)
     korisnickoime = models.CharField(unique=True, max_length=20)
     lozinka = models.CharField(max_length=20)
-    jeadmin = models.BooleanField(default=False);
+    jeadmin = models.BooleanField(default=False)
     adresa = models.CharField(max_length=100, default=None, blank=True, null=True)
     rodendan = models.DateField(default=None, blank=True, null=True)
     datumregistracije = models.DateField(default=None, blank=True, null=True)
@@ -171,6 +171,10 @@ class Korisnik(models.Model):
     profilnaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='profilnaid', default=1, blank=True, null=True)
     lajkaopricu = models.ManyToManyField("Prica", related_name = "lajkaopricu")
     dislajkaopricu = models.ManyToManyField("Prica", related_name = "dislajkaopricu")
+    kkpaypal = models.BooleanField(default=False)
+    kkimeprezime = models.CharField(max_length=27, default=None, blank=True, null=True)
+    kkbroj = models.IntegerField(default=None, blank=True, null=True)
+    kkistek = models.CharField(max_length=5, default=None, blank=True, null=True)
     
     class Meta:
         managed = True
