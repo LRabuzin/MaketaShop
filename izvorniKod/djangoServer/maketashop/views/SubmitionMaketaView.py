@@ -3,24 +3,24 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import View
 from datetime import datetime
-from ..forms import InteractionThemeForm
+from ..forms import InteractionMaketaForm
 from maketashop.models import Interakcija
 from maketashop.models import Korisnik
-from maketashop.models import Tema
+from maketashop.models import Maketa
 #from maketashop.handle_uploaded_file import handle_uploaded_file
 
-class SubmitionTema(View):
-   template_name ="maketashop/tema.html"
+class SubmitionMaketa(View):
+   template_name ="maketashop/interactionMaketa.html"
 
    def get(self, request):
       # <view logic>
-      form = InteractionThemeForm()
+      form = InteractionMaketaForm()
       if 'user' not in request.session:
          return HttpResponseRedirect(reverse('index'))
       else:
          return render(request, self.template_name, {
-         'title': "submitionTema", 
-         'link_active': "submitionTema", 
+         'title': "submitionMaketa", 
+         'link_active': "submitionMaketa", 
          'empty_head': False,
          'form' : form,
          'session': request.session
