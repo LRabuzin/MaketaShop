@@ -6,8 +6,9 @@ class WebShopDTO():
         self.makete=Maketa.objects.all().select_related()
         self.rijecnikMaketaMaterijaliCijene={}
         for maketa in self.makete:
-            napravljenaOd=Napravljenaod.objects.select_related().get(maketaid=maketa.maketaid, 
-            materijalid=1)
-            self.rijecnikMaketaMaterijaliCijene[maketa]=napravljenaOd
+            if maketa.vrsta.ime =='webshop':
+                napravljenaOd=Napravljenaod.objects.select_related().get(maketaid=maketa.maketaid, 
+                materijalid=1)
+                self.rijecnikMaketaMaterijaliCijene[maketa]=napravljenaOd
     def getMakete(self):
         return self.rijecnikMaketaMaterijaliCijene
