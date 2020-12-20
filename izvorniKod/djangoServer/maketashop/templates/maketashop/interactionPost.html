@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'maketashop/postForm.css' %}"> {% endblock mycss %}
 {% block content %}
 <div class="container p-4">
-  <form action="" method="post" name="login" id="postForm">
+  <form action="" method="post" name="login" id="postForm" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">
       <h1 class="h3 mb-3 font-weight-normal">Predloži priču</h1>
@@ -15,71 +15,71 @@
       {{ form.naslovprice.errors }}
       {{ form.naslovprice }}
     </div>
-    <div class="form-group" id ="btnBlock1">
-      <button type="button" id ="showText1" class="btn btn-success">Dodaj tekst</button>
+    <div class="form-group" id="btnBlock1">
+      <button type="button" id="showText1"  class="btn btn-success">Dodaj tekst</button>
       <button type="button" id="showMedia1" class="btn btn-success">Dodaj mediju</button>
     </div>
-    <div class="form-group initially-hidden" id = "text1">
+    <div class="form-group initially-hidden" id="text1">
       {{ form.text1.errors }}
       {{ form.text1 }}
       <button type="button" id="hideText1" class="btn btn-danger">Ukloni tekst</button>
     </div>
-    <div class="form-group initially-hidden" id ="media1">
+    <div class="form-group initially-hidden" id="media1">
       {{ form.media1.errors }}
       {{ form.media1 }}
-      <button type="button" id="hideMedia1" class="btn btn-danger">Ukloni Mediju</button>
+      <button type="button" id="hideMedia1" class="btn btn-danger">Ukloni mediju</button>
     </div>
-    <div class="form-group initially-hidden" id ="btnBlock2">
+    <div class="form-group initially-hidden" id="btnBlock2">
       <button type="button" id="showText2" class="btn btn-success">Dodaj tekst</button>
       <button type="button" id="showMedia2" class="btn btn-success">Dodaj mediju</button>
     </div>
-    <div class="form-group initially-hidden" id = "text2">
+    <div class="form-group initially-hidden" id="text2">
       {{ form.text2.errors }}
       {{ form.text2 }}
       <button type="button" id="hideText2" class="btn btn-danger">Ukloni tekst</button>
     </div>
-    <div class="form-group initially-hidden" id ="media2">
+    <div class="form-group initially-hidden" id="media2">
       {{ form.media1.errors }}
       {{ form.media1 }}
-      <button type="button" id="hideMedia2" class="btn btn-danger">Ukloni Mediju</button>
+      <button type="button" id="hideMedia2" class="btn btn-danger">Ukloni mediju</button>
     </div>
-    <div class="form-group initially-hidden" id ="btnBlock3">
+    <div class="form-group initially-hidden" id="btnBlock3">
       <button type="button" id="showText3" class="btn btn-success">Dodaj tekst</button>
       <button type="button" id="showMedia3" class="btn btn-success">Dodaj mediju</button>
     </div>
-    <div class="form-group initially-hidden" id = "text3">
+    <div class="form-group initially-hidden" id="text3">
       {{ form.text3.errors }}
       {{ form.text3 }}
       <button type="button" id="hideText3" class="btn btn-danger">Ukloni tekst</button>
     </div>
-    <div class="form-group initially-hidden" id ="media3">
+    <div class="form-group initially-hidden" id="media3">
       {{ form.media3.errors }}
       {{ form.media3 }}
-      <button type="button" id="hideMedia3" class="btn btn-danger">Ukloni Mediju</button>
+      <button type="button" id="hideMedia3" class="btn btn-danger">Ukloni mediju</button>
     </div>
-    <div class="form-group initially-hidden" id ="btnBlock4">
+    <div class="form-group initially-hidden" id="btnBlock4">
       <button type="button" id="showText4" class="btn btn-success">Dodaj tekst</button>
       <button type="button" id="showMedia4" class="btn btn-success">Dodaj mediju</button>
     </div>
-    <div class="form-group initially-hidden" id = "text4">
+    <div class="form-group initially-hidden" id="text4">
       {{ form.text4.errors }}
       {{ form.text4 }}
       <button type="button" id="hideText4" class="btn btn-danger">Ukloni tekst</button>
     </div>
-    <div class="form-group initially-hidden" id ="media4">
+    <div class="form-group initially-hidden" id="media4">
       {{ form.media4.errors }}
       {{ form.media4 }}
-      <button type="button" id="hideMedia4" class="btn btn-danger">Ukloni Mediju</button>
+      <button type="button" id="hideMedia4" class="btn btn-danger">Ukloni mediju</button>
     </div>
-    <div class="form-group initially-hidden" id ="btnBlock5">
+    <div class="form-group initially-hidden" id="btnBlock5">
       <button type="button" id="showText5" class="btn btn-success">Dodaj tekst</button>
     </div>
-    <div class="form-group initially-hidden" id = "text5">
+    <div class="form-group initially-hidden" id="text5">
       {{ form.text5.errors }}
       {{ form.text5 }}
       <button type="button" id="hideText5" class="btn btn-danger">Ukloni tekst</button>
     </div>
-   
+
     <button type="submit" class="btn btn-primary">Predloži priču</button>
   </form>
 </div>

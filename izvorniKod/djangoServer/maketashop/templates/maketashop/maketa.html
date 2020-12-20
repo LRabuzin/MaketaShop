@@ -2,20 +2,6 @@
 {% load static %}
 {% block content %}
 
-<script language="JavaScript">
-
-var DivTxt = new Array()
-DivTxt[0] = "Please Select Priority"
-DivTxt[1] = "Priority Low: The selection is Low"
-DivTxt[2] = "Priority Normal: The selection is Normal"
-DivTxt[3] = "Priority High: The selection is High"
-DivTxt[3] = "Priority Critical: The selection is Critical"
-
-function getText(slction){
-txtSelected = slction.selectedIndex;
-document.getElementById('textDiv').innerHTML = DivTxt[txtSelected];
-}
-</script>
 <div class="container">
 
     <div class="row">
@@ -40,8 +26,13 @@ document.getElementById('textDiv').innerHTML = DivTxt[txtSelected];
 
             <hr>
 
-            <h3>Cijena:</h3>
+            <h3>Cijena:</h3><!--ovo treba dinamicki ovisiti o materijalu-->
             <p>500 kn (ovo treba bit dinamicko u ovisnosti o materijalu)</p>
+
+            <hr>
+
+            <h3>Materijal:</h3><!--ovo treba dinamicki ovisiti o materijalu-->
+            <p>Drvo (ovo treba bit dinamicko u ovisnosti o materijalu)</p>
 
             <hr>
 
@@ -53,7 +44,7 @@ document.getElementById('textDiv').innerHTML = DivTxt[txtSelected];
                         <a class="dropdown-item" href="#">{{ materijal }} </a>
                     {% endfor %}
                 </div>
-                <a href="#" class="btn btn-success col-5 m-2">Kupi</a>
+                <a href="#" class="btn btn-success col-5 m-2">Kupi</a><!--ovo treba nakon sto se sredi dinamicko-->
             </div>
 
             <hr>

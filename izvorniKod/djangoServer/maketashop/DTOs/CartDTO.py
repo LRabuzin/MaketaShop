@@ -2,7 +2,7 @@ from maketashop.models import Maketa
 
 class CartItem():
     def __init__(self, maketaID, materijal, cijena):
-        self.maketa=Maketa.objects.select_related().get(maketaid=1)
+        self.maketa=Maketa.objects.select_related().get(maketaid=maketaID)
         self.materijal=materijal
         self.cijena=cijena
 
@@ -40,7 +40,7 @@ class CartDTO():
         return self.inventory
 
     def addMaketa(self, maketaID, materijal, cijena, kolicina):
-        maketa = CartItem(Maketa.objects.select_related().get(maketaid=maketaID), materijal, cijena)
+        maketa = CartItem(maketaID, materijal, cijena)
         self.suma=self.suma + cijena * kolicina
         self.brItema=self.brItema+kolicina
         if maketa in self.inventory:
@@ -50,7 +50,7 @@ class CartDTO():
         return self
 
     def removeMaketa(self, maketaID, materijal, cijena, kolicina):
-        maketa = CartItem(Maketa.objects.select_related().get(maketaid=maketaID), materijal, cijena)
+        maketa = CartItem(maketaID, materijal, cijena)
         self.suma=self.suma - cijena * kolicina
         self.brItema-=kolicina
         if maketa in self.inventory:
@@ -59,14 +59,14 @@ class CartDTO():
             self.brItema=self.brItema-self.inventory[maketa]
             self.suma=self.suma - cijena * self.inventory[maketa]
             self.inventory.pop(maketa)
-        return self
 
     def removeSveOdMaketa(self, maketaID, materijal, cijena):
-        maketa = CartItem(Maketa.objects.select_related().get(maketaid=maketaID),materijal, cijena)
+        maketa = CartItem(maketaID, materijal, cijena)
         if maketa in self.inventory:
             kolicina = self.inventory[maketa]
             self.suma = self.suma - cijena*kolicina
             self.brItema = self.brItema-kolicina
+            self.inventory.pop(maketa)
 
     def getSuma(self):
         return self.suma

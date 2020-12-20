@@ -17,4 +17,14 @@ class Maketa(View):
             })
 
     def post(self, request):
-        return HttpResponseRedirect(self.request.path_info)
+        if 'idMaketa' in request.POST:
+            maketaId = int(request.POST['idMaketa'])
+            cijena = float(request.POST['cijena'])
+            materijal = request.POST['materijal']
+
+            if not 'cart' in request.session:
+                request.session['cart']=CartDTO()
+            cart = request.session['cart']
+            cart.addMaketa(maketaId, materijal, cijena, 1)
+            request.session['cart']=cart
+        return HttpResponseRedirect(reverse('webshop'))

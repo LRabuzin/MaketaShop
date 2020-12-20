@@ -23,6 +23,7 @@
                     <form action="" method="post" name="kupi">
                         <div class="row form-group">
                             {% csrf_token %}
+                            
                             <input type="hidden" id="idMaketa" name="idMaketa" value="{{maketa.getId}}">
                             <input type="hidden" id="cijena" name="cijena" value="{{napravljenaod.getCijena}}">
                             <input type="hidden" id="materijal" name="materijal" value="{{napravljenaod.getMaterijal}}">
