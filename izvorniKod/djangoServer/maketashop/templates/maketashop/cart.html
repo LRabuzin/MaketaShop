@@ -35,7 +35,7 @@
                                             <form action="" method="post" name="rate" class="d-flex flex-row justify-content-around p-3">
                                                 {% csrf_token %}
                                                 <input type="hidden" id="metoda2" name="metoda" value="2">
-                                                <input type="hidden" id="idMaketa2" name="idMaketa" value="{{maketa.getId}}">
+                                                <input type="hidden" id="idMaketa2" name="idMaketa" value="{{maketa.getMaketaId}}">
                                                 <input type="hidden" id="cijena2" name="cijena" value="{{maketa.getCijena}}">
                                                 <input type="hidden" id="materijal2" name="materijal" value="{{maketa.getMaterijal}}">
                                                 <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
@@ -48,7 +48,7 @@
                                             <form action="" method="post" name="rate" class="d-flex flex-row justify-content-around p-3">
                                                 {% csrf_token %}
                                                 <input type="hidden" id="metoda3" name="metoda" value="3">
-                                                <input type="hidden" id="idMaketa3" name="idMaketa" value="{{maketa.getId}}">
+                                                <input type="hidden" id="idMaketa3" name="idMaketa" value="{{maketa.getMaketaId}}">
                                                 <input type="hidden" id="cijena3" name="cijena" value="{{maketa.getCijena}}">
                                                 <input type="hidden" id="materijal3" name="materijal" value="{{maketa.getMaterijal}}">
                                                 <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
@@ -64,7 +64,7 @@
                                     <form action="" method="post" name="rate" class="d-flex flex-row justify-content-around p-3">
                                         {% csrf_token %}
                                         <input type="hidden" id="metoda" name="metoda" value="1">
-                                        <input type="hidden" id="idMaketa" name="idMaketa" value="{{maketa.getId}}">
+                                        <input type="hidden" id="idMaketa" name="idMaketa" value="{{maketa.getMaketaId}}">
                                         <input type="hidden" id="cijena" name="cijena" value="{{maketa.getCijena}}">
                                         <input type="hidden" id="materijal" name="materijal" value="{{maketa.getMaterijal}}">
                                         <button type="submit" class="btn btn-sm btn-danger">X</button>

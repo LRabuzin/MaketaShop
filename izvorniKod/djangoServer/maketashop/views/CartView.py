@@ -24,7 +24,10 @@ class Cart(View):
         if 'metoda' in request.POST:
                 if 'cart' in request.session:
                     cart = request.session['cart']
-                    
+                    maketaId = int(request.POST['idMaketa'])
+                    materijal = request.POST['materijal']
+                    cijena = float(request.POST['cijena'])
+                    #brisanje sve od jednog itema
                     if request.POST['metoda'] == '1':
                         cart.removeSveOdMaketa(maketaId, materijal, cijena)
                     

@@ -44,13 +44,14 @@ class CartDTO():
         self.suma=self.suma + cijena * kolicina
         self.brItema=self.brItema+kolicina
         if maketa in self.inventory:
+            print("AAAAAAAA")
             self.inventory[maketa]=self.inventory[maketa]+kolicina
         else:
             self.inventory[maketa]=kolicina
         return self
 
     def removeMaketa(self, maketaID, materijal, cijena, kolicina):
-        maketa = CartItem(Maketa.objects.select_related().get(maketaid=maketaID), materijal, cijena)
+        maketa = CartItem(maketaID, materijal, cijena)
         self.suma=self.suma - cijena * kolicina
         self.brItema-=kolicina
         if maketa in self.inventory:
@@ -59,14 +60,14 @@ class CartDTO():
             self.brItema=self.brItema-self.inventory[maketa]
             self.suma=self.suma - cijena * self.inventory[maketa]
             self.inventory.pop(maketa)
-        return self
 
     def removeSveOdMaketa(self, maketaID, materijal, cijena):
-        maketa = CartItem(Maketa.objects.select_related().get(maketaid=maketaID),materijal, cijena)
+        maketa = CartItem(maketaID, materijal, cijena)
         if maketa in self.inventory:
             kolicina = self.inventory[maketa]
             self.suma = self.suma - cijena*kolicina
             self.brItema = self.brItema-kolicina
+            self.inventory.pop(maketa)
 
     def getSuma(self):
         return self.suma
