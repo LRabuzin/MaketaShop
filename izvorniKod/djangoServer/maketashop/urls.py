@@ -12,6 +12,7 @@ from maketashop.views.CheckoutView import Checkout
 from maketashop.views.MaketaView import Maketa
 from maketashop.views.PregledKorisnikaView import PregledKorisnika
 from maketashop.views.TransakcijeView import Transakcije
+from maketashop.views.AdminUserListView import AdminUserList
 from maketashop.views.InboxView import Inbox
 from maketashop.views.InterakcijaView import Interakcija
 from maketashop.views.SubmitionTemaView import SubmitionTema
@@ -33,7 +34,7 @@ urlpatterns = [
     path('post/<int:id>/', B_Post.as_view(), name='b_post'),
     path('checkout/', Checkout.as_view(), name='checkout'),
     path('maketa/<int:id>/', Maketa.as_view(), name='maketa'),
-    path('pregledKorisnika/', PregledKorisnika.as_view(), name='pregledKorisnika'),
+    path('pregledKorisnika/', AdminUserList.as_view(), name='pregledKorisnika'),
     path('transakcije/', Transakcije.as_view(), name='transakcije'),
     path('inbox/', Inbox.as_view(), name='inbox'),
     path('interakcija/', Interakcija.as_view(), name='interakcija'),

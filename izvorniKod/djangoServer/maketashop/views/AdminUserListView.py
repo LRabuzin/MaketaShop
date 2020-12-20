@@ -7,7 +7,6 @@ class AdminUserList(View):
     template_name ="maketashop/pregledKorisnika.html"
 
     def get(self, request):
-        # <view logic>
         
         return render(request, self.template_name, {
             'title': "pregledKorisnika", 
