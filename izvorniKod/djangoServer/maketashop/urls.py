@@ -14,6 +14,8 @@ from maketashop.views.TransakcijeView import Transakcije
 from maketashop.views.InboxView import Inbox
 from maketashop.views.InterakcijaView import Interakcija
 from maketashop.views.SubmitionTemaView import SubmitionTema
+from maketashop.views.SubmitionMaketaView import SubmitionMaketa
+from maketashop.views.SubmitionPostView import SubmitionPost
 
 from . import views
 
@@ -34,4 +36,6 @@ urlpatterns = [
     path('inbox/', Inbox.as_view(), name='inbox'),
     path('interakcija/', Interakcija.as_view(), name='interakcija'),
     path('temasubmit/', SubmitionTema.as_view(), name='temasubmit'),
+    path('maketasubmit/', SubmitionMaketa.as_view(), name='maketasubmit'),
+    path('postsubmit/', SubmitionPost.as_view(), name='postsubmit'),
 ]
