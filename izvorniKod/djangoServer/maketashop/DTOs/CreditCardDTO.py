@@ -18,12 +18,12 @@ class CreditCardDTO():
       return self.korisnik.adresa
 
    def getKKPaypal(self):
-      return self.korisnik.kkPaypal
+      return self.korisnik.kkpaypal
 
    def getKKImePrezime(self):
       return self.korisnik.kkimeprezime
 
-   def getKKbroj(self):
+   def getKKBroj(self):
       return self.korisnik.kkbroj
 
    def getKKIstek(self):

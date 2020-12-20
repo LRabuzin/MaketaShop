@@ -2,12 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import View
-from datetime import datetime
 from ..forms import InteractionMaketaForm
 from maketashop.models import Interakcija
 from maketashop.models import Korisnik
 from maketashop.models import Maketa
-#from maketashop.handle_uploaded_file import handle_uploaded_file
+from maketashop.models import Vrstamakete
+
 
 class SubmitionMaketa(View):
    template_name ="maketashop/interactionMaketa.html"
@@ -27,20 +27,25 @@ class SubmitionMaketa(View):
          })
 
    def post(self, request):
-      form = InteractionThemeForm(request.POST)
+      form = InteractionMaketaForm(request.POST)
       if form.is_valid():
 
-         tema = Tema()
-         tema.ime = form.cleaned_data['ime_teme']
-         tema.tekstteme = form.cleaned_data['tekst_teme']
+         vrsta = Vrstamakete.objects.select_related().get(ime = 'custom')
 
-         tema.save()
+
+         maketa = Maketa()
+         maketa.ime = form.cleaned_data['ime_makete']
+         maketa.dimenzije = form.cleaned_data['dimenzije']
+         maketa.opis = form.cleaned_data['opis']
+         maketa.vrsta = vrsta
+         maketa.save()
+
          interakcija = Interakcija()
          interakcija.korisnikid = Korisnik.objects.select_related().get(email = request.session['user'])
-         interakcija.naslovinterakcije = form.cleaned_data['tekst_teme']
-         interakcija.vrstainterakcije = "tema"
-         interakcija.temaid = tema
+         interakcija.naslovinterakcije = form.cleaned_data['naslov_interakcije']
+         interakcija.vrstainterakcije = "maketa"
+         interakcija.maketaid = maketa
          interakcija.save()
 
 
-         return HttpResponseRedirect('submition')
+      return HttpResponseRedirect(reverse('index'))

@@ -42,7 +42,6 @@ class InteractionThemeForm(forms.Form):
 class MaketaForm(forms.Form):
     ime_makete = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime makete', 'class':'form-control my-input'}))
     dimenzije = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Dimenzije', 'class':'form-control my-input'}))
-    osnovna_slika = forms.FileField(label="Osnovna slika makete", validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])])    
     opis = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Opis', 'class':'form-control my-input'}))
 
 class InteractionPostForm(PostForm):
@@ -62,3 +61,14 @@ class AdminMaketaForm(MaketaForm):
     drvo_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
     plastika_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
     aluminij_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
+
+class PlacanjeForm(forms.Form):
+    ime = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
+    prezime = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Prezime', 'class':'form-control my-input'}))
+    adresa = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Adresa', 'class':'form-control my-input'}))
+    email = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Email', 'class':'form-control my-input'}))
+    ime_na_kartici = forms.CharField(max_length=27, widget=forms.TextInput(attrs={'placeholder': 'Ime i prezime nositelja kartice', 'class':'form-control my-input'}))
+    # paypal_bool = forms.BooleanField(label=)
+    broj_kartice = forms.IntegerField(widget=forms.NumberInput)
+    istek_kartice = forms.CharField(max_length=5, widget=forms.TextInput(attrs={'placeholder': 'MM/YY', 'class':'form-control my-input'}))
+    cvv = forms.IntegerField(widget=forms.NumberInput)
