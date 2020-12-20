@@ -30,3 +30,6 @@ class TransakcijeDTO():
         return self.korisnik
     def getAdmin(self):
         return self.admin
+    def setAdmin(self):
+        self.admin = True;
+        return

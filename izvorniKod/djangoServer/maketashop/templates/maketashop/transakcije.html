@@ -48,10 +48,9 @@
 <hr>
 {% endfor %}
 {% else %}
-
 <div class="card">
 	{% for t in TransakcijeDTO.getTransakcije %}
-	{% if t.getKorisnikId.getMail == session.user %}
+	{% if t.getKorisnikId.getEmail == session.user %}
 	<hr>
 		<div class="card-header">
 			{{  t.getIme }}
