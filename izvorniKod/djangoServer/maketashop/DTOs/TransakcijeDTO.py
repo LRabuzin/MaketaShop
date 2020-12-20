@@ -28,6 +28,7 @@ class TransakcijeDTO():
         return self.materijal
     def getKorisnik(self):
         return self.korisnik
+    
     def getAdmin(self):
         return self.admin
     def setAdmin(self):
