@@ -42,7 +42,6 @@ class InteractionThemeForm(forms.Form):
 class MaketaForm(forms.Form):
     ime_makete = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime makete', 'class':'form-control my-input'}))
     dimenzije = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Dimenzije', 'class':'form-control my-input'}))
-    osnovna_slika = forms.FileField(label="Osnovna slika makete", validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])])    
     opis = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Opis', 'class':'form-control my-input'}))
 
 class InteractionPostForm(PostForm):
