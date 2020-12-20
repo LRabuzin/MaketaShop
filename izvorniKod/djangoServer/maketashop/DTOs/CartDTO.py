@@ -44,7 +44,6 @@ class CartDTO():
         self.suma=self.suma + cijena * kolicina
         self.brItema=self.brItema+kolicina
         if maketa in self.inventory:
-            print("AAAAAAAA")
             self.inventory[maketa]=self.inventory[maketa]+kolicina
         else:
             self.inventory[maketa]=kolicina

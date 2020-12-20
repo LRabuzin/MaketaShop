@@ -37,7 +37,7 @@ class Cart(View):
                     
                     #micanje jednog itema
                     elif request.POST['metoda'] == '3':
-                        cart.addMaketa(maketaId, materijal, cijena, 1)
+                        cart.removeMaketa(maketaId, materijal, cijena, 1)
                     
                     request.session['cart'] = cart
         return HttpResponseRedirect(self.request.path_info)
