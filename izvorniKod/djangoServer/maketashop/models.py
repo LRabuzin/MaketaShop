@@ -46,7 +46,7 @@ class Maketa(models.Model):
     dimenzije = models.CharField(max_length=20)
     opis = models.CharField(max_length=160, default=None, blank=True, null=True)
     vrsta = models.ForeignKey(Vrstamakete, models.DO_NOTHING, db_column='vrsta')
-    mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='mediaid')
+    mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='mediaid', blank=True, null=True)
 
     class Meta:
         managed = True
@@ -185,6 +185,15 @@ class Korisnik(models.Model):
 
     def getEmail(self):
         return self.email
+    
+    def getKorisnickoIme(self):
+        return self.korisnickoime
+
+    def getIme(self):
+        return self.ime
+
+    def getPrezime(self):
+        return self.prezime
 
 class Prica(models.Model):
     pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
