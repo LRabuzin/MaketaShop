@@ -59,3 +59,14 @@ class AdminMaketaForm(MaketaForm):
     drvo_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
     plastika_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
     aluminij_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
+
+class PlacanjeForm(forms.Form):
+    ime = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
+    prezime = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Prezime', 'class':'form-control my-input'}))
+    adresa = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Adresa', 'class':'form-control my-input'}))
+    email = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Email', 'class':'form-control my-input'}))
+    ime_na_kartici = forms.CharField(max_length=27, widget=forms.TextInput(attrs={'placeholder': 'Ime i prezime nositelja kartice', 'class':'form-control my-input'}))
+    # paypal_bool = forms.BooleanField(label=)
+    broj_kartice = forms.IntegerField(widget=forms.NumberInput)
+    istek_kartice = forms.CharField(max_length=5, widget=forms.TextInput(attrs={'placeholder': 'MM/YY', 'class':'form-control my-input'}))
+    cvv = forms.IntegerField(widget=forms.NumberInput)
