@@ -7,7 +7,6 @@ from ..forms import InteractionThemeForm
 from maketashop.models import Interakcija
 from maketashop.models import Korisnik
 from maketashop.models import Tema
-from maketashop.handle_uploaded_file import handle_uploaded_file
 
 class SubmitionTema(View):
    template_name ="maketashop/tema.html"

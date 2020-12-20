@@ -14,6 +14,7 @@
                             <th scope="col"></th>
                             <th scope="col">Proizvod</th>
                             <th scope="col" class="text-center">Količina</th>
+                            <th scope="col" class="text-center">Materijal</th>
                             <th scope="col" class="text-right">Cijena</th>
                             <th></th>
                         </tr>
@@ -25,10 +26,11 @@
                                     <img class="shop-img" src="{% static maketa.getMedia %}" />
                                 </td>
                                 <td>{{ maketa.getIme }}</td>
-                                
+
                                 <td>
-                                    <input class="form-control" type="text" value="1" /></td>
-                                <td class="text-right">500,00 kn</td>
+                                    <input class="form-control" type="text" value="{{ kolicina }}" /></td>
+                                <td class="text-center">MATERIJAL</td>
+                                <td class="text-right">CIJENA</td>
                                 <td class="text-right">
                                     <button class="btn btn-sm btn-danger">X</button>
                                 </td>
@@ -39,24 +41,24 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>Suma</td>
-                            <td class="text-right">1500,00 kn</td>
+                            <td class="text-right">Suma:</td>
+                            <td class="text-right">SUMA</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>Dostava</td>
-                            <td class="text-right">60,60 kn</td>
+                            <td class="text-right">Dostava:</td>
+                            <td class="text-right"> DOSTAVA </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><strong>Ukupno</strong></td>
-                            <td class="text-right"><strong>1560,60 kn</strong></td>
+                            <td class="text-right"><strong>Ukupno:</strong></td>
+                            <td class="text-right"><strong> SUMA+DOSTAVA </strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -67,7 +69,7 @@
                 <div class="col-sm-12  col-md-6">
                     <a href="{% url 'webshop' %}" class="btn btn-lg btn-block btn-light">Nastavi kupovinu</a>
                 </div>
-                <div class="col-sm-12 col-md-6 text-right">
+                <div class="col-sm-12 col-md-6 text-right"> <!--OVAJ GUMB treba vezat na checkout-->
                     <button class="btn btn-lg btn-block btn-success text-uppercase">Dovrši narudžbu</button>
                 </div>
             </div>
