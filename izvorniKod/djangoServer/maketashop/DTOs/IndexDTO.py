@@ -11,19 +11,19 @@ class jednaPrica():
         for medija in medijaprice:
             minslika=None
             mintekst=None
-                if medija.mediaid.vrstamedije=='slika':
-                    if minslika==None:
-                        minslika=medija.poredakuprici
-                    if minslika>=medija.poredakuprici:
-                        minslika=medija.poredakuprici
-                        self.slika=medijaprice
+            if medija.mediaid.vrstamedije=='slika':
+                if minslika==None:
+                    minslika=medija.poredakuprici
+                if minslika>=medija.poredakuprici:
+                    minslika=medija.poredakuprici
+                    self.slika=medijaprice
                 
-                if medija.mediaid.vrstamedije=='tekst':
-                    if mintekst==None:
-                        mintekst=medija.poredakuprici
-                    if minslika>=medija.poredakuprici:
-                        minslika=midija.poredakuprici
-                        self.tekst=medijaprice
+            if medija.mediaid.vrstamedije=='tekst':
+                if mintekst==None:
+                    mintekst=medija.poredakuprici
+                if minslika>=medija.poredakuprici:
+                    minslika=midija.poredakuprici
+                    self.tekst=medijaprice
 
     def getNaslov(self):
         return self.prica.naslovprice
@@ -37,12 +37,10 @@ class jednaPrica():
 class IndexDTO():
     def __init__(self):
         self.price=Prica.objects.all().select_related().filter(objavljena=True)
-        self.rijecnik={}
+        self.rijecnik=[]
         for prica in self.price:
-            medijaprice=Multimedijaprice.objects.select_related().filter(pricaid=prica.pricaid)
-            self.rijecnik[prica]=None
-            for medija in medijaprice:
-                medija.mediaid.vrstamedije=='slika'
-                self.rijecnik[prica]=medijaprice
+            if prica.objavljena:
+                rijecnik.append(jednaPrica(prica.pricaid))
+            
     def getPrice(self):
         return self.rijecnik
