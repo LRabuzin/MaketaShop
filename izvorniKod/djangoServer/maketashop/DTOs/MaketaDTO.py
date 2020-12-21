@@ -29,3 +29,14 @@ class MaketaDTO():
 
     def getMaketaSlika(self):
         return self.maketa.mediaid.putdodatoteke
+    
+    def getId(self):
+        return self.maketa.maketaid
+
+    def getOsnovniMaterijal(self):
+        for item in self.rijecnik.keys():
+            return item
+    
+    def getOsnovnuCijenu(self):
+        for item in self.rijecnik.values():
+            return item

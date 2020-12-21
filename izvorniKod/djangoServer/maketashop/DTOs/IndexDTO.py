@@ -37,10 +37,10 @@ class jednaPrica():
 class IndexDTO():
     def __init__(self):
         self.price=Prica.objects.all().select_related().filter(objavljena=True)
-        self.rijecnik=[]
+        self.svePrice=[]
         for prica in self.price:
             if prica.objavljena:
-                rijecnik.append(jednaPrica(prica.pricaid))
+                self.svePrice.append(jednaPrica(prica.pricaid))
             
     def getPrice(self):
-        return self.rijecnik
+        return self.svePrice

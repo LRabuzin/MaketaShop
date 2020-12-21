@@ -31,9 +31,7 @@ class Login(View):
             m = self.model_class.objects.get(email=mail)
             if m.lozinka == password:
                request.session['user'] = m.email
-               return HttpResponseRedirect(reverse('index'))
-            else:
-               return HttpResponseRedirect(reverse('index'))
-         else:
-            return HttpResponseRedirect(reverse('login'))
+               request.session['admin'] = m.jeadmin
+            return HttpResponseRedirect(reverse('index'))
+      return HttpResponseRedirect(reverse('login'))
    

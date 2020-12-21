@@ -20,6 +20,7 @@ class Signup(View):
                 })
         else:
             return HttpResponseRedirect(reverse('index'))
+
     def post(self, request):
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -27,20 +28,25 @@ class Signup(View):
             prezime = form.cleaned_data['surname']
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
-            lozinka = form.cleaned_data['pass1']
+            lozinka1 = form.cleaned_data['pass1']
+            lozinka2 = form.cleaned_data['pass2']
+            telefonskibroj = form.cleaned_data['phone']
             razinaautoriteta = 1
+            if lozinka1 == lozinka2:
+                if Korisnik.objects.filter(email=email).exists():
+                    return HttpResponseRedirect(reverse('signup'))
+                else:
+                    korisnik = Korisnik()
+                    korisnik.ime = ime
+                    korisnik.prezime = prezime
+                    korisnik.korisnickoime = username
+                    korisnik.email = email
+                    korisnik.lozinka = lozinka1
+                    #korisnik.brojtelefona = telefonskibroj
+                    korisnik.razinaautoriteta = razinaautoriteta
+                    korisnik.save()
 
-            if Korisnik.objects.filter(email=email).exists():
-                return HttpResponseRedirect(reverse('signup'))
-            else:
-                korisnik = Korisnik()
-                korisnik.ime = ime
-                korisnik.prezime = prezime
-                korisnik.korisnickoime = username
-                korisnik.email = email
-                korisnik.lozinka = lozinka
-                korisnik.razinaautoriteta = razinaautoriteta
-                korisnik.save()
-
-                request.session['user'] = korisnik.email
-                return HttpResponseRedirect(reverse('index'))
+                    request.session['user'] = korisnik.email
+                    request.session['admin'] = False
+                    return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('signup'))
