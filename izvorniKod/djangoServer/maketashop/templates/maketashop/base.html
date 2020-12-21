@@ -45,7 +45,13 @@
                   {% endif %}
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link {% if link_active == 'kosarica' %}active{% endif %}" href="{% url 'cart' %}" tabindex="-1" aria-disabled="true">Košarica: 3</a>
+                  <a class="nav-link {% if link_active == 'kosarica' %}active{% endif %}" href="{% url 'cart' %}" tabindex="-1" aria-disabled="true">Košarica: 
+                      {% if session.cart %}
+                        {{ session.cart.getBrItema }}
+                      {% else %}
+                      0
+                      {% endif %}
+                  </a>
                 </li>
               </ul>
               {% endif %}
