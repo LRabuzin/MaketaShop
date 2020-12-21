@@ -102,7 +102,11 @@
                     <a href="{% url 'webshop' %}" class="btn btn-lg btn-block btn-light">Nastavi kupovinu</a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <a href="{% url 'checkout' %}" class="btn btn-lg btn-block btn-success text-uppercase">Dovrši narudžbu</a>
+                    {% if cartDTO.getUkupno == 0 %}
+                        <a href="#" class="btn btn-lg btn-block btn-secondary text-uppercase">Dovrši narudžbu</a>
+                    {% else %}
+                        <a href="{% url 'checkout' %}" class="btn btn-lg btn-block btn-success text-uppercase">Dovrši narudžbu</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

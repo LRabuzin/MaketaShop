@@ -3,10 +3,16 @@
 {% block content %}
 
 <script>
-    function changeLevel() {
+    function changeMaterijal() {
         document.getElementById("cijena").innerHTML = document.getElementById("nivel").value;
     }
-    changeLevel();
+    changeMaterijal();
+    function sendToBackend() {
+        document.getElementById("cijena2").value = document.getElementById("nivel").value;
+        var e = document.getElementById("nivel");
+        document.getElementById("materijal").value = e.options[e.selectedIndex].text;
+    }
+    sendToBackend();
 </script>
 
 <div class="container">
@@ -34,38 +40,26 @@
             <hr>
 
             <h3>Cijena:</h3>
-            <!--ovo treba dinamicki ovisiti o materijalu-->
             <p id="cijena">{{ maketaDTO.getOsnovnuCijenu }}</p>
 
             <hr>
 
             <div class="d-flex flex-row justify-content-around">
-                <!--<a class="btn btn-primary dropdown-toggle col-5 m-2" href="#" role="button"
-                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materijali</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    {% for materijal in maketaDTO.getMaterijaliICijene %}
-                        <a class="dropdown-item" href="#">{{ materijal }} </a>
-                    {% endfor %}
-                </div>-->
 
-                <select class="col-5 m-2" id="nivel" onchange='changeLevel()'>
-                    <option selected disabled hidden>{{maketaDTO.getOsnovniMaterijal}}</option>
+                <select class="col-5 m-2" id="nivel" onchange='changeMaterijal()' form="kupnja">
+                    <option selected disabled hidden value="{{ maketaDTO.getOsnovnuCijenu }}">{{maketaDTO.getOsnovniMaterijal}}</option>
                     {% for materijal,cijena in maketaDTO.getMaterijaliICijene.items %}
                         <option value="{{ cijena }}">{{ materijal }}</option>
                     {% endfor %}
                 </select>
-                <form class="col-5 m-2" action="" method="post" name="kupi">
+                <form class="col-5 m-2" action="" method="post" id="kupnja" name="kupi">
                     <div class="form-group">
                         {% csrf_token %}
-                            
-                        <input type="hidden" id="cijena2" name="cijena" value="{{maketaDTO.getOsnovnuCijenu}}">
-                        <input type="hidden" id="materijal" name="materijal" value="{{maketaDTO.getOsnovniMaterijal}}">
-                        <button type="submit" class="btn btn-success col-2">Kupi</button>
+                        <input type="hidden" id="cijena2" name="cijena" value="">
+                        <input type="hidden" id="materijal" name="materijal" value="">
+                        <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
                     </div>
                 </form>
-
-               <!-- <a href="#" class="btn btn-success col-5 m-2">Kupi</a>ovo treba nakon sto se sredi dinamicko-->
-
 
             </div>
 
