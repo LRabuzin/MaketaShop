@@ -9,7 +9,8 @@ class MaketaDTO():
         self.napravljenaOd=Napravljenaod.objects.filter(maketaid=maketaID)
         self.rijecnik={}
         for materijal in self.materijali:
-            self.rijecnik[materijal.ime]=self.napravljenaOd.get(materijalid=materijal.materijalid)
+            if self.napravljenaOd.filter(materijalid=materijal.materijalid).exists():
+                self.rijecnik[materijal.ime]=self.napravljenaOd.get(materijalid=materijal.materijalid).cijena
 
     def getMaterijaliICijene(self):
         return self.rijecnik
