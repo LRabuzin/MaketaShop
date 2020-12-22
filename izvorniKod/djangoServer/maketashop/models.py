@@ -221,6 +221,15 @@ class Korisnik(models.Model):
     def getImePrezimeBool(self):
         return self.imeprezimeprivatno
 
+    def getDozvoljenPristup(self):
+        return self.dozvoljenpristup
+
+    def getJeAdmin(self):
+        return self.jeadmin
+
+    def getKorisnikId(self):
+        return self.korisnikid
+
     
 
 class Prica(models.Model):

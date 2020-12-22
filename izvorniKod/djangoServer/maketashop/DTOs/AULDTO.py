@@ -16,4 +16,12 @@ class AULDTO():
     def getSearchTerm(self):
         return self.searchterm
 
+    def setSearchTerm(self, t):
+        self.searchterm = t;
+        self.setKorisnici(t);
+        return
+
+    def setKorisnici(self, searchterm):
+        self.korisnici = Korisnik.objects.all().select_related().filter(korisnickoime__icontains=searchterm)
+        return
         
