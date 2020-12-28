@@ -22,6 +22,9 @@ class SubmitionPrica(View):
       if 'user' not in request.session:
          return HttpResponseRedirect(reverse('index'))
       else:
+         if request.session['user'].jeadmin:
+            return HttpResponseRedirect(reverse('index'))
+            
          return render(request, self.template_name, {
          'title': "submitionMaketa", 
          'link_active': "submitionMaketa", 
@@ -32,10 +35,10 @@ class SubmitionPrica(View):
 
    def post(self, request):
       form = InteractionPostForm(request.POST, request.FILES)
-      print('tu sam')
+
       if form.is_valid():
          brojac = 0
-         print('ne tu sam i usel sam')
+
          prica = Prica()
          prica.naslovprice = form.cleaned_data['naslovprice']
          prica.autorid = Korisnik.objects.select_related().get(email = request.session['user'])
