@@ -44,6 +44,11 @@
                     <a class="dropdown-item" href="{% url 'signup' %}">Kreiraj profil</a>
                   </div>
                   {% endif %}
+                  {% if session.admin %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if link_active == 'pregledKorisnika' %}active{% endif %}" href="{% url 'pregledKorisnika' %}">Pregled korisnika</a>
+                  </li>
+                  {% endif %}
                 </li>
                 <li class="nav-item">
                   <a class="nav-link {% if link_active == 'kosarica' %}active{% endif %}" href="{% url 'cart' %}" tabindex="-1" aria-disabled="true">Košarica: 
