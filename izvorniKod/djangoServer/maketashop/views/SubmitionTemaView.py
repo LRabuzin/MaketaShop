@@ -18,7 +18,7 @@ class SubmitionTema(View):
       if 'user' not in request.session:
          return HttpResponseRedirect(reverse('index'))
       else:
-         user = Korisnik.objects.select_related().get(korisnikid = request.session['user'])
+         user = Korisnik.objects.select_related().get(email = request.session['user'])
          if user.jeadmin:
             return HttpResponseRedirect(reverse('index'))
          

@@ -22,9 +22,10 @@ class SubmitionPrica(View):
       if 'user' not in request.session:
          return HttpResponseRedirect(reverse('index'))
       else:
-         if request.session['user'].jeadmin:
+         user = Korisnik.objects.select_related().get(email = request.session['user'])
+         if user.jeadmin:
             return HttpResponseRedirect(reverse('index'))
-            
+
          return render(request, self.template_name, {
          'title': "submitionMaketa", 
          'link_active': "submitionMaketa", 
