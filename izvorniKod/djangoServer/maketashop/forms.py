@@ -52,6 +52,7 @@ class AdminPostForm(PostForm, MaketaForm):
     includes_maketa = forms.BooleanField(label="Uključuje maketu", required=False, widget=forms.CheckboxInput(attrs={'id':'includesMaketa'}))
     unique_cijena = forms.DecimalField(label="Cijena:", min_value = 0, decimal_places = 2)
     broj_na_skladistu = forms.IntegerField(label="Broj na skladištu:", min_value = 0)
+    osnovna_slika = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])])
 
 class InteractionMaketaForm(MaketaForm):
     naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
