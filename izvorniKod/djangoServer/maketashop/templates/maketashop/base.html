@@ -33,6 +33,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item " href="{% url 'profil' %}">Moj profil</a>
                     <a class="dropdown-item" href="{% url 'inbox' %}">Sandučić</a>
+                    <a class="dropdown-item" href="{% url 'transakcije' %}">Transakcije</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'logout' %}">Odjavi se</a>
                   </div>
@@ -42,6 +43,11 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'signup' %}">Kreiraj profil</a>
                   </div>
+                  {% endif %}
+                  {% if session.admin %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if link_active == 'pregledKorisnika' %}active{% endif %}" href="{% url 'pregledKorisnika' %}">Pregled korisnika</a>
+                  </li>
                   {% endif %}
                 </li>
                 <li class="nav-item">
@@ -57,6 +63,7 @@
               {% endif %}
             </div>
         </nav>
+		{% include './messages.html' %}
     </header>
 
     {% block content %}{% endblock content %}

@@ -4,11 +4,15 @@ from django.views.generic import View
 from django.shortcuts import render
 from maketashop.DTOs.AULDTO import AULDTO
 from maketashop.models import Korisnik
+from django.contrib import messages
+
+
 
 class AdminUserList(View):
     template_name ="maketashop/pregledKorisnika.html"
 
     def get(self, request):
+        messages.add_message(request, messages.ERROR, 'POYY SVIJETE!')
         dto = AULDTO(request)
 
         if dto.getOvlast() == False:

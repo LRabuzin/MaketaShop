@@ -37,7 +37,7 @@ class PostForm(forms.Form):
     
 class InteractionThemeForm(forms.Form):
     naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
-    ime_teme = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov priče', 'class':'form-control my-input'}))
+    ime_teme = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov teme', 'class':'form-control my-input'}))
     tekst_teme = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Sadržaj teme', 'class':'form-control my-input'}))
 
 class MaketaForm(forms.Form):
@@ -71,6 +71,6 @@ class PlacanjeForm(forms.Form):
     email = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Email', 'class':'form-control my-input'}))
     ime_na_kartici = forms.CharField(max_length=27, widget=forms.TextInput(attrs={'placeholder': 'Ime i prezime nositelja kartice', 'class':'form-control my-input'}))
     # paypal_bool = forms.BooleanField(label=)
-    broj_kartice = forms.IntegerField(widget=forms.NumberInput)
+    broj_kartice = forms.CharField(max_length=16, widget=forms.TextInput(attrs={'placeholder': 'Broj kartice', 'class':'form-control my-input'}))
     istek_kartice = forms.CharField(max_length=5, widget=forms.TextInput(attrs={'placeholder': 'MM/YY', 'class':'form-control my-input'}))
-    cvv = forms.IntegerField(widget=forms.NumberInput)
+    cvv = forms.CharField(max_length=3, widget=forms.TextInput(attrs={'placeholder': 'CVV', 'class':'form-control my-input'}))

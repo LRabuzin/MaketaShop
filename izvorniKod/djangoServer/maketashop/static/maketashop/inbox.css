@@ -1,9 +1,28 @@
 .filter:hover{
-    background-color: #74BE9A;
+    background-color: #96DFBC;
     transition: 0.3s;
 }
 
 .inter:hover{
-    background-color: #74BE9A;
+    background-color: #96DFBC;
     transition: 0.3s;
+}
+
+.profile-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    width: 4rem;
+    height: 4rem;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover{
+    text-decoration: none;
+    color: inherit;
 }
