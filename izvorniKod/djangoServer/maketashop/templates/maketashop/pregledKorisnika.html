@@ -25,9 +25,13 @@
     <hr>
     <div class="row">
         {% for k in AdminUserListDTO.getKorisnici %}
-		{% if k.getJeAdmin == False % }
-        <div class="col">{{ k.getKorisnickoIme }}</div>
-		
+		{% if k.getJeAdmin == False %}
+		<form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+		{% csrf_token %}
+		<button type="submit" name="userlink" value="{{ k.getKorisnikId }}">
+			{{ k.getKorisnickoIme }}
+		</button>
+		</form>
 		<form action="" method="post" name="pristup" class="d-flex flex-row justify-content-around p-3">
 		{% csrf_token %}
 		<input type="hidden" name="id" value="{{ k.getKorisnikId }}" />
@@ -40,11 +44,10 @@
 			Dopusti rad
 			</button>		
 		{% endif %}
-		{% endif %}
-		</form>
-		
+		</form>		
         <div class="w-100"></div>
         <hr>
+		{% endif %}
         {% endfor %}
     </div>
     <hr>

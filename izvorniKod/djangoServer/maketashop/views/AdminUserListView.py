@@ -43,4 +43,13 @@ class AdminUserList(View):
                     'AdminUserListDTO' : dto,
                     'session': request.session
                     })
-                
+        elif (request.POST.get("userlink")):
+            if request.POST.get("userlink") == "":
+                return HttpResponseRedirect(self.request.path_info)
+            else:
+                s = "/maketashop/profilpregled/" + request.POST.get("userlink")
+                return HttpResponseRedirect(s);
+        else:
+            print("U elseu")
+            return HttpResponseRedirect(self.request.path_info)
+            
