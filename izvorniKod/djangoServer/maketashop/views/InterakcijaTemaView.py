@@ -49,5 +49,6 @@ class InterakcijaTema(View):
             interakcija = Interakcija.objects.select_related().get(interakcijaid = id)
             interakcija.interakcijaotvorena = False
             interakcija.save()
+         return HttpResponseRedirect(self.request.path_info)
       else:
          return HttpResponseRedirect(reverse('index'))
