@@ -64,6 +64,7 @@ class Checkout(View):
 
     def post(self, request):
         form = PlacanjeForm(request.POST)
+        print('PK')
         if form.is_valid():
             ime = form.cleaned_data['ime']
             prezime = form.cleaned_data['prezime']
@@ -73,7 +74,8 @@ class Checkout(View):
             broj_kartice = form.cleaned_data['broj_kartice']
             istek_kartice = form.cleaned_data['istek_kartice']
             cvv = form.cleaned_data['cvv']
-
+            print('IME: ', ime)
+            print(cvv)
             paymentMethod = request.POST['paymentMethod']
             ukupaniznos = request.POST['ukupaniznos']
 
