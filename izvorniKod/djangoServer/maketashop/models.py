@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime
 # Create your models here.
 
 class Media(models.Model):
@@ -161,7 +161,7 @@ class Korisnik(models.Model):
     jeadmin = models.BooleanField(default=False)
     adresa = models.CharField(max_length=100, default=None, blank=True, null=True)
     rodendan = models.DateField(default=None, blank=True, null=True)
-    datumregistracije = models.DateField(default=None, blank=True, null=True)
+    datumregistracije = models.DateField(default=datetime.date.today, blank=True, null=True)
     adresaprivatna = models.BooleanField(default=False, blank=True, null=True)
     rodendanprivatan = models.BooleanField(default=False, blank=True, null=True)
     datumregistracijeprivatan = models.BooleanField(default=False, blank=True, null=True)

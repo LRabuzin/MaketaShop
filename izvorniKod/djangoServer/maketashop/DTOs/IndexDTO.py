@@ -22,7 +22,7 @@ class jednaPrica():
                 if mintekst==None:
                     mintekst=medija.poredakuprici
                 if minslika>=medija.poredakuprici:
-                    minslika=midija.poredakuprici
+                    minslika=medija.poredakuprici
                     self.tekst=medijaprice
 
     def getNaslov(self):
