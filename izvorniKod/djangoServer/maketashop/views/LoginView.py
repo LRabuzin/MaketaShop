@@ -21,7 +21,7 @@ class Login(View):
             })
       else:
          return HttpResponseRedirect(reverse('index'))
-   
+
    def post(self, request):
       form = LoginForm(request.POST)
       if form.is_valid():

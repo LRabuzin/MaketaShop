@@ -8,7 +8,8 @@ class Logout(View):
     def get(self, request):
       if 'user' in request.session:
          del request.session['user']
-         del request.session['cart']
+         if 'cart' in request.session:
+            del request.session['cart']
          del request.session['admin']
          return HttpResponseRedirect(reverse('index'))
       else:
