@@ -13,7 +13,7 @@ class InterakcijaTemaDTO():
          self.naslov = interakcija.naslovinterakcije
          self.otvoren = interakcija.interakcijaotvorena
          self.korisnik = interakcija.korisnikid
-         self.tema = Tema.objects.select_related().get(temaid = interakcija.temaid)
+         self.tema = Tema.objects.select_related().get(temaid = interakcija.temaid.temaid)
       def getVrsta(self):
          return self.vrsta
       

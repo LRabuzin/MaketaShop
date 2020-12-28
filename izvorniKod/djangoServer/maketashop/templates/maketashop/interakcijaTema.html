@@ -1,0 +1,19 @@
+{%extends "./base.html"%}
+{% load static %}
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'maketashop/inbox.css' %}"> {% endblock mycss %}
+{% block content %}
+<div class="container p-3">
+    <h2>Predložena tema - {{ InterakcijaTemaDTO.getNaslov }}</h2>
+    <hr>
+    <h4>{{ InterakcijaTemaDTO.getTema.getIme }}</h4>
+    <p>
+        {{ InterakcijaTemaDTO.getTema.getTekst }}
+    </p>
+
+    <!-- {% if jeAdmin %}
+    {% else %}
+    {% endif %} -->
+
+</div>
+{% endblock content %}

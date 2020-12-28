@@ -46,8 +46,8 @@ class SubmitionMaketa(View):
          maketa.save()
 
          napravljenaOd = Napravljenaod()
-         napravljenaOd.maketaid = maketa.maketaid
-         napravljenaOd.materijalid = form.cleaned_data['materijal'].materijalid
+         napravljenaOd.maketaid = maketa
+         napravljenaOd.materijalid = form.cleaned_data['materijal']
          napravljenaOd.cijena = None
          napravljenaOd.brojuskladistu = 1
          napravljenaOd.save()

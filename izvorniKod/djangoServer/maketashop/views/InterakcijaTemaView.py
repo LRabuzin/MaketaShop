@@ -7,9 +7,9 @@ from maketashop.models import Korisnik
 from maketashop.DTOs.InterakcijaTemaDTO import InterakcijaTemaDTO
 
 class InterakcijaTema(View):
-    template_name ="maketashop/interakcija.html"
+    template_name ="maketashop/interakcijaTema.html"
     def get(self, request, id):
-        if 'user' not in request.session:
+        if 'user' not in request.session: 
             return HttpResponseRedirect(reverse('login'))
         else:
             user = Korisnik.objects.select_related().get(email = request.session['user'])
@@ -24,13 +24,12 @@ class InterakcijaTema(View):
                   })
             else:
                 interakcija = Interakcija.objects.select_related().get(interakcijaid = id)
-
-                if request.session['user'].korisnikid == interakcija.korisnikid:
+                if user == interakcija.korisnikid:
                     return render(request, self.template_name, {
                     'title': "interakcija", 
                     'link_active': "interakcija", 
                     'empty_head': False,
-                    'InterakcijaDTO' : InterakcijaDTO(id), 
+                    'InterakcijaTemaDTO' : InterakcijaTemaDTO(id), 
                     'session': request.session
                     })
                 

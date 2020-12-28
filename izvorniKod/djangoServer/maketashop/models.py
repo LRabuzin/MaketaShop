@@ -18,13 +18,13 @@ class Tema(models.Model):
     tekstteme = models.CharField(max_length=160, default=None, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = True 
         db_table = 'tema'
     def getIme(self):
         return self.ime
     
     def getTekst(self):
-        self.tekstteme
+        return self.tekstteme
 
 class Materijal(models.Model):
     materijalid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
