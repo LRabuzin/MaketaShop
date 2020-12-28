@@ -34,6 +34,9 @@ class jednaPrica():
     def getTekst(self):
         return self.tekst
 
+    def getPricaId(self):
+        return self.prica.pricaid
+
 class IndexDTO():
     def __init__(self):
         self.price=Prica.objects.all().select_related().filter(objavljena=True)
