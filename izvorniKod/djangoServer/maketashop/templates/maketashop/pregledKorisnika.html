@@ -28,7 +28,7 @@
 		{% if k.getJeAdmin == False %}
 		<form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
 		{% csrf_token %}
-		<button type="submit" name="userlink" value="{{ k.getKorisnikId }}">
+		<button class="btn btn-link" type="submit" name="userlink" value="{{ k.getKorisnikId }}">
 			{{ k.getKorisnickoIme }}
 		</button>
 		</form>

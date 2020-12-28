@@ -16,15 +16,20 @@ class Tema(models.Model):
     temaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     ime = models.CharField(max_length=100)
     tekstteme = models.CharField(max_length=160, default=None, blank=True, null=True)
+    odobrena = models.BooleanField(default = False, blank = True)
+
 
     class Meta:
-        managed = True
+        managed = True 
         db_table = 'tema'
     def getIme(self):
         return self.ime
     
     def getTekst(self):
-        self.tekstteme
+        return self.tekstteme
+    
+    def getOdobrena(self):
+        return self.odobrena
 
 class Materijal(models.Model):
     materijalid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
@@ -36,6 +41,9 @@ class Materijal(models.Model):
 
     def getIme(self):
         return self.ime
+
+    def __str__(self):
+        return "{0}".format(self.ime)
 
 class Vrstamakete(models.Model):
     vrstamaketeid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
@@ -78,7 +86,7 @@ class Maketa(models.Model):
 class Napravljenaod(models.Model):
     maketaid = models.ForeignKey(Maketa, db_column='maketaid', on_delete=models.CASCADE)
     materijalid = models.ForeignKey(Materijal, db_column='materijalid', on_delete=models.CASCADE)
-    cijena = models.FloatField()
+    cijena = models.FloatField(blank=True, null=True)
     brojuskladistu = models.IntegerField(default = 0)
 
     class Meta:
@@ -339,6 +347,9 @@ class Interakcija(models.Model):
     class Meta:
         managed = True
         db_table = 'interakcija'
+
+    def getId(self):
+        return self.interakcijaid
     
     def getIme(self):
         return self.korisnikid.ime

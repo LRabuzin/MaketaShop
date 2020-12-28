@@ -22,7 +22,7 @@
     </div>
     <div class="col-md-8">
       {% for interakcija in InboxDTO.getInterakcije %}
-      <a href="{% url 'interakcija' %}">
+      <a href="{% url 'interakcijaTema' interakcija.getId%}">
         <div class="media mb-4 inter">
           <img class="d-flex mr-3 rounded-circle profile-img" src="{% static interakcija.getProfilna %}"
             alt="profilna slika">
