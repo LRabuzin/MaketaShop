@@ -13,65 +13,65 @@
         <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Vaša košarica</span>
-                <span class="badge badge-secondary badge-pill">3</span>
+                <span class="badge badge-secondary badge-pill">{{ session.cart.getBrItema }}</span>
             </h4>
             <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Proizvod 1</h6>
-                    </div>
-                    <span class="text-muted">7kn</span>
+                {% if session.cart %}
+                    {% for maketa, kolicina in session.cart.getCart.items %}
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">{{ maketa.getIme }} (x{{ kolicina }})</h6>
+                            </div>
+                            <span class="text-muted">{{ maketa.getCijena }}</span>
+                        </li>
+                    {% endfor %}
+
+                {% endif %}
+               
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Dostava:</span>
+                    <span class="text-muted">{{ session.cart.getDostava }}</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Proizvod 2</h6>
-                    </div>
-                    <span class="text-muted">6kn</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Proizvod 3</h6>
-                    </div>
-                    <span class="text-muted">5kn</span>
-                </li>
+
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Ukupno:</span>
-                    <strong>18kn</strong>
+                    <strong>{{ session.cart.getUkupno }}</strong>
                 </li>
             </ul>
         </div>
         <div class="col-md-8 order-md-1">
-            <form class="needs-validation" novalidate>
+            <form action="" method="post" name="checkout" id="placanjeForm" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">Ime</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            Potrebno je unijeti ime.
+                        <div class="form-group" id="ime">
+                            {{ form.ime.errors }}
+                            {{ form.ime }}
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Prezime</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            Potrebno je unijeti prezime.
+                        <div class="form-group" id="prezime">
+                            {{ form.prezime.errors }}
+                            {{ form.prezime }}
                         </div>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="email">Email <span class="text-muted">(Opcionalno)</span></label>
-                    <input type="email" class="form-control" id="email" placeholder="ivanhorvat@nesto.com">
-                    <div class="invalid-feedback">
-                        Potrebno je unijeti email adresu.
+                    <label for="email">Email</label>
+                    <div class="form-group" id="email">
+                        {{ form.email.errors }}
+                        {{ form.email }}
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="address">Adresa</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Ulica X" required>
-                    <div class="invalid-feedback">
-                        Potrebno je unijeti adresu.
+                    <div class="form-group" id="adresa">
+                        {{ form.adresa.errors }}
+                        {{ form.adresa }}
                     </div>
                 </div>
 
@@ -91,40 +91,40 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="cc-name">Ime na kartici</label>
-                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                        <small class="text-muted">Puno ime na kartici</small>
-                        <div class="invalid-feedback">
-                            Potrebno je unijeti ime na kartici.
+                        <label for="cc-name">Ime i prezime na kartici</label>
+                        <div class="form-group" id="imeNaKartici">
+                            {{ form.ime_na_kartici.errors }}
+                            {{ form.ime_na_kartici }}
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="cc-number">Broj kreditne kartice</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Potrebno je unijeti broj kreditne kartice.
+                        <div class="form-group" id="brojKartice">
+                            {{ form.broj_kartice.errors }}
+                            {{ form.broj_kartice }}
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <label for="cc-expiration">Istek kartice</label>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Potrebno je unijeti datum isteka kartice.
+                        <div class="form-group" id="istekKartice">
+                            {{ form.istek_kartice.errors }}
+                            {{ form.istek_kartice }}
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="cc-cvv">CVV</label>
-                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Potrebno je unijeti sigurnosni kod (CVV).
+                        <div class="form-group" id="cvv">
+                            {{ form.cvv.errors }}
+                            {{ form.cvv }}
                         </div>
                     </div>
                 </div>
                 <hr class="mb-4">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Dovrši kupnju.</button>
             </form>
+            <hr class="mb-4">
         </div>
     </div>
 </div>
