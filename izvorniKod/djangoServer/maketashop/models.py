@@ -20,6 +20,11 @@ class Tema(models.Model):
     class Meta:
         managed = True
         db_table = 'tema'
+    def getIme(self):
+        return self.ime
+    
+    def getTekst(self):
+        self.tekstteme
 
 class Materijal(models.Model):
     materijalid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
@@ -292,6 +297,8 @@ class Multimedijaprice(models.Model):
         db_table = 'multimedijaprice'
         unique_together = (('pricaid', 'mediaid'),)
 
+    def getMedia(self):
+        return self.mediaid.putdodatoteke
 
 class Komentar(models.Model):
     komentarid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
@@ -332,4 +339,22 @@ class Interakcija(models.Model):
     class Meta:
         managed = True
         db_table = 'interakcija'
+    
+    def getIme(self):
+        return self.korisnikid.ime
+
+    def getPrezime(self):
+        return self.korisnikid.prezime
+    
+    def getProfilna(self):
+        return self.korisnikid.profilnaid.putdodatoteke
+    
+    def getNaslov(self):
+        return self.naslovinterakcije
+    
+    def getVrsta(self):
+        return self.vrstainterakcije
+    
+    def getOtvorena(self):
+        return self.interakcijaotvorena
 

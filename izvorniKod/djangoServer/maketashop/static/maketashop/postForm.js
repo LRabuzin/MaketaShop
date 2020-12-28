@@ -10,7 +10,9 @@ $(document).ready(function(){
         $('#media1').show();
         $('#mediaInput1').removeAttr('readonly');
         $('#showMedia1').hide();
+        $('#btnBlock2-2').show();
         $('#btnBlock2').show();
+        
     });
 
     $("#hideText1").click(function (){
@@ -26,6 +28,7 @@ $(document).ready(function(){
         $('#mediaInput1').attr('readonly','True');
         $('#showMedia1').show();
         $('#btnBlock2').hide();
+        $('#btnBlock2-2').hide();
     })
 
     $("#showText2").click(function (){
@@ -39,6 +42,7 @@ $(document).ready(function(){
         $('#mediaInput2').removeAttr('readonly');
         $('#showMedia2').hide();
         $('#btnBlock3').show();
+        $('#btnBlock3-2').show();
     });
 
     $("#hideText2").click(function (){
@@ -54,6 +58,7 @@ $(document).ready(function(){
         $('#mediaInput2').val('');
         $('#showMedia2').show();
         $('#btnBlock3').hide();
+        $('#btnBlock3-2').hide();
     })
 
     $("#showText3").click(function (){
@@ -67,6 +72,7 @@ $(document).ready(function(){
         $('#mediaInput3').removeAttr('readonly');
         $('#showMedia3').hide();
         $('#btnBlock4').show();
+        $('#btnBlock4-2').show();
     });
 
     $("#hideText3").click(function (){
@@ -82,6 +88,7 @@ $(document).ready(function(){
         $('#mediaInput3').val('');
         $('#showMedia3').show();
         $('#btnBlock4').hide();
+        $('#btnBlock4-2').hide();
     })
 
     $("#showText4").click(function (){

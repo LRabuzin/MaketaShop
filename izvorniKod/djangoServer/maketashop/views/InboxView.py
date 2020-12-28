@@ -2,13 +2,22 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import View
+from datetime import datetime
+from maketashop.DTOs.InboxDTO import InboxDTO
 
 class Inbox(View):
     template_name ="maketashop/inbox.html"
+
+
     def get(self, request):
-        return render(request, self.template_name, {
+        
+        if 'user' not in request.session:
+            return HttpResponseRedirect(reverse('login'))
+        else:
+            return render(request, self.template_name, {
             'title': "inbox", 
             'link_active': "inbox", 
             'empty_head': False,
+            'InboxDTO' : InboxDTO(request.session['user']),
             'session': request.session
             })
