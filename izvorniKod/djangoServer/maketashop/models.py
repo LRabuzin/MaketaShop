@@ -27,6 +27,9 @@ class Tema(models.Model):
     
     def getTekst(self):
         return self.tekstteme
+    
+    def getOdobrena(self):
+        return self.odobrena
 
 class Materijal(models.Model):
     materijalid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
