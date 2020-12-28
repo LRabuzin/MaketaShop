@@ -37,6 +37,9 @@ class Materijal(models.Model):
     def getIme(self):
         return self.ime
 
+    def __str__(self):
+        return "{0}".format(self.ime)
+
 class Vrstamakete(models.Model):
     vrstamaketeid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     ime = models.CharField(max_length=20)
@@ -339,6 +342,9 @@ class Interakcija(models.Model):
     class Meta:
         managed = True
         db_table = 'interakcija'
+
+    def getId(self):
+        return self.interakcijaid
     
     def getIme(self):
         return self.korisnikid.ime
