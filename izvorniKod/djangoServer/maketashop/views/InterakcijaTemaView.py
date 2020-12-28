@@ -18,7 +18,7 @@ class InterakcijaTema(View):
                   'title': "interakcija", 
                   'link_active': "interakcija", 
                   'empty_head': False,
-                  'InterakcijaDTO' : InterakcijaTemaDTO(id), 
+                  'InterakcijaTemaDTO' : InterakcijaTemaDTO(id), 
                   'jeAdmin' : user.jeadmin,
                   'session': request.session
                   })

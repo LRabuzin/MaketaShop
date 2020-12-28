@@ -11,9 +11,32 @@
         {{ InterakcijaTemaDTO.getTema.getTekst }}
     </p>
 
-    <!-- {% if jeAdmin %}
+    <hr>
+    {% if jeAdmin %}
+        {% if InterakcijaTemaDTO.getOtvoren %}
+        <form action="" method="post" name="approve" class="d-flex flex-row justify-content-around p-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success" name="approve" value="1">odobri</button>
+            <button type="submit" class="btn btn-danger" name="approve" value="0">odbij</button>
+        </form>
+        {% else %}
+            {% if InterakcijaTemaDTO.getTema.getOdobrena %}
+                <p>Tema odobrena!</p>
+            {% else %}
+                <p>Tema odbijena!</p>
+            {% endif %}
+        {% endif %}
     {% else %}
-    {% endif %} -->
+        {% if InterakcijaTemaDTO.getOtvoren %}
+        <p>Admin još nije ni odobrio ni odbio temu</p>
+        {% else %}
+            {% if InterakcijaTemaDTO.getTema.getOdobrena %}
+                <p>Tema odobrena!</p>
+            {% else %}
+                <p>Tema odbijena!</p>
+            {% endif %}
+        {% endif %}
+    {% endif %}
 
 </div>
 {% endblock content %}
