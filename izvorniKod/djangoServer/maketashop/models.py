@@ -16,6 +16,8 @@ class Tema(models.Model):
     temaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     ime = models.CharField(max_length=100)
     tekstteme = models.CharField(max_length=160, default=None, blank=True, null=True)
+    odobrena = models.BooleanField(default = False, blank = True)
+
 
     class Meta:
         managed = True 
