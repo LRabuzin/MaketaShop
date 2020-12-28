@@ -70,7 +70,11 @@ class PlacanjeForm(forms.Form):
     adresa = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Adresa', 'class':'form-control my-input'}))
     email = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Email', 'class':'form-control my-input'}))
     ime_na_kartici = forms.CharField(max_length=27, widget=forms.TextInput(attrs={'placeholder': 'Ime i prezime nositelja kartice', 'class':'form-control my-input'}))
-    # paypal_bool = forms.BooleanField(label=)
-    broj_kartice = forms.CharField(max_length=16, widget=forms.TextInput(attrs={'placeholder': 'Broj kartice', 'class':'form-control my-input'}))
+    PAYMENTMETHODS = [
+    ('paypal', 'PayPal'),
+    ('kreditnaKartica', 'Kreditna kartica')
+    ]
+    paypal_bool = forms.ChoiceField(label='Vrsta plaćanja', choices=PAYMENTMETHODS, widget=forms.RadioSelect)
+    broj_kartice = forms.CharField(max_length=16, min_length=16, widget=forms.TextInput(attrs={'placeholder': 'Broj kartice', 'class':'form-control my-input'}))
     istek_kartice = forms.CharField(max_length=5, widget=forms.TextInput(attrs={'placeholder': 'MM/YY', 'class':'form-control my-input'}))
-    cvv = forms.CharField(max_length=3, widget=forms.TextInput(attrs={'placeholder': 'CVV', 'class':'form-control my-input'}))
+    cvv = forms.CharField(max_length=3, min_length=3, widget=forms.TextInput(attrs={'placeholder': 'CVV', 'class':'form-control my-input'}))

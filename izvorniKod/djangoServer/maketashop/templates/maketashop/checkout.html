@@ -25,9 +25,7 @@
                             <span class="text-muted">{{ maketa.getCijena }}</span>
                         </li>
                     {% endfor %}
-
                 {% endif %}
-               
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Dostava:</span>
                     <span class="text-muted">{{ session.cart.getDostava }}</span>
@@ -39,6 +37,7 @@
                 </li>
             </ul>
         </div>
+        <!--form-->
         <div class="col-md-8 order-md-1">
             <form action="" method="post" name="checkout" id="placanjeForm" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -80,26 +79,30 @@
                 <h4 class="mb-3">Vrsta plaćanja</h4>
 
                 <div class="d-block my-3">
-                    <div class="custom-control custom-radio">
-                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                    <!--<div class="custom-control custom-radio">
+                        <input id="kreditnaKartica" name="paymentMethod" type="radio" class="custom-control-input" checked required>
                         <label class="custom-control-label" for="credit">Kreditna kartica</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
                         <label class="custom-control-label" for="paypal">PayPal</label>
-                    </div>
+                    </div>-->
+                    <div class="form-group" id="paypal_bool">
+                            {{ form.paypal_bool.errors }}
+                            {{ form.paypal_bool }}
+                        </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="cc-name">Ime i prezime na kartici</label>
-                        <div class="form-group" id="imeNaKartici">
+                        <div class="form-group" id="ime_na_kartici">
                             {{ form.ime_na_kartici.errors }}
                             {{ form.ime_na_kartici }}
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="cc-number">Broj kreditne kartice</label>
-                        <div class="form-group" id="brojKartice">
+                        <div class="form-group" id="broj_kartice">
                             {{ form.broj_kartice.errors }}
                             {{ form.broj_kartice }}
                         </div>
@@ -108,7 +111,7 @@
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <label for="cc-expiration">Istek kartice</label>
-                        <div class="form-group" id="istekKartice">
+                        <div class="form-group" id="istek_kartice">
                             {{ form.istek_kartice.errors }}
                             {{ form.istek_kartice }}
                         </div>
