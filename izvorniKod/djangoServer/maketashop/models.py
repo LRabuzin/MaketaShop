@@ -81,7 +81,7 @@ class Maketa(models.Model):
 class Napravljenaod(models.Model):
     maketaid = models.ForeignKey(Maketa, db_column='maketaid', on_delete=models.CASCADE)
     materijalid = models.ForeignKey(Materijal, db_column='materijalid', on_delete=models.CASCADE)
-    cijena = models.FloatField()
+    cijena = models.FloatField(blank=True, null=True)
     brojuskladistu = models.IntegerField(default = 0)
 
     class Meta:

@@ -7,6 +7,7 @@ from maketashop.models import Interakcija
 from maketashop.models import Korisnik
 from maketashop.models import Maketa
 from maketashop.models import Vrstamakete
+from maketashop.models import Napravljenaod
 
 
 class SubmitionMaketa(View):
@@ -43,6 +44,13 @@ class SubmitionMaketa(View):
          maketa.opis = form.cleaned_data['opis']
          maketa.vrsta = vrsta
          maketa.save()
+
+         napravljenaOd = Napravljenaod()
+         napravljenaOd.maketaid = maketa.maketaid
+         napravljenaOd.materijalid = form.cleaned_data['materijal'].materijalid
+         napravljenaOd.cijena = None
+         napravljenaOd.brojuskladistu = 1
+         napravljenaOd.save()
 
          interakcija = Interakcija()
          interakcija.korisnikid = Korisnik.objects.select_related().get(email = request.session['user'])
