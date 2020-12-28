@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.views.generic import View
 from maketashop.models import Interakcija
 from maketashop.models import Korisnik
+from maketashop.models import Tema
 from maketashop.DTOs.InterakcijaTemaDTO import InterakcijaTemaDTO
 
 class InterakcijaTema(View):
@@ -34,3 +35,19 @@ class InterakcijaTema(View):
                     })
                 
                 return HttpResponseRedirect(reverse('index'))
+    def post(self, request, id):
+      user = Korisnik.objects.select_related().get(email = request.session['user'])
+      if user.jeadmin:
+         if request.POST.get("approve") == '1':
+            interakcija = Interakcija.objects.select_related().get(interakcijaid = id)
+            tema = Tema.objects.select_related().get(temaid = interakcija.temaid.temaid)
+            tema.odobrena = True
+            interakcija.interakcijaotvorena = False
+            tema.save()
+            interakcija.save()
+         else:
+            interakcija = Interakcija.objects.select_related().get(interakcijaid = id)
+            interakcija.interakcijaotvorena = False
+            interakcija.save()
+      else:
+         return HttpResponseRedirect(reverse('index'))
