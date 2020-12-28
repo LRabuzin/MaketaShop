@@ -12,7 +12,6 @@ $(document).ready(function(){
         $('#showMedia1').hide();
         $('#btnBlock2-2').show();
         $('#btnBlock2').show();
-        
     });
 
     $("#hideText1").click(function (){

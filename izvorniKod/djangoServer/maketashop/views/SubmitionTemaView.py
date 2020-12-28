@@ -40,7 +40,7 @@ class SubmitionTema(View):
          tema.save()
          interakcija = Interakcija()
          interakcija.korisnikid = Korisnik.objects.select_related().get(email = request.session['user'])
-         interakcija.naslovinterakcije = form.cleaned_data['tekst_teme']
+         interakcija.naslovinterakcije = form.cleaned_data['naslov_interakcije']
          interakcija.vrstainterakcije = "tema"
          interakcija.temaid = tema
          interakcija.save()

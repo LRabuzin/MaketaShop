@@ -4,17 +4,22 @@ from django.views.generic import View
 from django.shortcuts import render
 from maketashop.DTOs.AULDTO import AULDTO
 from maketashop.models import Korisnik
+from django.contrib import messages
+
+
 
 class AdminUserList(View):
     template_name ="maketashop/pregledKorisnika.html"
 
     def get(self, request):
         dto = AULDTO(request)
-
+        messages.add_message(request, messages.SUCCESS, 'POYY SVIJETE!')
+        
         if dto.getOvlast() == False:
             return HttpResponseRedirect(reverse('index'))
         
         return render(request, self.template_name, {
+            
             'title': "pregledKorisnika", 
             'link_active': "pregledKorisnika", 
             'empty_head': False,

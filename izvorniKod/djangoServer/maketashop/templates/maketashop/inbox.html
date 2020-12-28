@@ -1,87 +1,51 @@
 {%extends "./base.html"%}
 {% load static %}
-{% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/inbox.css' %}"> {% endblock mycss %}
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'maketashop/inbox.css' %}"> {% endblock mycss %}
 {% block content %}
 <div class="container p-3">
 
-    <h2>Sandučić</h2>
+  <h2>Sandučić</h2>
 
-    <hr>
+  <hr>
 
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card my-4 text-center">
-              <h5 class="card-header">
-                Filter
-              </h5>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item bg-info text-light filter">Sve</li>  
-                <li class="list-group-item filter">Prijedlog teme</li>
-                <li class="list-group-item filter">Zahtjev za maketu</li>
-              </ul>
-            </div>
-    
-            <div class="card my-4">
-              <h5 class="card-header">Pošalji adminu:</h5>
-              <div class="card-body">
-                <form>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tip" id="tema" value="tema" checked>
-                        <label class="form-check-label" for="tema">
-                          Tema
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tip" id="maketa" value="maketa">
-                        <label class="form-check-label" for="maketa">
-                          Maketa
-                        </label>
-                      </div>
-                  <div class="form-group">
-                    <textarea class="form-control" rows="3"></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Pošalji</button>
-                </form>
-              </div>
-            </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card my-4">
+        <h5 class="card-header">Pošalji adminu:</h5>
+        <div class="card-body">
+          <a href="{% url 'temasubmit' %}" class="btn btn-block btn-info">Prijedlog teme</a>
+          <a href="{% url 'maketasubmit' %}" class="btn btn-block btn-info">Prijedlog makete</a>
+          <a href="{% url 'postsubmit' %}" class="btn btn-block btn-info">Prijedlog priče</a>
         </div>
-      <div class="col-md-8">
-        <div class="media mb-4 inter">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">Ime Prezime : Tema</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-          </div>
-          <hr>
-          <div class="media mb-4 inter">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">Ime Prezime : Maketa</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-          </div>
-          <hr>
-          <div class="media mb-4 inter">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">Ime Prezime : Maketa</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-          </div>
-          <hr>
-          <div class="media mb-4 inter">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">Ime Prezime : Tema</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-          </div>
       </div>
-
-      
+    </div>
+    <div class="col-md-8">
+      {% for interakcija in InboxDTO.getInterakcije %}
+      <a href="{% url 'interakcija' %}">
+        <div class="media mb-4 inter">
+          <img class="d-flex mr-3 rounded-circle profile-img" src="{% static interakcija.getProfilna %}"
+            alt="profilna slika">
+          <div class="media-body">
+            <h4> {{ interakcija.getNaslov }} </h4>
+            <div class="d-flex flex-row justify-content-between align-items-center">
+              <h5 class="mt-0">{{ interakcija.getIme }} {{ interakcija.getPrezime }} : {{ interakcija.getVrsta }}</h5>
+              {% if interakcija.getOtvorena %}
+              <span class="badge badge-pill badge-warning">Otvoreno</span>
+              {% else %}
+              <span class="badge badge-pill badge-success">Zatvoreno</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </a>
+      <hr>
+      {% endfor %}
     </div>
 
+
   </div>
+
+</div>
 </div>
 {% endblock content %}
