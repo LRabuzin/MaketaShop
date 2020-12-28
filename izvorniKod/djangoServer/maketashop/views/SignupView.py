@@ -4,6 +4,7 @@ from maketashop.models import Korisnik
 from django.urls import reverse
 from django.views.generic import View
 from ..forms import SignupForm
+from datetime import date
 
 class Signup(View):
     template_name="maketashop/signup.html"
@@ -30,7 +31,8 @@ class Signup(View):
             email = form.cleaned_data['email']
             lozinka1 = form.cleaned_data['pass1']
             lozinka2 = form.cleaned_data['pass2']
-            telefonskibroj = form.cleaned_data['phone']
+            adresa = form.cleaned_data['adress']
+            brojKartice = form.cleaned_data['cardNumber']
             razinaautoriteta = 1
             if lozinka1 == lozinka2:
                 if Korisnik.objects.filter(email=email).exists():
@@ -42,7 +44,8 @@ class Signup(View):
                     korisnik.korisnickoime = username
                     korisnik.email = email
                     korisnik.lozinka = lozinka1
-                    #korisnik.brojtelefona = telefonskibroj
+                    korisnik.adresa = adresa
+                    korisnik.brojracuna = brojKartice
                     korisnik.razinaautoriteta = razinaautoriteta
                     korisnik.save()
 
