@@ -4,7 +4,7 @@
 {% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/profil.css' %}"> {% endblock mycss %}
 
 {% block content %}
-<form action="" method="POST" name="priv" class="container p-3">
+<form action="" method="POST" name="priv" class="container p-3" enctype="multipart/form-data">
     {% csrf_token %}
   <div class="row">
       <div class="col-12">
@@ -16,10 +16,10 @@
                               <img src="{% static ProfilDTO.getSlika %}" style="width: 150px; height: 150px" />
                             </div>
                             <div class="col-3">
-                                      <input type="file" class="btn btn-secondary" value="Promijeni sliku" />
-                                      <div class="form-group" id="btnBlock1">
-                                        <button type="button" id="profilna" input type="file"  class="btn btn-success">Promijeni sliku</button>
-                                      </div>
+                                      <input type="file" class="btn btn-secondary" name="profilna" />
+                                      <!-- <div class="form-group" id="btnBlock1"> -->
+                                      <button type="submit" class="btn btn-success">Promijeni sliku</button>
+                                      <!-- </div> -->
                                      
                             </div>
                             <div class="form-check col-3">
