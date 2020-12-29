@@ -270,7 +270,7 @@ class Prica(models.Model):
         return self.pricaid
 
     def getPredlozioPricuId(self):
-        return self.predloziopricuid
+        return self.predloziotemuid
 
     def getAutorId(self):
         return self.autorid
