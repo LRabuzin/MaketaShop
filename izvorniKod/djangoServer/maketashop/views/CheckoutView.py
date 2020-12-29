@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic import View
 from maketashop.DTOs.ProfilDTO import ProfilDTO
 from maketashop.DTOs.CreditCardDTO import CreditCardDTO
-from maketashop.models import Transakcija, Korisnik
+from maketashop.models import Transakcija, Korisnik, Maketakupljena
 from ..forms import PlacanjeForm
 
 class Checkout(View):
@@ -75,7 +75,8 @@ class Checkout(View):
             cvv = form.cleaned_data['cvv']
             paypal_bool = form.cleaned_data['paypal_bool']
 
-            #ukupaniznos = request.POST['ukupaniznos']
+            cart = request.session['cart']
+            ukupaniznos = cart.getUkupno()
 
             korisnik = Korisnik.objects.get(email=email)
 
@@ -101,8 +102,18 @@ class Checkout(View):
             novaTransakcija.prezime = prezime
             novaTransakcija.adresa = adresa
             novaTransakcija.brojracuna = broj_kartice
-            novaTransakcija.ukupaniznos = 50000000000000 # OVO JE HARDCODIRANO TEMPORARY
+            novaTransakcija.ukupaniznos = ukupaniznos
             novaTransakcija.korisnik = Korisnik.objects.get(email=email)
             novaTransakcija.save()
+
+            for maketa,kol in cart.getCart():
+                maketakupljena = MaketaKupljena()
+                maketakupljena.maketaid = maketa.getMaketaId()
+                maketakupljena.materijalid = Materijal.objects.get(ime=maketa.getMaterijal).materijalid
+                maketakupljena.kolicina = kol
+                maketakupljena.transakcijaid = novaTransakcija.transakcijaid
+                maketakupljena.save()
+
+
             return HttpResponseRedirect(reverse('transakcije'))
         return HttpResponseRedirect(self.request.path_info)
