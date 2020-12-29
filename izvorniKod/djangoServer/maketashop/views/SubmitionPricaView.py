@@ -22,6 +22,10 @@ class SubmitionPrica(View):
       if 'user' not in request.session:
          return HttpResponseRedirect(reverse('index'))
       else:
+         user = Korisnik.objects.select_related().get(email = request.session['user'])
+         if user.jeadmin:
+            return HttpResponseRedirect(reverse('index'))
+
          return render(request, self.template_name, {
          'title': "submitionMaketa", 
          'link_active': "submitionMaketa", 
@@ -32,10 +36,10 @@ class SubmitionPrica(View):
 
    def post(self, request):
       form = InteractionPostForm(request.POST, request.FILES)
-      print('tu sam')
+
       if form.is_valid():
          brojac = 0
-         print('ne tu sam i usel sam')
+
          prica = Prica()
          prica.naslovprice = form.cleaned_data['naslovprice']
          prica.autorid = Korisnik.objects.select_related().get(email = request.session['user'])
@@ -45,6 +49,8 @@ class SubmitionPrica(View):
             putanja = handle_uploaded_text(form.cleaned_data['text1'],brojac)
 
             media = Media()
+            next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+            media.mediaid = next_id;
             media.vrstamedije = "tekst"
             media.putdodatoteke = putanja
             media.save()
@@ -69,7 +75,9 @@ class SubmitionPrica(View):
                media.vrstamedije = "slika"
             elif(nastavak == "mkv" or nastavak == "avi" or nastavak == "mov" or nastavak == "mp4"):
                media.vrstamedije = "video"
-
+               
+            next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+            media.mediaid = next_id;
             media.putdodatoteke = putanja
             media.save()
 
@@ -87,6 +95,8 @@ class SubmitionPrica(View):
             media = Media()
             media.vrstamedije = "tekst"
             media.putdodatoteke = putanja
+            next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+            media.mediaid = next_id;
             media.save()
 
             multimedija = Multimedijaprice()
@@ -109,7 +119,9 @@ class SubmitionPrica(View):
                media.vrstamedije = "slika"
             elif(nastavak == "mkv" or nastavak == "avi" or nastavak == "mov" or nastavak == "mp4"):
                media.vrstamedije = "video"
-
+               
+            next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+            media.mediaid = next_id;
             media.putdodatoteke = putanja
             media.save()
 
@@ -125,6 +137,8 @@ class SubmitionPrica(View):
             putanja = handle_uploaded_text(form.cleaned_data['text3'], brojac)
 
             media = Media()
+            next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+            media.mediaid = next_id;
             media.vrstamedije = "tekst"
             media.putdodatoteke = putanja
             media.save()
@@ -149,7 +163,9 @@ class SubmitionPrica(View):
                media.vrstamedije = "slika"
             elif(nastavak == "mkv" or nastavak == "avi" or nastavak == "mov" or nastavak == "mp4"):
                media.vrstamedije = "video"
-
+               
+            next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+            media.mediaid = next_id;
             media.putdodatoteke = putanja
             media.save()
 
@@ -165,6 +181,8 @@ class SubmitionPrica(View):
             putanja = handle_uploaded_text(form.cleaned_data['text4'], brojac)
 
             media = Media()
+            next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+            media.mediaid = next_id;
             media.vrstamedije = "tekst"
             media.putdodatoteke = putanja
             media.save()
@@ -189,7 +207,9 @@ class SubmitionPrica(View):
                media.vrstamedije = "slika"
             elif(nastavak == "mkv" or nastavak == "avi" or nastavak == "mov" or nastavak == "mp4"):
                media.vrstamedije = "video"
-
+               
+            next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+            media.mediaid = next_id;
             media.putdodatoteke = putanja
             media.save()
 
@@ -205,6 +225,8 @@ class SubmitionPrica(View):
             putanja = handle_uploaded_text(form.cleaned_data['text5'], brojac)
 
             media = Media()
+            next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+            media.mediaid = next_id;
             media.vrstamedije = "tekst"
             media.putdodatoteke = putanja
             media.save()

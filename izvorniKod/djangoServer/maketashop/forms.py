@@ -1,5 +1,6 @@
 from django import forms
 from django.core import validators
+from maketashop.models import Materijal
 
 class SignupForm(forms.Form):
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
@@ -56,6 +57,7 @@ class AdminPostForm(PostForm, MaketaForm):
 
 class InteractionMaketaForm(MaketaForm):
     naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
+    materijal = forms.ModelChoiceField(queryset=Materijal.objects.all().order_by('materijalid'), empty_label = None, widget=forms.Select(attrs={'class':'form-control my-input'}))
 
 class AdminMaketaForm(MaketaForm):
     osnovna_slika = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])])
@@ -78,3 +80,6 @@ class PlacanjeForm(forms.Form):
     broj_kartice = forms.CharField(max_length=16, min_length=16, widget=forms.TextInput(attrs={'placeholder': 'Broj kartice', 'class':'form-control my-input'}))
     istek_kartice = forms.CharField(max_length=5, widget=forms.TextInput(attrs={'placeholder': 'MM/YY', 'class':'form-control my-input'}))
     cvv = forms.CharField(max_length=3, min_length=3, widget=forms.TextInput(attrs={'placeholder': 'CVV', 'class':'form-control my-input'}))
+
+class AdminCijenaForm(forms.Form):
+    custom_cijena = forms.DecimalField(label="Cijena:", min_value = 0, decimal_places = 2)

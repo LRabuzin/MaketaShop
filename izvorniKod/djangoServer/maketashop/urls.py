@@ -14,7 +14,8 @@ from maketashop.views.PregledKorisnikaView import PregledKorisnika
 from maketashop.views.TransakcijeView import Transakcije
 from maketashop.views.AdminUserListView import AdminUserList
 from maketashop.views.InboxView import Inbox
-from maketashop.views.InterakcijaView import Interakcija
+from maketashop.views.InterakcijaTemaView import InterakcijaTema
+from maketashop.views.InterakcijaMaketaView import InterakcijaMaketa
 from maketashop.views.SubmitionTemaView import SubmitionTema
 from maketashop.views.SubmitionMaketaView import SubmitionMaketa
 from maketashop.views.SubmitionPricaView import SubmitionPrica
@@ -37,7 +38,8 @@ urlpatterns = [
     path('pregledKorisnika/', AdminUserList.as_view(), name='pregledKorisnika'),
     path('transakcije/', Transakcije.as_view(), name='transakcije'),
     path('inbox/', Inbox.as_view(), name='inbox'),
-    path('interakcija/', Interakcija.as_view(), name='interakcija'),
+    path('interakcijaTema/<int:id>/', InterakcijaTema.as_view(), name='interakcijaTema'),
+    path('interakcijaMaketa/<int:id>/', InterakcijaMaketa.as_view(), name='interakcijaMaketa'),
     path('temasubmit/', SubmitionTema.as_view(), name='temasubmit'),
     path('maketasubmit/', SubmitionMaketa.as_view(), name='maketasubmit'),
     path('postsubmit/', SubmitionPrica.as_view(), name='postsubmit'),

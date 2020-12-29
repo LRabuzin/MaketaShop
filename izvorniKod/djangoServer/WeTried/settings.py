@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 #Za upload fileova kroz prijedloge
-MEDIA_ROOT = os.path.join(BASE_DIR, '/static/media') 
+MEDIA_ROOT = os.path.join(BASE_DIR, '/static/media/') 
 MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
