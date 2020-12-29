@@ -4,7 +4,7 @@ from maketashop.models import Multimedijaprice
 class jednaPrica():
     def __init__(self, pricaID):
         self.prica=Prica.objects.select_related().get(pricaid=pricaID)
-        medijaprice=Multimedijaprice.objects.select_related().filter(pricaid=prica.pricaid)
+        medijaprice=Multimedijaprice.objects.select_related().filter(pricaid=self.prica.pricaid)
         self.slika=None
         self.tekst=None
 
@@ -16,14 +16,14 @@ class jednaPrica():
                     minslika=medija.poredakuprici
                 if minslika>=medija.poredakuprici:
                     minslika=medija.poredakuprici
-                    self.slika=medijaprice
+                    self.slika=medija.mediaid.putdodatoteke
                 
             if medija.mediaid.vrstamedije=='tekst':
                 if mintekst==None:
                     mintekst=medija.poredakuprici
                 if minslika>=medija.poredakuprici:
                     minslika=medija.poredakuprici
-                    self.tekst=medijaprice
+                    self.tekst=medija.mediaid.putdodatoteke
 
     def getNaslov(self):
         return self.prica.naslovprice
