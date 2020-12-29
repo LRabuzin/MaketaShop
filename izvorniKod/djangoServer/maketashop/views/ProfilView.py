@@ -44,7 +44,7 @@ class Profil(View):
             brojac = 0
             nastavak = request.FILES['profilna'].name.split(".")[-1]
             putanja = handle_uploaded_file( request.FILES['profilna'], nastavak, brojac)
-            putanja = putanja.replace("maketashop/static", "");
+            #putanja = putanja.replace("maketashop/static", "");
 
             media = Media();
 

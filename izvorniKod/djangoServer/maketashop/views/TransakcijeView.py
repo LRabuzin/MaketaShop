@@ -13,11 +13,14 @@ class Transakcije(View):
             curr_user = Korisnik.objects.select_related().get(email=request.session.get("user"))
             if curr_user.jeadmin == True:
                 TransakcijeDTO.setAdmin(dto);
-        return render(request, self.template_name, {
+            return render(request, self.template_name, {
             'title': "transakcije", 
             'link_active': "transakcije", 
             'empty_head': False,
             'TransakcijeDTO': dto,
             'session': request.session
             })
+        else:
+            return HttpResponseRedirect(reverse('index'))
+            
     
