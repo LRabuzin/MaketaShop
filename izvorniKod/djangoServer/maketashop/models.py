@@ -60,6 +60,7 @@ class Maketa(models.Model):
     opis = models.CharField(max_length=160, default=None, blank=True, null=True)
     vrsta = models.ForeignKey(Vrstamakete, db_column='vrsta', on_delete=models.CASCADE)
     mediaid = models.ForeignKey(Media, db_column='mediaid', on_delete=models.CASCADE, blank = True, null = True)
+    prihvacena = models.BooleanField(default = None, blank = True)
 
     class Meta:
         managed = True
@@ -82,6 +83,9 @@ class Maketa(models.Model):
 
     def getVrsta(self):
         return self.vrsta
+    
+    def getPrihvacena(self):
+        return self.prihvacena
 
 class Napravljenaod(models.Model):
     maketaid = models.ForeignKey(Maketa, db_column='maketaid', on_delete=models.CASCADE)
