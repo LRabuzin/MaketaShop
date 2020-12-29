@@ -5,7 +5,7 @@ from maketashop.models import Maketa
 from maketashop.models import Prica
 from maketashop.models import Multimedijaprice
 
-class InterakcijaTemaDTO():
+class InterakcijaPricaDTO():
 
       def __init__(self, interakcijaID):
          interakcija = Interakcija.objects.select_related().get(interakcijaid = interakcijaID)
