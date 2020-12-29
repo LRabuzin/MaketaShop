@@ -2,6 +2,7 @@ from maketashop.models import Prica
 from maketashop.models import Napravljenaod
 from maketashop.models import Komentar
 from maketashop.models import Korisnik
+from maketashop.models import Multimedijaprice
 
 class B_postDTO():
 
