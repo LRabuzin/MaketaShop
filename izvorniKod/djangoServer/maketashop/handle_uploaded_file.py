@@ -9,4 +9,4 @@ def handle_uploaded_file(f, nastavak, brojac):
       for chunk in f.chunks():
          destination.write(chunk)
 
-   return path
+   return path.replace('maketashop/static/','');

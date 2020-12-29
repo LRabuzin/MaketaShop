@@ -10,4 +10,4 @@ def handle_uploaded_text(f, brojac):
    fajl.write(f)
    fajl.close()
 
-   return path
+   return path.replace('maketashop/static/', '');
