@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic import View
 from maketashop.DTOs.ProfilDTO import ProfilDTO
 from maketashop.DTOs.CreditCardDTO import CreditCardDTO
-from maketashop.models import Transakcija, Korisnik, Maketakupljena
+from maketashop.models import Transakcija, Korisnik, Maketakupljena, Materijal
 from ..forms import PlacanjeForm
 
 class Checkout(View):
@@ -106,12 +106,12 @@ class Checkout(View):
             novaTransakcija.korisnik = Korisnik.objects.get(email=email)
             novaTransakcija.save()
 
-            for maketa,kol in cart.getCart():
-                maketakupljena = MaketaKupljena()
-                maketakupljena.maketaid = maketa.getMaketaId()
-                maketakupljena.materijalid = Materijal.objects.get(ime=maketa.getMaterijal).materijalid
+            for maketa,kol in cart.getCart().items():
+                maketakupljena = Maketakupljena()
+                maketakupljena.maketaid = maketa.getMaketa()
+                maketakupljena.materijalid = Materijal.objects.get(ime=maketa.getMaterijal())
                 maketakupljena.kolicina = kol
-                maketakupljena.transakcijaid = novaTransakcija.transakcijaid
+                maketakupljena.transakcijaid = novaTransakcija
                 maketakupljena.save()
 
 
