@@ -50,7 +50,7 @@ class SubmitionPrica(View):
 
             media = Media()
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
-            media.mediaid = next_id;
+            media.mediaid = next_id
             media.vrstamedije = "tekst"
             media.putdodatoteke = putanja
             media.save()
@@ -96,7 +96,7 @@ class SubmitionPrica(View):
             media.vrstamedije = "tekst"
             media.putdodatoteke = putanja
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
-            media.mediaid = next_id;
+            media.mediaid = next_id
             media.save()
 
             multimedija = Multimedijaprice()
@@ -121,7 +121,7 @@ class SubmitionPrica(View):
                media.vrstamedije = "video"
                
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
-            media.mediaid = next_id;
+            media.mediaid = next_id
             media.putdodatoteke = putanja
             media.save()
 
@@ -138,7 +138,7 @@ class SubmitionPrica(View):
 
             media = Media()
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
-            media.mediaid = next_id;
+            media.mediaid = next_id
             media.vrstamedije = "tekst"
             media.putdodatoteke = putanja
             media.save()
@@ -165,7 +165,7 @@ class SubmitionPrica(View):
                media.vrstamedije = "video"
                
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
-            media.mediaid = next_id;
+            media.mediaid = next_id
             media.putdodatoteke = putanja
             media.save()
 
@@ -182,7 +182,7 @@ class SubmitionPrica(View):
 
             media = Media()
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
-            media.mediaid = next_id;
+            media.mediaid = next_id
             media.vrstamedije = "tekst"
             media.putdodatoteke = putanja
             media.save()
@@ -209,7 +209,7 @@ class SubmitionPrica(View):
                media.vrstamedije = "video"
                
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
-            media.mediaid = next_id;
+            media.mediaid = next_id
             media.putdodatoteke = putanja
             media.save()
 
@@ -226,7 +226,7 @@ class SubmitionPrica(View):
 
             media = Media()
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
-            media.mediaid = next_id;
+            media.mediaid = next_id
             media.vrstamedije = "tekst"
             media.putdodatoteke = putanja
             media.save()
