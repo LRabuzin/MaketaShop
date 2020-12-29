@@ -117,7 +117,7 @@ class Transakcija(models.Model):
     adresa = models.CharField(max_length=100)
     brojracuna = models.CharField(max_length=21)
     ukupaniznos = models.FloatField()
-    korisnik = models.ForeignKey("Korisnik", db_column='korisnik', related_name="korisnik", default=None, on_delete=models.CASCADE)
+    korisnik = models.ForeignKey("Korisnik", db_column='korisnik', related_name="korisnik", default=None, on_delete=models.CASCADE, null= True, blank = True)
 
     class Meta:
         managed = True

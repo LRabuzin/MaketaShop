@@ -22,14 +22,11 @@ class Checkout(View):
                 'adresa' : korisnik.getAdresa(),
                 'email' : korisnik.getEmail(),
                 'ime_na_kartici': kartica.getKKImePrezime(),
-                # 'paypal_bool': kartica.getKKPaypal(),
+                'paypal_bool': 'paypal' if kartica.getKKPaypal() else 'kreditnaKartica',
                 'broj_kartice': kartica.getKKBroj(),
                 'istek_kartice': kartica.getKKIstek(),
-                'cvv': "" 
             }
-            
             form = PlacanjeForm(data)
-            
             return render(request, self.template_name, {
                 'title': "checkout",
                 'link_active' : "checkout",
@@ -39,20 +36,7 @@ class Checkout(View):
             })
 
         else:
-
-            data = {
-                'ime' : "",
-                'prezime' : "",
-                'adresa' : "",
-                'email' : "",
-                'ime_na_kartici': "",
-                # 'paypal_bool': "",
-                'broj_kartice': "",
-                'istek_kartice': "",
-                'cvv': "" 
-            }
-
-            form = PlacanjeForm(data)
+            form = PlacanjeForm()
 
             return render(request, self.template_name, {
                 'title': "checkout", 
@@ -72,38 +56,39 @@ class Checkout(View):
             ime_na_kartici = form.cleaned_data['ime_na_kartici']
             broj_kartice = form.cleaned_data['broj_kartice']
             istek_kartice = form.cleaned_data['istek_kartice']
-            cvv = form.cleaned_data['cvv']
             paypal_bool = form.cleaned_data['paypal_bool']
 
             cart = request.session['cart']
             ukupaniznos = cart.getUkupno()
-
-            korisnik = Korisnik.objects.get(email=email)
-
-            if(korisnik.kkimeprezime!=ime_na_kartici):
-                korisnik.kkimeprezime=ime_na_kartici
-
-            if(korisnik.kkpaypal == False):
-                if(paypal_bool=='paypal'):
-                    korisnik.kkpaypal=True
-            else:
-                if(paypal_bool=='kreditnaKartica'):
-                    korisnik.kkpaypal=False
             
-            if(korisnik.kkbroj != broj_kartice):
-                korisnik.kkbroj = broj_kartice
+            if 'user' in request.session:
+                korisnik = Korisnik.objects.get(email=request.session['user'])
+                if(korisnik.kkimeprezime!=ime_na_kartici):
+                    korisnik.kkimeprezime=ime_na_kartici
 
-            if(korisnik.kkistek != istek_kartice):
-                korisnik.kkistek = istek_kartice
+                if(korisnik.kkpaypal == False):
+                    if(paypal_bool=='paypal'):
+                        korisnik.kkpaypal=True
+                else:
+                    if(paypal_bool=='kreditnaKartica'):
+                        korisnik.kkpaypal=False
+                
+                if(korisnik.kkbroj != broj_kartice):
+                    korisnik.kkbroj = broj_kartice
 
-            korisnik.save()
+                if(korisnik.kkistek != istek_kartice):
+                    korisnik.kkistek = istek_kartice
+
+                korisnik.save()
+
             novaTransakcija = Transakcija()
             novaTransakcija.ime = ime
             novaTransakcija.prezime = prezime
             novaTransakcija.adresa = adresa
             novaTransakcija.brojracuna = broj_kartice
             novaTransakcija.ukupaniznos = ukupaniznos
-            novaTransakcija.korisnik = Korisnik.objects.get(email=email)
+            if 'user' in request.session:
+                novaTransakcija.korisnik = Korisnik.objects.get(email=request.session['user'])
             novaTransakcija.save()
 
             for maketa,kol in cart.getCart().items():
@@ -113,7 +98,9 @@ class Checkout(View):
                 maketakupljena.kolicina = kol
                 maketakupljena.transakcijaid = novaTransakcija
                 maketakupljena.save()
-
+            
+            if 'cart' in request.session:
+                del request.session['cart']
 
             return HttpResponseRedirect(reverse('transakcije'))
         return HttpResponseRedirect(self.request.path_info)
