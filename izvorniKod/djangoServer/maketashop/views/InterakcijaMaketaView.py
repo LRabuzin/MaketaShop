@@ -34,7 +34,7 @@ class InterakcijaMaketa(View):
                     'title': "interakcijaTema", 
                     'link_active': "interakcijaTema", 
                     'empty_head': False,
-                    'InterakcijaTemaDTO' : InterakcijaMaketaDTO(id), 
+                    'InterakcijaMaketaDTO' : InterakcijaMaketaDTO(id), 
                     'session': request.session
                     })
                 

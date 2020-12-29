@@ -20,8 +20,8 @@ class InterakcijaMaketaDTO():
       def getVrsta(self):
          return self.vrsta
       
-      def getTema(self):
-         return self.tema
+      def getMaketa(self):
+         return self.maketa
 
       def getNaslov(self):
          return self.naslov
