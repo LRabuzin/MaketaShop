@@ -80,3 +80,6 @@ class PlacanjeForm(forms.Form):
     broj_kartice = forms.CharField(max_length=16, min_length=16, widget=forms.TextInput(attrs={'placeholder': 'Broj kartice', 'class':'form-control my-input'}))
     istek_kartice = forms.CharField(max_length=5, widget=forms.TextInput(attrs={'placeholder': 'MM/YY', 'class':'form-control my-input'}))
     cvv = forms.CharField(max_length=3, min_length=3, widget=forms.TextInput(attrs={'placeholder': 'CVV', 'class':'form-control my-input'}))
+
+class AdminCijenaForm(forms.Form):
+    custom_cijena = forms.DecimalField(label="Cijena:", min_value = 0, decimal_places = 2)
