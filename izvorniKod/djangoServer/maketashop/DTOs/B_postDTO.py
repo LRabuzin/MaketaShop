@@ -49,3 +49,14 @@ class B_postDTO():
         return self.komentari
     def getLajk(self):
         return self.lajk;
+
+    def getNaslov(self):
+        return self.prica.naslovprice
+    def getAutorKorisnickoIme(self):
+        return self.prica.autorid.korisnickoime
+    def getPredlozioKorisnickoIme(self):
+        return self.prica.predloziotemuid.korisnickoime
+    def getDatumPrice(self):
+        return self.prica.datumprice
+    def getCijena(self):
+        return self.napod.cijena
