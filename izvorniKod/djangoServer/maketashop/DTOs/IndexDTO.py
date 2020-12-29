@@ -21,8 +21,8 @@ class jednaPrica():
             if medija.mediaid.vrstamedije=='tekst':
                 if mintekst==None:
                     mintekst=medija.poredakuprici
-                if minslika>=medija.poredakuprici:
-                    minslika=medija.poredakuprici
+                if mintekst>=medija.poredakuprici:
+                    mintekst=medija.poredakuprici
                     self.tekst=medija.mediaid.putdodatoteke
 
     def getNaslov(self):

@@ -12,20 +12,23 @@ class AdminUserList(View):
     template_name ="maketashop/pregledKorisnika.html"
 
     def get(self, request):
-        dto = AULDTO(request)
-        messages.add_message(request, messages.SUCCESS, 'POYY SVIJETE!')
+        if (request.session.get("user")):
+            dto = AULDTO(request)
+            messages.add_message(request, messages.SUCCESS, 'POYY SVIJETE!')
         
-        if dto.getOvlast() == False:
-            return HttpResponseRedirect(reverse('index'))
-        
-        return render(request, self.template_name, {
+            if dto.getOvlast() == False:
+                return HttpResponseRedirect(reverse('index'))
             
-            'title': "pregledKorisnika", 
-            'link_active': "pregledKorisnika", 
-            'empty_head': False,
-            'AdminUserListDTO' : dto,
-            'session': request.session
-            })
+            return render(request, self.template_name, {
+                
+                'title': "pregledKorisnika", 
+                'link_active': "pregledKorisnika", 
+                'empty_head': False,
+                'AdminUserListDTO' : dto,
+                'session': request.session
+                })
+        else:
+            return HttpResponseRedirect(reverse('index'))
 
     def post(self, request):
         if (request.POST.get("pristup")):
