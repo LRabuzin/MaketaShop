@@ -4,6 +4,9 @@ from django.urls import reverse
 from django.views.generic import View
 from maketashop.DTOs.MaketaDTO import MaketaDTO
 from maketashop.DTOs.CartDTO import CartDTO
+from maketashop.models import Napravljenaod
+from maketashop.models import Materijal
+
 
 class Maketa(View):
     template_name ="maketashop/maketa.html"
@@ -20,8 +23,10 @@ class Maketa(View):
     def post(self, request, id):
         if 'cijena' in request.POST:
             maketaId = int(id)
-            cijena = float(request.POST['cijena'])
             materijal = request.POST['materijal']
+            #cijena = float(request.POST['cijena'])
+            cijena = float(Napravljenaod.objects.get(materijalid=Materijal.objects.get(ime=materijal), maketaid=maketaId).cijena)
+            
 
             if not 'cart' in request.session:
                 request.session['cart']=CartDTO()

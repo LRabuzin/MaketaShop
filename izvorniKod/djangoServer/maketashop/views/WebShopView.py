@@ -5,6 +5,9 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotModif
 from django.urls import reverse
 from maketashop.DTOs.WebShopDTO import WebShopDTO
 from maketashop.DTOs.CartDTO import CartDTO
+from maketashop.models import Napravljenaod
+from maketashop.models import Materijal
+
 
 class WebShop(View):
     template_name ="maketashop/WebShop.html"
@@ -21,9 +24,10 @@ class WebShop(View):
     def post(self, request):
         if 'idMaketa' in request.POST:
             maketaId = int(request.POST['idMaketa'])
-            cijena = float(request.POST['cijena'])
             materijal = request.POST['materijal']
-
+            #cijena = float(request.POST['cijena'])
+            cijena = float(Napravljenaod.objects.get(materijalid=Materijal.objects.get(ime=materijal), maketaid=maketaId).cijena)
+            
             if not 'cart' in request.session:
                 request.session['cart']=CartDTO()
             cart = request.session['cart']

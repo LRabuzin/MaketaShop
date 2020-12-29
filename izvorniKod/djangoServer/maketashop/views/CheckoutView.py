@@ -64,7 +64,6 @@ class Checkout(View):
 
     def post(self, request):
         form = PlacanjeForm(request.POST)
-        print('PK')
         if form.is_valid():
             ime = form.cleaned_data['ime']
             prezime = form.cleaned_data['prezime']
@@ -74,28 +73,27 @@ class Checkout(View):
             broj_kartice = form.cleaned_data['broj_kartice']
             istek_kartice = form.cleaned_data['istek_kartice']
             cvv = form.cleaned_data['cvv']
-            print('IME: ', ime)
-            print(cvv)
-            paymentMethod = request.POST['paymentMethod']
-            ukupaniznos = request.POST['ukupaniznos']
+            paypal_bool = form.cleaned_data['paypal_bool']
+
+            #ukupaniznos = request.POST['ukupaniznos']
 
             korisnik = Korisnik.objects.get(email=email)
 
-            if(korisnik.kkimeprezime==None):
+            if(korisnik.kkimeprezime!=ime_na_kartici):
                 korisnik.kkimeprezime=ime_na_kartici
 
             if(korisnik.kkpaypal == False):
-                if(paymentMethod=='paypal'):
+                if(paypal_bool=='paypal'):
                     korisnik.kkpaypal=True
             else:
-                if(paymentMethod=='kreditnaKartica'):
+                if(paypal_bool=='kreditnaKartica'):
                     korisnik.kkpaypal=False
             
-            if(korisnik.kkbroj == None):
+            if(korisnik.kkbroj != broj_kartice):
                 korisnik.kkbroj = broj_kartice
 
-            if(korisnik.istek == None):
-                korisnik.istek =istek_kartice
+            if(korisnik.kkistek != istek_kartice):
+                korisnik.kkistek = istek_kartice
 
             korisnik.save()
             novaTransakcija = Transakcija()
@@ -103,7 +101,8 @@ class Checkout(View):
             novaTransakcija.prezime = prezime
             novaTransakcija.adresa = adresa
             novaTransakcija.brojracuna = broj_kartice
-            novaTransakcija.ukupaniznos = ukupaniznos
-            novaTransakcija.korisnik = Korisnik.objects.get(email=email).korisnikid
+            novaTransakcija.ukupaniznos = 50000000000000 # OVO JE HARDCODIRANO TEMPORARY
+            novaTransakcija.korisnik = Korisnik.objects.get(email=email)
             novaTransakcija.save()
             return HttpResponseRedirect(reverse('transakcije'))
+        return HttpResponseRedirect(self.request.path_info)

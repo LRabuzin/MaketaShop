@@ -4,6 +4,8 @@ from django.shortcuts import render
 from maketashop.DTOs.CartDTO import CartDTO
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from maketashop.models import Napravljenaod
+from maketashop.models import Materijal
 
 class Cart(View):
     template_name ="maketashop/cart.html"
@@ -26,7 +28,8 @@ class Cart(View):
                     cart = request.session['cart']
                     maketaId = int(request.POST['idMaketa'])
                     materijal = request.POST['materijal']
-                    cijena = float(request.POST['cijena'])
+                    #cijena = float(request.POST['cijena'])
+                    cijena = float(Napravljenaod.objects.get(materijalid=Materijal.objects.get(ime=materijal), maketaid=maketaId).cijena)
                     #brisanje sve od jednog itema
                     if request.POST['metoda'] == '1':
                         cart.removeSveOdMaketa(maketaId, materijal, cijena)
