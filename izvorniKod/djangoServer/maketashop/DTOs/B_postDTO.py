@@ -61,3 +61,7 @@ class B_postDTO():
         return self.prica.datumprice
     def getCijena(self):
         return self.napod.cijena
+    def getBrojLajkova(self):
+        return self.prica.brojlajkova
+    def getBrojDislajkova(self):
+        return self.prica.brojdislajkova

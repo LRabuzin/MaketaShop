@@ -11,20 +11,20 @@
 
 	  <div class="col-lg-8">
 
-		<h1 class="mt-4">{{ B_postDTO.getPrica.getNaslov }}</h1>
+		<h1 class="mt-4">{{ B_postDTO.getNaslov }}</h1>
 
 		<p class="lead">
 		  autor:
-		  <a href="#">{{ B_postDTO.getPrica.getAutorId.getKorisnickoIme }}</a>
+		  <a href="#">{{ B_postDTO.getAutorKorisnickoIme }}</a>
 		  <br>
 		  {% if B_postDTO.getPrica.getPredlozioPricuId %}
 			  na prijedlog:
-			  <a href="#">{{ B_postDTO.getPrica.getPredlozioPricuId.getKorisnickoIme }}</a>
+			  <a href="#">{{ B_postDTO.getPredlozioKorisnickoIme }}</a>
 		  {% endif %}
 		</p>
 
 		<hr>
-		<p>Datum objave: {{ B_postDTO.getPrica.getDatumPrice|date:"d.m.Y." }}</p>
+		<p>Datum objave: {{ B_postDTO.getDatumPrice|date:"d.m.Y." }}</p>
 
 		<hr>
 
@@ -48,7 +48,7 @@
 		
 		{% if B_postDTO.getPrica.getMaketaId and not B_postDTO.getPrica.getMaketaProdana %}
 			<h5 class="p-2">Ova je maketa dostupna za kupnju.</h5>
-			<h6 class="p-2">Cijena: {{ B_postDTO.getNapod.getCijena }} kn</h6>
+			<h6 class="p-2">Cijena: {{ B_postDTO.getCijena }} kn</h6>
 			<button type="submit" class="btn btn-primary m-2">Kupi</button>
 		{% else %}
 			<h5 class="p-2">Ova maketa nije dostupna za kupnju.</h5>
@@ -66,8 +66,8 @@
 			Ocjene:
 		  </h5>
 		  <ul class="list-group list-group-flush d-flex flex-column justify-content-center align-items-center">
-			<li class="list-group-item text-success">Sviđa mi se: {{ B_postDTO.getPrica.getBrojLajkova }} </li>
-			<li class="list-group-item text-danger">Ne sviđa mi se: {{ B_postDTO.getPrica.getBrojDislajkova }} </li>
+			<li class="list-group-item text-success">Sviđa mi se: {{ B_postDTO.getBrojLajkova }} </li>
+			<li class="list-group-item text-danger">Ne sviđa mi se: {{ B_postDTO.getBrojDislajkova }} </li>
 		  </ul>
 		</div>
 
