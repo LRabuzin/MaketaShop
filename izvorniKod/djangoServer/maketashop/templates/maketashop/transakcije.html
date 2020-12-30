@@ -1,64 +1,23 @@
 {%extends "./base.html"%}
 {% load static %}
-{% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/proba.css' %}"> {% endblock mycss %}
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'maketashop/proba.css' %}">
+{% endblock mycss %}
 {% block content %}
 {% if TransakcijeDTO.getAdmin == True %}
-<div class="card">
-{% for t in TransakcijeDTO.getTransakcije %}
-<hr>
+<div class="card container p-3">
+		<div class="container">
+			<h2>Transakcije svih korisnika</h2>
+		</div>
+	{% for t in TransakcijeDTO.getTransakcije %}
+	<hr>
 	<div class="card-header">
 		{{  t.getIme }}
 		{{  t.getPrezime }}
 	</div>
 	<div class="card" style="width: 18rem;">
-	  <ul class="list-group list-group-flush">
-		
-		<li class="list-group-item">
-			<span>Broj racuna:</span>
-			<strong>{{  t.getBrojRacuna }}</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Ukupan iznos:</span>
-			<strong>{{  t.getUkupanIznos }}</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Adresa:</span>
-			<strong>{{  t.getAdresa }}</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Proizvodi:</span>
-			
-			{% for m in TransakcijeDTO.getMaketakupljena %}
-			{% if m.getTransakcijaId.getTransakcijaId == t.getTransakcijaId %}
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item">
-			<span>Ime makete:</span>
-			<strong>{{  m.getMaketaId.getIme }}</strong>
-			</li>
-			<li class="list-group-item">
-			<span>Materijal:</span>
-			<strong>{{  m.getMaterijalId.getIme }}</strong>
-			</li>
-			</ul>
-			{% endif %}
-			{% endfor %}
-		</li>
-	  </ul>
-	</div>
-<hr>
-{% endfor %}
-{% else %}
-<div class="card">
-	{% for t in TransakcijeDTO.getTransakcije %}
-	{% if t.getKorisnikId.getEmail == session.user %}
-	<hr>
-		<div class="card-header">
-			{{  t.getIme }}
-			{{  t.getPrezime }}
-		</div>
-		<div class="card" style="width: 18rem;">
-		  <ul class="list-group list-group-flush">
-			
+		<ul class="list-group list-group-flush">
+
 			<li class="list-group-item">
 				<span>Broj racuna:</span>
 				<strong>{{  t.getBrojRacuna }}</strong>
@@ -73,27 +32,77 @@
 			</li>
 			<li class="list-group-item">
 				<span>Proizvodi:</span>
-				
+
 				{% for m in TransakcijeDTO.getMaketakupljena %}
+			{% if m.getTransakcijaId.getTransakcijaId == t.getTransakcijaId %}
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">
+					<span>Ime makete:</span>
+					<strong>{{  m.getMaketaId.getIme }}</strong>
+				</li>
+				<li class="list-group-item">
+					<span>Materijal:</span>
+					<strong>{{  m.getMaterijalId.getIme }}</strong>
+				</li>
+			</ul>
+				{% endif %}
+			{% endfor %}
+			</li>
+		</ul>
+	</div>
+	<hr>
+	{% endfor %}
+	</div>
+{% else %}
+	<div class="card container p-3">
+		<div class="container">
+			<h2>Moje transakcije</h2>
+		</div>
+		{% for t in TransakcijeDTO.getTransakcije %}
+	{% if t.getKorisnikId.getEmail == session.user %}
+	<hr>
+		<div class="card-header">
+			{{  t.getIme }}
+			{{  t.getPrezime }}
+		</div>
+		<div class="card" style="width: 18rem;">
+			<ul class="list-group list-group-flush">
+
+				<li class="list-group-item">
+					<span>Broj racuna:</span>
+					<strong>{{  t.getBrojRacuna }}</strong>
+				</li>
+				<li class="list-group-item">
+					<span>Ukupan iznos:</span>
+					<strong>{{  t.getUkupanIznos }}</strong>
+				</li>
+				<li class="list-group-item">
+					<span>Adresa:</span>
+					<strong>{{  t.getAdresa }}</strong>
+				</li>
+				<li class="list-group-item">
+					<span>Proizvodi:</span>
+
+					{% for m in TransakcijeDTO.getMaketakupljena %}
 				{% if m.getTransakcijaId.getTransakcijaId == t.getTransakcijaId %}
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">
-				<span>Ime makete:</span>
-				<strong>{{  m.getMaketaId.getIme }}</strong>
-				</li>
-				<li class="list-group-item">
-				<span>Materijal:</span>
-				<strong>{{  m.getMaterijalId.getIme }}</strong>
-				</li>
+						<span>Ime makete:</span>
+						<strong>{{  m.getMaketaId.getIme }}</strong>
+					</li>
+					<li class="list-group-item">
+						<span>Materijal:</span>
+						<strong>{{  m.getMaterijalId.getIme }}</strong>
+					</li>
 				</ul>
-				{% endif %}
+					{% endif %}
 				{% endfor %}
-			</li>
-		  </ul>
+				</li>
+			</ul>
 		</div>
-	<hr>
-	{% endif %}
+		<hr>
+		{% endif %}
 	{% endfor %}
 {% endif %}
-
+	</div>
 {% endblock content %}

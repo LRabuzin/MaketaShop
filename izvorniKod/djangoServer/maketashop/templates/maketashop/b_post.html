@@ -44,7 +44,7 @@
 		  </form>
 
 		<hr>
-		<div class="d-flex flex-column justify-content-center align-items-center p-2">
+		<!--<div class="d-flex flex-column justify-content-center align-items-center p-2">
 		
 		{% if B_postDTO.getPrica.getMaketaId and not B_postDTO.getPrica.getMaketaProdana %}
 			<h5 class="p-2">Ova je maketa dostupna za kupnju.</h5>
@@ -56,7 +56,7 @@
 		  
 		</div>
 
-		<hr>
+		<hr>-->
 		
 	  </div>
 
@@ -70,7 +70,7 @@
 			<li class="list-group-item text-danger">Ne sviđa mi se: {{ B_postDTO.getBrojDislajkova }} </li>
 		  </ul>
 		</div>
-
+		
 		<div class="card my-4">
 		  <h5 class="card-header">Komentiraj:</h5>
 		  <div class="card-body">
@@ -88,7 +88,7 @@
 		{% if B_postDTO.getKomentari %}
 			{% for komentar in B_postDTO.getKomentari %}
 				<div class="media mb-4">
-				  <img class="d-flex mr-3 comm-img rounded-circle" src="{% static komentar.getKorisnikId.getProfilnaSlika %}" alt="">
+				  <img class="d-flex mr-3 comm-img rounded-circle" src="{% static komentar.getKorisnikId.getSlika %}" alt="">
 				  <div class="media-body">
 					<h5 class="mt-0">{{ komentar.getKorisnikId.getKorisnickoIme }}</h5>
 					{{ komentar.sadrzaj }}
