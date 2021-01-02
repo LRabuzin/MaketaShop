@@ -25,7 +25,12 @@
 		  <br>
 		  {% if B_postDTO.getPrica.getPredlozioPricuId %}
 			  na prijedlog:
-			  <a href="#">{{ B_postDTO.getPredlozioKorisnickoIme }}</a>
+			  <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+			   {% csrf_token %}
+				 <button class="btn btn-link" type="submit" name="userlink" value="{{ B_postDTO.getPredlozioId }}">
+				  {{ B_postDTO.getPredlozioKorisnickoIme }}
+			     </button>
+		      </form>	
 		  {% endif %}
 		</p>
 
@@ -96,7 +101,15 @@
 				<div class="media mb-4">
 				  <img class="d-flex mr-3 comm-img rounded-circle" src="{% static komentar.getKorisnikId.getSlika %}" alt="">
 				  <div class="media-body">
-					<h5 class="mt-0">{{ komentar.getKorisnikId.getKorisnickoIme }}</h5>
+					<h5 class="mt-0">
+					<form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+					 {% csrf_token %}
+					  <button class="btn btn-link" type="submit" name="userlink" 
+					  value="{{ komentar.getKorisnikId.getKorisnikId }}">
+					  {{ komentar.getKorisnikId.getKorisnickoIme }}
+					  </button>
+					</form>						
+					</h5>
 					{{ komentar.sadrzaj }}
 				  </div>
 				</div>
