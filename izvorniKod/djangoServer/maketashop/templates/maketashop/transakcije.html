@@ -44,6 +44,10 @@
 					<span>Materijal:</span>
 					<strong>{{  m.getMaterijalId.getIme }}</strong>
 				</li>
+				<li class="list-group-item">
+					<span>Količina:</span>
+					<strong>{{  m.getKolicina }}</strong>
+				</li>
 			</ul>
 				{% endif %}
 			{% endfor %}
@@ -93,6 +97,10 @@
 					<li class="list-group-item">
 						<span>Materijal:</span>
 						<strong>{{  m.getMaterijalId.getIme }}</strong>
+					</li>
+					<li class="list-group-item">
+						<span>Količina:</span>
+						<strong>{{  m.getKolicina }}</strong>
 					</li>
 				</ul>
 					{% endif %}
