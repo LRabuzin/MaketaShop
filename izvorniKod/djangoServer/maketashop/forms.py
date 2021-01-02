@@ -17,12 +17,12 @@ class LoginForm(forms.Form):
     pass1 = forms.CharField(label="Zaporka", max_length=32, widget=forms.PasswordInput(attrs={'placeholder': 'Zaporka', 'class':'form-control'}))
 
 class PrivacyForm(forms.Form):
-    pic = forms.BooleanField(label="Prikaži sliku", required=False)
-    name_surname = forms.BooleanField(label="Prikaži prezime", required=False)
-    birth_date = forms.BooleanField(label="Prikaži rođendan", required=False)
-    register_date = forms.BooleanField(label="Prikaži datum registracije", required=False)
-    email = forms.BooleanField(label="Prikaži adresu e-pošte", required=False)
-    address = forms.BooleanField(label="Prikaži adresu", required=False)
+    pic = forms.BooleanField(label="Sakrij sliku", required=False)
+    name_surname = forms.BooleanField(label="Sakrij ime i prezime", required=False)
+    birth_date = forms.BooleanField(label="Sakrij rođendan", required=False)
+    register_date = forms.BooleanField(label="Sakrij datum registracije", required=False)
+    email = forms.BooleanField(label="Sakrij adresu e-pošte", required=False)
+    address = forms.BooleanField(label="Sakrij adresu", required=False)
 
 class PostForm(forms.Form):
     naslovprice = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov priče', 'class':'form-control my-input', 'id':'naslovprice'}))
