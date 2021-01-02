@@ -8,7 +8,7 @@ class B_postDTO():
 
     def __init__(self, id, lajkao):
         self.prica=Prica.objects.select_related().get(pricaid=id);
-        self.napod = Napravljenaod.objects.get(maketaid=self.prica.maketaid)
+        #self.napod = Napravljenaod.objects.get(maketaid=self.prica.maketaid)
         self.komentari = Komentar.objects.filter(pricaid=self.prica.pricaid)
         self.lajk = lajkao;
         self.brojLajkova = Prica.getBrojLajkova;
@@ -40,6 +40,8 @@ class B_postDTO():
                     mintekst=medija.poredakuprici
                     self.tekst=medija.mediaid.putdodatoteke
         
+        print(self.getSvaMedija())
+        
     def getSlika(self):
         return self.slika
     
@@ -48,8 +50,8 @@ class B_postDTO():
 
     def getPrica(self):
         return self.prica
-    def getNapod(self):
-        return self.napod
+    #def getNapod(self):
+    #    return self.napod
     def getKomentari(self):
         return self.komentari
     def getLajk(self):
@@ -67,8 +69,8 @@ class B_postDTO():
         return self.prica.predloziotemuid.korisnikid
     def getDatumPrice(self):
         return self.prica.datumprice
-    def getCijena(self):
-        return self.napod.cijena
+    # def getCijena(self):
+    #     return self.napod.cijena
     def getBrojLajkova(self):
         return self.prica.brojlajkova
     def getBrojDislajkova(self):
