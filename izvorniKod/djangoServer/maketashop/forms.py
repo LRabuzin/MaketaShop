@@ -4,9 +4,9 @@ from maketashop.models import Materijal
 from django.core.exceptions import ValidationError
 
 def file_size(value):
-    limit = 2 * 1024 * 1024
+    limit = 500 * 1024 * 1024
     if value.size > limit:
-        raise ValidationError('File too large. Size should not exceed 2 MiB.')
+        raise ValidationError('Datoteka prevelika, veličina ne smije prelaziti 500 MB')
 
 class SignupForm(forms.Form):
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
