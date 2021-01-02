@@ -8,6 +8,7 @@ from maketashop.models import Napravljenaod
 from maketashop.models import Korisnik
 from ..forms import AdminCijenaForm
 from maketashop.DTOs.InterakcijaMaketaDTO import InterakcijaMaketaDTO
+from maketashop.DTOs.CartDTO import CartDTO
 
 class InterakcijaMaketa(View):
     template_name ="maketashop/interakcijaMaketa.html"
@@ -51,18 +52,25 @@ class InterakcijaMaketa(View):
             napravljenaOd.save()
             return HttpResponseRedirect(self.request.path_info)
       else:
+         interakcija = Interakcija.objects.select_related().get(interakcijaid = id)
+         
+         maketa = Maketa.objects.select_related().get(maketaid = interakcija.maketaid.maketaid)
          if request.POST.get("approve") == '1':
-            interakcija = Interakcija.objects.select_related().get(interakcijaid = id)
+
             interakcija.interakcijaotvorena = False
-            maketa = Maketa.objects.select_related().get(maketaid = interakcija.maketaid.maketaid)
             maketa.prihvacena = True
             maketa.save()
             interakcija.save()
-         else:
-            interakcija = Interakcija.objects.select_related().get(interakcijaid = id)
+         elif request.POST.get("approve") == '0':
             interakcija.interakcijaotvorena = False
-            maketa = Maketa.objects.select_related().get(maketaid = interakcija.maketaid.maketaid)
             maketa.prihvacena = False
             maketa.save()
             interakcija.save()
+         elif request.POST.get("purchase") == '1':
+            cart = request.session['cart']
+            materijal = Napravljenaod.objects.get(maketaid = maketa.maketaid).materijalid.ime
+            cijena = Napravljenaod.objects.get(maketaid = maketa.maketaid).cijena
+            kolicina = Napravljenaod.objects.get(maketaid = maketa.maketaid).brojuskladistu
+            cart.addMaketa(maketa.maketaid, materijal, cijena, kolicina)
+            request.session['cart'] = cart
          return HttpResponseRedirect(self.request.path_info)
