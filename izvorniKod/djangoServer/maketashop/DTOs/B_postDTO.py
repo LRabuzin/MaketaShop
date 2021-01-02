@@ -15,9 +15,13 @@ class B_postDTO():
         self.brojDislajkova = Prica.getBrojDislajkova;
 
         #self.prica=Prica.objects.select_related().get(pricaid=pricaID)
-        medijaprice=Multimedijaprice.objects.select_related().filter(pricaid=self.prica.pricaid)
+        medijaprice=Multimedijaprice.objects.select_related().filter(pricaid=self.prica.pricaid).order_by('poredakuprici')
         self.slika=None
         self.tekst=None
+        self.svaMedija=[]
+
+        for medija in medijaprice:
+            self.svaMedija.append((medija.mediaid.vrstamedije,medija.mediaid.putdodatoteke))
 
         for medija in medijaprice:
             minslika=None
@@ -59,6 +63,8 @@ class B_postDTO():
         return self.prica.autorid.korisnikid
     def getPredlozioKorisnickoIme(self):
         return self.prica.predloziotemuid.korisnickoime
+    def getPredlozioId(self):
+        return self.prica.predloziotemuid.korisnikid
     def getDatumPrice(self):
         return self.prica.datumprice
     def getCijena(self):
@@ -67,3 +73,6 @@ class B_postDTO():
         return self.prica.brojlajkova
     def getBrojDislajkova(self):
         return self.prica.brojdislajkova
+
+    def getSvaMedija(self):
+        return self.svaMedija
