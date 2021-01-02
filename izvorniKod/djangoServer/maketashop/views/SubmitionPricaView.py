@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import View
 from ..forms import InteractionPostForm
+from ..forms import PostForm
 from maketashop.models import Interakcija
 from maketashop.models import Korisnik
 from maketashop.models import Prica
@@ -18,23 +19,31 @@ class SubmitionPrica(View):
 
    def get(self, request):
       # <view logic>
-      form = InteractionPostForm()
+      formUser = InteractionPostForm()
+      formAdmin = PostForm()
       if 'user' not in request.session:
          return HttpResponseRedirect(reverse('index'))
       else:
          user = Korisnik.objects.select_related().get(email = request.session['user'])
          if user.jeadmin:
-            return HttpResponseRedirect(reverse('index'))
+            return render(request, self.template_name, {
+            'title': "submitionMaketa", 
+            'link_active': "submitionMaketa", 
+            'empty_head': False,
+            'form' : formAdmin,
+            'session': request.session
+            })
 
          return render(request, self.template_name, {
          'title': "submitionMaketa", 
          'link_active': "submitionMaketa", 
          'empty_head': False,
-         'form' : form,
+         'form' : formUser,
          'session': request.session
          })
 
    def post(self, request):
+
       form = InteractionPostForm(request.POST, request.FILES)
 
       if form.is_valid():
@@ -44,6 +53,11 @@ class SubmitionPrica(View):
          prica.naslovprice = form.cleaned_data['naslovprice']
          prica.autorid = Korisnik.objects.select_related().get(email = request.session['user'])
          prica.predloziotemuid = None
+
+         user = Korisnik.objects.select_related().get(email = request.session['user'])
+         if user.jeadmin:
+            prica.objavljena = True
+
          prica.save()
          if form.cleaned_data['text1'] :
             putanja = handle_uploaded_text(form.cleaned_data['text1'],brojac)
@@ -241,13 +255,13 @@ class SubmitionPrica(View):
          
          
 
-
-         interakcija = Interakcija()
-         interakcija.korisnikid = Korisnik.objects.select_related().get(email = request.session['user'])
-         interakcija.naslovinterakcije = form.cleaned_data['naslov_interakcije']
-         interakcija.vrstainterakcije = "prica"
-         interakcija.pricaid = prica
-         interakcija.save()
+         if not user.jeadmin:
+            interakcija = Interakcija()
+            interakcija.korisnikid = Korisnik.objects.select_related().get(email = request.session['user'])
+            interakcija.naslovinterakcije = form.cleaned_data['naslov_interakcije']
+            interakcija.vrstainterakcije = "prica"
+            interakcija.pricaid = prica
+            interakcija.save()
 
          
 
