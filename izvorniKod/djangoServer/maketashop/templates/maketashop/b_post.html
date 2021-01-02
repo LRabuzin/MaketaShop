@@ -43,9 +43,9 @@
 			{% if multimedija.0 == 'slika' %}
 			<img class="img-fluid rounded" src="{% static multimedija.1 %}" alt="">
 			{% elif multimedija.0 == 'tekst' %}
-			<object width="300" height="300" type="text/plain" data="message.txt" border="0" >
-			</object>
-			<!-- <embed src="{% static multimedija.1 %}" alt="" style="width:100%"> -->
+			<!-- <object width="300" height="300" type="text/plain" data="message.txt" border="0" >
+			</object> -->
+			<embed src="{% static multimedija.1 %}" alt="" style="width:100%">
 			{% elif multimedija.0 == 'video' %}
 			<video width="720" height="480" controls>
 				<source src="{% static multimedija.1 %}" type=video/mp4>

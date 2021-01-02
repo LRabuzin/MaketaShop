@@ -16,6 +16,12 @@ class InterakcijaPricaDTO():
          self.prica = Prica.objects.select_related().get(pricaid = interakcija.pricaid.pricaid)
 
          self.multimedija = Multimedijaprice.objects.select_related().filter(pricaid = interakcija.pricaid.pricaid).order_by('poredakuprici')
+
+         self.svaMedija=[]
+
+         for medija in self.multimedija:
+            self.svaMedija.append((medija.mediaid.vrstamedije,medija.mediaid.putdodatoteke))
+
       def getVrsta(self):
          return self.vrsta
       
@@ -30,3 +36,12 @@ class InterakcijaPricaDTO():
       
       def getMultimedija(self):
          return self.multimedija
+      
+      def getSvaMedija(self):
+        return self.svaMedija
+      
+      def getAutorKorisnickoIme(self):
+        return self.prica.autorid.korisnickoime
+
+      def getDatumPrice(self):
+        return self.prica.datumprice

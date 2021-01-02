@@ -31,6 +31,7 @@ class SubmitionPrica(View):
             'link_active': "submitionMaketa", 
             'empty_head': False,
             'form' : formAdmin,
+            'jeAdmin' : user.jeadmin,
             'session': request.session
             })
 
@@ -39,6 +40,7 @@ class SubmitionPrica(View):
          'link_active': "submitionMaketa", 
          'empty_head': False,
          'form' : formUser,
+         'jeAdmin' : user.jeadmin,
          'session': request.session
          })
 

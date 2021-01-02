@@ -1,0 +1,102 @@
+{%extends "./base.html"%}
+{% load static %}
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'maketashop/inbox.css' %}"> {% endblock mycss %}
+{% block content %}
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-8">
+            <h1 class="mt-4">Prijedlog priče:</h1>
+            <h1 class="mt-4">{{ InterakcijaPricaDTO.getNaslov }}</h1>
+
+            <p class="lead">
+                autor:
+            <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+                {% csrf_token %}
+                <button class="btn btn-link" type="submit" name="userlink" value="{{ B_postDTO.getAutorId }}">
+                    {{ InterakcijaPricaDTO.getAutorKorisnickoIme }}
+                </button>
+            </form>
+
+            <br>
+            {% if InterakcijaPricaDTO.getPrica.getPredlozioPricuId %}
+            na prijedlog:
+            <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+                {% csrf_token %}
+                <button class="btn btn-link" type="submit" name="userlink" value="{{ B_postDTO.getPredlozioId }}">
+                    {{ InterakcijaPricaDTO.getPredlozioKorisnickoIme }}
+                </button>
+            </form>
+            {% endif %}
+            </p>
+
+            <hr>
+            <p>Datum objave: {{ InterakcijaPricDTO.getDatumPrice|date:"d.m.Y." }}</p>
+
+            <hr>
+
+            {% for multimedija in InterakcijaPricaDTO.getSvaMedija %}
+            {% if multimedija.0 == 'slika' %}
+            <img class="img-fluid rounded" src="{% static multimedija.1 %}" alt="">
+            {% elif multimedija.0 == 'tekst' %}
+            <!-- <object width="300" height="300" type="text/plain" data="message.txt" border="0">
+            </object> -->
+            <embed src="{% static multimedija.1 %}" alt="" style="width:100%">
+            {% elif multimedija.0 == 'video' %}
+            <video width="720" height="480" controls>
+                <source src="{% static multimedija.1 %}" type=video/mp4>
+                <source src="{% static multimedija.1 %}" type=video/mkv>
+                <source src="{% static multimedija.1 %}" type=video/avi>
+                <source src="{% static multimedija.1 %}" type=video/mov>
+                Vaš video nije pronađen
+            </video>
+            {% endif %}
+            <hr>
+            {% endfor %}
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="card my-4">
+                {% if jeAdmin %}
+                {% if InterakcijaPricaDTO.getOtvoren %}
+                <form action="" method="post" name="approve" class="d-flex flex-row justify-content-around p-3">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success" name="approve" value="1">Objavi priču</button>
+                    <button type="submit" class="btn btn-danger" name="approve" value="0">Odbij priču</button>
+                </form>
+                {% else %}
+                {% if InterakcijaPricaDTO.getPrica.objavljena %}
+                <h5 class="card-header bg-success">Priča prihvaćena!</h5>
+                {% else %}
+                <h5 class="card-header bg-danger">priča odbijena!</h5>
+                {% endif %}
+                {% endif %}
+                {% else %}
+                {% if InterakcijaPricaDTO.getOtvoren %}
+                <h5 class="card-header">Admin još nije pregledao priču</h5>
+                {% else %}
+                {% if InterakcijaPricaDTO.getPrica.objavljena %}
+                <h5 class="card-header bg-success">Priča prihvaćena!</h5>
+                {% else %}
+                <h5 class="card-header bg-danger">Priča odbijena!</h5>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+<!-- <form action="" method="post" name="approve" class="d-flex flex-row justify-content-around p-3">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success" name="approve" value="1">odobri</button>
+    <button type="submit" class="btn btn-danger" name="approve" value="0">odbij</button>
+</form> -->
