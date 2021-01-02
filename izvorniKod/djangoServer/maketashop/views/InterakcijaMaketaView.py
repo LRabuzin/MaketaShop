@@ -67,6 +67,8 @@ class InterakcijaMaketa(View):
             maketa.save()
             interakcija.save()
          elif request.POST.get("purchase") == '1':
+            if not 'cart' in request.session:
+               request.session['cart']=CartDTO()
             cart = request.session['cart']
             materijal = Napravljenaod.objects.get(maketaid = maketa.maketaid).materijalid.ime
             cijena = Napravljenaod.objects.get(maketaid = maketa.maketaid).cijena

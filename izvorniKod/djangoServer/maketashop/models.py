@@ -192,7 +192,7 @@ class Korisnik(models.Model):
     profilnaid = models.ForeignKey(Media, db_column='profilnaid', default=1, blank=True, null=True, on_delete=models.CASCADE)
     lajkaopricu = models.ManyToManyField("Prica", related_name = "lajkaopricu")
     dislajkaopricu = models.ManyToManyField("Prica", related_name = "dislajkaopricu")
-    kkpaypal = models.BooleanField(default=False)
+    kkpaypal = models.BooleanField(default=False, blank=True, null=True)
     kkimeprezime = models.CharField(max_length=27, default=None, blank=True, null=True)
     kkbroj = models.CharField(max_length=16, default=None, blank=True, null=True)
     kkistek = models.CharField(max_length=5, default=None, blank=True, null=True)
