@@ -7,6 +7,7 @@ from maketashop.models import Interakcija
 from maketashop.models import Korisnik
 from maketashop.models import Maketa
 from maketashop.models import Vrstamakete
+from maketashop.models import Media
 from maketashop.models import Napravljenaod
 
 
@@ -43,6 +44,10 @@ class SubmitionMaketa(View):
          maketa.dimenzije = form.cleaned_data['dimenzije']
          maketa.opis = form.cleaned_data['opis']
          maketa.vrsta = vrsta
+         
+         media = Media.objects.select_related().get(mediaid = 1)
+
+         maketa.mediaid = media
          maketa.save()
 
          napravljenaOd = Napravljenaod()
