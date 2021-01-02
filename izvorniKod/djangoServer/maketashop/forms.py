@@ -1,6 +1,12 @@
 from django import forms
 from django.core import validators
 from maketashop.models import Materijal
+from django.core.exceptions import ValidationError
+
+def file_size(value):
+    limit = 2 * 1024 * 1024
+    if value.size > limit:
+        raise ValidationError('File too large. Size should not exceed 2 MiB.')
 
 class SignupForm(forms.Form):
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
@@ -27,13 +33,13 @@ class PrivacyForm(forms.Form):
 class PostForm(forms.Form):
     naslovprice = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov priče', 'class':'form-control my-input', 'id':'naslovprice'}))
     text1 = forms.CharField(required=False, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput1', 'readonly':'True'}))
-    media1 = forms.FileField(required=False, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput1', 'readonly':'True'}))
+    media1 = forms.FileField(required=False, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4']), file_size], widget = forms.ClearableFileInput(attrs={'id':'mediaInput1', 'readonly':'True'}))
     text2 = forms.CharField(required=False, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput2', 'readonly':'True'}))
-    media2 = forms.FileField(required=False, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput2', 'readonly':'True'}))
+    media2 = forms.FileField(required=False, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4']), file_size], widget = forms.ClearableFileInput(attrs={'id':'mediaInput2', 'readonly':'True'}))
     text3= forms.CharField(required=False, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput3', 'readonly':'True'}))
-    media3 = forms.FileField(required=False, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput3', 'readonly':'True'}))
+    media3 = forms.FileField(required=False, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4']), file_size], widget = forms.ClearableFileInput(attrs={'id':'mediaInput3', 'readonly':'True'}))
     text4 = forms.CharField(required=False, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput4', 'readonly':'True'}))
-    media4 = forms.FileField(required=False, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4'])], widget = forms.ClearableFileInput(attrs={'id':'mediaInput4', 'readonly':'True'}))
+    media4 = forms.FileField(required=False, validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png', 'mkv', 'avi', 'mov', 'mp4']), file_size], widget = forms.ClearableFileInput(attrs={'id':'mediaInput4', 'readonly':'True'}))
     text5 = forms.CharField(required=False, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput5', 'readonly':'True'}))
     
 class InteractionThemeForm(forms.Form):
