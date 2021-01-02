@@ -27,8 +27,8 @@ class SubmitionPrica(View):
          user = Korisnik.objects.select_related().get(email = request.session['user'])
          if user.jeadmin:
             return render(request, self.template_name, {
-            'title': "submitionMaketa", 
-            'link_active': "submitionMaketa", 
+            'title': "submitionPrica", 
+            'link_active': "submitionPrica", 
             'empty_head': False,
             'form' : formAdmin,
             'jeAdmin' : user.jeadmin,
@@ -36,8 +36,8 @@ class SubmitionPrica(View):
             })
 
          return render(request, self.template_name, {
-         'title': "submitionMaketa", 
-         'link_active': "submitionMaketa", 
+         'title': "submitionPrica", 
+         'link_active': "submitionPrica", 
          'empty_head': False,
          'form' : formUser,
          'jeAdmin' : user.jeadmin,
@@ -46,17 +46,20 @@ class SubmitionPrica(View):
 
    def post(self, request):
 
-      form = InteractionPostForm(request.POST, request.FILES)
+      user = Korisnik.objects.select_related().get(email = request.session['user'])
+   
+      if user.jeadmin:
+         form = PostForm(request.POST, request.FILES)
+      else:
+         form = InteractionPostForm(request.POST, request.FILES)
 
       if form.is_valid():
          brojac = 0
-
          prica = Prica()
          prica.naslovprice = form.cleaned_data['naslovprice']
          prica.autorid = Korisnik.objects.select_related().get(email = request.session['user'])
          prica.predloziotemuid = None
 
-         user = Korisnik.objects.select_related().get(email = request.session['user'])
          if user.jeadmin:
             prica.objavljena = True
 

@@ -6,11 +6,17 @@
 <div class="container p-4">
   <form action="" method="post" name="login" id="postForm" enctype="multipart/form-data">
     {% csrf_token %}
+    {% if jeAdmin %}
+    <div class="form-group">
+      <h1 class="h3 mb-3 font-weight-normal">Sastavi priču</h1>
+    </div>
+    {% else %}
     <div class="form-group">
       <h1 class="h3 mb-3 font-weight-normal">Predloži priču</h1>
       {{ form.naslov_interakcije.errors }}
       {{ form.naslov_interakcije }}
     </div>
+    {% endif %}
     <div class="form-group">
       {{ form.naslovprice.errors }}
       {{ form.naslovprice }}
@@ -87,8 +93,11 @@
       {{ form.text5 }}
       <button type="button" id="hideText5" class="btn btn-danger">Ukloni tekst</button>
     </div>
-
+    {% if jeAdmin %}
+    <button type="submit" class="btn btn-primary">Objavi priču</button>
+    {% else %}
     <button type="submit" class="btn btn-primary">Predloži priču</button>
+    {% endif %}
   </form>
 </div>
 {% block myjs %}

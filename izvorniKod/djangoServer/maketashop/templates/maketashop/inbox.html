@@ -10,6 +10,7 @@
   <hr>
 
   <div class="row">
+    {% if not jeAdmin %}
     <div class="col-md-4">
       <div class="card my-4">
         <h5 class="card-header">Pošalji adminu:</h5>
@@ -20,7 +21,12 @@
         </div>
       </div>
     </div>
+    {% endif %}
+    {% if jeAdmin %}
+    <div class="col-md-12">
+    {% else %}
     <div class="col-md-8">
+    {% endif %}
       {% for interakcija in InboxDTO.getInterakcije %}
         {% if interakcija.getVrsta == 'tema' %}
         <a href="{% url 'interakcijaTema' interakcija.getId%}">

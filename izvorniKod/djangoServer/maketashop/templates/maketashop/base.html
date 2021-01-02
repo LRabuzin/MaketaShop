@@ -46,6 +46,9 @@
                   {% endif %}
                   {% if session.admin %}
                   <li class="nav-item">
+                    <a class="nav-link {% if link_active == 'submitionPrica' %}active{% endif %}" href="{% url 'postsubmit' %}">Sastavljanje priče</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link {% if link_active == 'pregledKorisnika' %}active{% endif %}" href="{% url 'pregledKorisnika' %}">Pregled korisnika</a>
                   </li>
                   {% endif %}
