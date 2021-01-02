@@ -6,6 +6,7 @@ from maketashop.DTOs.ProfilDTO import ProfilDTO
 from maketashop.DTOs.CreditCardDTO import CreditCardDTO
 from maketashop.models import Transakcija, Korisnik, Maketakupljena, Materijal
 from ..forms import PlacanjeForm
+from django.contrib import messages
 
 class Checkout(View):
     template_name ="maketashop/checkout.html"
@@ -85,6 +86,8 @@ class Checkout(View):
                     korisnik.save()
 
                 novaTransakcija = Transakcija()
+                next_id = Transakcija.objects.order_by('-transakcijaid').first().transakcijaid + 1
+                novaTransakcija.transakcijaid = next_id
                 novaTransakcija.ime = ime
                 novaTransakcija.prezime = prezime
                 novaTransakcija.adresa = adresa
@@ -96,6 +99,8 @@ class Checkout(View):
 
                 for maketa,kol in cart.getCart().items():
                     maketakupljena = Maketakupljena()
+                    next_id = Maketakupljena.objects.order_by('-id').first().id + 1
+                    maketakupljena.id = next_id
                     maketakupljena.maketaid = maketa.getMaketa()
                     maketakupljena.materijalid = Materijal.objects.get(ime=maketa.getMaterijal())
                     maketakupljena.kolicina = kol
@@ -104,7 +109,9 @@ class Checkout(View):
                 
                 if 'cart' in request.session:
                     del request.session['cart']
-
+                messages.add_message(request, messages.SUCCESS, 'Kupnja uspješna!')
                 return HttpResponseRedirect(reverse('transakcije'))
+            messages.add_message(request, messages.ERROR, 'Kupnja neuspješna!')
             return HttpResponseRedirect(self.request.path_info)
+        messages.add_message(request, messages.ERROR, 'Kupnja neuspješna!')
         return HttpResponseRedirect(reverse('index'))

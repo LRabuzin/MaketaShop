@@ -14,7 +14,6 @@ class AdminUserList(View):
     def get(self, request):
         if (request.session.get("user")):
             dto = AULDTO(request)
-            messages.add_message(request, messages.SUCCESS, 'POYY SVIJETE!')
         
             if dto.getOvlast() == False:
                 return HttpResponseRedirect(reverse('index'))

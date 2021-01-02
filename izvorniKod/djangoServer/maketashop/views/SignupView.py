@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.views.generic import View
 from ..forms import SignupForm
 from datetime import date
+from django.contrib import messages
 
 class Signup(View):
     template_name="maketashop/signup.html"
@@ -51,5 +52,7 @@ class Signup(View):
 
                     request.session['user'] = korisnik.email
                     request.session['admin'] = False
+                    messages.add_message(request, messages.SUCCESS, 'Registracija uspješna!')
                     return HttpResponseRedirect(reverse('index'))
+        messages.add_message(request, messages.ERROR, 'Registracija neuspješna!')
         return HttpResponseRedirect(reverse('signup'))

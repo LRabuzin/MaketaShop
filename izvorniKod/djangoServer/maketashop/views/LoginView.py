@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from maketashop.models import Korisnik
 from ..forms import LoginForm
+from django.contrib import messages
 
 class Login(View):
    model_class = Korisnik
@@ -32,6 +33,9 @@ class Login(View):
             if m.lozinka == password:
                request.session['user'] = m.email
                request.session['admin'] = m.jeadmin
-            return HttpResponseRedirect(reverse('index'))
+               messages.add_message(request, messages.SUCCESS, 'Prijava uspješna!')
+               return HttpResponseRedirect(reverse('index'))
+         
+      messages.add_message(request, messages.ERROR, 'Krivi email/lozinka!')
       return HttpResponseRedirect(reverse('login'))
    

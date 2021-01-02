@@ -48,9 +48,6 @@ class B_Post(View):
             else:
                 s = "/maketashop/profilpregled/" + request.POST.get("userlink")
                 return HttpResponseRedirect(s);
-        else:
-            print("U elseu")
-            return HttpResponseRedirect(self.request.path_info)
 
         if (request.POST.get("rate") == '1'):
             print("U lajk postu sam");
