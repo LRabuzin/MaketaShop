@@ -42,6 +42,16 @@ class B_Post(View):
             obj = Komentar(sadrzaj=sadrzajK, korisnikid = korisnikObj, pricaid = prica)
             obj.save()
 
+        if (request.POST.get("userlink")):
+            if request.POST.get("userlink") == "":
+                return HttpResponseRedirect(self.request.path_info)
+            else:
+                s = "/maketashop/profilpregled/" + request.POST.get("userlink")
+                return HttpResponseRedirect(s);
+        else:
+            print("U elseu")
+            return HttpResponseRedirect(self.request.path_info)
+
         if (request.POST.get("rate") == '1'):
             print("U lajk postu sam");
             if (korisnikObj.lajkaopricu.all().filter(pricaid=id)):
@@ -76,3 +86,5 @@ class B_Post(View):
                     obj.brojlajkova = obj.brojlajkova - 1
                 obj.save()
         return HttpResponseRedirect(self.request.path_info)
+
+        

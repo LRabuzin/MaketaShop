@@ -40,7 +40,7 @@ class Profil(View):
     def post(self, request):
         korisnik = Korisnik.objects.get(email=request.session['user'])
         
-        if request.FILES['profilna']:
+        if request.FILES.get('profilna'):
             brojac = 0
             nastavak = request.FILES['profilna'].name.split(".")[-1]
             putanja = handle_uploaded_file( request.FILES['profilna'], nastavak, brojac)

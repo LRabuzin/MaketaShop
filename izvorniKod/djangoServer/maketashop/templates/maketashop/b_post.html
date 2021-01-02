@@ -15,7 +15,13 @@
 
 		<p class="lead">
 		  autor:
-		  <a href="#">{{ B_postDTO.getAutorKorisnickoIme }}</a>
+		  <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+			{% csrf_token %}
+			<button class="btn btn-link" type="submit" name="userlink" value="{{ B_postDTO.getAutorId }}">
+				{{ B_postDTO.getAutorKorisnickoIme }}
+			</button>
+		  </form>		  
+		  
 		  <br>
 		  {% if B_postDTO.getPrica.getPredlozioPricuId %}
 			  na prijedlog:

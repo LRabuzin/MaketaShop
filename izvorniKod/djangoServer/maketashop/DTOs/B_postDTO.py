@@ -55,6 +55,8 @@ class B_postDTO():
         return self.prica.naslovprice
     def getAutorKorisnickoIme(self):
         return self.prica.autorid.korisnickoime
+    def getAutorId(self):
+        return self.prica.autorid.korisnikid
     def getPredlozioKorisnickoIme(self):
         return self.prica.predloziotemuid.korisnickoime
     def getDatumPrice(self):
