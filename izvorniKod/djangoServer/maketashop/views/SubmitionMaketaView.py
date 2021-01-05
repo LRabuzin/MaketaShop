@@ -9,6 +9,7 @@ from maketashop.models import Maketa
 from maketashop.models import Vrstamakete
 from maketashop.models import Media
 from maketashop.models import Napravljenaod
+from django.contrib import messages
 
 
 class SubmitionMaketa(View):
@@ -25,7 +26,8 @@ class SubmitionMaketa(View):
 
       form = InteractionMaketaForm()
       if 'user' not in request.session:
-         return HttpResponseRedirect(reverse('index'))
+         messages.add_message(request, messages.ERROR, 'Obavezan login.')
+         return HttpResponseRedirect(reverse('login'))
       else:
          user = Korisnik.objects.select_related().get(email = request.session['user'])
          if user.jeadmin:
@@ -71,5 +73,5 @@ class SubmitionMaketa(View):
          interakcija.maketaid = maketa
          interakcija.save()
 
-
-      return HttpResponseRedirect(reverse('index'))
+      messages.add_message(request, messages.SUCCESS, 'Zahtjev poslan.')
+      return HttpResponseRedirect(reverse('inbox'))

@@ -9,6 +9,7 @@ from maketashop.models import Korisnik
 from maketashop.models import Prica
 from maketashop.models import Media
 from maketashop.models import Multimedijaprice
+from django.contrib import messages
 
 from maketashop.handle_uploaded_file import handle_uploaded_file
 from maketashop.handle_uploaded_text import handle_uploaded_text
@@ -29,7 +30,8 @@ class SubmitionPrica(View):
       formUser = InteractionPostForm()
       formAdmin = PostForm()
       if 'user' not in request.session:
-         return HttpResponseRedirect(reverse('index'))
+         messages.add_message(request, messages.ERROR, 'Obavezan login.')
+         return HttpResponseRedirect(reverse('login'))
       else:
          user = Korisnik.objects.select_related().get(email = request.session['user'])
          if user.jeadmin:
@@ -274,10 +276,5 @@ class SubmitionPrica(View):
             interakcija.vrstainterakcije = "prica"
             interakcija.pricaid = prica
             interakcija.save()
-
-         
-
-      
-
-
-      return HttpResponseRedirect(reverse('index'))
+      messages.add_message(request, messages.SUCCESS, 'Zahtjev poslan.')
+      return HttpResponseRedirect(reverse('inbox'))

@@ -9,12 +9,14 @@ from maketashop.models import Korisnik
 from ..forms import AdminCijenaForm
 from maketashop.DTOs.InterakcijaMaketaDTO import InterakcijaMaketaDTO
 from maketashop.DTOs.CartDTO import CartDTO
+from django.contrib import messages
 
 class InterakcijaMaketa(View):
     template_name ="maketashop/interakcijaMaketa.html"
     def get(self, request, id):
         if 'user' not in request.session: 
-            return HttpResponseRedirect(reverse('login'))
+         messages.add_message(request, messages.ERROR, 'Obavezan login.')
+         return HttpResponseRedirect(reverse('login'))
         else:
             #kod ako nije dozvoljen pristup korisniku
             if 'user' in request.session:
