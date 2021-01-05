@@ -60,7 +60,7 @@ class InteractionMaketaForm(MaketaForm):
     materijal = forms.ModelChoiceField(queryset=Materijal.objects.all().order_by('materijalid'), empty_label = None, widget=forms.Select(attrs={'class':'form-control my-input'}))
 
 class AdminMaketaForm(MaketaForm):
-    osnovna_slika = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])])
+    osnovna_slika = forms.FileField(label="Osnovna slika", validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])])
     broj_na_skladistu = forms.IntegerField(min_value = 0)
 
     materijal_fields = {}
