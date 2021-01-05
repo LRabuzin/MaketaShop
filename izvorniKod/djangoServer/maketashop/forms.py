@@ -62,9 +62,11 @@ class InteractionMaketaForm(MaketaForm):
 class AdminMaketaForm(MaketaForm):
     osnovna_slika = forms.FileField(validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])])
     broj_na_skladistu = forms.IntegerField(min_value = 0)
-    drvo_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
-    plastika_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
-    aluminij_cijena = forms.DecimalField(min_value = 0, decimal_places = 2)
+
+    materijal_fields = {}
+
+    for materijal in Materijal.objects.all().order_by('materijalid'):
+        materijal_fields[materijal.ime] = forms.DecimalField(required=False, min_value = 0, decimal_places = 2, widget = forms.NumberInput(attrs={'placeholder': 'Cijena za ' + materijal.ime + ':', 'class':'form-control my-input', 'id':'price_' + materijal.ime}))
 
 class PlacanjeForm(forms.Form):
     ime = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
