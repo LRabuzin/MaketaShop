@@ -60,13 +60,13 @@ class InteractionMaketaForm(MaketaForm):
     materijal = forms.ModelChoiceField(queryset=Materijal.objects.all().order_by('materijalid'), empty_label = None, widget=forms.Select(attrs={'class':'form-control my-input'}))
 
 class AdminMaketaForm(MaketaForm):
+    def __init__(self, *args, **kwargs):
+        super(AdminMaketaForm, self).__init__(*args, **kwargs)
+        for materijal in Materijal.objects.all().order_by('materijalid'):
+            self.fields[materijal.ime] = forms.DecimalField(required=False, min_value = 0, decimal_places = 2, widget = forms.NumberInput(attrs={'placeholder': 'Cijena za ' + materijal.ime + ':', 'class':'form-control my-input'}))
+
     osnovna_slika = forms.FileField(label="Osnovna slika", validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])])
-    broj_na_skladistu = forms.IntegerField(min_value = 0)
-
-    materijal_fields = {}
-
-    for materijal in Materijal.objects.all().order_by('materijalid'):
-        materijal_fields[materijal.ime] = forms.DecimalField(required=False, min_value = 0, decimal_places = 2, widget = forms.NumberInput(attrs={'placeholder': 'Cijena za ' + materijal.ime + ':', 'class':'form-control my-input', 'id':'price_' + materijal.ime}))
+    broj_na_skladistu = forms.IntegerField(label="Broj na skladištu:", min_value = 0)
 
 class PlacanjeForm(forms.Form):
     ime = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
@@ -85,3 +85,6 @@ class PlacanjeForm(forms.Form):
 
 class AdminCijenaForm(forms.Form):
     custom_cijena = forms.DecimalField(label="Cijena:", min_value = 0, decimal_places = 2)
+
+# class MaterijalForm(forms.Form):
+

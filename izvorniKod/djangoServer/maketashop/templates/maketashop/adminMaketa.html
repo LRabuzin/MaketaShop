@@ -23,13 +23,14 @@
 			{{ form.osnovna_slika }}
           </div>
           <div class="form-group">
+            {{ form.broj_na_skladistu.label_tag }}
 			{{ form.broj_na_skladistu.errors }}
 			{{ form.broj_na_skladistu }}
           </div>
-          {% for materijal_field in form.materijal_fields %}
+          {% for materijal_field in form.materijal_fields.items %}
           <div class="form-group">
-			{{ materijal_field.errors }}
-			{{ materijal_field }}
+			{{ materijal_field.1.errors }}
+			{{ materijal_field.1 }}
           </div>
           {% endfor %}
 		  <button type="submit" class="btn btn-primary">Dodaj maketu</button>
