@@ -87,4 +87,4 @@ class AdminCijenaForm(forms.Form):
     custom_cijena = forms.DecimalField(label="Cijena:", min_value = 0, decimal_places = 2)
 
 class MaterijalForm(forms.Form):
-    custom_materijal = forms.CharField(max_length=50, min_length=0, widget=forms.TextInput(attrs={'placeholder': 'Ime novog materijala', 'class':'form-control my-input'}))
+    custom_materijal = forms.CharField(max_length=50, min_length=0, widget=forms.TextInput(attrs={'placeholder': 'Ime novog materijala', 'class':'form-control my-input m-3'}))
