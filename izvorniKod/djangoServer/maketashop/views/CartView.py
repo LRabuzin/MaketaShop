@@ -20,7 +20,7 @@ class Cart(View):
         else:
             Cart=CartDTO()
         return render(request, self.template_name, {
-            'title': "cart", 
+            'title': "Košarica", 
             'link_active': "cart", 
             'empty_head': False,
             'cartDTO' : Cart,

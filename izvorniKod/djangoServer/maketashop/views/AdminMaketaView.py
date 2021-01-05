@@ -28,7 +28,7 @@ class AdminMaketa(View):
          if not user.jeadmin:
             return HttpResponseRedirect(reverse('index'))
          return render(request, self.template_name, {
-         'title': "adminMaketa", 
+         'title': "Dodaj maketu", 
          'link_active': "adminMaketa", 
          'empty_head': False,
          'adminMaketaDTO' : AdminMaketaDTO(),

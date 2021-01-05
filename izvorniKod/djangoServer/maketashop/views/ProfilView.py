@@ -34,7 +34,7 @@ class Profil(View):
         form = PrivacyForm(data)
 
         return render(request, self.template_name, {
-            'title': "profil", 
+            'title': "Profil", 
             'link_active': "profil", 
             'empty_head': False,
             'ProfilDTO' : ProfilDTO(email),
@@ -73,13 +73,13 @@ class Profil(View):
             adresaprivatna = form.cleaned_data['address']
             registerprivatan = form.cleaned_data['register_date']
             rodendanprivatan = form.cleaned_data['birth_date']
-            slikaprivatna = form.cleaned_data['pic']
+            # slikaprivatna = form.cleaned_data['pic']
             imeprezimeprivatno = form.cleaned_data['name_surname']
             emailprivatan = form.cleaned_data['email']
             korisnik.adresaprivatna = adresaprivatna
             korisnik.datumregistracijeprivatan = registerprivatan
             korisnik.rodendanprivatan = rodendanprivatan
-            korisnik.slikaprivatna = slikaprivatna
+            #korisnik.slikaprivatna = slikaprivatna
             korisnik.imeprezimeprivatno = imeprezimeprivatno
             korisnik.emailprivatan = emailprivatan
             korisnik.save()

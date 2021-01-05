@@ -20,7 +20,7 @@ class Transakcije(View):
             if curr_user.jeadmin == True:
                 TransakcijeDTO.setAdmin(dto);
             return render(request, self.template_name, {
-            'title': "transakcije", 
+            'title': "Transakcije", 
             'link_active': "transakcije", 
             'empty_head': False,
             'TransakcijeDTO': dto,

@@ -373,4 +373,6 @@ class Interakcija(models.Model):
     
     def getOtvorena(self):
         return self.interakcijaotvorena
-
+    
+    def getDatum(self):
+        return self.datumstvorena

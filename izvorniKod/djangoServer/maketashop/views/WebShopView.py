@@ -20,7 +20,7 @@ class WebShop(View):
                     return HttpResponseRedirect(reverse('logout'))
 
         return render(request, self.template_name, {
-            'title': "webshop", 
+            'title': "Webshop", 
             'link_active': "webshop", 
             'empty_head': False,
             'webShopDTO': WebShopDTO(),

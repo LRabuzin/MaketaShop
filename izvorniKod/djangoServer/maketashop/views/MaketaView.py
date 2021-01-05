@@ -18,7 +18,7 @@ class Maketa(View):
                     return HttpResponseRedirect(reverse('logout'))
 
         return render(request, self.template_name, {
-            'title': "maketa", 
+            'title': "Maketa", 
             'link_active': "maketa", 
             'empty_head': False,
             'maketaDTO':MaketaDTO(id),

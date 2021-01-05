@@ -16,8 +16,8 @@
         {% if InterakcijaTemaDTO.getOtvoren %}
         <form action="" method="post" name="approve" class="d-flex flex-row justify-content-around p-3">
             {% csrf_token %}
-            <button type="submit" class="btn btn-success" name="approve" value="1">odobri</button>
-            <button type="submit" class="btn btn-danger" name="approve" value="0">odbij</button>
+            <button type="submit" class="btn btn-success" name="approve" value="1">Prihvati</button>
+            <button type="submit" class="btn btn-danger" name="approve" value="0">Odbij</button>
         </form>
         {% else %}
             {% if InterakcijaTemaDTO.getTema.getOdobrena %}

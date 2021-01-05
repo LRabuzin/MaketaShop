@@ -22,9 +22,23 @@
                 <li class="nav-item">
                   <a class="nav-link {% if link_active == 'pocetna' %}active{% endif %}" href="{% url 'index' %}">Početna <span class="sr-only">(current)</span></a>
                 </li>
+                {% if session.admin %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle {% if link_active == 'webshop' %}active{% endif %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Webshop
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item " href="{% url 'webshop' %}">Pregled webshopa</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'adminmaketa' %}">Dodavanje makete</a>
+                    <a class="dropdown-item" href="{% url 'adminmaterijal' %}">Dodavanje materijala</a>
+                  </div>
+                </li>
+                {% else %}
                 <li class="nav-item">
                   <a class="nav-link {% if link_active == 'webshop' %}active{% endif %}" href="{% url 'webshop' %}">Webshop</a>
                 </li>
+                {% endif %}
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle {% if link_active == 'profil' %}active{% endif %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Profil
@@ -33,7 +47,9 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item " href="{% url 'profil' %}">Moj profil</a>
                     <a class="dropdown-item" href="{% url 'inbox' %}">Sandučić</a>
-                    <a class="dropdown-item" href="{% url 'transakcije' %}">Transakcije</a>
+                    {% if not session.admin %}
+                    <a class="dropdown-item" href="{% url 'transakcije' %}">Moje transakcije</a>
+                    {% endif %}
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'logout' %}">Odjavi se</a>
                   </div>
@@ -45,11 +61,16 @@
                   </div>
                   {% endif %}
                   {% if session.admin %}
-                  <li class="nav-item">
-                    <a class="nav-link {% if link_active == 'submitionPrica' %}active{% endif %}" href="{% url 'postsubmit' %}">Sastavljanje priče</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link {% if link_active == 'pregledKorisnika' %}active{% endif %}" href="{% url 'pregledKorisnika' %}">Pregled korisnika</a>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {% if link_active == 'webshop' %}active{% endif %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Upravljanje
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item " href="{% url 'postsubmit' %}">Sastavljanje priče</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'transakcije' %}">Pregled transakcija</a>
+                      <a class="dropdown-item" href="{% url 'pregledKorisnika' %}">Pregled korisnika</a>
+                    </div>
                   </li>
                   {% endif %}
                 </li>

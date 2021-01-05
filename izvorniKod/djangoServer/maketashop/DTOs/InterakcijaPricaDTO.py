@@ -42,6 +42,15 @@ class InterakcijaPricaDTO():
       
       def getAutorKorisnickoIme(self):
         return self.prica.autorid.korisnickoime
+      
+      def getAutorId(self):
+        return self.prica.autorid.korisnikid
+      
+      def getPredlozioKorisnickoIme(self):
+        return self.prica.predloziotemuid.korisnickoime
+
+      def getPredlozioId(self):
+        return self.prica.predloziotemuid.korisnikid
 
       def getDatumPrice(self):
         return self.prica.datumprice

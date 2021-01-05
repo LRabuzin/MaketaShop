@@ -15,22 +15,24 @@
 
 		<p class="lead">
 		  autor:
-		  <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+		  <a href="{% url 'profilpregled' B_postDTO.getAutorId %}"> {{ B_postDTO.getAutorKorisnickoIme }}</a>
+		  <!-- <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
 			{% csrf_token %}
 			<button class="btn btn-link" type="submit" name="userlink" value="{{ B_postDTO.getAutorId }}">
 				{{ B_postDTO.getAutorKorisnickoIme }}
 			</button>
-		  </form>		  
+		  </form>		   -->
 		  
 		  <br>
 		  {% if B_postDTO.getPrica.getPredlozioPricuId %}
 			  na prijedlog:
-			  <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+			  <a href="{% url 'profilpregled' B_postDTO.getPredlozioId %}"> {{ B_postDTO.getPredlozioKorisnickoIme }}</a>
+			  <!-- <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
 			   {% csrf_token %}
 				 <button class="btn btn-link" type="submit" name="userlink" value="{{ B_postDTO.getPredlozioId }}">
 				  {{ B_postDTO.getPredlozioKorisnickoIme }}
 			     </button>
-		      </form>	
+		      </form>	 -->
 		  {% endif %}
 		</p>
 
@@ -117,13 +119,14 @@
 				  <img class="d-flex mr-3 comm-img rounded-circle" src="{% static komentar.getKorisnikId.getSlika %}" alt="">
 				  <div class="media-body">
 					<h5 class="mt-0">
-					<form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+					<a href="{% url 'profilpregled' komentar.getKorisnikId.getKorisnikId %}"> {{ komentar.getKorisnikId.getKorisnickoIme }}</a>
+					<!-- <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
 					 {% csrf_token %}
 					  <button class="btn btn-link" type="submit" name="userlink" 
 					  value="{{ komentar.getKorisnikId.getKorisnikId }}">
 					  {{ komentar.getKorisnikId.getKorisnickoIme }}
 					  </button>
-					</form>						
+					</form>						 -->
 					</h5>
 					{{ komentar.sadrzaj }}
 				  </div>

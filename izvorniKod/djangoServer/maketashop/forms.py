@@ -23,7 +23,7 @@ class LoginForm(forms.Form):
     pass1 = forms.CharField(label="Zaporka", max_length=32, widget=forms.PasswordInput(attrs={'placeholder': 'Zaporka', 'class':'form-control'}))
 
 class PrivacyForm(forms.Form):
-    pic = forms.BooleanField(label="Sakrij sliku", required=False)
+    #pic = forms.BooleanField(label="Sakrij sliku", required=False)
     name_surname = forms.BooleanField(label="Sakrij ime i prezime", required=False)
     birth_date = forms.BooleanField(label="Sakrij rođendan", required=False)
     register_date = forms.BooleanField(label="Sakrij datum registracije", required=False)
@@ -87,4 +87,4 @@ class AdminCijenaForm(forms.Form):
     custom_cijena = forms.DecimalField(label="Cijena:", min_value = 0, decimal_places = 2)
 
 class MaterijalForm(forms.Form):
-    custom_materijal = forms.CharField(max_length=50, min_length=0, widget=forms.TextInput(attrs={'placeholder': 'Ime novog materijala', 'class':'form-control my-input m-3'}))
+    custom_materijal = forms.CharField(label=False, max_length=50, min_length=0, widget=forms.TextInput(attrs={'placeholder': 'Ime novog materijala', 'class':'form-control my-input m-3'}))

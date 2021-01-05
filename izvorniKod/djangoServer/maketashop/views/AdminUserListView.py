@@ -20,7 +20,7 @@ class AdminUserList(View):
             
             return render(request, self.template_name, {
                 
-                'title': "pregledKorisnika", 
+                'title': "Pregled korisnika", 
                 'link_active': "pregledKorisnika", 
                 'empty_head': False,
                 'AdminUserListDTO' : dto,
@@ -44,7 +44,7 @@ class AdminUserList(View):
                 dto = AULDTO(request);
                 dto.setSearchTerm(request.POST.get("searchterm"));
                 return render(request, self.template_name, {
-                    'title': "pregledKorisnika", 
+                    'title': "Pregled korisnika", 
                     'link_active': "pregledKorisnika", 
                     'empty_head': False,
                     'AdminUserListDTO' : dto,

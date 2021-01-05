@@ -34,7 +34,7 @@ class SubmitionMaketa(View):
             return HttpResponseRedirect(reverse('index'))
 
          return render(request, self.template_name, {
-         'title': "submitionMaketa", 
+         'title': "Zahtjev za maketom", 
          'link_active': "submitionMaketa", 
          'empty_head': False,
          'form' : form,

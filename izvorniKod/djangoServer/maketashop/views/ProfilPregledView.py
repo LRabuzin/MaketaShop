@@ -16,7 +16,7 @@ class ProfilPregled(View):
                     return HttpResponseRedirect(reverse('logout'))
 
         return render(request, self.template_name, {
-            'title': "profilPregled", 
+            'title': "Pregled profila", 
             'link_active': "profilPregled", 
             'empty_head': False,
             'session': request.session,

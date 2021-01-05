@@ -28,7 +28,7 @@ class B_Post(View):
 
         
         return render(request, self.template_name, {
-            'title': "b_post", 
+            'title': "Priča", 
             'link_active': "b_post", 
             'empty_head': False,
             'B_postDTO' : B_postDTO(id, lajkao),

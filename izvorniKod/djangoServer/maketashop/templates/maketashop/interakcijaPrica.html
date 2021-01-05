@@ -13,22 +13,24 @@
 
             <p class="lead">
                 autor:
-            <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+            <a href="{% url 'profilpregled' InterakcijaPricaDTO.getAutorId %}">{{ InterakcijaPricaDTO.getAutorKorisnickoIme }}</a>
+            <!-- <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
                 {% csrf_token %}
                 <button class="btn btn-link" type="submit" name="userlink" value="{{ B_postDTO.getAutorId }}">
                     {{ InterakcijaPricaDTO.getAutorKorisnickoIme }}
                 </button>
-            </form>
+            </form> -->
 
             <br>
             {% if InterakcijaPricaDTO.getPrica.getPredlozioPricuId %}
             na prijedlog:
-            <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+            <a href="{% url 'profilpregled' InterakcijaPricaDTO.getPredlozioId %}">{{ InterakcijaPricaDTO.getPredlozioKorisnickoIme }}</a>
+            <!-- <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
                 {% csrf_token %}
                 <button class="btn btn-link" type="submit" name="userlink" value="{{ B_postDTO.getPredlozioId }}">
                     {{ InterakcijaPricaDTO.getPredlozioKorisnickoIme }}
                 </button>
-            </form>
+            </form> -->
             {% endif %}
             </p>
 

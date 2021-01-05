@@ -32,7 +32,7 @@ class SubmitionTema(View):
             return HttpResponseRedirect(reverse('index'))
          
          return render(request, self.template_name, {
-         'title': "submitionTema", 
+         'title': "Zahtjev za temom", 
          'link_active': "submitionTema", 
          'empty_head': False,
          'form' : form,

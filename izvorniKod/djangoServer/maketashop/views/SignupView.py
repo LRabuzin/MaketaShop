@@ -14,7 +14,7 @@ class Signup(View):
         form = SignupForm()
         if 'user' not in request.session:
             return render(request, self.template_name, {
-                'title': "signup", 
+                'title': "Kreiraj profil!", 
                 'link_active': "signup", 
                 'empty_head': True,
                 'form':form,

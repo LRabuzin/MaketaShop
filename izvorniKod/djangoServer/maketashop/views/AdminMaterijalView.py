@@ -25,8 +25,8 @@ class AdminMaterijal(View):
          if not user.jeadmin:
             return HttpResponseRedirect(reverse('index'))
          return render(request, self.template_name, {
-         'title': "adminMaketa", 
-         'link_active': "adminMaketa", 
+         'title': "Dodaj materijal", 
+         'link_active': "adminMaterijal", 
          'empty_head': False,
          'form' : form,
          'session': request.session

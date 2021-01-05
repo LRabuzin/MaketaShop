@@ -14,7 +14,7 @@ class Login(View):
       form = LoginForm()
       if 'user' not in request.session:
          return render(request, self.template_name, {
-            'title': "login", 
+            'title': "Prijavi se!", 
             'link_active': "login", 
             'empty_head': False,
             'form' : form,

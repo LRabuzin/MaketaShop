@@ -24,7 +24,7 @@ class Inbox(View):
                         return HttpResponseRedirect(reverse('logout'))
 
             return render(request, self.template_name, {
-            'title': "inbox", 
+            'title': "Sandučić", 
             'link_active': "inbox", 
             'empty_head': False,
             'InboxDTO' : InboxDTO(request.session['user']),

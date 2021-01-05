@@ -86,8 +86,8 @@ class Checkout(View):
                     korisnik.save()
 
                 novaTransakcija = Transakcija()
-                next_id = Transakcija.objects.order_by('-transakcijaid').first().transakcijaid + 1
-                novaTransakcija.transakcijaid = next_id
+                # next_id = Transakcija.objects.order_by('-transakcijaid').first().transakcijaid + 1
+                # novaTransakcija.transakcijaid = next_id
                 novaTransakcija.ime = ime
                 novaTransakcija.prezime = prezime
                 novaTransakcija.adresa = adresa
@@ -99,7 +99,10 @@ class Checkout(View):
 
                 for maketa,kol in cart.getCart().items():
                     maketakupljena = Maketakupljena()
-                    next_id = Maketakupljena.objects.order_by('-id').first().id + 1
+                    if Maketakupljena.objects.order_by('-id').first():
+                        next_id = Maketakupljena.objects.order_by('-id').first().id + 1
+                    else:
+                        next_id = 1
                     maketakupljena.id = next_id
                     maketakupljena.maketaid = maketa.getMaketa()
                     maketakupljena.materijalid = Materijal.objects.get(ime=maketa.getMaterijal())

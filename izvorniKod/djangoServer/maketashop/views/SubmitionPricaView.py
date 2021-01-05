@@ -36,7 +36,7 @@ class SubmitionPrica(View):
          user = Korisnik.objects.select_related().get(email = request.session['user'])
          if user.jeadmin:
             return render(request, self.template_name, {
-            'title': "submitionPrica", 
+            'title': "Sastavljanje priče", 
             'link_active': "submitionPrica", 
             'empty_head': False,
             'form' : formAdmin,
@@ -45,7 +45,7 @@ class SubmitionPrica(View):
             })
 
          return render(request, self.template_name, {
-         'title': "submitionPrica", 
+         'title': "Sastavljanje priče", 
          'link_active': "submitionPrica", 
          'empty_head': False,
          'form' : formUser,

@@ -16,7 +16,7 @@ class Index(View):
                 if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
                     return HttpResponseRedirect(reverse('logout'))
         return render(request, self.template_name, {
-            'title': "index", 
+            'title': "Početna", 
             'link_active': "index", 
             'empty_head': False,
             'IndexDTO': IndexDTO(),

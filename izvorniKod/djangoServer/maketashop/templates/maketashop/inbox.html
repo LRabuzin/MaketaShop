@@ -39,7 +39,10 @@
           <img class="d-flex mr-3 rounded-circle profile-img" src="{% static interakcija.getProfilna %}"
             alt="profilna slika">
           <div class="media-body">
-            <h4> {{ interakcija.getNaslov }} </h4>
+            <div class="d-flex flex-row justify-content-between align-items-center">
+              <h4> {{ interakcija.getNaslov }} </h4>
+              <span class="badge badge-light">Otvoreno: {{ interakcija.getDatum|date:"d.m.Y." }}</span>
+            </div>
             <div class="d-flex flex-row justify-content-between align-items-center">
               <h5 class="mt-0">{{ interakcija.getIme }} {{ interakcija.getPrezime }} : {{ interakcija.getVrsta }}</h5>
               {% if interakcija.getOtvorena %}

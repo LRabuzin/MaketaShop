@@ -28,7 +28,7 @@ class InterakcijaMaketa(View):
             if user.jeadmin:
                form = AdminCijenaForm()
                return render(request, self.template_name, {
-                  'title': "interakcijaMaketa", 
+                  'title': "Interakcija (maketa)", 
                   'link_active': "interakcijaMaketa", 
                   'empty_head': False,
                   'InterakcijaMaketaDTO' : InterakcijaMaketaDTO(id), 
@@ -40,8 +40,8 @@ class InterakcijaMaketa(View):
                 interakcija = Interakcija.objects.select_related().get(interakcijaid = id)
                 if user == interakcija.korisnikid:
                     return render(request, self.template_name, {
-                    'title': "interakcijaTema", 
-                    'link_active': "interakcijaTema", 
+                    'title': "Interakcija (maketa)", 
+                    'link_active': "interakcijaMaketa", 
                     'empty_head': False,
                     'InterakcijaMaketaDTO' : InterakcijaMaketaDTO(id), 
                     'session': request.session

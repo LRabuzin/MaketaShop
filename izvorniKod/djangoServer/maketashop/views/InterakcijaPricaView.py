@@ -22,7 +22,7 @@ class InterakcijaPrica(View):
             user = Korisnik.objects.select_related().get(email = request.session['user'])
             if user.jeadmin:
                return render(request, self.template_name, {
-                  'title': "interakcijaPrica", 
+                  'title': "Interakcija (priča)", 
                   'link_active': "interakcijaPrica", 
                   'empty_head': False,
                   'InterakcijaPricaDTO' : InterakcijaPricaDTO(id), 
@@ -33,8 +33,8 @@ class InterakcijaPrica(View):
                 interakcija = Interakcija.objects.select_related().get(interakcijaid = id)
                 if user == interakcija.korisnikid:
                     return render(request, self.template_name, {
-                    'title': "interakcijaTema", 
-                    'link_active': "interakcijaTema", 
+                    'title': "Interakcija (priča)", 
+                    'link_active': "interakcijaPrica", 
                     'empty_head': False,
                     'InterakcijaPricaDTO' : InterakcijaPricaDTO(id), 
                     'session': request.session
