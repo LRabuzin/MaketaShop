@@ -12,6 +12,7 @@ from maketashop.models import Materijal
 from maketashop.models import Media
 from maketashop.models import Napravljenaod
 from django.contrib import messages
+from maketashop.DTOs.AdminMaketaDTO import AdminMaketaDTO
 
 
 class AdminMaketa(View):
@@ -31,6 +32,7 @@ class AdminMaketa(View):
          'title': "adminMaketa", 
          'link_active': "adminMaketa", 
          'empty_head': False,
+         'adminMaketaDTO' : AdminMaketaDTO(),
          'form' : form,
          'session': request.session
          })
@@ -62,13 +64,16 @@ class AdminMaketa(View):
          maketa.prihvacena = True
          maketa.save()
 
-         for k,v in form.cleaned_data['materijal_fields'].items():
-            if v != None:
+
+
+         for materijal in Materijal.objects.select_related().all():
+            cijena = form.cleaned_data[materijal.ime]
+            if cijena:
                napravljenaOd = Napravljenaod()
                napravljenaOd.maketaid = maketa
-               materijal = Materijal.objects.select_related().get(ime = k)
+               
                napravljenaOd.materijalid = materijal
-               napravljenaOd.cijena = v
+               napravljenaOd.cijena = cijena
                napravljenaOd.brojuskladistu = form.cleaned_data['broj_na_skladistu']
                napravljenaOd.save()
 
