@@ -27,7 +27,6 @@ class AdminMaketa(View):
          user = Korisnik.objects.select_related().get(email = request.session['user'])
          if not user.jeadmin:
             return HttpResponseRedirect(reverse('index'))
-
          return render(request, self.template_name, {
          'title': "adminMaketa", 
          'link_active': "adminMaketa", 
@@ -38,7 +37,7 @@ class AdminMaketa(View):
          })
 
    def post(self, request):
-      form = AdminMaketaForm(request.POST)
+      form = AdminMaketaForm(request.POST, request.FILES)
       if form.is_valid():
 
          vrsta = Vrstamakete.objects.select_related().get(ime = 'webshop')
@@ -56,7 +55,7 @@ class AdminMaketa(View):
          media.vrstamedije = "slika"
 
          nastavak = request.FILES['osnovna_slika'].name.split(".")[-1]
-         putanja = handle_uploaded_file(request.FILES['media1'], nastavak, 42)
+         putanja = handle_uploaded_file(request.FILES['osnovna_slika'], nastavak, 42)
          media.putdodatoteke = putanja
          media.save()
 

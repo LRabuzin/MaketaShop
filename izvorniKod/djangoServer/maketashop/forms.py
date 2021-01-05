@@ -48,9 +48,9 @@ class InteractionThemeForm(forms.Form):
     tekst_teme = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Sadržaj teme', 'class':'form-control my-input'}))
 
 class MaketaForm(forms.Form):
-    ime_makete = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime makete', 'class':'form-control my-input'}))
-    dimenzije = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Dimenzije', 'class':'form-control my-input'}))
-    opis = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Opis', 'class':'form-control my-input'}))
+    ime_makete = forms.CharField(label=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime makete', 'class':'form-control my-input m-3'}))
+    dimenzije = forms.CharField(label=False, max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Dimenzije', 'class':'form-control my-input m-3'}))
+    opis = forms.CharField(label=False, max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Opis', 'class':'form-control my-input m-3'}))
 
 class InteractionPostForm(PostForm):
     naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
@@ -60,13 +60,13 @@ class InteractionMaketaForm(MaketaForm):
     materijal = forms.ModelChoiceField(queryset=Materijal.objects.all().order_by('materijalid'), empty_label = None, widget=forms.Select(attrs={'class':'form-control my-input'}))
 
 class AdminMaketaForm(MaketaForm):
+    osnovna_slika = forms.FileField(required = False, label="Osnovna slika", validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])], widget = forms.FileInput(attrs={'id':'mediaInput1', 'class':'m-3'}))
+    broj_na_skladistu = forms.IntegerField(label="Broj na skladištu", min_value = 0)
+    
     def __init__(self, *args, **kwargs):
         super(AdminMaketaForm, self).__init__(*args, **kwargs)
         for materijal in Materijal.objects.all().order_by('materijalid'):
-            self.fields[materijal.ime] = forms.DecimalField(required=False, min_value = 0, decimal_places = 2, widget = forms.NumberInput(attrs={'placeholder': 'Cijena za ' + materijal.ime + ':', 'class':'form-control my-input'}))
-
-    osnovna_slika = forms.FileField(label="Osnovna slika", validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])])
-    broj_na_skladistu = forms.IntegerField(label="Broj na skladištu:", min_value = 0)
+            self.fields[materijal.ime] = forms.DecimalField(label=False, required=False, min_value = 0, decimal_places = 2, widget = forms.NumberInput(attrs={'placeholder': 'Cijena za materijal ' + materijal.ime + ':', 'class':'form-control my-input m-3'}))
 
 class PlacanjeForm(forms.Form):
     ime = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
@@ -86,5 +86,5 @@ class PlacanjeForm(forms.Form):
 class AdminCijenaForm(forms.Form):
     custom_cijena = forms.DecimalField(label="Cijena:", min_value = 0, decimal_places = 2)
 
-# class MaterijalForm(forms.Form):
-
+class MaterijalForm(forms.Form):
+    custom_materijal = forms.CharField(max_length=50, min_length=0, widget=forms.TextInput(attrs={'placeholder': 'Ime novog materijala', 'class':'form-control my-input'}))
