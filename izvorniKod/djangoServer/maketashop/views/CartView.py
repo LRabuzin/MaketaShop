@@ -5,11 +5,15 @@ from maketashop.DTOs.CartDTO import CartDTO
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from maketashop.models import Napravljenaod
-from maketashop.models import Materijal
+from maketashop.models import Materijal, Korisnik
 
 class Cart(View):
     template_name ="maketashop/cart.html"
     def get(self, request):
+        #kod ako nije dozvoljen pristup korisniku
+        if Korisnik.objects.filter(email=request.session['user']).exists():
+            if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
+                return HttpResponseRedirect(reverse('logout'))
         if 'cart' in request.session:
             Cart=request.session['cart']
         else:

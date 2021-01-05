@@ -14,6 +14,12 @@ class SubmitionTema(View):
 
    def get(self, request):
       # <view logic>
+
+      #kod ako nije dozvoljen pristup korisniku
+      if Korisnik.objects.filter(email=request.session['user']).exists():
+         if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
+            return HttpResponseRedirect(reverse('logout'))
+
       form = InteractionThemeForm()
       if 'user' not in request.session:
          return HttpResponseRedirect(reverse('index'))

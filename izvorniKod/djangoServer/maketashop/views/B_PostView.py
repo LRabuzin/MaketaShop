@@ -6,11 +6,17 @@ from maketashop.models import Napravljenaod
 from maketashop.models import Komentar
 from maketashop.models import Korisnik
 from maketashop.DTOs.B_postDTO import B_postDTO
+from django.urls import reverse
 
 class B_Post(View):
     template_name ="maketashop/b_post.html"
     def get(self, request, id):
-        # <view logic>
+        
+        #kod ako nije dozvoljen pristup korisniku
+        if Korisnik.objects.filter(email=request.session['user']).exists():
+            if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
+                return HttpResponseRedirect(reverse('logout'))
+
         lajkao = 0
         if (request.session.get("user")):
             curr_user = Korisnik.objects.select_related().get(email=request.session.get("user"))
@@ -31,6 +37,8 @@ class B_Post(View):
     def post(self, request, id):
         if (request.session.get("user")):
             korisnikObj = Korisnik.objects.select_related().get(email=request.session.get("user"))
+            if not korisnikObj.dozvoljenpristup:
+                return HttpResponseRedirect(reverse('logout'))
         else:
             return HttpResponseRedirect(self.request.path_info)
         

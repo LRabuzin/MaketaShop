@@ -187,7 +187,7 @@ class Korisnik(models.Model):
     emailprivatan = models.BooleanField(default=False, blank=True, null=True)
     ime = models.CharField(max_length=50, default=None, blank=True, null=True)
     prezime = models.CharField(max_length=50, default=None, blank=True, null=True)
-    dozvoljenpristup = models.BooleanField(default=None, blank=True, null=True)
+    dozvoljenpristup = models.BooleanField(default=True, blank=True, null=True)
     brojracuna = models.CharField(max_length=21, default=None, blank=True, null=True)
     profilnaid = models.ForeignKey(Media, db_column='profilnaid', default=1, blank=True, null=True, on_delete=models.CASCADE)
     lajkaopricu = models.ManyToManyField("Prica", related_name = "lajkaopricu")

@@ -9,6 +9,11 @@ class Transakcije(View):
     template_name ="maketashop/transakcije.html"
     def get(self, request):
         if (request.session.get("user")):
+            #kod ako nije dozvoljen pristup korisniku
+            if Korisnik.objects.filter(email=request.session['user']).exists():
+                if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
+                    return HttpResponseRedirect(reverse('logout'))
+
             dto = TransakcijeDTO();
             curr_user = Korisnik.objects.select_related().get(email=request.session.get("user"))
             if curr_user.jeadmin == True:

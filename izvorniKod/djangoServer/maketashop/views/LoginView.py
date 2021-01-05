@@ -30,12 +30,15 @@ class Login(View):
          password = form.cleaned_data['pass1']
          if self.model_class.objects.filter(email=mail).exists():
             m = self.model_class.objects.get(email=mail)
-            if m.lozinka == password:
-               request.session['user'] = m.email
-               request.session['admin'] = m.jeadmin
-               messages.add_message(request, messages.SUCCESS, 'Prijava uspješna!')
-               return HttpResponseRedirect(reverse('index'))
-         
+            if m.dozvoljenpristup:
+               if m.lozinka == password:
+                  request.session['user'] = m.email
+                  request.session['admin'] = m.jeadmin
+                  messages.add_message(request, messages.SUCCESS, 'Prijava uspješna!')
+                  return HttpResponseRedirect(reverse('index'))
+            else:
+               messages.add_message(request, messages.ERROR, 'Pristup ovome računu nije dozvoljen!')
+               return HttpResponseRedirect(reverse('login'))
       messages.add_message(request, messages.ERROR, 'Krivi email/lozinka!')
       return HttpResponseRedirect(reverse('login'))
    

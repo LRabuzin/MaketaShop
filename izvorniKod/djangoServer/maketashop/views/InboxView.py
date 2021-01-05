@@ -16,6 +16,12 @@ class Inbox(View):
             return HttpResponseRedirect(reverse('login'))
         else:
             user = Korisnik.objects.select_related().get(email = request.session['user'])
+            
+            #kod ako nije dozvoljen pristup korisniku
+            if Korisnik.objects.filter(email=request.session['user']).exists():
+                if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
+                    return HttpResponseRedirect(reverse('logout'))
+
             return render(request, self.template_name, {
             'title': "inbox", 
             'link_active': "inbox", 
