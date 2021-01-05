@@ -20,9 +20,10 @@ class Profil(View):
         korisnik = ProfilDTO(email)
 
         #kod ako nije dozvoljen pristup korisniku
-        if Korisnik.objects.filter(email=request.session['user']).exists():
-            if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
-                return HttpResponseRedirect(reverse('logout'))
+        if 'user' in request.session:
+            if Korisnik.objects.filter(email=request.session['user']).exists():
+                if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
+                    return HttpResponseRedirect(reverse('logout'))
 
         data = {'address' : korisnik.getAdresaPrivatna(),
                 'register_date' : korisnik.getDatumRegistracijePrivatan(),

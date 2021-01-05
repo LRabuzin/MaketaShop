@@ -11,9 +11,10 @@ class Cart(View):
     template_name ="maketashop/cart.html"
     def get(self, request):
         #kod ako nije dozvoljen pristup korisniku
-        if Korisnik.objects.filter(email=request.session['user']).exists():
-            if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
-                return HttpResponseRedirect(reverse('logout'))
+        if 'user' in request.session:
+            if Korisnik.objects.filter(email=request.session['user']).exists():
+                if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
+                    return HttpResponseRedirect(reverse('logout'))
         if 'cart' in request.session:
             Cart=request.session['cart']
         else:

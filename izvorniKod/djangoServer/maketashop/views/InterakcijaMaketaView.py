@@ -17,9 +17,10 @@ class InterakcijaMaketa(View):
             return HttpResponseRedirect(reverse('login'))
         else:
             #kod ako nije dozvoljen pristup korisniku
-            if Korisnik.objects.filter(email=request.session['user']).exists():
-               if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
-                  return HttpResponseRedirect(reverse('logout'))
+            if 'user' in request.session:
+               if Korisnik.objects.filter(email=request.session['user']).exists():
+                  if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
+                     return HttpResponseRedirect(reverse('logout'))
 
             user = Korisnik.objects.select_related().get(email = request.session['user'])
             if user.jeadmin:

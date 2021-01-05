@@ -21,9 +21,10 @@ class SubmitionPrica(View):
       # <view logic>
 
       #kod ako nije dozvoljen pristup korisniku
-      if Korisnik.objects.filter(email=request.session['user']).exists():
-         if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
-            return HttpResponseRedirect(reverse('logout'))
+      if 'user' in request.session:
+         if Korisnik.objects.filter(email=request.session['user']).exists():
+            if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
+               return HttpResponseRedirect(reverse('logout'))
 
       formUser = InteractionPostForm()
       formAdmin = PostForm()
