@@ -347,6 +347,7 @@ class Interakcija(models.Model):
     maketaid = models.ForeignKey(Maketa, db_column='maketaid', blank=True, null=True, on_delete=models.CASCADE)
     pricaid = models.ForeignKey(Prica, db_column='pricaid', blank=True, null=True, on_delete=models.CASCADE)
     interakcijaotvorena = models.BooleanField(default=True, blank=True, null=True)
+    datumstvorena = models.DateTimeField(default=datetime.datetime.now(), blank=True, null=True)
     
     class Meta:
         managed = True

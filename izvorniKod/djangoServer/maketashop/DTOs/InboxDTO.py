@@ -9,9 +9,9 @@ class InboxDTO():
          self.user = Korisnik.objects.get(email = mail)
 
          if(self.user.jeadmin):
-            self.interakcije = Interakcija.objects.all().select_related()
+            self.interakcije = Interakcija.objects.all().select_related().order_by('-datumstvorena')
          else:
-            self.interakcije = Interakcija.objects.select_related().filter(korisnikid = self.user.korisnikid)
+            self.interakcije = Interakcija.objects.select_related().filter(korisnikid = self.user.korisnikid).order_by('-datumstvorena')
       
       def getInterakcije(self):
          return self.interakcije
