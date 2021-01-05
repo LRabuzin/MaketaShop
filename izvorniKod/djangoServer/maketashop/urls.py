@@ -19,8 +19,8 @@ from maketashop.views.InterakcijaMaketaView import InterakcijaMaketa
 from maketashop.views.InterakcijaPricaView import InterakcijaPrica
 from maketashop.views.SubmitionTemaView import SubmitionTema
 from maketashop.views.SubmitionMaketaView import SubmitionMaketa
-from maketashop.views.SubmitionPricaView import SubmitionPrica
-
+from maketashop.views.SubmitionPricaView import SubmitionPrica 
+from maketashop.views.AdminMaketaView import AdminMaketa
 from . import views
 
 #app_name ='maketashop'
@@ -45,4 +45,5 @@ urlpatterns = [
     path('temasubmit/', SubmitionTema.as_view(), name='temasubmit'),
     path('maketasubmit/', SubmitionMaketa.as_view(), name='maketasubmit'),
     path('postsubmit/', SubmitionPrica.as_view(), name='postsubmit'),
+    path('adminmaketa/', AdminMaketa.as_view(), name='adminmaketa')
 ]

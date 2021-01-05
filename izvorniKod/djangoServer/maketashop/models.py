@@ -33,7 +33,7 @@ class Tema(models.Model):
 
 class Materijal(models.Model):
     materijalid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
-    ime = models.CharField(max_length=100, default="default ime")
+    ime = models.CharField(max_length=100, default="default ime", unique=True)
 
     class Meta:
         managed = True
