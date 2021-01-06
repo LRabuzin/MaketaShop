@@ -315,7 +315,7 @@ class Multimedijaprice(models.Model):
 class Komentar(models.Model):
     komentarid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     sadrzaj = models.CharField(max_length=300)
-    korisnikid = models.ForeignKey(Korisnik, db_column='korisnikid', on_delete=models.CASCADE)
+    korisnikid = models.ForeignKey(Korisnik, db_column='korisnikid', on_delete=models.CASCADE, default=None, blank=True, null=True)
     pricaid = models.ForeignKey(Prica, db_column='pricaid', on_delete=models.CASCADE)
 
     class Meta:

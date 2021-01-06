@@ -36,19 +36,23 @@ class B_Post(View):
             })
 
     def post(self, request, id):
-        if (request.session.get("user")):
+        korisnikObj = None
+        if 'user' in request.session:
             korisnikObj = Korisnik.objects.select_related().get(email=request.session.get("user"))
             if not korisnikObj.dozvoljenpristup:
                 return HttpResponseRedirect(reverse('logout'))
-        else:
-            return HttpResponseRedirect(self.request.path_info)
+        #else:
+        #    return HttpResponseRedirect(self.request.path_info)
         
         prica = Prica.objects.select_related().get(pricaid=id)
 
         if(request.POST.get("comment_text")):
             sadrzajK = request.POST.get("comment_text")
-
-            obj = Komentar(sadrzaj=sadrzajK, korisnikid = korisnikObj, pricaid = prica)
+            obj = Komentar()
+            obj.sadrzaj=sadrzajK
+            obj.korisnikid=korisnikObj
+            obj.pricaid=prica
+            #obj = Komentar(sadrzaj=sadrzajK, korisnikid = korisnikObj, pricaid = prica)
             obj.save()
 
         if (request.POST.get("userlink")):
@@ -58,39 +62,41 @@ class B_Post(View):
                 s = "/maketashop/profilpregled/" + request.POST.get("userlink")
                 return HttpResponseRedirect(s);
 
-        if (request.POST.get("rate") == '1'):
-            print("U lajk postu sam");
-            if (korisnikObj.lajkaopricu.all().filter(pricaid=id)):
-                print("lajkao je vec");
-                obj = Prica.objects.select_related().get(pricaid=id)
-                obj.brojlajkova = obj.brojlajkova - 1
-                obj.save()
-                korisnikObj.lajkaopricu.remove(Prica.objects.select_related().get(pricaid=id))              
-            else:
-                print("nije lajkovao");
-                obj = Prica.objects.select_related().get(pricaid=id)
-                obj.brojlajkova = obj.brojlajkova + 1
-                korisnikObj.lajkaopricu.add(Prica.objects.select_related().get(pricaid=id))
-                if (korisnikObj.dislajkaopricu.all().filter(pricaid=id)):
-                    korisnikObj.dislajkaopricu.remove(Prica.objects.select_related().get(pricaid=id))
-                    obj.brojdislajkova = obj.brojdislajkova - 1
-                obj.save()
-        elif (request.POST.get("rate") == '2'):
-            if (korisnikObj.dislajkaopricu.all().filter(pricaid=id)):
-                print("dislajkao vec")
-                obj = Prica.objects.select_related().get(pricaid=id)
-                obj.brojdislajkova = obj.brojdislajkova - 1
-                obj.save()
-                korisnikObj.dislajkaopricu.remove(Prica.objects.select_related().get(pricaid=id))
-            else:
-                print("nije dislajkao")
-                obj = Prica.objects.select_related().get(pricaid=id)
-                obj.brojdislajkova = obj.brojdislajkova + 1
-                korisnikObj.dislajkaopricu.add(Prica.objects.select_related().get(pricaid=id))
+        if 'user' in request.session:
+            if (request.POST.get("rate") == '1'):
+                print("U lajk postu sam");
                 if (korisnikObj.lajkaopricu.all().filter(pricaid=id)):
-                    korisnikObj.lajkaopricu.remove(Prica.objects.select_related().get(pricaid=id))
+                    print("lajkao je vec");
+                    obj = Prica.objects.select_related().get(pricaid=id)
                     obj.brojlajkova = obj.brojlajkova - 1
-                obj.save()
+                    obj.save()
+                    korisnikObj.lajkaopricu.remove(Prica.objects.select_related().get(pricaid=id))              
+                else:
+                    print("nije lajkovao");
+                    obj = Prica.objects.select_related().get(pricaid=id)
+                    obj.brojlajkova = obj.brojlajkova + 1
+                    korisnikObj.lajkaopricu.add(Prica.objects.select_related().get(pricaid=id))
+                    if (korisnikObj.dislajkaopricu.all().filter(pricaid=id)):
+                        korisnikObj.dislajkaopricu.remove(Prica.objects.select_related().get(pricaid=id))
+                        obj.brojdislajkova = obj.brojdislajkova - 1
+                    obj.save()
+            elif (request.POST.get("rate") == '2'):
+                if (korisnikObj.dislajkaopricu.all().filter(pricaid=id)):
+                    print("dislajkao vec")
+                    obj = Prica.objects.select_related().get(pricaid=id)
+                    obj.brojdislajkova = obj.brojdislajkova - 1
+                    obj.save()
+                    korisnikObj.dislajkaopricu.remove(Prica.objects.select_related().get(pricaid=id))
+                else:
+                    print("nije dislajkao")
+                    obj = Prica.objects.select_related().get(pricaid=id)
+                    obj.brojdislajkova = obj.brojdislajkova + 1
+                    korisnikObj.dislajkaopricu.add(Prica.objects.select_related().get(pricaid=id))
+                    if (korisnikObj.lajkaopricu.all().filter(pricaid=id)):
+                        korisnikObj.lajkaopricu.remove(Prica.objects.select_related().get(pricaid=id))
+                        obj.brojlajkova = obj.brojlajkova - 1
+                    obj.save()
         return HttpResponseRedirect(self.request.path_info)
+
 
         
