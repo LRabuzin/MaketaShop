@@ -15,7 +15,7 @@ class InterakcijaMaketa(View):
     template_name ="maketashop/interakcijaMaketa.html"
     def get(self, request, id):
         if 'user' not in request.session: 
-         messages.add_message(request, messages.ERROR, 'Obavezan login.')
+         messages.add_message(request, messages.ERROR, 'Potreban je login.')
          return HttpResponseRedirect(reverse('login'))
         else:
             #kod ako nije dozvoljen pristup korisniku
