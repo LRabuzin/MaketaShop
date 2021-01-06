@@ -30,7 +30,8 @@ class SubmitionPrica(View):
       formUser = InteractionPostForm()
       formAdmin = PostForm()
       if 'user' not in request.session:
-         messages.add_message(request, messages.ERROR, 'Potreban je login.')
+         messages.add_message(request, messages.ERROR, 'Obavezan login.')
+
          return HttpResponseRedirect(reverse('login'))
       else:
          user = Korisnik.objects.select_related().get(email = request.session['user'])
@@ -99,9 +100,9 @@ class SubmitionPrica(View):
             
             media = Media()
 
-            if nastavak == "jpg" or nastavak == "jpeg" or nastavak == "gif" or nastavak == "png":
+            if nastavak.lower() == "jpg" or nastavak.lower() == "jpeg" or nastavak.lower() == "gif" or nastavak.lower() == "png":
                media.vrstamedije = "slika"
-            elif(nastavak == "mkv" or nastavak == "avi" or nastavak == "mov" or nastavak == "mp4"):
+            elif(nastavak.lower() == "mkv" or nastavak.lower() == "avi" or nastavak.lower() == "mov" or nastavak.lower() == "mp4"):
                media.vrstamedije = "video"
                
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
@@ -143,9 +144,9 @@ class SubmitionPrica(View):
             
             media = Media()
 
-            if nastavak == "jpg" or nastavak == "jpeg" or nastavak == "gif" or nastavak == "png":
+            if nastavak.lower() == "jpg" or nastavak.lower() == "jpeg" or nastavak.lower() == "gif" or nastavak.lower() == "png":
                media.vrstamedije = "slika"
-            elif(nastavak == "mkv" or nastavak == "avi" or nastavak == "mov" or nastavak == "mp4"):
+            elif(nastavak.lower() == "mkv" or nastavak.lower() == "avi" or nastavak.lower() == "mov" or nastavak.lower() == "mp4"):
                media.vrstamedije = "video"
                
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
@@ -187,9 +188,9 @@ class SubmitionPrica(View):
             
             media = Media()
 
-            if nastavak == "jpg" or nastavak == "jpeg" or nastavak == "gif" or nastavak == "png":
+            if nastavak.lower() == "jpg" or nastavak.lower() == "jpeg" or nastavak.lower() == "gif" or nastavak.lower() == "png":
                media.vrstamedije = "slika"
-            elif(nastavak == "mkv" or nastavak == "avi" or nastavak == "mov" or nastavak == "mp4"):
+            elif(nastavak.lower() == "mkv" or nastavak.lower() == "avi" or nastavak.lower() == "mov" or nastavak.lower() == "mp4"):
                media.vrstamedije = "video"
                
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
@@ -231,9 +232,9 @@ class SubmitionPrica(View):
             
             media = Media()
 
-            if nastavak == "jpg" or nastavak == "jpeg" or nastavak == "gif" or nastavak == "png":
+            if nastavak.lower() == "jpg" or nastavak.lower() == "jpeg" or nastavak.lower() == "gif" or nastavak.lower() == "png":
                media.vrstamedije = "slika"
-            elif(nastavak == "mkv" or nastavak == "avi" or nastavak == "mov" or nastavak == "mp4"):
+            elif(nastavak.lower() == "mkv" or nastavak.lower() == "avi" or nastavak.lower() == "mov" or nastavak.lower() == "mp4"):
                media.vrstamedije = "video"
                
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
@@ -276,5 +277,10 @@ class SubmitionPrica(View):
             interakcija.vrstainterakcije = "prica"
             interakcija.pricaid = prica
             interakcija.save()
-      messages.add_message(request, messages.SUCCESS, 'Zahtjev poslan.')
-      return HttpResponseRedirect(reverse('inbox'))
+      if user.jeadmin:
+         messages.add_message(request, messages.SUCCESS, 'Priča objavljena.')
+         return HttpResponseRedirect(reverse('index'))
+      else:
+         messages.add_message(request, messages.SUCCESS, 'Zahtjev poslan.')
+         return HttpResponseRedirect(reverse('inbox'))
+
