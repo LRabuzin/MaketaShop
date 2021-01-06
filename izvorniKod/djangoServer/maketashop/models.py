@@ -253,7 +253,7 @@ class Korisnik(models.Model):
 class Prica(models.Model):
     pricaid = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     naslovprice = models.CharField(max_length=100,default = "Priča")
-    datumprice = models.DateField(default= "1900-01-01", blank = True)
+    datumprice = models.DateTimeField(default=datetime.datetime.now(), blank=True, null=True)
     brojlajkova = models.IntegerField(default = 0, blank = True)
     brojdislajkova = models.IntegerField(default = 0, blank = True)
     objavljena = models.BooleanField(default = False, blank = True)
