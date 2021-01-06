@@ -26,11 +26,12 @@ class SubmitionMaketa(View):
 
       form = InteractionMaketaForm()
       if 'user' not in request.session:
-         messages.add_message(request, messages.ERROR, 'Obavezan login.')
+         messages.add_message(request, messages.ERROR, 'Potreban je login.')
          return HttpResponseRedirect(reverse('login'))
       else:
          user = Korisnik.objects.select_related().get(email = request.session['user'])
          if user.jeadmin:
+            messages.add_message(request, messages.ERROR, 'Krivi oblik prijedloga.')
             return HttpResponseRedirect(reverse('index'))
 
          return render(request, self.template_name, {
@@ -73,5 +74,5 @@ class SubmitionMaketa(View):
          interakcija.maketaid = maketa
          interakcija.save()
 
-      messages.add_message(request, messages.SUCCESS, 'Zahtjev poslan.')
-      return HttpResponseRedirect(reverse('inbox'))
+         messages.add_message(request, messages.SUCCESS, 'Zahtjev poslan.')
+         return HttpResponseRedirect(reverse('inbox'))

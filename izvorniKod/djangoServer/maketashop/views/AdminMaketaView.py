@@ -22,10 +22,12 @@ class AdminMaketa(View):
       # <view logic>
       form = AdminMaketaForm()
       if 'user' not in request.session:
+         messages.add_message(request, messages.ERROR, 'Potreban je login.')
          return HttpResponseRedirect(reverse('login'))
       else:
          user = Korisnik.objects.select_related().get(email = request.session['user'])
          if not user.jeadmin:
+            messages.add_message(request, messages.ERROR, 'Nemate dovoljnu razinu ovlasti.')
             return HttpResponseRedirect(reverse('index'))
          return render(request, self.template_name, {
          'title': "Dodaj maketu", 
@@ -77,5 +79,8 @@ class AdminMaketa(View):
                napravljenaOd.save()
 
 
-      messages.add_message(request, messages.SUCCESS, 'Maketa dodana u webshop.')
-      return HttpResponseRedirect(reverse('index'))
+         messages.add_message(request, messages.SUCCESS, 'Maketa dodana u webshop.')
+         return HttpResponseRedirect(reverse('index'))
+      else:
+         messages.add_message(request, messages.ERROR, 'Svi uvjeti nisu zadovoljeni.')
+         return HttpResponseRedirect(reverse('adminmaketa'))

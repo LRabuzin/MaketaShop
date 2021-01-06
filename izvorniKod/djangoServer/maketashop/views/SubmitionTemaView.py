@@ -24,7 +24,7 @@ class SubmitionTema(View):
 
       form = InteractionThemeForm()
       if 'user' not in request.session:
-         messages.add_message(request, messages.ERROR, 'Obavezan login.')
+         messages.add_message(request, messages.ERROR, 'Potreban je login.')
          return HttpResponseRedirect(reverse('login'))
       else:
          user = Korisnik.objects.select_related().get(email = request.session['user'])

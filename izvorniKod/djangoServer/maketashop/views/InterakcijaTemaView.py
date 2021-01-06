@@ -6,11 +6,13 @@ from maketashop.models import Interakcija
 from maketashop.models import Korisnik
 from maketashop.models import Tema
 from maketashop.DTOs.InterakcijaTemaDTO import InterakcijaTemaDTO
+from django.contrib import messages
 
 class InterakcijaTema(View):
     template_name ="maketashop/interakcijaTema.html"
     def get(self, request, id):
         if 'user' not in request.session: 
+            messages.add_message(request, messages.ERROR, 'Potreban je login.')
             return HttpResponseRedirect(reverse('login'))
         else:
             #kod ako nije dozvoljen pristup korisniku
@@ -57,4 +59,5 @@ class InterakcijaTema(View):
             interakcija.save()
          return HttpResponseRedirect(self.request.path_info)
       else:
+         messages.add_message(request, messages.ERROR, 'Nemate dovoljnu razinu ovlasti.')
          return HttpResponseRedirect(reverse('index'))

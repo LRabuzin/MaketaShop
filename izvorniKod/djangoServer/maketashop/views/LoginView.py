@@ -21,6 +21,7 @@ class Login(View):
             'session': request.session
             })
       else:
+         messages.add_message(request, messages.SUCCESS, 'Ranije ste ulogirani.')
          return HttpResponseRedirect(reverse('index'))
 
    def post(self, request):
