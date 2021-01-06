@@ -9,7 +9,7 @@ class TransakcijeDTO():
 
     def __init__(self):
         self.korisnik=Korisnik.objects.all().select_related()
-        self.transakcije=Transakcija.objects.all().select_related()
+        self.transakcije=Transakcija.objects.all().select_related().order_by('-datumizvedena')
         self.maketakupljena=Maketakupljena.objects.all().select_related()
         self.napravljenaod=Napravljenaod.objects.all().select_related()
         self.maketa=Maketa.objects.all().select_related()

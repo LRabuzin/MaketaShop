@@ -118,6 +118,7 @@ class Transakcija(models.Model):
     brojracuna = models.CharField(max_length=21)
     ukupaniznos = models.FloatField()
     korisnik = models.ForeignKey("Korisnik", db_column='korisnik', related_name="korisnik", default=None, on_delete=models.CASCADE, null= True, blank = True)
+    datumizvedena = models.DateTimeField(default=datetime.datetime.now(), blank=True, null=True)
 
     class Meta:
         managed = True
