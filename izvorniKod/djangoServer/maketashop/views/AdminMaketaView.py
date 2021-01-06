@@ -75,7 +75,9 @@ class AdminMaketa(View):
                
                napravljenaOd.materijalid = materijal
                napravljenaOd.cijena = cijena
-               napravljenaOd.brojuskladistu = form.cleaned_data['broj_na_skladistu']
+               napravljenaOd.brojuskladistu = form.cleaned_data[materijal.ime+"_broj_na_skladistu"]
+               if not napravljenaOd.brojuskladistu:
+                  napravljenaOd.brojuskladistu = 0
                napravljenaOd.save()
 
 

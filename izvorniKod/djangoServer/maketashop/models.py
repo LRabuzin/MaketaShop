@@ -194,7 +194,7 @@ class Korisnik(models.Model):
     lajkaopricu = models.ManyToManyField("Prica", related_name = "lajkaopricu")
     dislajkaopricu = models.ManyToManyField("Prica", related_name = "dislajkaopricu")
     kkpaypal = models.BooleanField(default=False, blank=True, null=True)
-    kkimeprezime = models.CharField(max_length=27, default=None, blank=True, null=True)
+    kkimeprezime = models.CharField(max_length=100, default=None, blank=True, null=True)
     kkbroj = models.CharField(max_length=16, default=None, blank=True, null=True)
     kkistek = models.CharField(max_length=5, default=None, blank=True, null=True)
     

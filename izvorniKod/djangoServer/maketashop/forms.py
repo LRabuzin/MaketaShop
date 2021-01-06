@@ -11,16 +11,16 @@ def file_size(value):
 class SignupForm(forms.Form):
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
     surname = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Prezime', 'class':'form-control my-input'}))
-    username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Korisničko ime', 'class':'form-control my-input'}))
+    username = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Korisničko ime', 'class':'form-control my-input'}))
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'E-mail', 'class':'form-control my-input'}))
-    pass1 = forms.CharField(max_length=32, widget=forms.PasswordInput(attrs={'placeholder': 'Zaporka', 'class':'form-control my-input'}))
-    pass2 = forms.CharField(max_length=32, widget=forms.PasswordInput(attrs={'placeholder': 'Ponovljena zaporka', 'class':'form-control my-input'}))
+    pass1 = forms.CharField(max_length=20, widget=forms.PasswordInput(attrs={'placeholder': 'Zaporka', 'class':'form-control my-input'}))
+    pass2 = forms.CharField(max_length=20, widget=forms.PasswordInput(attrs={'placeholder': 'Ponovljena zaporka', 'class':'form-control my-input'}))
     adress = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Adresa', 'class':'form-control my-input'}))
     #cardNumber = forms.CharField(max_length=21, widget=forms.TextInput(attrs={'placeholder': 'Broj kartice', 'class':'form-control my-input'}))
 
 class LoginForm(forms.Form):
     email = forms.EmailField(label="E-mail", widget=forms.TextInput(attrs={'placeholder': 'E-mail', 'class':'form-control'}))
-    pass1 = forms.CharField(label="Zaporka", max_length=32, widget=forms.PasswordInput(attrs={'placeholder': 'Zaporka', 'class':'form-control'}))
+    pass1 = forms.CharField(label="Zaporka", max_length=20, widget=forms.PasswordInput(attrs={'placeholder': 'Zaporka', 'class':'form-control'}))
 
 class PrivacyForm(forms.Form):
     #pic = forms.BooleanField(label="Sakrij sliku", required=False)
@@ -61,19 +61,20 @@ class InteractionMaketaForm(MaketaForm):
 
 class AdminMaketaForm(MaketaForm):
     osnovna_slika = forms.FileField(required = False, label="Osnovna slika", validators = [validators.FileExtensionValidator(['jpg', 'jpeg', 'gif', 'png'])], widget = forms.FileInput(attrs={'id':'mediaInput1', 'class':'m-3'}))
-    broj_na_skladistu = forms.IntegerField(label="Broj na skladištu", min_value = 0)
+    # broj_na_skladistu = forms.IntegerField(label="Broj na skladištu", min_value = 0)
     
     def __init__(self, *args, **kwargs):
         super(AdminMaketaForm, self).__init__(*args, **kwargs)
         for materijal in Materijal.objects.all().order_by('materijalid'):
             self.fields[materijal.ime] = forms.DecimalField(label=False, required=False, min_value = 0, decimal_places = 2, widget = forms.NumberInput(attrs={'placeholder': 'Cijena za materijal ' + materijal.ime + ':', 'class':'form-control my-input m-3'}))
+            self.fields[materijal.ime+"_broj_na_skladistu"] = forms.IntegerField(required=False, label = False, min_value = 0, widget = forms.NumberInput(attrs={'placeholder':"Broj na skladištu za Materijal {}".format(materijal.ime),'class':'form-control my-input m-3'}))
 
 class PlacanjeForm(forms.Form):
-    ime = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
-    prezime = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Prezime', 'class':'form-control my-input'}))
+    ime = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))
+    prezime = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Prezime', 'class':'form-control my-input'}))
     adresa = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Adresa', 'class':'form-control my-input'}))
     email = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Email', 'class':'form-control my-input'}))
-    ime_na_kartici = forms.CharField(max_length=27, widget=forms.TextInput(attrs={'placeholder': 'Ime i prezime nositelja kartice', 'class':'form-control my-input'}))
+    ime_na_kartici = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime i prezime nositelja kartice', 'class':'form-control my-input'}))
     PAYMENTMETHODS = [
     ('kreditnaKartica', 'Kreditna kartica'),
     ('paypal', 'PayPal'),
@@ -87,4 +88,4 @@ class AdminCijenaForm(forms.Form):
     custom_cijena = forms.DecimalField(label="Cijena:", min_value = 0, decimal_places = 2)
 
 class MaterijalForm(forms.Form):
-    custom_materijal = forms.CharField(label=False, max_length=50, min_length=0, widget=forms.TextInput(attrs={'placeholder': 'Ime novog materijala', 'class':'form-control my-input m-3'}))
+    custom_materijal = forms.CharField(label=False, max_length=100, min_length=0, widget=forms.TextInput(attrs={'placeholder': 'Ime novog materijala', 'class':'form-control my-input m-3'}))
