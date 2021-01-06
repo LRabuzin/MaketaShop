@@ -16,23 +16,11 @@
 		<p class="lead">
 		  autor:
 		  <a href="{% url 'profilpregled' B_postDTO.getAutorId %}"> {{ B_postDTO.getAutorKorisnickoIme }}</a>
-		  <!-- <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
-			{% csrf_token %}
-			<button class="btn btn-link" type="submit" name="userlink" value="{{ B_postDTO.getAutorId }}">
-				{{ B_postDTO.getAutorKorisnickoIme }}
-			</button>
-		  </form>		   -->
 		  
 		  <br>
 		  {% if B_postDTO.getPrica.getPredlozioPricuId %}
 			  na prijedlog:
 			  <a href="{% url 'profilpregled' B_postDTO.getPredlozioId %}"> {{ B_postDTO.getPredlozioKorisnickoIme }}</a>
-			  <!-- <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
-			   {% csrf_token %}
-				 <button class="btn btn-link" type="submit" name="userlink" value="{{ B_postDTO.getPredlozioId }}">
-				  {{ B_postDTO.getPredlozioKorisnickoIme }}
-			     </button>
-		      </form>	 -->
 		  {% endif %}
 		</p>
 
@@ -45,8 +33,6 @@
 			{% if multimedija.0 == 'slika' %}
 			<img class="img-fluid rounded" src="{% static multimedija.1 %}" alt="">
 			{% elif multimedija.0 == 'tekst' %}
-			<!-- <object width="300" height="300" type="text/plain" data="message.txt" border="0" >
-			</object> -->
 			<embed src="{% static multimedija.1 %}" alt="" style="width:100%">
 			{% elif multimedija.0 == 'video' %}
 			<video width="720" height="480" controls>
@@ -72,19 +58,6 @@
 		  </form>
 
 		<hr>
-		<!--<div class="d-flex flex-column justify-content-center align-items-center p-2">
-		
-		{% if B_postDTO.getPrica.getMaketaId and not B_postDTO.getPrica.getMaketaProdana %}
-			<h5 class="p-2">Ova je maketa dostupna za kupnju.</h5>
-			<h6 class="p-2">Cijena: {{ B_postDTO.getCijena }} kn</h6>
-			<button type="submit" class="btn btn-primary m-2">Kupi</button>
-		{% else %}
-			<h5 class="p-2">Ova maketa nije dostupna za kupnju.</h5>
-		{% endif %}
-		  
-		</div>
-
-		<hr>-->
 		
 	  </div>
 
@@ -116,20 +89,23 @@
 		{% if B_postDTO.getKomentari %}
 			{% for komentar in B_postDTO.getKomentari %}
 				<div class="media mb-4">
-				  <img class="d-flex mr-3 comm-img rounded-circle" src="{% static komentar.getKorisnikId.getSlika %}" alt="">
-				  <div class="media-body">
-					<h5 class="mt-0">
-					<a href="{% url 'profilpregled' komentar.getKorisnikId.getKorisnikId %}"> {{ komentar.getKorisnikId.getKorisnickoIme }}</a>
-					<!-- <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
-					 {% csrf_token %}
-					  <button class="btn btn-link" type="submit" name="userlink" 
-					  value="{{ komentar.getKorisnikId.getKorisnikId }}">
-					  {{ komentar.getKorisnikId.getKorisnickoIme }}
-					  </button>
-					</form>						 -->
-					</h5>
-					{{ komentar.sadrzaj }}
-				  </div>
+					{% if komentar.getKorisnikId.getKorisnickoIme %}
+						<img class="d-flex mr-3 comm-img rounded-circle" src="{% static komentar.getKorisnikId.getSlika %}" alt="">
+						<div class="media-body">
+						<h5 class="mt-0">
+						<a href="{% url 'profilpregled' komentar.getKorisnikId.getKorisnikId %}"> {{ komentar.getKorisnikId.getKorisnickoIme }}</a>
+						</h5>
+						{{ komentar.sadrzaj }}
+						</div>
+					{% else %}
+						<img class="d-flex mr-3 comm-img rounded-circle" src="{% static B_postDTO.getDefaultSlika %}" alt="">
+						<div class="media-body">
+						<h5 class="mt-0">
+						<a href="#"> Ghost </a>
+						</h5>
+						{{ komentar.sadrzaj }}
+						</div>
+					{% endif %}
 				</div>
 			{% endfor %}
 		{% else %}
@@ -144,5 +120,4 @@
 	</div>
 
   </div>
-</div>
 {% endblock content %}
