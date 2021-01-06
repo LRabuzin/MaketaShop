@@ -8,10 +8,12 @@ class MaketaDTO():
         self.materijali=Materijal.objects.all().select_related()
         self.napravljenaOd=Napravljenaod.objects.filter(maketaid=maketaID)
         self.rijecnik={}
+        self.brUSkladistu={}
         for materijal in self.materijali:
             if self.napravljenaOd.filter(materijalid=materijal.materijalid).exists():
                 self.rijecnik[materijal.ime]=self.napravljenaOd.get(materijalid=materijal.materijalid).cijena
-
+                self.brUSkladistu[materijal.ime]=self.napravljenaOd.get(materijalid=materijal.materijalid).brojuskladistu
+        
     def getMaterijaliICijene(self):
         return self.rijecnik
     
@@ -40,3 +42,6 @@ class MaketaDTO():
     def getOsnovnuCijenu(self):
         for item in self.rijecnik.values():
             return item
+
+    def getSkladiste(self):
+        return self.brUSkladistu

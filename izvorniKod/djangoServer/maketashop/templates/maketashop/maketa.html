@@ -13,6 +13,11 @@
         document.getElementById("materijal").value = e.options[e.selectedIndex].text;
     }
     sendToBackend();
+    function getSelectedMaterijal() {
+        var e = document.getElementById("nivel");
+        return e.options[e.selectedIndex].text;
+    }
+    getSelectedMaterijal();
 </script>
 
 <div class="container">
@@ -57,6 +62,15 @@
                         {% csrf_token %}
                         <input type="hidden" id="cijena2" name="cijena" value="">
                         <input type="hidden" id="materijal" name="materijal" value="">
+                       <!-- {% for materijal,br in maketaDTO.getSkladiste.items %}
+                            {% if materijal == "Drvo" %} 
+                                {% if br > 0 %}
+                                    <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
+                                {% else %}
+                                    <button type="submit" class="btn btn-block btn-secondary col-3" disabled>Nije dostupno</button>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %} -->
                         <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
                     </div>
                 </form>
