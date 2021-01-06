@@ -3,6 +3,7 @@ from maketashop.models import Napravljenaod
 from maketashop.models import Komentar
 from maketashop.models import Korisnik
 from maketashop.models import Multimedijaprice
+from maketashop.models import Media
 
 class B_postDTO():
 
@@ -78,3 +79,6 @@ class B_postDTO():
 
     def getSvaMedija(self):
         return self.svaMedija
+
+    def getDefaultSlika(self):
+        return Media.objects.order_by('mediaid').first().putdodatoteke
