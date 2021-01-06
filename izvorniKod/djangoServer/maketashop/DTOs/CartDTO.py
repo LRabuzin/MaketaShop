@@ -72,7 +72,7 @@ class CartDTO():
         return self.suma
 
     def getDostava(self):
-        return self.suma * 0.05
+        return round(self.suma * 0.05,2)
 
     def getUkupno(self):
         return self.getDostava() + self.getSuma()

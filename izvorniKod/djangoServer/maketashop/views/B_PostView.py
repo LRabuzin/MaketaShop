@@ -55,12 +55,12 @@ class B_Post(View):
             #obj = Komentar(sadrzaj=sadrzajK, korisnikid = korisnikObj, pricaid = prica)
             obj.save()
 
-        if (request.POST.get("userlink")):
-            if request.POST.get("userlink") == "":
-                return HttpResponseRedirect(self.request.path_info)
-            else:
-                s = "/maketashop/profilpregled/" + request.POST.get("userlink")
-                return HttpResponseRedirect(s);
+        # if (request.POST.get("userlink")):
+        #     if request.POST.get("userlink") == "":
+        #         return HttpResponseRedirect(self.request.path_info)
+        #     else:
+        #         s = "/maketashop/profilpregled/" + request.POST.get("userlink")
+        #         return HttpResponseRedirect(s);
 
         if 'user' in request.session:
             if (request.POST.get("rate") == '1'):
