@@ -99,11 +99,11 @@ class Checkout(View):
 
                 for maketa,kol in cart.getCart().items():
                     maketakupljena = Maketakupljena()
-                    if Maketakupljena.objects.order_by('-id').first():
-                        next_id = Maketakupljena.objects.order_by('-id').first().id + 1
-                    else:
-                        next_id = 1
-                    maketakupljena.id = next_id
+                    #if Maketakupljena.objects.order_by('-id').first():
+                    #    next_id = Maketakupljena.objects.order_by('-id').first().id + 1
+                    #else:
+                    #    next_id = 1
+                    #maketakupljena.id = next_id
                     maketakupljena.maketaid = maketa.getMaketa()
                     maketakupljena.materijalid = Materijal.objects.get(ime=maketa.getMaterijal())
                     maketakupljena.kolicina = kol
