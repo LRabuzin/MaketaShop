@@ -26,8 +26,8 @@
                             
                             <input type="hidden" id="idMaketa" name="idMaketa" value="{{maketa.getId}}">
                             <input type="hidden" id="cijena" name="cijena" value="{{maketa.getOsnovnuCijenu}}">
-                            <input type="hidden" id="materijal" name="materijal" value="{{maketa.getOsnovniMaterijal}}">
-                            {% if maketa.jeDostupna %}
+                            {% if maketa.getOsnovniMaterijal %}
+                                <input type="hidden" id="materijal" name="materijal" value="{{maketa.getOsnovniMaterijal}}">
                                 <button type="submit" class="btn btn-success col-12">Kupi</button>
                             {% else %}
                                 <button type="submit" class="btn btn-lg btn-block btn-secondary col-12" disabled>Nije dostupno za osnovni materijal</button>

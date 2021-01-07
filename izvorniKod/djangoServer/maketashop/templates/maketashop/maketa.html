@@ -50,30 +50,33 @@
             <hr>
 
             <div class="d-flex flex-row justify-content-around">
-
-                <select class="col-5 m-2" id="nivel" onchange='changeMaterijal()' form="kupnja">
-                    <option selected disabled hidden value="{{ maketaDTO.getOsnovnuCijenu }}">{{maketaDTO.getOsnovniMaterijal}}</option>
-                    {% for materijal,cijena in maketaDTO.getMaterijaliICijene.items %}
-                        <option value="{{ cijena }}">{{ materijal }}</option>
-                    {% endfor %}
-                </select>
-                <form class="col-5 m-2" action="" method="post" id="kupnja" name="kupi">
-                    <div class="form-group">
-                        {% csrf_token %}
-                        <input type="hidden" id="cijena2" name="cijena" value="">
-                        <input type="hidden" id="materijal" name="materijal" value="">
-                       <!-- {% for materijal,br in maketaDTO.getSkladiste.items %}
-                            {% if materijal == "Drvo" %} 
-                                {% if br > 0 %}
-                                    <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
-                                {% else %}
-                                    <button type="submit" class="btn btn-block btn-secondary col-3" disabled>Nije dostupno</button>
+                {% if maketaDTO.getOsnovniMaterijal %}
+                    <select class="col-5 m-2" id="nivel" onchange='changeMaterijal()' form="kupnja">
+                        <option selected disabled hidden value="{{ maketaDTO.getOsnovnuCijenu }}">{{maketaDTO.getOsnovniMaterijal}}</option>
+                        {% for materijal,cijena in maketaDTO.getMaterijaliICijene.items %}
+                            <option value="{{ cijena }}">{{ materijal }}</option>
+                        {% endfor %}
+                    </select>
+                    <form class="col-5 m-2" action="" method="post" id="kupnja" name="kupi">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            <input type="hidden" id="cijena2" name="cijena" value="">
+                            <input type="hidden" id="materijal" name="materijal" value="">
+                           <!-- {% for materijal,br in maketaDTO.getSkladiste.items %}
+                                {% if materijal == "Drvo" %} 
+                                    {% if br > 0 %}
+                                        <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
+                                    {% else %}
+                                        <button type="submit" class="btn btn-block btn-secondary col-3" disabled>Nije dostupno</button>
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %}
-                        {% endfor %} -->
-                        <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
-                    </div>
-                </form>
+                            {% endfor %} -->
+                            <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
+                        </div>
+                    </form>
+                {% else %}
+                    <button type="submit" class="btn btn-secondary col-12" disabled>Nije dostupno</button>
+                {% endif %}
 
             </div>
 
