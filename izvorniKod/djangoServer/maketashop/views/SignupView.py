@@ -58,5 +58,23 @@ class Signup(View):
                     request.session['admin'] = False
                     messages.add_message(request, messages.SUCCESS, 'Registracija uspješna!')
                     return HttpResponseRedirect(reverse('index'))
-        messages.add_message(request, messages.ERROR, 'Registracija neuspješna!')
+            else:
+                messages.add_message(request, messages.ERROR, 'Registracija neuspješna jer se lozinke ne poklapaju!')
+        else:
+            #print(form.errors)
+            for polje,eror in form.errors.items():
+                if polje=='name':
+                    messages.add_message(request, messages.ERROR, 'Dogodila se pogreška u polju Ime!')
+                elif polje=='surname':
+                    messages.add_message(request, messages.ERROR, 'Dogodila se pogreška u polju Prezime!')
+                elif polje=='username':
+                    messages.add_message(request, messages.ERROR, 'Dogodila se pogreška u polju Korisničko ime!')
+                elif polje=='email':
+                    messages.add_message(request, messages.ERROR, 'Dogodila se pogreška u polju E-mail!')
+                elif polje=='pass1':
+                    messages.add_message(request, messages.ERROR, 'Dogodila se pogreška u polju Zaporka!')
+                elif polje=='pass2':
+                    messages.add_message(request, messages.ERROR, 'Dogodila se pogreška u polju Ponovljena Zaporka!')
+                elif polje=='adress':
+                    messages.add_message(request, messages.ERROR, 'Dogodila se pogreška u polju Adresa!')
         return HttpResponseRedirect(reverse('signup'))

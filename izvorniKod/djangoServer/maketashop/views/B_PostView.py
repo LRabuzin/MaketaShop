@@ -64,15 +64,15 @@ class B_Post(View):
 
         if 'user' in request.session:
             if (request.POST.get("rate") == '1'):
-                print("U lajk postu sam");
+                #print("U lajk postu sam");
                 if (korisnikObj.lajkaopricu.all().filter(pricaid=id)):
-                    print("lajkao je vec");
+                    #print("lajkao je vec");
                     obj = Prica.objects.select_related().get(pricaid=id)
                     obj.brojlajkova = obj.brojlajkova - 1
                     obj.save()
                     korisnikObj.lajkaopricu.remove(Prica.objects.select_related().get(pricaid=id))              
                 else:
-                    print("nije lajkovao");
+                    #print("nije lajkovao");
                     obj = Prica.objects.select_related().get(pricaid=id)
                     obj.brojlajkova = obj.brojlajkova + 1
                     korisnikObj.lajkaopricu.add(Prica.objects.select_related().get(pricaid=id))
@@ -82,13 +82,13 @@ class B_Post(View):
                     obj.save()
             elif (request.POST.get("rate") == '2'):
                 if (korisnikObj.dislajkaopricu.all().filter(pricaid=id)):
-                    print("dislajkao vec")
+                    #print("dislajkao vec")
                     obj = Prica.objects.select_related().get(pricaid=id)
                     obj.brojdislajkova = obj.brojdislajkova - 1
                     obj.save()
                     korisnikObj.dislajkaopricu.remove(Prica.objects.select_related().get(pricaid=id))
                 else:
-                    print("nije dislajkao")
+                    #print("nije dislajkao")
                     obj = Prica.objects.select_related().get(pricaid=id)
                     obj.brojdislajkova = obj.brojdislajkova + 1
                     korisnikObj.dislajkaopricu.add(Prica.objects.select_related().get(pricaid=id))
@@ -97,6 +97,3 @@ class B_Post(View):
                         obj.brojlajkova = obj.brojlajkova - 1
                     obj.save()
         return HttpResponseRedirect(self.request.path_info)
-
-
-        
