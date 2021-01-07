@@ -16,8 +16,10 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Veličina: {{ maketa.getDimenzije }}</li>
-                    <li class="list-group-item">Cijena: {{ maketa.getOsnovnuCijenu }} kn</li>
-                    <li class="list-group-item">Osnovni materijal: {{ maketa.getOsnovniMaterijal }} </li>
+                    {% if maketa.getOsnovniMaterijal %}
+                        <li class="list-group-item">Cijena: {{ maketa.getOsnovnuCijenu }} kn</li>
+                        <li class="list-group-item">Osnovni materijal: {{ maketa.getOsnovniMaterijal }} </li>
+                    {% endif %}
                 </ul>
                 <div class="card-body">
                     <form action="" method="post" name="kupi">

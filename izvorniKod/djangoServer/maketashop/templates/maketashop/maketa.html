@@ -43,14 +43,14 @@
             <p>{{ maketaDTO.getDimenzije }}</p>
 
             <hr>
+            {% if maketaDTO.getOsnovniMaterijal %}
+                <h3>Cijena:</h3>
+                <p id="cijena">{{ maketaDTO.getOsnovnuCijenu }}</p>
 
-            <h3>Cijena:</h3>
-            <p id="cijena">{{ maketaDTO.getOsnovnuCijenu }}</p>
+                <hr>
 
-            <hr>
-
-            <div class="d-flex flex-row justify-content-around">
-                {% if maketaDTO.getOsnovniMaterijal %}
+                <div class="d-flex flex-row justify-content-around">
+                
                     <select class="col-5 m-2" id="nivel" onchange='changeMaterijal()' form="kupnja">
                         <option selected disabled hidden value="{{ maketaDTO.getOsnovnuCijenu }}">{{maketaDTO.getOsnovniMaterijal}}</option>
                         {% for materijal,cijena in maketaDTO.getMaterijaliICijene.items %}
@@ -76,10 +76,8 @@
                     </form>
                 {% else %}
                     <button type="submit" class="btn btn-secondary col-12" disabled>Nije dostupno</button>
-                {% endif %}
-
-            </div>
-
+             </div>
+            {% endif %}
             <hr>
         </div>
 
