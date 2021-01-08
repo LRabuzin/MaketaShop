@@ -14,8 +14,8 @@ class ProfilDTO():
    def getAdresa(self):
       return self.korisnik.adresa
 
-   def getRodendan(self):
-      return self.korisnik.rodendan
+#   def getRodendan(self):
+#      return self.korisnik.rodendan
 
    def getDatumRegistracije(self):
       return self.korisnik.datumregistracije
