@@ -13,13 +13,13 @@
                   <div class="card-title row align-items-center justify-content-between">
                       
                           <div class="image-container col-3">
-                              <img src="{% static ProfilDTO.getSlika %}" style="width: 150px; height: 150px" />
+                              <img src="{% static ProfilDTO.getSlika %}" class="profile-img" />
                             </div>
-                            <div class="col-3">
-                                      <input type="file" class="btn btn-secondary" name="profilna" />
+                            <div class="col-8 d-flex flex-row justify-content-around">
+                                      <input type="file" class="" name="profilna" />
                                       <!-- <div class="form-group" id="btnBlock1"> -->
-                                        <br />
-                                      <button type="submit" class="btn btn-success">Promijeni sliku</button>
+                                        <!-- <br /> -->
+                                      <button type="submit" class="btn btn-success">Promijeni profilnu sliku</button>
                                       <!-- </div> -->
                                      
                             </div>
@@ -68,7 +68,7 @@
                                         <label style="font-weight:bold;">Datum rođenja</label>
                                     </div>
                                     <div class="col-3">
-                                        {{ ProfilDTO.getRodendan }}
+                                        {{ ProfilDTO.getRodendan|date:"d.m.Y." }}
                                     </div>
                                     <div class="form-check col-3">
                                         {{ form.birth_date }}
@@ -82,7 +82,7 @@
                                         <label style="font-weight:bold;">Datum registracije</label>
                                     </div>
                                     <div class="col-3">
-                                        {{ ProfilDTO.getDatumRegistracije }}
+                                        {{ ProfilDTO.getDatumRegistracije|date:"d.m.Y." }}
                                     </div>
                                     <div class="form-check col-3">
                                         {{ form.register_date }}

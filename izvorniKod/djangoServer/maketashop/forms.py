@@ -25,7 +25,7 @@ class LoginForm(forms.Form):
 class PrivacyForm(forms.Form):
     #pic = forms.BooleanField(label="Sakrij sliku", required=False)
     name_surname = forms.BooleanField(label="Sakrij ime i prezime", required=False)
-    birth_date = forms.BooleanField(label="Sakrij rođendan", required=False)
+    # birth_date = forms.BooleanField(label="Sakrij rođendan", required=False)
     register_date = forms.BooleanField(label="Sakrij datum registracije", required=False)
     email = forms.BooleanField(label="Sakrij adresu e-pošte", required=False)
     address = forms.BooleanField(label="Sakrij adresu", required=False)
