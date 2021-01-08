@@ -21,6 +21,7 @@ from maketashop.views.SubmitionTemaView import SubmitionTema
 from maketashop.views.SubmitionMaketaView import SubmitionMaketa
 from maketashop.views.SubmitionPricaView import SubmitionPrica 
 from maketashop.views.AdminMaketaView import AdminMaketa 
+from maketashop.views.AdminEditMaketaView import AdminEditMaketa 
 from maketashop.views.AdminMaterijalView import AdminMaterijal
 from . import views
 
@@ -47,5 +48,6 @@ urlpatterns = [
     path('maketasubmit/', SubmitionMaketa.as_view(), name='maketasubmit'),
     path('postsubmit/', SubmitionPrica.as_view(), name='postsubmit'),
     path('adminmaketa/', AdminMaketa.as_view(), name='adminmaketa'),
+    path('admineditmaketa/<int:id>/', AdminEditMaketa.as_view(), name='adminmeditaketa'),
     path('adminmaterijal/', AdminMaterijal.as_view(), name='adminmaterijal')
 ]
