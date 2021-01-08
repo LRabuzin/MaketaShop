@@ -31,11 +31,19 @@ class AdminEditMaketa(View):
             return HttpResponseRedirect(reverse('index'))
 
          maketa = Maketa.objects.select_related().get(maketaid = id)
+         
          data = {
             'ime_makete' : maketa.ime,
             'dimenzije' : maketa.dimenzije,
             'opis' : maketa.opis,
          }
+         for materijal in Materijal.objects.select_related().all():
+            
+            napravljenaOd = Napravljenaod.objects.select_related().filter(maketaid = maketa.maketaid).get(materijalid = materijal.materijalid)
+            data[materijal.ime] = napravljenaOd.cijena
+            data[materijal.ime +"_broj_na_skladistu"] = napravljenaOd.brojuskladistu
+
+
          form = AdminMaketaForm(data)
          return render(request, self.template_name, {
          'title': "Dodaj maketu", 
@@ -64,7 +72,7 @@ class AdminEditMaketa(View):
                   napravljenaOd.brojuskladistu = form.cleaned_data[materijal.ime+"_broj_na_skladistu"]
                napravljenaOd.save()
 
-         messages.add_message(request, messages.SUCCESS, 'Maketa dodana u webshop.')
+         messages.add_message(request, messages.SUCCESS, 'Maketa izmijenjena.')
          return HttpResponseRedirect(reverse('index'))
       else:
          messages.add_message(request, messages.ERROR, 'Svi uvjeti nisu zadovoljeni.')
