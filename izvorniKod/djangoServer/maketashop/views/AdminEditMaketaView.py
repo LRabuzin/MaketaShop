@@ -73,8 +73,9 @@ class AdminEditMaketa(View):
             maketa.mediaid = media
             maketa.save()
          for materijal in Materijal.objects.select_related().all():
-            cijena = form.cleaned_data[materijal.ime]
-            if cijena:
+            
+            if form.cleaned_data.get(materijal.ime):
+               cijena = form.cleaned_data.get(materijal.ime)
                if not Napravljenaod.objects.select_related().filter(maketaid = maketa.maketaid, materijalid = materijal.materijalid).exists():
                   napravljenaOd = Napravljenaod()
                   napravljenaOd.maketaid = maketa
@@ -83,6 +84,7 @@ class AdminEditMaketa(View):
                   if form.cleaned_data[materijal.ime+"_broj_na_skladistu"]:
                      napravljenaOd.brojuskladistu = form.cleaned_data[materijal.ime+"_broj_na_skladistu"]
                   napravljenaOd.save()
+
                else:
                   napravljenaOd = Napravljenaod.objects.select_related().filter(maketaid = maketa.maketaid).get(materijalid = materijal.materijalid)
                   napravljenaOd.cijena = cijena
@@ -90,8 +92,9 @@ class AdminEditMaketa(View):
                   if form.cleaned_data[materijal.ime+"_broj_na_skladistu"]:
                      napravljenaOd.brojuskladistu = form.cleaned_data[materijal.ime+"_broj_na_skladistu"]
                   napravljenaOd.save()
-               messages.add_message(request, messages.SUCCESS, 'Maketa izmijenjena.')
-               return HttpResponseRedirect(reverse('index'))
+
+         messages.add_message(request, messages.SUCCESS, 'Maketa izmijenjena.')
+         return HttpResponseRedirect(reverse('index'))
 
 
       else:
