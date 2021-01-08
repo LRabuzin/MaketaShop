@@ -47,6 +47,6 @@ urlpatterns = [
     path('maketasubmit/', SubmitionMaketa.as_view(), name='maketasubmit'),
     path('postsubmit/', SubmitionPrica.as_view(), name='postsubmit'),
     path('adminmaketa/', AdminMaketa.as_view(), name='adminmaketa'),
-    path('admineditmaketa/<int:id>/', AdminEditMaketa.as_view(), name='adminmeditaketa'),
+    path('admineditmaketa/<int:id>/', AdminEditMaketa.as_view(), name='admineditmaketa'),
     path('adminmaterijal/', AdminMaterijal.as_view(), name='adminmaterijal')
 ]

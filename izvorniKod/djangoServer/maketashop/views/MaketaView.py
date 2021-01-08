@@ -16,12 +16,14 @@ class Maketa(View):
             if Korisnik.objects.filter(email=request.session['user']).exists():
                 if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
                     return HttpResponseRedirect(reverse('logout'))
+            user = Korisnik.objects.select_related().get(email = request.session['user'])
 
         return render(request, self.template_name, {
             'title': "Maketa", 
             'link_active': "maketa", 
             'empty_head': False,
             'maketaDTO':MaketaDTO(id),
+            'jeadmin':  user.jeadmin,
             'session': request.session
             })
 

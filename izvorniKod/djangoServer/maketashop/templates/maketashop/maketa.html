@@ -33,6 +33,10 @@
             <img class="img-fluid rounded" src="{% static maketaDTO.getMaketaSlika %}" alt="">
 
             <hr>
+                {% if jeadmin %}
+                    <a href="{% url 'admineditmaketa' maketaDTO.getId %}" class="btn btn-primary"  role="button">Uredi maketu</a>
+                {% endif %}
+            <hr>
 
             <h3>Opis:</h3>
             <p>{{ maketaDTO.getOpis }}</p>
@@ -72,7 +76,6 @@
             {% endif %}
             <hr>
         </div>
-
     </div>
 </div>
 {% endblock content %}
