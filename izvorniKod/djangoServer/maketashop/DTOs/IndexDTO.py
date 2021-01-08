@@ -39,7 +39,7 @@ class jednaPrica():
 
 class IndexDTO():
     def __init__(self):
-        self.price=Prica.objects.all().select_related().filter(objavljena=True)
+        self.price=Prica.objects.all().select_related().filter(objavljena=True).order_by('-datumprice')
         self.svePrice=[]
         for prica in self.price:
             if prica.objavljena:
