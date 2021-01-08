@@ -62,20 +62,12 @@
                             {% csrf_token %}
                             <input type="hidden" id="cijena2" name="cijena" value="">
                             <input type="hidden" id="materijal" name="materijal" value="">
-                           <!-- {% for materijal,br in maketaDTO.getSkladiste.items %}
-                                {% if materijal == "Drvo" %} 
-                                    {% if br > 0 %}
-                                        <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
-                                    {% else %}
-                                        <button type="submit" class="btn btn-block btn-secondary col-3" disabled>Nije dostupno</button>
-                                    {% endif %}
-                                {% endif %}
-                            {% endfor %} -->
                             <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
                         </div>
                     </form>
-                {% else %}
+            {% else %}
                     <button type="submit" class="btn btn-secondary col-12" disabled>Nije dostupno</button>
+                    <hr>
              </div>
             {% endif %}
             <hr>

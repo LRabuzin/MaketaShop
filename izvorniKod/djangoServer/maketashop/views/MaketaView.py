@@ -38,4 +38,4 @@ class Maketa(View):
             cart = request.session['cart']
             cart.addMaketa(maketaId, materijal, cijena, 1)
             request.session['cart']=cart
-        return HttpResponseRedirect(self.request.path_info)
+        return HttpResponseRedirect(reverse('cart'))
