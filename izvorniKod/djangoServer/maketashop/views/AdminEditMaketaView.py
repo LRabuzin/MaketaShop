@@ -60,7 +60,7 @@ class AdminEditMaketa(View):
       if form.is_valid():
 
          maketa = Maketa.objects.select_related().get(maketaid = id)
-         if(request.FILES['osnovna_slika']):
+         if('osnovna_slika' in request.FILES):
             media = Media()
             next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
             media.mediaid = next_id
