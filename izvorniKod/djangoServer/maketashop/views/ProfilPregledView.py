@@ -14,6 +14,9 @@ class ProfilPregled(View):
             if Korisnik.objects.filter(email=request.session['user']).exists():
                 if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
                     return HttpResponseRedirect(reverse('logout'))
+        
+            if id == Korisnik.objects.get(email=request.session['user']).korisnikid:
+                return HttpResponseRedirect(reverse('profil'))
 
         return render(request, self.template_name, {
             'title': "Pregled profila", 

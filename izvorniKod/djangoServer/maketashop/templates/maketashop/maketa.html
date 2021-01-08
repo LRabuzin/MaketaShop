@@ -13,6 +13,11 @@
         document.getElementById("materijal").value = e.options[e.selectedIndex].text;
     }
     sendToBackend();
+    function getSelectedMaterijal() {
+        var e = document.getElementById("nivel");
+        return e.options[e.selectedIndex].text;
+    }
+    getSelectedMaterijal();
 </script>
 
 <div class="container">
@@ -38,31 +43,33 @@
             <p>{{ maketaDTO.getDimenzije }}</p>
 
             <hr>
+            {% if maketaDTO.getOsnovniMaterijal %}
+                <h3>Cijena:</h3>
+                <p id="cijena">{{ maketaDTO.getOsnovnuCijenu }}</p>
 
-            <h3>Cijena:</h3>
-            <p id="cijena">{{ maketaDTO.getOsnovnuCijenu }}</p>
+                <hr>
 
-            <hr>
-
-            <div class="d-flex flex-row justify-content-around">
-
-                <select class="col-5 m-2" id="nivel" onchange='changeMaterijal()' form="kupnja">
-                    <option selected disabled hidden value="{{ maketaDTO.getOsnovnuCijenu }}">{{maketaDTO.getOsnovniMaterijal}}</option>
-                    {% for materijal,cijena in maketaDTO.getMaterijaliICijene.items %}
-                        <option value="{{ cijena }}">{{ materijal }}</option>
-                    {% endfor %}
-                </select>
-                <form class="col-5 m-2" action="" method="post" id="kupnja" name="kupi">
-                    <div class="form-group">
-                        {% csrf_token %}
-                        <input type="hidden" id="cijena2" name="cijena" value="">
-                        <input type="hidden" id="materijal" name="materijal" value="">
-                        <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
-                    </div>
-                </form>
-
-            </div>
-
+                <div class="d-flex flex-row justify-content-around">
+                
+                    <select class="col-5 m-2" id="nivel" onchange='changeMaterijal()' form="kupnja">
+                        <option selected disabled hidden value="{{ maketaDTO.getOsnovnuCijenu }}">{{maketaDTO.getOsnovniMaterijal}}</option>
+                        {% for materijal,cijena in maketaDTO.getMaterijaliICijene.items %}
+                            <option value="{{ cijena }}">{{ materijal }}</option>
+                        {% endfor %}
+                    </select>
+                    <form class="col-5 m-2" action="" method="post" id="kupnja" name="kupi">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            <input type="hidden" id="cijena2" name="cijena" value="">
+                            <input type="hidden" id="materijal" name="materijal" value="">
+                            <button type="submit" class="btn btn-success col-2" onclick="sendToBackend()">Kupi</button>
+                        </div>
+                    </form>
+            {% else %}
+                    <button type="submit" class="btn btn-secondary col-12" disabled>Nije dostupno</button>
+                    <hr>
+             </div>
+            {% endif %}
             <hr>
         </div>
 

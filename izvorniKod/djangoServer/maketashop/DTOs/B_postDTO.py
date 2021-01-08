@@ -41,8 +41,6 @@ class B_postDTO():
                     mintekst=medija.poredakuprici
                     self.tekst=medija.mediaid.putdodatoteke
         
-        print(self.getSvaMedija())
-        
     def getSlika(self):
         return self.slika
     

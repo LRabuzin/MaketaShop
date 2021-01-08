@@ -10,7 +10,6 @@ from maketashop.views.WebShopView import WebShop
 from maketashop.views.B_PostView import B_Post
 from maketashop.views.CheckoutView import Checkout
 from maketashop.views.MaketaView import Maketa
-from maketashop.views.PregledKorisnikaView import PregledKorisnika
 from maketashop.views.TransakcijeView import Transakcije
 from maketashop.views.AdminUserListView import AdminUserList
 from maketashop.views.InboxView import Inbox
