@@ -60,18 +60,18 @@ class AdminEditMaketa(View):
       if form.is_valid():
 
          maketa = Maketa.objects.select_related().get(maketaid = id)
+         if(request.FILES['osnovna_slika']):
+            media = Media()
+            next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+            media.mediaid = next_id
+            media.vrstamedije = "slika"
 
-         media = Media()
-         next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
-         media.mediaid = next_id
-         media.vrstamedije = "slika"
-
-         nastavak = request.FILES['osnovna_slika'].name.split(".")[-1]
-         putanja = handle_uploaded_file(request.FILES['osnovna_slika'], nastavak, 60)
-         media.putdodatoteke = putanja
-         media.save()
-         maketa.mediaid = media
-         maketa.save()
+            nastavak = request.FILES['osnovna_slika'].name.split(".")[-1]
+            putanja = handle_uploaded_file(request.FILES['osnovna_slika'], nastavak, 60)
+            media.putdodatoteke = putanja
+            media.save()
+            maketa.mediaid = media
+            maketa.save()
          for materijal in Materijal.objects.select_related().all():
             cijena = form.cleaned_data[materijal.ime]
             if cijena:
