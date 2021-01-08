@@ -75,18 +75,25 @@ class AdminEditMaketa(View):
          for materijal in Materijal.objects.select_related().all():
             cijena = form.cleaned_data[materijal.ime]
             if cijena:
-               napravljenaOd = Napravljenaod.objects.select_related().filter(maketaid = maketa.maketaid).get(materijalid = materijal.materijalid)
-               
-               
-               
-               napravljenaOd.cijena = cijena
-               
-               if form.cleaned_data[materijal.ime+"_broj_na_skladistu"]:
-                  napravljenaOd.brojuskladistu = form.cleaned_data[materijal.ime+"_broj_na_skladistu"]
-               napravljenaOd.save()
+               if not Napravljenaod.objects.select_related().filter(maketaid = maketa.maketaid, materijalid = materijal.materijalid).exists():
+                  napravljenaOd = Napravljenaod()
+                  napravljenaOd.maketaid = maketa
+                  napravljenaOd.materijalid = materijal
+                  napravljenaOd.cijena = cijena
+                  if form.cleaned_data[materijal.ime+"_broj_na_skladistu"]:
+                     napravljenaOd.brojuskladistu = form.cleaned_data[materijal.ime+"_broj_na_skladistu"]
+                  napravljenaOd.save()
+               else:
+                  napravljenaOd = Napravljenaod.objects.select_related().filter(maketaid = maketa.maketaid).get(materijalid = materijal.materijalid)
+                  napravljenaOd.cijena = cijena
+                  
+                  if form.cleaned_data[materijal.ime+"_broj_na_skladistu"]:
+                     napravljenaOd.brojuskladistu = form.cleaned_data[materijal.ime+"_broj_na_skladistu"]
+                  napravljenaOd.save()
+               messages.add_message(request, messages.SUCCESS, 'Maketa izmijenjena.')
+               return HttpResponseRedirect(reverse('index'))
 
-         messages.add_message(request, messages.SUCCESS, 'Maketa izmijenjena.')
-         return HttpResponseRedirect(reverse('index'))
+
       else:
          messages.add_message(request, messages.ERROR, 'Svi uvjeti nisu zadovoljeni.')
          return HttpResponseRedirect(reverse('adminmaketa'))
