@@ -27,7 +27,7 @@ class Profil(View):
 
         data = {'address' : korisnik.getAdresaPrivatna(),
                 'register_date' : korisnik.getDatumRegistracijePrivatan(),
-                'birth_date' : korisnik.getRodendanPrivatan(),
+                #'birth_date' : korisnik.getRodendanPrivatan(),
                 'pic' : korisnik.getSlikaPrivatna(),
                 'name_surname' : korisnik.getImePrezimePrivatno(),
                 'email' : korisnik.getEmailPrivatan()}
@@ -72,13 +72,13 @@ class Profil(View):
             
             adresaprivatna = form.cleaned_data['address']
             registerprivatan = form.cleaned_data['register_date']
-            rodendanprivatan = form.cleaned_data['birth_date']
+            #rodendanprivatan = form.cleaned_data['birth_date']
             # slikaprivatna = form.cleaned_data['pic']
             imeprezimeprivatno = form.cleaned_data['name_surname']
             emailprivatan = form.cleaned_data['email']
             korisnik.adresaprivatna = adresaprivatna
             korisnik.datumregistracijeprivatan = registerprivatan
-            korisnik.rodendanprivatan = rodendanprivatan
+            #korisnik.rodendanprivatan = rodendanprivatan
             #korisnik.slikaprivatna = slikaprivatna
             korisnik.imeprezimeprivatno = imeprezimeprivatno
             korisnik.emailprivatan = emailprivatan
