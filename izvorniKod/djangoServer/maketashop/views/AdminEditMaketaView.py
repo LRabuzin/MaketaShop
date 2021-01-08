@@ -39,9 +39,10 @@ class AdminEditMaketa(View):
          }
          for materijal in Materijal.objects.select_related().all():
             
-            napravljenaOd = Napravljenaod.objects.select_related().filter(maketaid = maketa.maketaid).get(materijalid = materijal.materijalid)
-            data[materijal.ime] = napravljenaOd.cijena
-            data[materijal.ime +"_broj_na_skladistu"] = napravljenaOd.brojuskladistu
+            if (Napravljenaod.objects.select_related().filter(maketaid = maketa.maketaid, materijalid = materijal.materijalid).exists()):
+               napravljenaOd = Napravljenaod.objects.select_related().filter(maketaid = maketa.maketaid).get(materijalid = materijal.materijalid)
+               data[materijal.ime] = napravljenaOd.cijena
+               data[materijal.ime +"_broj_na_skladistu"] = napravljenaOd.brojuskladistu
 
 
          form = AdminMaketaForm(data)
@@ -55,10 +56,22 @@ class AdminEditMaketa(View):
          })
 
    def post(self, request, id):
-      form = AdminMaketaForm(request.POST)
+      form = AdminMaketaForm(request.POST, request.FILES)
       if form.is_valid():
 
          maketa = Maketa.objects.select_related().get(maketaid = id)
+
+         media = Media()
+         next_id = Media.objects.order_by('-mediaid').first().mediaid + 1
+         media.mediaid = next_id
+         media.vrstamedije = "slika"
+
+         nastavak = request.FILES['osnovna_slika'].name.split(".")[-1]
+         putanja = handle_uploaded_file(request.FILES['osnovna_slika'], nastavak, 60)
+         media.putdodatoteke = putanja
+         media.save()
+         maketa.mediaid = media
+         maketa.save()
          for materijal in Materijal.objects.select_related().all():
             cijena = form.cleaned_data[materijal.ime]
             if cijena:
