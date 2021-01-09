@@ -53,22 +53,26 @@
 					email	& VARCHAR &  Korisnikov e-mail  (maksimalno 100 znakova). \\ \hline
 					korisnickoime & VARCHAR & Ime koje predstavlja korisnika na stranici (maksimalno 20 znakova). \\ \hline 
 					lozinka & VARCHAR & Korisnikova lozinka za prijavu (maksimalno 20 znakova).  \\ \hline 
-					razinaautoriteta & INT & Razina autoriteta korisnika. 1 predstavlja korisnika, a 2 admina. \\ \hline 
-					adresa & VARCHAR & Korisnikova adresa (maksimalno 100 znakova). \\ \hline 
-					rodendan & DATE & Datum korisnikovog rođendana.  \\ \hline 
+					jeadmin & BOOL & Ima li korisnik ovlasti administratora? \\ \hline 
+					adresa & VARCHAR & Korisnikova adresa (maksimalno 100 znakova). \\ \hline  
 					datumregistracije & DATE & Datum korisnikove registracije.  \\ \hline 
 					adresaprivatna & BOOL & Želi li korisnik javno prikazati svoju adresu na svome profilu? \\ \hline 
-					rodendanprivatan & BOOL & Želi li korisnik javno prikazati svoj rođendan na svome profilu?   \\ \hline
 					datumregistracije
 					privatan & BOOL & Želi li korisnik javno prikazati svoj datum registracije na svome profilu?  \\ \hline 
+					slikaprivatna & BOOL & Želi li korisnik javno prikazati svoju slie ime i prezime?  \\ \hline 
+					emailprivatan & BOOL & Želi li korisnik javno prikazati svoj e-mail na svome profilu?   \\ \hline 
+					imeprezimeprivatno & BOOL & Želi li korisnik javno prikazati svoje ime i prezime na svome profilu?  \\ \hline 	 
 					ime & VARCHAR &  Korisnikovo ime (maksimalno 50 znakova).  \\ \hline 
 					prezime  & VARCHAR & Korisnikovo prezime (maksimalno 50 znakova).  \\ \hline 
 					dozvoljenpristup & BOOL & Ima li korisnik dozvoljen pristup stranici?  \\ \hline 
-					brojracuna & VARCHAR & Broj bankovnog računa korisnika. (21 znak)  \\ \hline
+					kkpaypal & BOOL & Plaća li korisnik paypalom?  \\ \hline 
+					kkbroj & VARCHAR & Broj kreditne kartice korisnika. (16 znakova)  \\ \hline
+					kkimeprezime & VARCHAR & Ime i prezime na kreditnoj kartici korisnika. (maksimalno 100 znakova)  \\ \hline
+					kkistek & VARCHAR & Mjesec i godina isteka kreditne kartice. (5 znakova)  \\ \hline
+					\cellcolor{LightBlue} 
 					\cellcolor{LightBlue} 
 					profilnaid & INT & Redni broj medijske datoteke koja sadrži korisnikovu profilnu fotografiju. (strani ključ)  \\ \hline 
-					emailprivatan & BOOL & Želi li korisnik javno prikazati svoj e-mail na svome profilu?   \\ \hline 
-					imeprezimeprivatno & BOOL & Želi li korisnik javno prikazati svoje ime i prezime na svome profilu?  \\ \hline 					
+									
 					
 				\end{longtabu}
 			
@@ -102,7 +106,7 @@
 				
 				\hline 
 				\endlastfoot
-				
+				\cellcolor{LightGreen}id & INT	&  	Redni broj unosa. (primarni ključ)	\\ \hline
 				\cellcolor{LightBlue}
 				korisnikid & INT & Redni broj korisnika koji je označio sa "ne sviđa mi se". (strani ključ) \\ \hline 
 				\cellcolor{LightBlue}
@@ -121,6 +125,7 @@
 					\hline 
 					\endlastfoot
 					
+					\cellcolor{LightGreen}id & INT	&  	Redni broj unosa. (primarni ključ)	\\ \hline
 					\cellcolor{LightBlue}
 					korisnikid & INT & Redni broj korisnika koji je označio priču sa "sviđa mi se". (strani ključ) \\ \hline 
 					\cellcolor{LightBlue}
@@ -140,10 +145,15 @@
 				\endlastfoot
 				
 				\cellcolor{LightGreen}maketaid & INT	&  	Redni broj makete (primarni ključ). 	\\ \hline
-				\cellcolor{LightBlue}
+				ime & VARCHAR & Ime makete. (100 znakova) \\ \hline 
 				dimenzije & VARCHAR & Dimenzije makete u centimetrima. \\ \hline 
+				opis & VARCHAR & Opis makete. (160 znakova) \\ \hline 
 				\cellcolor{LightBlue}
 				mediaid & INT & Redni broj medijske datoteke koja sadrži sliku makete. (strani ključ) \\ \hline 	
+				\cellcolor{LightBlue}
+				vrsta & INT & Vrsta makete. (strani ključ) \\ \hline 
+				prihvacena & BOOL & Je li maketa prihvaćena?  \\ \hline 
+					
 				
 			\end{longtabu}
 		
@@ -165,7 +175,7 @@
 				\cellcolor{LightBlue}
 				materijalid & INT & Redni broj materijala od kojeg je izgrađena navedena maketa. (strani ključ) \\ \hline 	
 				\cellcolor{LightBlue}
-				maketaid & INT & Redni broj transakcije u pitanju. (strani ključ) \\ \hline 
+				transakcijaid & INT & Redni broj transakcije u pitanju. (strani ključ) \\ \hline 
 				
 			\end{longtabu}
 		
@@ -196,7 +206,8 @@
 			\hline 
 			\endlastfoot
 			
-			\cellcolor{LightGreen}mediaid & INT	&  	Redni broj medijske datoteke (primarni ključ). 	\\      \hline			
+			\cellcolor{LightGreen}mediaid & INT	&  	Redni broj medijske datoteke (primarni ključ). 	\\      \hline		
+			vrstamedije & VARCHAR & Tip datoteke. (slika, tekst, video) \\ \hline 	
 			putdodatoteke & VARCHAR & Relativni put do datoteke u repozitoriju. \\ \hline 
 			
 			\end{longtabu}
@@ -211,7 +222,7 @@
 				
 				\hline 
 				\endlastfoot
-						
+				\cellcolor{LightGreen}id & INT	&  	Redni broj multimedije u priči. (primarni ključ). 	\\      \hline			
 				poredakuprici & INT & Broj u poretku po kojem se slaže multimedija u nekoj priči. \\ \hline 
 				\cellcolor{LightBlue}
 				mediaid & INT & Redni broj medijske datoteke u pitanju. (strani ključ) \\ \hline 
@@ -230,12 +241,13 @@
 			
 			\hline 
 			\endlastfoot
-						
+			\cellcolor{LightGreen}id & INT	&  	Redni broj unosa. (primarni ključ). 	\\      \hline			
 			cijena & FLOAT & Cijena makete napravljene od specifičnog materijala. \\ \hline 
 			\cellcolor{LightBlue}
 			maketaid & INT & Redni broj makete u pitanju. (strani ključ) \\ \hline 
 			\cellcolor{LightBlue}
 			materijalid & INT & Redni broj materijala u pitanju. (strani ključ) \\ \hline 
+			brojuskladistu & INT & Broj dostupnih maketa u skladištu. \\ \hline 
 			
 		\end{longtabu}
 	
@@ -254,15 +266,12 @@
 				naslovprice & VARCHAR & Naslov priče (maksimalno 100 znakova). \\ \hline 
 				datumprice & DATE & Datum objave priče. \\ \hline
 				objavljena & BOOL & Je li priča objavljena? \\ \hline 
-				maketaprodana & BOOL & Je li maketa iz priče (ako priča sadrži maketu) prodana? \\ \hline 
 				\cellcolor{LightBlue}
 				maketaid & INT & Redni broj makete u pitanju. (strani ključ) \\ \hline 
 				\cellcolor{LightBlue}
 				autorid & INT & Redni broj autora priču. (strani ključ) \\ \hline 
 				\cellcolor{LightBlue}
-				predloziopricuid & INT & Redni broj osobe koja je predložila priču. (strani ključ) \\ \hline 
-				\cellcolor{LightBlue}
-				tekstpriceid & INT & Redni broj medijske datoteke koja sadrži tekst priče. (strani ključ) \\ \hline 
+				predloziopricuid & INT & Redni broj osobe koja je predložila priču. (strani ključ)
 				
 			\end{longtabu}
 		
@@ -281,6 +290,7 @@
 			ime & VARCHAR & Ime teme (maksimalno 100 znakova). \\ \hline 		
 			\cellcolor{LightBlue}
 			teksttemeid & INT & Redni broj medijske datoteke koja sadrži tekst teme. (strani ključ) \\ \hline 
+			odobrena & BOOL & Je li priča objavljena? \\ \hline 
 			
 		\end{longtabu}
 	
@@ -301,32 +311,24 @@
 			adresa & VARCHAR & Adresa kupca (maksimalno 100 znakova). \\ \hline 	
 			brojracuna & VARCHAR & Broj računa kupca ( 21 znak). \\ \hline 	
 			ukupaniznos & FLOAT & Ukupan iznos transakcije \\ \hline 
+			\cellcolor{LightBlue}
+			korisnik & INT & Redni broj korisnika koji je pokrenuo transakciju. (strani ključ) \\ \hline 
+			datumizvedena & DATE & Datum transakcije.  \\ \hline 
 			
 		\end{longtabu}
 	
 		\begin{longtabu} to \textwidth {|X[10, l]|X[6, l]|X[20, l]|}
 			
-			\hline \multicolumn{3}{|c|}{\textbf{CustomMaketa}}	 \\[3pt] \hline
+			\hline \multicolumn{3}{|c|}{\textbf{VrstaMakete}}	 \\[3pt] \hline
 			\endfirsthead
 			
-			\hline \multicolumn{3}{|c|}{\textbf{CustomMaketa}}	 \\[3pt] \hline
+			\hline \multicolumn{3}{|c|}{\textbf{VrstaMakete}}	 \\[3pt] \hline
 			\endhead
 			
 			\hline 
 			\endlastfoot
-			
-			\cellcolor{LightGreen}custommaketaid & INT	&  	Redni broj makete na zahtjev (primarni ključ). 	\\      \hline			
-			datumotvaranja
-			zahtjeva & DATE & Datum slanja zahtjeva za maketu. \\ \hline 
-			datumzatvaranja
-			zahtjeva & DATE & Datum zaključavanja zahtjeva za maketu. \\ \hline 
-			ponudenacijena & FLOAT & Ponuđena cijena za navedenu maketu. \\ \hline 
-			prihvaceno & BOOL & Je li korisnik prihvatio ponuđenu cijenu? \\ \hline 
-			\cellcolor{LightBlue}
-			korisnikid & INT & Redni broj korisnika koji šalje zahtjev. (strani ključ) \\ \hline 
-			\cellcolor{LightBlue}
-			tekstzahtjevaid & INT & Redni broj medijske datoteke koja sadrži tekst zahtjeva. (strani ključ) \\ \hline 	
-			
+			\cellcolor{LightGreen}id & INT	&  	Redni broj vrste makete. (primarni ključ). 	\\      \hline			
+			ime & VARCHAR & Ime vrste makete. (maksimalno 20 znakova). \\ \hline 	
 			
 		\end{longtabu}
 		
