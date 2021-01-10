@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic import View
 from maketashop.DTOs.ProfilDTO import ProfilDTO
 from maketashop.DTOs.CreditCardDTO import CreditCardDTO
-from maketashop.models import Transakcija, Korisnik, Maketakupljena, Materijal
+from maketashop.models import Transakcija, Korisnik, Maketakupljena, Materijal, Napravljenaod
 from ..forms import PlacanjeForm
 from django.contrib import messages
 
@@ -98,6 +98,9 @@ class Checkout(View):
                 novaTransakcija.save()
 
                 for maketa,kol in cart.getCart().items():
+                    napod = Napravljenaod.objects.get(maketaid=maketa.getMaketa().maketaid, materijalid= Materijal.objects.get(ime=maketa.getMaterijal()).materijalid)
+                    napod.brojuskladistu -= kol
+                    napod.save()
                     maketakupljena = Maketakupljena()
                     #if Maketakupljena.objects.order_by('-id').first():
                     #    next_id = Maketakupljena.objects.order_by('-id').first().id + 1

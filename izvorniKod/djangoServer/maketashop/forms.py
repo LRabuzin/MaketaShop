@@ -25,7 +25,7 @@ class LoginForm(forms.Form):
 class PrivacyForm(forms.Form):
     #pic = forms.BooleanField(label="Sakrij sliku", required=False)
     name_surname = forms.BooleanField(label="Sakrij ime i prezime", required=False)
-    birth_date = forms.BooleanField(label="Sakrij rođendan", required=False)
+    # birth_date = forms.BooleanField(label="Sakrij rođendan", required=False)
     register_date = forms.BooleanField(label="Sakrij datum registracije", required=False)
     email = forms.BooleanField(label="Sakrij adresu e-pošte", required=False)
     address = forms.BooleanField(label="Sakrij adresu", required=False)
@@ -43,7 +43,7 @@ class PostForm(forms.Form):
     text5 = forms.CharField(required=False, widget = forms.Textarea(attrs={'placeholder': 'Tekst priče', 'class':'form-control my-input', 'id':'textInput5', 'readonly':'True'}))
     
 class InteractionThemeForm(forms.Form):
-    naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
+    naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov zahtjeva', 'class':'form-control my-input'}))
     ime_teme = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov teme', 'class':'form-control my-input'}))
     tekst_teme = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Sadržaj teme', 'class':'form-control my-input'}))
 
@@ -53,10 +53,10 @@ class MaketaForm(forms.Form):
     opis = forms.CharField(label=False, max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Opis', 'class':'form-control my-input m-3'}))
 
 class InteractionPostForm(PostForm):
-    naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
+    naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov zahtjeva', 'class':'form-control my-input'}))
 
 class InteractionMaketaForm(MaketaForm):
-    naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov interakcije', 'class':'form-control my-input'}))
+    naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov zahtjeva', 'class':'form-control my-input'}))
     materijal = forms.ModelChoiceField(queryset=Materijal.objects.all().order_by('materijalid'), empty_label = None, widget=forms.Select(attrs={'class':'form-control my-input'}))
 
 class AdminMaketaForm(MaketaForm):

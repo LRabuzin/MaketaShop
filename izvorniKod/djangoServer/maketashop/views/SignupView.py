@@ -34,7 +34,7 @@ class Signup(View):
             lozinka2 = form.cleaned_data['pass2']
             adresa = form.cleaned_data['adress']
             #brojKartice = form.cleaned_data['cardNumber']
-            razinaautoriteta = 1
+            #razinaautoriteta = 1
             if lozinka1 == lozinka2:
                 if Korisnik.objects.filter(email=email).exists():
                     messages.add_message(request, messages.ERROR, 'Korisnik s tim mailom već postoji!')
@@ -51,7 +51,7 @@ class Signup(View):
                     korisnik.lozinka = lozinka1
                     korisnik.adresa = adresa
                     #korisnik.brojracuna = brojKartice
-                    korisnik.razinaautoriteta = razinaautoriteta
+                    #korisnik.razinaautoriteta = razinaautoriteta
                     korisnik.save()
 
                     request.session['user'] = korisnik.email

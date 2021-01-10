@@ -14,8 +14,8 @@ class ProfilDTO():
    def getAdresa(self):
       return self.korisnik.adresa
 
-   def getRodendan(self):
-      return self.korisnik.rodendan
+#   def getRodendan(self):
+#      return self.korisnik.rodendan
 
    def getDatumRegistracije(self):
       return self.korisnik.datumregistracije
@@ -35,8 +35,8 @@ class ProfilDTO():
    def getAdresaPrivatna(self):
       return self.korisnik.adresaprivatna
 	
-   def getRodendanPrivatan(self):
-      return self.korisnik.rodendanprivatan
+   #def getRodendanPrivatan(self):
+   #   return self.korisnik.rodendanprivatan
 	
    def getDatumRegistracijePrivatan(self):
       return self.korisnik.datumregistracijeprivatan
