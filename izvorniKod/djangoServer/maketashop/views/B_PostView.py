@@ -18,6 +18,7 @@ class B_Post(View):
                 if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
                     return HttpResponseRedirect(reverse('logout'))
 
+        curr_user = None
         lajkao = 0
         if (request.session.get("user")):
             curr_user = Korisnik.objects.select_related().get(email=request.session.get("user"))
@@ -32,6 +33,7 @@ class B_Post(View):
             'link_active': "b_post", 
             'empty_head': False,
             'B_postDTO' : B_postDTO(id, lajkao),
+            'user': curr_user,
             'session': request.session,
             })
 

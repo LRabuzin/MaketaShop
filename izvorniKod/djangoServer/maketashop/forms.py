@@ -48,9 +48,9 @@ class InteractionThemeForm(forms.Form):
     tekst_teme = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Sadržaj teme', 'class':'form-control my-input'}))
 
 class MaketaForm(forms.Form):
-    ime_makete = forms.CharField(label=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime makete', 'class':'form-control my-input m-3'}))
-    dimenzije = forms.CharField(label=False, max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Dimenzije', 'class':'form-control my-input m-3'}))
-    opis = forms.CharField(label=False, max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Opis', 'class':'form-control my-input m-3'}))
+    ime_makete = forms.CharField(label=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime makete', 'class':'form-control my-input my-3'}))
+    dimenzije = forms.CharField(label=False, max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Dimenzije', 'class':'form-control my-input my-3'}))
+    opis = forms.CharField(label=False, max_length=160, widget=forms.TextInput(attrs={'placeholder': 'Opis', 'class':'form-control my-input my-3'}))
 
 class InteractionPostForm(PostForm):
     naslov_interakcije = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Naslov zahtjeva', 'class':'form-control my-input'}))
@@ -66,8 +66,8 @@ class AdminMaketaForm(MaketaForm):
     def __init__(self, *args, **kwargs):
         super(AdminMaketaForm, self).__init__(*args, **kwargs)
         for materijal in Materijal.objects.all().order_by('materijalid'):
-            self.fields[materijal.ime] = forms.DecimalField(label=False, required=False, min_value = 0, decimal_places = 2, widget = forms.NumberInput(attrs={'placeholder': 'Cijena za materijal ' + materijal.ime + ':', 'class':'form-control my-input m-3'}))
-            self.fields[materijal.ime+"_broj_na_skladistu"] = forms.IntegerField(required=False, label = False, min_value = 0, widget = forms.NumberInput(attrs={'placeholder':"Broj na skladištu za Materijal {}".format(materijal.ime),'class':'form-control my-input m-3'}))
+            self.fields[materijal.ime] = forms.DecimalField(label=False, required=False, min_value = 0, decimal_places = 2, widget = forms.NumberInput(attrs={'placeholder': 'Cijena za materijal ' + materijal.ime + ':', 'class':'form-control my-input my-3'}))
+            self.fields[materijal.ime+"_broj_na_skladistu"] = forms.IntegerField(required=False, label = False, min_value = 0, widget = forms.NumberInput(attrs={'placeholder':"Broj na skladištu za Materijal {}".format(materijal.ime),'class':'form-control my-input my-3'}))
 
 class PlacanjeForm(forms.Form):
     ime = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Ime', 'class':'form-control my-input'}))

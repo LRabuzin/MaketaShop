@@ -83,4 +83,5 @@ class InterakcijaMaketa(View):
             kolicina = Napravljenaod.objects.get(maketaid = maketa.maketaid).brojuskladistu
             cart.addMaketa(maketa.maketaid, materijal, cijena, kolicina)
             request.session['cart'] = cart
+            return HttpResponseRedirect(reverse('cart'))
          return HttpResponseRedirect(self.request.path_info)

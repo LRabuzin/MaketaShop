@@ -55,7 +55,7 @@ class SubmitionMaketa(View):
          maketa.opis = form.cleaned_data['opis']
          maketa.vrsta = vrsta
          
-         media = Media.objects.select_related().get(mediaid = 1)
+         media = Media.objects.select_related().get(mediaid = 2)
 
          maketa.mediaid = media
          maketa.save()

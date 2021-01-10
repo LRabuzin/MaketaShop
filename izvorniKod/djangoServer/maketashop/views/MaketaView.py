@@ -12,18 +12,20 @@ class Maketa(View):
     template_name ="maketashop/maketa.html"
     def get(self, request, id):
         #kod ako nije dozvoljen pristup korisniku
+        jeadmin = None
         if 'user' in request.session:
             if Korisnik.objects.filter(email=request.session['user']).exists():
                 if not Korisnik.objects.get(email=request.session['user']).dozvoljenpristup:
                     return HttpResponseRedirect(reverse('logout'))
             user = Korisnik.objects.select_related().get(email = request.session['user'])
+            jeadmin = user.jeadmin
 
         return render(request, self.template_name, {
             'title': "Maketa", 
             'link_active': "maketa", 
             'empty_head': False,
             'maketaDTO':MaketaDTO(id),
-            'jeadmin':  user.jeadmin,
+            'jeadmin':  jeadmin,
             'session': request.session
             })
 

@@ -71,19 +71,19 @@
                 </form>
                 {% else %}
                 {% if InterakcijaPricaDTO.getPrica.objavljena %}
-                <h5 class="card-header bg-success">Priča prihvaćena!</h5>
+                <div class="bg-success d-flex justify-content-center p-2 text-light"><h5>Priča prihvaćena!</h5></div>
                 {% else %}
-                <h5 class="card-header bg-danger">priča odbijena!</h5>
+                <div class="bg-danger d-flex justify-content-center p-2 text-light"><h5>priča odbijena!</h5></div>
                 {% endif %}
                 {% endif %}
                 {% else %}
                 {% if InterakcijaPricaDTO.getOtvoren %}
-                <h5 class="card-header">Admin još nije pregledao priču</h5>
+                <div><h5 class="d-flex justify-content-center p-2">Admin još nije pregledao priču</h5></div>
                 {% else %}
                 {% if InterakcijaPricaDTO.getPrica.objavljena %}
-                <h5 class="card-header bg-success">Priča prihvaćena!</h5>
+                <div class="bg-success d-flex justify-content-center p-2 text-light"><h5>Priča prihvaćena!</h5></div>
                 {% else %}
-                <h5 class="card-header bg-danger">Priča odbijena!</h5>
+                <div class="bg-danger d-flex justify-content-center p-2 text-light"><h5>Priča odbijena!</h5></div>
                 {% endif %}
                 {% endif %}
                 {% endif %}

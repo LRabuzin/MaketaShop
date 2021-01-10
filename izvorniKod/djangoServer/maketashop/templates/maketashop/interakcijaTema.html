@@ -21,19 +21,19 @@
         </form>
         {% else %}
             {% if InterakcijaTemaDTO.getTema.getOdobrena %}
-                <p>Tema odobrena!</p>
+            <div class="bg-success d-flex justify-content-center p-2 text-light"><h5>Tema odobrena!</h5></div>
             {% else %}
-                <p>Tema odbijena!</p>
+            <div class="bg-danger d-flex justify-content-center p-2 text-light"><h5>Tema odbijena!</h5></div>
             {% endif %}
         {% endif %}
     {% else %}
         {% if InterakcijaTemaDTO.getOtvoren %}
-        <p>Admin još nije ni odobrio ni odbio temu</p>
+        <div class="d-flex justify-content-center p-2"><h5>Admin još nije ni odobrio ni odbio temu</h5></div>
         {% else %}
             {% if InterakcijaTemaDTO.getTema.getOdobrena %}
-                <p>Tema odobrena!</p>
+            <div class="bg-success d-flex justify-content-center p-2 text-light"><h5>Tema odobrena!</h5></div>
             {% else %}
-                <p>Tema odbijena!</p>
+                <div class="bg-danger d-flex justify-content-center p-2 text-light"><h5>Tema odbijena!</h5></div>
             {% endif %}
         {% endif %}
     {% endif %}
