@@ -29,7 +29,7 @@ class InterakcijaPricaDTO():
          return self.prica
 
       def getNaslov(self):
-         return self.naslov
+         return self.prica.naslovprice
       
       def getOtvoren(self):
          return self.otvoren

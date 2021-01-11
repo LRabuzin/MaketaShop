@@ -13,3 +13,5 @@ class ProfilPregledDTO():
     def getProfilna(self):
         return self.profilna.putdodatoteke
 
+    def getAdresa(self):
+        return self.korisnik.adresa
