@@ -182,13 +182,62 @@
 			\eject 
 		
 		\section{Upute za puštanje u pogon}
-		
-			\textbf{\textit{dio 2. revizije}}\\
-		
-			 \textit{U ovom poglavlju potrebno je dati upute za puštanje u pogon (engl. deployment) ostvarene aplikacije. Na primjer, za web aplikacije, opisati postupak kojim se od izvornog kôda dolazi do potpuno postavljene baze podataka i poslužitelja koji odgovara na upite korisnika. Za mobilnu aplikaciju, postupak kojim se aplikacija izgradi, te postavi na neku od trgovina. Za stolnu (engl. desktop) aplikaciju, postupak kojim se aplikacija instalira na računalo. Ukoliko mobilne i stolne aplikacije komuniciraju s poslužiteljem i/ili bazom podataka, opisati i postupak njihovog postavljanja. Pri izradi uputa preporučuje se \textbf{naglasiti korake instalacije uporabom natuknica} te koristiti što je više moguće \textbf{slike ekrana} (engl. screenshots) kako bi upute bile jasne i jednostavne za slijediti.}
-			
-			
-			 \textit{Dovršenu aplikaciju potrebno je pokrenuti na javno dostupnom poslužitelju. Studentima se preporuča korištenje neke od sljedećih besplatnih usluga: \href{https://aws.amazon.com/}{Amazon AWS}, \href{https://azure.microsoft.com/en-us/}{Microsoft Azure} ili \href{https://www.heroku.com/}{Heroku}. Mobilne aplikacije trebaju biti objavljene na F-Droid, Google Play ili Amazon App trgovini.}
-			
+			\textbf{Instalacija Heroku poslužitelja}\\
+			\\
+			Potrebno je imati lokalno instalirani python verzije 3.8
+			zajedno s najnovijom verzijom Django-a, najnoviju verziju Postgres-a, Git te besplatni Heroku račun.
+			Potrebno je preuzeti Heroku Command Line Interface (CLI) koji je dostupan na https://cli-assets.heroku.com/heroku-x64.exe.
+			Nakon toga potrebno je u Windows Command Prompt-u (cmd.exe) pokrenuti
+			naredbu \verb|heroku login| koja će u zasebnom prozoru preglednika prikazati stranicu za login. \\
+			\\
+			\textbf{Konfiguracija aplikacije za Heroku}\\
+			\\
+			Kako bi se Heroku web aplikacija dobro konfigurirala potrebno je u
+			Django server dodati 3 datoteke: \\
+			1) requirements.txt s \\
+			"Django==3.1.3 \\
+			gunicorn==20.0.4 \\
+			psycopg2-binary==2.8.6 \\
+			pytz==2020.4 \\
+			sqlparse==0.4.1 \\
+			asgiref==3.3.0 \\
+			dj-database-url==0.5.0 \\
+			whitenoise==5.2.0 \\
+			boto3==1.16.51 \\
+			botocore==1.19.51 \\
+			django-storages==1.11.1 \\
+			jmespath==0.10.0 \\
+			python-dateutil==2.8.1 \\
+			s3transfer==0.3.3 \\
+			six==1.15.0 \\
+			urllib3==1.26.2" \\
+			\\
+			2) Procfile (bitno: Datoteka nema ekstenziju) s \\
+			"web: gunicorn WeTried.wsgi --log-file -"
+			\\
+			3) runtime.txt s \\
+			"python-3.8.6" \\
+			\\
+			\textbf{Stvaranje Heroku web aplikacije}\\
+			\\
+			Potrebno je imati lokalni git repozitorij koji se može stvoriti naredbom
+			\verb|git init|.
+			Pokretanjem naredbe 
+			\verb|heroku create <name>| (naš name glasi "maketashop")
+			stvara se heroku aplikacija i automatski se povezuje s lokalnim git repozitorijem.
+			Nakon stvaranja aplikacije potrebno je dostaviti sam server pomoću naredbe \verb|git push heroku master|. Ako proces završi bez grešaka aplikacija je uspješno puštena u pogon, ostalo je samo povezati bazu s Djangom.
+			\\
+			\\
+			\textbf{Konfiguriranje baze podataka}\\
+			\\
+			Heroku sam po sebi pri stvaranju python web aplikacije stvori addon
+			postgresql tako da je potrebno samo u settings.py dodati \\
+			\verb|"DATABASE_URL = <url>"| (url koji je generirao heroku) \\
+			"DATABASES = {
+				'default': dj\_database\_url.config(default=DATABASE\_URL)
+			}"
+			i \\
+			"ALLOWED\_HOSTS = ['maketashop.herokuapp.com']". \\
+			Nemojte zaboraviti maknuti konfiguraciju za korištenje lokalne baze podataka.
 			
 			\eject 
