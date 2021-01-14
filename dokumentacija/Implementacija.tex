@@ -240,6 +240,7 @@
 			 	\label{fig:rezultat-ispitnog-slucaja-10}
 			 \end{figure}
 		
+		\eject
 		
 		\section{Dijagram razmještaja}
 			
@@ -356,7 +357,83 @@
 			\textbf{Postavljanje posluživanja korisničkih datoteka}
 			\\
 			\\
-			Veliki dio funkcionalnosti aplikacije oslanja se na mogućnost korisnika da postavljaju svoje datoteke na server. Primjer toga je recimo sastavljanje priče ili kreiranje makete u web trgovini za koju je potrebno definirati sliku. Kako je heroku-ov datotečni sustav kratkotrajan (eng. \textit{ephemeral filesystem}), datoteke je potrebno spremiti na udaljeni poslužitelj i dohvaćati ga od tamo.\\
-			Kako bismo ostvarili tu funkcionalnost odlučili smo koristiti Amazonov web servis S3. Da bi mogli spojiti se na AWS S3, potrebno je instalirati paket django-storages, zbog cega je on vec dodan u requirements.txt file, što znači da će biti instaliran prilikom puštanja aplikacije u pogon.\\
-			Također, potrebno je registrirati se na amazonov servis. Na glavnoj stranici Amazon Web Services (\url{https://aws.amazon.com}), nalazi se gumb koji možemo kliknuti i unijeti podatke potrebne za registraciju. Nakon registracije. Kada pronađemo stranicu usluge S3, kreiramo 
+			Veliki dio funkcionalnosti aplikacije oslanja se na mogućnost korisnika da postavljaju svoje datoteke na server. Primjer toga je recimo sastavljanje priče ili kreiranje makete u web trgovini za koju je potrebno definirati sliku. Kako je Heroku-ov datotečni sustav kratkotrajan (eng. \textit{ephemeral filesystem}), datoteke je potrebno spremiti na udaljeni poslužitelj i dohvaćati ga od tamo.\\
+			Kako bismo ostvarili tu funkcionalnost odlučili smo koristiti Amazonov web servis S3. Da bi mogli spojiti se na AWS S3, potrebno je instalirati pakete django-storages i boto3, zbog čega su oni već dodan u requirements.txt datoteku, što znači da će biti instalirani prilikom puštanja aplikacije u pogon.\\
+			Također, potrebno je registrirati se na amazonov servis. Na glavnoj stranici Amazon Web Services (\url{https://aws.amazon.com}), nalazi se gumb koji možemo kliknuti i unijeti podatke potrebne za registraciju. Nakon registracije, naći ćemo se na stranici konzole za upravljanje našim AWS računom.\\
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\linewidth]{slike/AWS1}
+				\caption{Izgled sučelja konzole za upravljanje AWS-om}
+				\label{fig:aws1}
+			\end{figure}
+			Nakon toga, potrebno je pronaći i otvoriti stranicu usluge S3 (najjednostavnije pomoću tražilice u konzoli). Tamo možemo otvoriti novi "bucket", to jest mjesto kamo će se spremati sve datoteke koje će biti potrebne našim korisnicima. Kada kliknemo na gumb za otvaranje novog bucketa, prikazat će nam se sljedeće sučelje:
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\linewidth]{slike/AWS2}
+				\caption{Izgled sučelja za kreiranje "bucketa"}
+				\label{fig:aws2}
+			\end{figure}
+			Moramo definirati ime našeg bucketa, koje se sastoji isključivo od malih slova engleske abecede te znaka povlake. Ime mora biti jedinstveno tako da ćemo možda morati isprobati više imena dok ne nađemo odgovarajuće. Sve ostale postavke možemo ostaviti na predefiniranim vrijednostima.\\
+			Da bismo mogli koristiti bucket kako želimo, moramo se navigirati na bucket te otvoriti karticu "Permissions" kako bi tamo promijenili CORS konfiguraciju.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\linewidth]{slike/AWS3}
+				\caption{Izgled kartice "Permissions"}
+				\label{fig:aws3}
+			\end{figure}
+			Na toj kartici pronađemo područje za upisivanje CORS konfiguracije te zalijepimo sljedeći JSON sadržaj:
+			\begin{verbatim}
+				[
+					{
+						"AllowedHeaders": [
+							"*"
+						],
+						"AllowedMethods": [
+							"GET",
+							"HEAD",
+							"POST",
+							"PUT"
+						],
+						"AllowedOrigins": [
+							"*"
+						],
+						"ExposeHeaders": []
+					}
+				]
+			\end{verbatim}
+			Nakon što smo postavili bucket, želimo kreirati korisnika s manjim ovlastima nego što ima korjenski korisnik (eng. \textit{root user}) jer nam treba samo za pristup našem S3 bucketu. Za to, otvaramo AWS uslugu IAM te tamo dodamo novog korisnika kojemu označimo kvačicu "programmatic access".
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\linewidth]{slike/AWS4}
+				\caption{Izgled sučelja za kreiranje korisnika}
+				\label{fig:aws4}
+			\end{figure}
+			Zatim, korisniku moramo dati ovlasti za pristup našem S3 bucketu. Klik na gumb "attach existing policies directly" vodi nas na stranicu gdje možemo odabrati koje će sve ovlasti korisnik imati. Među ovlastima nađemo "AmazonS3FullAccess" te korisniku pridijelimo tu ovlast.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\linewidth]{slike/AWS5}
+				\caption{Izgled sučelja za pridavanje ovlasti}
+				\label{fig:aws5}
+			\end{figure}
+			Jednom kada je korisnik stvoren, na ekranu su nam prikazani identifikator korisničkog ključa te tajni pristupni ključ. Te podatke spremimo negdje sa strane jer će nam trebati u sljedećem koraku.
+			Budući da ih ne želimo spremati u kod jer se radi o osjetljivim podacima, možemo ih spremiti u Heroku-ove  konfiguracijske varijable naredbom:\\
+			\verb|heroku config:set AWS_ACCESS_KEY_ID=xxx AWS_SECRET_ACCESS_KEY=yyy|\\
+			Kada smo gotovi s time, preostalo nam je još samo promijeniti postavke aplikacije u settings.py datoteci. Da bismo mogli koristiti paket django-storages, u \verb|INSTALLED_APPS| parametar, na kraju moramo dodati još string \verb|'storages'| te na kraj datoteke zalijepiti sljedeći kod:
+			\begin{verbatim}
+				STATICFILES_DIRS = (
+				os.path.join(PROJECT_ROOT, 'static'),
+				)
+				
+				STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+				
+				DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+				
+				AWS_ACCESS_KEY_ID = ENV['AWS_ACCESS_KEY_ID']
+				AWS_SECRET_ACCESS_KEY = ENV['AWS_SECRET_ACCESS_KEY']
+				AWS_STORAGE_BUCKET_NAME = '<bucket>'
+				AWS_QUERYSTRING_AUTH = False
+				
+				AWS_S3_FILE_OVERWRITE = False
+			\end{verbatim}
+			gdje je \verb|<bucket>| ime našeg bucketa.
 			\eject 
