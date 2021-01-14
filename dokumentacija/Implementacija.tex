@@ -20,14 +20,137 @@
 	
 		\section{Ispitivanje programskog rješenja}
 			
-			\textbf{\textit{dio 2. revizije}}\\
 			
-			 \textit{U ovom poglavlju je potrebno opisati provedbu ispitivanja implementiranih funkcionalnosti na razini komponenti i na razini cijelog sustava s prikazom odabranih ispitnih slučajeva. Studenti trebaju ispitati temeljnu funkcionalnost i rubne uvjete.}
-	
+			Ispitivanje se provodilo ručno. Kao temelj za ispitivanje koristili su se obrasci uporabe. Osim preciznog praćenja obrazaca također smo i nasumično navigirali po stranici u slučaju da negdje postoje greške u kodu (bugovi). Iako smo provjerili cijeli sustav radi pojednostavljenja u dokumentaciji prikazujemo samo 6 ispitnih slučajeva. Ispitali smo: UC2, UC3, UC10, UC18, UC20, UC24
+			\\
+			\\ 
+			\textbf{Ispitni slučaj 1: Detaljan pregled priča}
+			\\
+			\textbf{Ulaz}
+			\\
+			\indent 1. Pritisak kursorom na određenu priču
+			\\
+			\textbf{Očekivani rezultat}
+			\\
+			\indent 1. Preusmjeravanje na stranicu odabrane priče
+			\\
+			\textbf{Rezultat}
+			\\
+			\indent Očekivani rezultat je zadovoljen te smo preusmjereni na stranicu za detaljan pregled priče koje smo odabrali. Slučaj je testiran i kao prijavljen korisnik i kao gost. Aplikacija je prošla test.
+			\\ \\
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.34]{"slike/test1"}
+				\caption{Rezultat ispitnog slučaja 1}
+				\label{fig:rezultat-ispitnog-slucaja-1}
+			\end{figure}
 			
-			\subsection{Ispitivanje komponenti}
-			\textit{Potrebno je provesti ispitivanje jedinica (engl. unit testing) nad razredima koji implementiraju temeljne funkcionalnosti. Razraditi \textbf{minimalno 6 ispitnih slučajeva} u kojima će se ispitati redovni slučajevi, rubni uvjeti te izazivanje pogreške (engl. exception throwing). Poželjno je stvoriti i ispitni slučaj koji koristi funkcionalnosti koje nisu implementirane. Potrebno je priložiti izvorni kôd svih ispitnih slučajeva te prikaz rezultata izvođenja ispita u razvojnom okruženju (prolaz/pad ispita). }
+			\noindent \textbf{Ispitni slučaj 2: Komentiranje priče}
+			\\
+			\textbf{Ulaz}
+			\\
+			\indent 1. Navigacija do detaljnog pregleda priče \\
+			\indent 2. Upisivanje samog komentara u predviđeno mjesto \\
+			\indent 3. Pritisak gumba "Objavi"
+			\\
+			\textbf{Očekivani rezultat}
+			\\
+			\indent 1. Spremanje komentara u bazu za kasniji prikaz na stranici priče \\
+			\indent 2. Osvježavanje stranice
+			\\
+			\textbf{Rezultat}
+			\\
+			\indent Očekivani rezultat je zadovoljen te se stranica osvježila te vidimo komentar koji smo ostavili. Komentar smo uspješno ostavili i kao gost i kao prijavljeni korisnik. Aplikacija je prošla test.
+			\\ \\
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.34]{"slike/test2"}
+				\caption{Rezultat ispitnog slučaja 2}
+				\label{fig:rezultat-ispitnog-slucaja-2}
+			\end{figure}
 			
+			\noindent \textbf{Ispitni slučaj 3: Predlaganje priče administratoru}
+			\\
+			\textbf{Ulaz}
+			\\
+			\indent 1. Navigacija stranice za prijedlog priče \\
+			\indent 2. Odabir medije, naslova zahtjeva i naslova priče \\
+			\indent 3. Pritisak gumba "Predloži priču"
+			\\
+			\textbf{Očekivani rezultat}
+			\\
+			\indent 1. Spremanje prijedloga priče u bazu \\
+			\indent 2. Preusmjeravanje na stranicu sandučića
+			\\
+			\textbf{Rezultat}
+			\\
+			\indent Očekivani rezultat je zadovoljen. Preusmjereni smo na stranicu sandučića na kojoj vidimo još neobrađen zahtjev naše priče. Aplikacija je prošla test.
+			\\ \\
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.34]{"slike/test3"}
+				\caption{Rezultat ispitnog slučaja 3}
+				\label{fig:rezultat-ispitnog-slucaja-3}
+			\end{figure}
+			
+			\noindent \textbf{Ispitni slučaj 4: Pregled košarice}
+			\\
+			\textbf{Ulaz}
+			\\
+			\indent 1. Pritisak na gumb "Košarica" \\
+			\textbf{Očekivani rezultat}
+			\\
+			\indent 1. Prikaz sadržaja u košarici, ukupne cijene te gumba za dovršavanje narudžbe. \\
+			\textbf{Rezultat}
+			\\
+			\indent Očekivani rezultat je zadovoljen. Pritiskom na gumb košarica otvora se prikaz već navedenog sadržaja. Aplikacija je prošla test.
+			\\ \\
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.34]{"slike/test4"}
+				\caption{Rezultat ispitnog slučaja 4}
+				\label{fig:rezultat-ispitnog-slucaja-4}
+			\end{figure}
+			
+			\noindent \textbf{Ispitni slučaj 5: Promjena profilne slike}
+			\\
+			\textbf{Ulaz}
+			\\
+			\indent 1. Navigacija do stranice profila \\
+			\indent 2. Odabir datoteke na računalu \\
+			\indent 3. Pritisak gumba "Promijeni profilnu sliku" \\
+			\textbf{Očekivani rezultat}
+			\\
+			\indent 1. Osvježavanje trenutne stranice na kojoj vidimo da je profilna slika promijenjena \\
+			\textbf{Rezultat}
+			\\
+			\indent Očekivani rezultat nije zadovoljen. Namjerno nije odabrana nijedna slika, a gumb je svejedno pritisnut. Stranica se osvježila te profilna slika nije ažurirana.
+			\\ \\
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.34]{"slike/test5"}
+				\caption{Rezultat ispitnog slučaja 5}
+				\label{fig:rezultat-ispitnog-slucaja-5}
+			\end{figure}
+			
+			\noindent \textbf{Ispitni slučaj 6: Pregled registriranih korisnika}
+			\\
+			\textbf{Ulaz}
+			\\
+			\indent 1. Pritisak na ime korisnika bilo gdje na stranici \\
+			\textbf{Očekivani rezultat}
+			\\
+			\indent 1. Prikaz profila odabranog korisnika. \\
+			\textbf{Rezultat}
+			\\
+			\indent Očekivani rezultat je zadovoljen. Pritiskom na korisničko ime u komentarima preusmjereni smo na pregled profila odabranog korisnika. Aplikacija je prošla test.
+			\\ \\
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.34]{"slike/test6"}
+				\caption{Rezultat ispitnog slučaja 6}
+				\label{fig:rezultat-ispitnog-slucaja-6}
+			\end{figure}
 			
 			
 			\subsection{Ispitivanje sustava}
