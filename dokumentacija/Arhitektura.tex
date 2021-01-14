@@ -408,7 +408,7 @@
 		
 	\section{Dijagram aktivnosti}
 		
-		 Na dijagramu aktivnosti 4.5 prikazan je proces pregleda priče. Korisnik se prijavi u sustav te na početnoj stranici odabire priču makete koju želi detaljnije pregledati. U detaljnijem pregledu priče osim opisa makete korisniku se prikazuje broj lajkova i dislajkova za priču te komentari. Sam korisnik može odlučiti sviđa li mu se priča ili ne te ostaviti svoj komentar. Pregled priče prestaje odlaskom na neku drugu stranicu.
+		 Na dijagramu aktivnosti 4.7 prikazan je proces pregleda priče. Korisnik se prijavi u sustav te na početnoj stranici odabire priču makete koju želi detaljnije pregledati. U detaljnijem pregledu priče osim opisa makete korisniku se prikazuje broj lajkova i dislajkova za priču te komentari. Sam korisnik može odlučiti sviđa li mu se priča ili ne te ostaviti svoj komentar. Pregled priče prestaje odlaskom na neku drugu stranicu.
 		
 		
 		\begin{figure}[!h]
@@ -417,4 +417,17 @@
 			\caption{Dijagram aktivnosti - Pregled priče}
 			\label{fig:dijagramaktivnosti}
 		\end{figure}
-	\eject
+		\eject
+	
+	\section{Dijagram komponenti}
+		
+		Na dijagramu komponenti na slici 4.8 prikazana je organizacija i međuovisnost komponenti te interne strukture i odnosi komponenti prema okolini. Preko DJANGA poslužuju se datoteke koje pripadaju frontend djelu aplikacije. Podaci iz tablica iz baze podataka se preko QuerySet APIja šalju se u DTO obliku dalje u aplikaciju. 
+		
+		
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=1\linewidth]{slike/Dijagram_komponenti}
+			\caption{Dijagram komponenti}
+			\label{fig:dijagramaktivnosti}
+		\end{figure}
+		\eject
