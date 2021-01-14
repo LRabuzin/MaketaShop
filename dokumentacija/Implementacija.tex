@@ -238,6 +238,51 @@
 			}"
 			i \\
 			"ALLOWED\_HOSTS = ['maketashop.herokuapp.com']". \\
-			Nemojte zaboraviti maknuti konfiguraciju za korištenje lokalne baze podataka.
+			Nemojte zaboraviti maknuti konfiguraciju za korištenje lokalne baze podataka.\\
+			\\
+			\textbf{Upravljanje bazom podataka}\\
+			\\
+			Prije korištenja baze podataka potrebno je napraviti migracije te ih pokrenuti kako bi u bazi podataka bile sve tablice koje su potrebne za funkcioniranje baze podataka. To se radi tako što pokrenemo \verb|heroku run python manage.py makemigrations| koja napravi migracije, a zatim \verb|heroku run python manage.py migrate| koja te migracije primijeni.
 			
+			Budući da aplikacija velikim dijelom nema sadržaja dok korisnici ne počnu postavljati sadržaj, nije potrebno nikako populirati bazu podataka
+			
+			Da bismo vidjeli koji dodatak koristimo kako bismo se spojili na bazu podataka, pokrećemo naredbu \verb|heroku addons| koja nam daje sljedeći ispis:
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\linewidth]{slike/herokuPostgresql}
+				\caption{Ispis naredbe heroku addons}
+				\label{fig:herokuaddons}
+			\end{figure}
+			
+			Ako želimo izravno upravljati bazom koristeći SQL upite kao vlasnik aplikacije, u naredbenom retku pokrećemo naredbu \verb|heroku pg:psql| koja nam otvara sučelje u kojemu možemo upisivati upite.
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\linewidth]{slike/herokuPostgresql2}
+				\caption{Ispis naredbe heroku pg:psql}
+				\label{fig:pgpsql}
+			\end{figure}
+			Kada smo gotovi s postavljanjem upita, iz sučelja izlazimo naredbom \verb|\q|\\
+			\\
+			\textbf{Postavljanje posluživanja statičkih resursa}
+			\\
+			\\
+			Budući da Django ne podržava posluživanje statičkih resursa u produkciji, potrebno je instalirati i konfigurirati paket whitenoise. Paket će biti instaliran budući da smo ga uključili u requirements.txt. Potrebno je još dodati sljedeće postavke u settings.py datoteku:\\
+			\verb|BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))|\\
+			\verb|STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')|\\
+			\verb|STATIC_URL = '/static/'|
+			\begin{verbatim}
+				STATICFILES_DIRS = (
+					os.path.join(BASE_DIR, 'static'),
+				)
+			\end{verbatim}
+			Osim toga, potrebno je dodati whitenoise middleware u MIDDLEWARE listu u datoteci settings.py. To seradi tako što samo dodamo string\\ \verb|'whitenoise.middleware.WhiteNoiseMiddleware',|\\ odmah nakon sigurnosnog middlewarea.
+			\\
+			\\
+			\textbf{Postavljanje posluživanja korisničkih datoteka}
+			\\
+			\\
+			Veliki dio funkcionalnosti aplikacije oslanja se na mogućnost korisnika da postavljaju svoje datoteke na server. Primjer toga je recimo sastavljanje priče ili kreiranje makete u web trgovini za koju je potrebno definirati sliku. Kako je heroku-ov datotečni sustav kratkotrajan (eng. \textit{ephemeral filesystem}), datoteke je potrebno spremiti na udaljeni poslužitelj i dohvaćati ga od tamo.\\
+			Kako bismo ostvarili tu funkcionalnost odlučili smo koristiti Amazonov web servis S3. Da bi mogli spojiti se na AWS S3, potrebno je instalirati paket django-storages, zbog cega je on vec dodan u requirements.txt file, što znači da će biti instaliran prilikom puštanja aplikacije u pogon.\\
+			Također, potrebno je registrirati se na amazonov servis. Na glavnoj stranici Amazon Web Services (\url{https://aws.amazon.com}), nalazi se gumb koji možemo kliknuti i unijeti podatke potrebne za registraciju. Nakon registracije. Kada pronađemo stranicu usluge S3, kreiramo 
 			\eject 
