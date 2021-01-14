@@ -29,7 +29,6 @@
 					\item Pregledati minijature maketa dostupnih u webshopu
 					\item Svaku maketu detaljno pregledati
 					\item Kupiti maketu iz webshopa, pritom unoseći svoje podatke
-					\item Kupiti jedinstvenu maketu iz priče, pritom unoseći svoje podatke
 				\end{packed_enum}
 			
 				\item  \underbar{Registrirani korisnik (inicijator) može:}
@@ -43,13 +42,9 @@
 					\item Postaviti vlastitu profilnu sliku
 					\item Gledati profilne stranice drugih korisnika
 					\item Upravljati vlastitim postavkama o privatnosti
-					\item Uređivati vlastite podatke
-					\item Obrisati vlastiti profil
-					\item Kupiti maketu iz webshopa bez da unosi podatke
-					\item Kupiti maketu iz priče bez da unosi podatke
-					\item Ocijeniti maketu u webshopu
+					\item Kupiti maketu iz webshopa bez da unosi sve podatke
 					\item Naručiti maketu po vlastitim specifikacijama kroz formular
-					\item Prihvatiti ili odbiti cijenu za custom maketu
+					\item Prihvatiti ili odbiti cijenu za maketu po narudžbi
 
 				\end{packed_enum}
 							\item  \underbar{Administrator (inicijator) može:}
@@ -61,13 +56,10 @@
 					\item Pregledati predložene teme i priče
 					\item Odgovoriti na predloženu temu
 					\item Objaviti predloženu priču
-					\item Omogućiti prodaju jedinstvene makete iz priče
 					\item Pregledati profile registriranih korisnika
-					\item Vidjeti kako je koji korisnik ocijenio pojedinu priču
 					\item Zabraniti pristup bilo kojem registriranom korisniku
 					\item Uređivati makete u web trgovini
 					\item Dodavati makete u web trgovinu
-					\item Uklanjati makete iz web trgovine
 					\item Pregledati zahtjeve za makete po specifikaciji registriranog korisnika
 					\item Ponuditi cijenu za zahtjev makete ili ga odbiti
 					\item Pregledati povijest svih transakcija
@@ -252,40 +244,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC8 - Kupnja makete iz priče}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
-						\item  \textbf{Cilj:} Kupnja makete
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Maketa iz priče još nije prodana
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							\item Korisnik detaljno pregledava priču
-							\item Korisnik klikom na gumb u dnu priče dodaje maketu u košaricu
-							\item Korisnik klikom na košaricu pregledava sadržaj košarice
-							\item Korisnik klikom na gumb postavlja narudžbu
-						\end{packed_enum}
-					
-					\item  \textbf{Opis mogućih odstupanja:}
-					
-					\item[] \begin{packed_item}
-						
-						\item[4.a] Maketa koju je korisnik dodao u košaricu je u međuvremenu prodana
-						\item[] \begin{packed_enum}
-							
-							\item Sustav preusmjerava korisnika opet na stranicu za pregled košarice iz koje je izbačena nedostupna maketa
-							\item Korisniku se prikazuje upozorenje da je maketa postala nedostupna te da je izbačena iz košarice
-							
-						\end{packed_enum}
-						
-					\end{packed_item}
-					
-						
-					\end{packed_item}
-				
-					\noindent \underbar{\textbf{UC9 - Unošenje podataka o kupnji}}
+					\noindent \underbar{\textbf{UC8 - Unošenje podataka o kupnji}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Registrirani korisnik i neregistrirani korisnik
@@ -326,7 +285,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC10 - Predlaganje teme administratoru}}
+					\noindent \underbar{\textbf{UC9 - Predlaganje teme administratoru}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Registrirani korisnik
@@ -344,7 +303,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC11 - Predlaganje priče administratoru}}
+					\noindent \underbar{\textbf{UC10 - Predlaganje priče administratoru}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Registrirani korisnik
@@ -362,7 +321,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC12 - Ocjenjivanje priče}}
+					\noindent \underbar{\textbf{UC11 - Ocjenjivanje priče}}
 					\begin{packed_item}
 						\item \textbf{Glavni sudionik: }Registrirani korisnik
 						\item  \textbf{Cilj:} Korisnik priči daje ocjenu ovisno o tome sviđa li mu se priča ili ne
@@ -376,7 +335,7 @@
 						
 					\end{packed_item}
 					
-					\noindent \underbar{\textbf{UC13 - Naručivanje personalizirane makete}}
+					\noindent \underbar{\textbf{UC12 - Naručivanje personalizirane makete}}
 					\begin{packed_item}
 						\item \textbf{Glavni sudionik: }Registrirani korisnik
 						\item  \textbf{Cilj:} Slanje zahtjeva za personaliziranom maketom
@@ -392,26 +351,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC14 - Upravljanje vlastitim profilom}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik: }Registrirani korisnik
-						\item  \textbf{Cilj:} Urediti podatke profila
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Nema
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							\item Korisnik odlazi u postavke profila
-							\item Mijenja podatke koje želi
-							\item Potvrđuje izmjene
-							\item Izmjene se pohranjuju u bazi podataka
-							\item Korisniku se ažurira profil
-						\end{packed_enum}
-						
-					\end{packed_item}
-				
-					\noindent \underbar{\textbf{UC15 - Objavljivanje priče}}
+					\noindent \underbar{\textbf{UC13 - Objavljivanje priče}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Administrator
@@ -443,7 +383,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC16 - Pregledavanje predloženih tema}}
+					\noindent \underbar{\textbf{UC14 - Pregledavanje predloženih tema}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Administrator
@@ -460,7 +400,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC17 - Pregledavanje predloženih priča}}
+					\noindent \underbar{\textbf{UC15 - Pregledavanje predloženih priča}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Administrator
@@ -477,7 +417,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC18 - Odgovor na predloženu temu}}
+					\noindent \underbar{\textbf{UC16 - Odgovor na predloženu temu}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Administrator
@@ -494,7 +434,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC19 - Objavljivanje predložene priče}}
+					\noindent \underbar{\textbf{UC17 - Objavljivanje predložene priče}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Administrator
@@ -511,7 +451,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC20 - Pregled košarice}}
+					\noindent \underbar{\textbf{UC18 - Pregled košarice}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: }Administrator, registrirani i neregistrirani korisnik
@@ -528,57 +468,8 @@
 						\end{packed_enum}
 						
 					\end{packed_item}
-				
-					\noindent \underbar{\textbf{UC21 - Omogućavanje prodaje jedinstvene makete iz priče}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik: }Administrator
-						\item  \textbf{Cilj:} Pružiti korisnicima mogućnost kupnje jedinstvenih maketa koje je napravio administrator
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Kreirana je priča i u priči se radi o novoj maketi
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							
-							\item Administrator odabire opciju dodavanja cijene
-							\item Administrator definira cijenu i specifikacije makete
-							\item Administrator potvrđuje svoj odabir
-							\item Prikazuje se opcija za kupnju na dnu priče
-						\end{packed_enum}
-						\item  \textbf{Opis mogućih odstupanja:}
-					
-						\item[] \begin{packed_item}
-							
-							\item[2.a] Administrator odustaje od definiranja cijene
-							
-							\item[] \begin{packed_enum}
-								
-								\item Ne spremaju se promjene i administrator se vraća na pregled cijele priče
-								
-							\end{packed_enum}
-							
-						\end{packed_item}
-					\end{packed_item}
-				
-					\noindent \underbar{\textbf{UC22 - Uređivanje vlastitih podataka}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik: } Registrirani korisnik
-						\item  \textbf{Cilj:} Korisnik mijenja ili dodaje vlastite podatke
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Nema
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							
-							\item Korisnik mijenja ili dodaje svoje podatke
-							\item Korisnik potvrđuje promjenu podataka
-							\item Korisnik upisuje lozinku
-						\end{packed_enum}
-						
-					\end{packed_item}
 			
-					\noindent \underbar{\textbf{UC23 - Upravljanje postavkama o privatnosti}}
+					\noindent \underbar{\textbf{UC19 - Upravljanje postavkama o privatnosti}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Registrirani korisnik
@@ -599,7 +490,7 @@
 					\end{packed_item}
 				
 				
-					\noindent \underbar{\textbf{UC24 - Promjena profilne slike}}
+					\noindent \underbar{\textbf{UC20 - Promjena profilne slike}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Registrirani korisnik
@@ -617,27 +508,8 @@
 						\end{packed_enum}
 						
 					\end{packed_item}
-				
-					\noindent \underbar{\textbf{UC25 - Brisanje vlastitog profila}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik: } Registrirani korisnik
-						\item  \textbf{Cilj:} Brisanje korisnikovih podataka iz sustava
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Nema
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							
-							\item Korisnik odabire opciju brisanja svojeg profila
-							\item Korisnikovi se podatci brišu iz baze podataka
-							\item Korisnik u komentarima postaje vidljiv kao anonimni korisnik
-						\end{packed_enum}
-						
-					\end{packed_item}
 					
-					
-					\noindent \underbar{\textbf{UC26 - Uređivanje makete u web trgovini}}
+					\noindent \underbar{\textbf{UC21 - Uređivanje makete u web trgovini}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Administrator
@@ -668,7 +540,7 @@
 						\end{packed_item}
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC27 - Dodavanje makete u web trgovinu}}
+					\noindent \underbar{\textbf{UC22 - Dodavanje makete u web trgovinu}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Administrator
@@ -686,44 +558,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC28 - Uklanjanje makete iz web trgovine}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik: } Administrator
-						\item  \textbf{Cilj:} Uklanjanje makete iz web trgovina
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Nema
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							
-							\item Administrator pregledava makete u web trgovini
-							\item Administrator pritišće gumb za uklanjanje pojedine makete
-							\item Maketa je uklonjena iz web trgovine
-						\end{packed_enum}
-						
-					\end{packed_item}
-				
-				
-				
-					\noindent \underbar{\textbf{UC29 - Ocjenjivanje makete u web trgovini}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik: } Registrirani korisnik
-						\item  \textbf{Cilj:} Ocijeniti maketu
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Postojanje makete
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							\item Korisnik detaljno pregledava maketu
-							\item Korisnik odabire ocjenu pritiskom na nju
-							\item Ažurira se prikaz ocjena na maketi
-						\end{packed_enum}
-						
-					\end{packed_item}
-				
-					\noindent \underbar{\textbf{UC30 - Naručivanje personalizirane makete ispunjavanjem formulara}}
+					\noindent \underbar{\textbf{UC23 - Naručivanje personalizirane makete ispunjavanjem formulara}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Registrirani korisnik
@@ -741,10 +576,10 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC31 - Pregled profila registriranih korisnika}}
+					\noindent \underbar{\textbf{UC24 - Pregled profila registriranih korisnika}}
 					\begin{packed_item}
 						
-						\item \textbf{Glavni sudionik: } Registrirani korisnik
+						\item \textbf{Glavni sudionik: } Registrirani korisnik, neregistrirani korisnik
 						\item  \textbf{Cilj:} Pregledati profil registriranog korisnika
 						\item  \textbf{Sudionici:} Baza podataka
 						\item  \textbf{Preduvjet:} Postojanje profila koji želimo pregledati
@@ -757,24 +592,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC32 - Pregled ocjena}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik: } Administrator
-						\item  \textbf{Cilj:} Pregledati koji korisnik je kako ocjenio priču
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Nema
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							\item Administrator detaljno pregledava priču
-							\item Administrator odabire gumb za pregled ocjena
-							\item Administratoru su prikazana sva korisnička imena korisnika koji su ocijenili priču i pokraj njih ocjena koju su dali
-						\end{packed_enum}
-						
-					\end{packed_item}
-				
-					\noindent \underbar{\textbf{UC33 - Moderiranje pristupa korisnicima}}
+					\noindent \underbar{\textbf{UC25 - Moderiranje pristupa korisnicima}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Administrator
@@ -792,7 +610,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC34 - Predlaganje sadržaja}}
+					\noindent \underbar{\textbf{UC26 - Predlaganje sadržaja}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Registrirani korisnik
@@ -809,7 +627,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC35 - Pregled zahtjeva za personaliziranom maketom}}
+					\noindent \underbar{\textbf{UC27 - Pregled zahtjeva za personaliziranom maketom}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Administrator
@@ -826,7 +644,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC36 - Odluka o zahtjevu za personaliziranom maketom}}
+					\noindent \underbar{\textbf{UC28 - Odluka o zahtjevu za personaliziranom maketom}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Administrator
@@ -842,7 +660,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC37 - Pregled povijesti transakcija}}
+					\noindent \underbar{\textbf{UC29 - Pregled povijesti transakcija}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Administrator
@@ -860,7 +678,7 @@
 						
 					\end{packed_item}
 				
-					\noindent \underbar{\textbf{UC38 - Prihvaćanje ili odbijanje cijene za personaliziranu maketu}}
+					\noindent \underbar{\textbf{UC30 - Prihvaćanje ili odbijanje cijene za personaliziranu maketu}}
 					\begin{packed_item}
 						
 						\item \textbf{Glavni sudionik: } Registrirani korisnik
@@ -875,6 +693,24 @@
 							\item Korisnik prihvaća ili odbija ponuđenu cijenu
 							\item Administratoru dolazi potvrda o odbijanju ili potvrđivanju ponuđene cijene
 							\item Administrator šalje maketu korisniku
+						\end{packed_enum}
+						
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC31 - Pregled vlastitog profila}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: } Registrirani korisnik
+						\item  \textbf{Cilj:} Pregledati informacije vlastitog profila
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Nema
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik pritišće gumb Moj profil
+							\item Dohvaćaju se podaci iz baze podataka
+							\item Prikazuju se podaci o profilu korisnika
 						\end{packed_enum}
 						
 					\end{packed_item}
@@ -914,39 +750,24 @@
 				
 				\textbf{Obrazac uporabe UC30 - Naručivanje personalizirane makete ispunjavanjem formulara}
 				
-				Korisnik naručuje personaliziranu maketu koristeći formular koji nudi web aplikacija. Kada unese potrebne podatke u formular, formular se sprema u bazu podataka i dostupna je administratoru koji će odgovoriti na narudžbu.
+				Korisnik naručuje personaliziranu maketu koristeći formular koji nudi web aplikacija. Kada unese potrebne podatke u formular, formular se sprema u bazu podataka i dostupna je administratoru koji će odgovoriti na narudžbu.\\
+				\\
+				\textbf{Obrazac uporabe UC36 - Odluka o zahtjevu za personaliziranom maketom}
 				
-				\begin{figure} [!h]
+				Administrator preuzima sve postavljene narudžbe za personalizirane makete te ih prihvaća ili odbija. Za prihvaćene narudžbe navodi cijenu za koju je voljan napraviti maketu. Njegov odgovor se sprema u bazu podataka. \\
+				\\
+				\textbf{Obrazac uporabe UC38 - Prihvaćanje ili odbijanje cijene za personaliziranu maketu}
+				
+				Korisnik preuzima odgovor na njegovu narudžbu. Ako je naruđžba prihvaćena, korisnik može prihvatiti narudžbu po navedenoj cijeni, ili je odbiti. Njegov odgovor se sprema u bazu podataka. 
+				
+				\begin{figure} [H]
 					\centering
-					\includegraphics[scale=0.65]{"slike/seqdiag_01"}
-					\caption{Sekvencijski dijagram uz UC30}
+					\includegraphics[width=1\linewidth]{"slike/sekv_dijagram_final"}
+					\caption{Sekvencijski dijagram uz UC30, UC36 i UC38}
 					\label{fig:seqdiag_01}
 				\end{figure}
 				\pagebreak
-				
-				\textbf{Obrazac uporabe UC36 - Odluka o zahtjevu za personaliziranom maketom}
-				
-				Administrator preuzima sve postavljene narudžbe za personalizirane makete te ih prihvaća ili odbija. Za prihvaćene narudžbe navodi cijenu za koju je voljan napraviti maketu. Njegov odgovor se sprema u bazu podataka. 
-				
-				\begin{figure} [!h]
-					\centering
-					\includegraphics[scale=0.65]{"slike/seqdiag_02"}
-					\caption{Sekvencijski dijagram uz UC36}
-					\label{fig:seqdiag_02}
-				\end{figure}
-				\pagebreak
-				
-				\textbf{Obrazac uporabe UC38 - Prihvaćanje ili odbijanje cijene za personaliziranu maketu}
-				
-				Korisnik preuzima odgovor na njegovu narudžbu. Ako je naruđžba prihvaćena, korisnik može prihvatiti narudžbu po navedenoj cijeni, ili je odbiti. Njegov odgovor se sprema u bazu podataka.
-				
-				\begin{figure} [!h]
-					\centering
-					\includegraphics[scale=0.65]{"slike/seqdiag_03"}
-					\caption{Sekvencijski dijagram uz UC38}
-					\label{fig:seqdiag_03}
-				\end{figure}
-				\pagebreak
+			
 				
 				%\textbf{\textit{dio 1. revizije}}\\
 				
