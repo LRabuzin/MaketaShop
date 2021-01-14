@@ -1,0 +1,33 @@
+{%extends "./base.html"%}
+{% load static %}
+{% block content %}
+	<div class="container p-4">
+		<form action="" method="post" name="login">
+			{% csrf_token %}
+		  <div class="form-group">
+		  <h1 class="h3 mb-3 font-weight-normal">Zahtjev za maketom</h1>
+		  	{{ form.naslov_interakcije.errors }}
+		  	{{ form.naslov_interakcije }}
+		  </div>
+		  <div class="form-group">
+			{{ form.ime_makete.errors }}
+			{{ form.ime_makete }}
+          </div>
+          <div class="form-group">
+			{{ form.dimenzije.errors }}
+			{{ form.dimenzije }}
+          </div>
+          <div class="form-group">
+			{{ form.opis.errors }}
+			{{ form.opis }}
+		  </div>
+		  <div class="form-group">
+			{{ form.materijal.label_tag }}
+			{{ form.materijal.errors }}
+			{{ form.materijal }}
+		  </div>
+
+		  <button type="submit" class="btn btn-primary">Zatraži maketu</button>
+		</form>
+	</div>
+{% endblock content %}

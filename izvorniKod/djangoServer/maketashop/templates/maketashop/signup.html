@@ -2,54 +2,58 @@
 {% load static %}
 {% block content %}
 <div class="container">
-      <div class="col-md-6 mx-auto text-center" style="padding-top: 6rem;">
-         <div class="header-title">
-            <h1 class="wv-heading--title">
-               Kreiraj svoj račun!
-            </h1>
-         </div>
+   <div class="col-md-6 mx-auto text-center" style="padding-top: 6rem;">
+      <div class="header-title">
+         <h1 class="wv-heading--title">
+            Kreiraj svoj račun!
+         </h1>
       </div>
-      <div class="row p-6">
-         <div class="col-md-4 mx-auto" style="padding-bottom: 6rem; padding-top: 6rem;">
-            <div class="myform form ">
-               <form action="" method="post" name="signup">
-                  {{ form.non_field_errors }}
-                  {% csrf_token %}
-                  <div class="form-group">
-                     {{ form.name.errors }}
-                     {{ form.name }}
-                  </div>
-                  <div class="form-group">
-                     {{ form.surname.errors }}
-                     {{ form.surname }}
-                  </div>
-                  <div class="form-group">
-                     {{ form.username.errors }}
-                     {{ form.username }}
-                  </div>
-                  <div class="form-group">
-                     {{ form.email.errors }}
-                     {{ form.email }}
-                  </div>
-                  <div class="form-group">
-                     {{ form.pass1.errors }}
-                     {{ form.pass1 }}
-                  </div>
-                 <div class="form-group">
-                    {{ form.pass2.errors }}
-                     {{ form.pass2 }}
-                  </div>
-                  <div class="form-group">
-                     {{ form.phone.errors }}
-                     {{ form.phone }}
-                  </div>
+   </div>
+   <div class="row p-6">
+      <div class="col-md-4 mx-auto" style="padding-bottom: 6rem; padding-top: 6rem;">
+         <div class="myform form ">
+            <form action="" method="post" name="signup">
+               {{ form.non_field_errors }}
+               {% csrf_token %}
+               <div class="form-group">
+                  {{ form.name.errors }}
+                  {{ form.name }}
+               </div>
+               <div class="form-group">
+                  {{ form.surname.errors }}
+                  {{ form.surname }}
+               </div>
+               <div class="form-group">
+                  {{ form.username.errors }}
+                  {{ form.username }}
+               </div>
+               <div class="form-group">
+                  {{ form.email.errors }}
+                  {{ form.email }}
+               </div>
+               <div class="form-group">
+                  {{ form.pass1.errors }}
+                  {{ form.pass1 }}
+               </div>
+               <div class="form-group">
+                  {{ form.pass2.errors }}
+                  {{ form.pass2 }}
+               </div>
+               <div class="form-group">
+                  {{ form.adress.errors }}
+                  {{ form.adress }}
+               </div>
+               <div class="form-group">
+                  {{ form.cardNumber.errors }}
+                  {{ form.cardNumber }}
+               </div>
 
-                  <div class="text-center">
-                     <button type="submit" class="btn btn-info btn-lg btn-block send-button tx-tfm">Kreiraj račun</button>
-                  </div>
-               </form>
-            </div>
+               <div class="text-center">
+                  <button type="submit" class="btn btn-info btn-lg btn-block send-button tx-tfm">Kreiraj račun</button>
+               </div>
+            </form>
          </div>
       </div>
    </div>
+</div>
 {% endblock content %}

@@ -1,90 +1,116 @@
 {%extends "./base.html"%}
 {% load static %}
-{% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/proba.css' %}"> {% endblock mycss %}
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'maketashop/proba.css' %}">
+{% endblock mycss %}
 {% block content %}
+{% if TransakcijeDTO.getAdmin == True %}
+<div class="card container p-3">
+		<div class="container">
+			<h2>Transakcije svih korisnika</h2>
+		</div>
+	{% for t in TransakcijeDTO.getTransakcije %}
+	<hr>
+	<div class="card-header">
+		{{  t.getIme }}
+		{{  t.getPrezime }}
+	</div>
+	<div class="card" style="width: 18rem;">
+		<ul class="list-group list-group-flush">
 
-<div class="card">
-<hr>
-	<div class="card-header">
-		korisničko-ime-koje-pripada-ovoj-transakciji
-	</div>
-	<div class="card" style="width: 18rem;">
-	  <ul class="list-group list-group-flush">
-		<li class="list-group-item">
-			<span>Ukupan iznos:</span>
-			<strong>18kn</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Adresa:</span>
-			<strong>Neka ulica 123</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Proizvodi:</span>
-			<strong>a, b, c, d</strong>
-		</li>
-	  </ul>
-	</div>
-<hr>
-	<div class="card-header">
-		korisničko-ime-koje-pripada-ovoj-transakciji
-	</div>
-	<div class="card" style="width: 18rem;">
-	  <ul class="list-group list-group-flush">
-		<li class="list-group-item">
-			<span>Ukupan iznos:</span>
-			<strong>18kn</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Adresa:</span>
-			<strong>Neka ulica 123</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Proizvodi:</span>
-			<strong>a, b, c, d</strong>
-		</li>
-	  </ul>
-	</div>
-<hr>
-	<div class="card-header">
-		korisničko-ime-koje-pripada-ovoj-transakciji
-	</div>
-	<div class="card" style="width: 18rem;">
-	  <ul class="list-group list-group-flush">
-		<li class="list-group-item">
-			<span>Ukupan iznos:</span>
-			<strong>18kn</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Adresa:</span>
-			<strong>Neka ulica 123</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Proizvodi:</span>
-			<strong>a, b, c, d</strong>
-		</li>
-	  </ul>
-	</div>
-<hr>
-	<div class="card-header">
-		korisničko-ime-koje-pripada-ovoj-transakciji
-	</div>
-	<div class="card" style="width: 18rem;">
-	  <ul class="list-group list-group-flush">
-		<li class="list-group-item">
-			<span>Ukupan iznos:</span>
-			<strong>18kn</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Adresa:</span>
-			<strong>Neka ulica 123</strong>
-		</li>
-		<li class="list-group-item">
-			<span>Proizvodi:</span>
-			<strong>a, b, c, d</strong>
-		</li>
-	  </ul>
-	</div>
-</div>
-<hr>
+			<li class="list-group-item">
+				<span>Broj racuna:</span>
+				<strong>{{  t.getBrojRacuna }}</strong>
+			</li>
+			<li class="list-group-item">
+				<span>Ukupan iznos:</span>
+				<strong>{{  t.getUkupanIznos }}</strong>
+			</li>
+			<li class="list-group-item">
+				<span>Adresa:</span>
+				<strong>{{  t.getAdresa }}</strong>
+			</li>
+			<li class="list-group-item">
+				<span>Proizvodi:</span>
 
+				{% for m in TransakcijeDTO.getMaketakupljena %}
+			{% if m.getTransakcijaId.getTransakcijaId == t.getTransakcijaId %}
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">
+					<span>Ime makete:</span>
+					<strong>{{  m.getMaketaId.getIme }}</strong>
+				</li>
+				<li class="list-group-item">
+					<span>Materijal:</span>
+					<strong>{{  m.getMaterijalId.getIme }}</strong>
+				</li>
+				<li class="list-group-item">
+					<span>Količina:</span>
+					<strong>{{  m.getKolicina }}</strong>
+				</li>
+			</ul>
+				{% endif %}
+			{% endfor %}
+			</li>
+		</ul>
+	</div>
+	<hr>
+	{% endfor %}
+	</div>
+{% else %}
+	<div class="card container p-3">
+		<div class="container">
+			<h2>Moje transakcije</h2>
+		</div>
+		{% for t in TransakcijeDTO.getTransakcije %}
+	{% if t.getKorisnikId.getEmail == session.user %}
+	<hr>
+		<div class="card-header">
+			{{  t.getIme }}
+			{{  t.getPrezime }}
+		</div>
+		<div class="card" style="width: 18rem;">
+			<ul class="list-group list-group-flush">
+
+				<li class="list-group-item">
+					<span>Broj racuna:</span>
+					<strong>{{  t.getBrojRacuna }}</strong>
+				</li>
+				<li class="list-group-item">
+					<span>Ukupan iznos:</span>
+					<strong>{{  t.getUkupanIznos }}</strong>
+				</li>
+				<li class="list-group-item">
+					<span>Adresa:</span>
+					<strong>{{  t.getAdresa }}</strong>
+				</li>
+				<li class="list-group-item">
+					<span>Proizvodi:</span>
+
+					{% for m in TransakcijeDTO.getMaketakupljena %}
+				{% if m.getTransakcijaId.getTransakcijaId == t.getTransakcijaId %}
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">
+						<span>Ime makete:</span>
+						<strong>{{  m.getMaketaId.getIme }}</strong>
+					</li>
+					<li class="list-group-item">
+						<span>Materijal:</span>
+						<strong>{{  m.getMaterijalId.getIme }}</strong>
+					</li>
+					<li class="list-group-item">
+						<span>Količina:</span>
+						<strong>{{  m.getKolicina }}</strong>
+					</li>
+				</ul>
+					{% endif %}
+				{% endfor %}
+				</li>
+			</ul>
+		</div>
+		<hr>
+		{% endif %}
+	{% endfor %}
+{% endif %}
+	</div>
 {% endblock content %}

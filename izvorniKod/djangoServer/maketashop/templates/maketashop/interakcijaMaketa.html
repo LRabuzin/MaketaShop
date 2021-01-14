@@ -1,0 +1,80 @@
+{%extends "./base.html"%}
+{% load static %}
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'maketashop/inbox.css' %}"> {% endblock mycss %}
+{% block content %}
+<div class="container p-3">
+    <h2>Narudžba makete - {{ InterakcijaMaketaDTO.getNaslov }}</h2>
+    <hr>
+    <h4>{{ InterakcijaMaketaDTO.getMaketa.getIme }}</h4>
+    <hr>
+    <div class="col-12">
+        <h5>Dimenzije:</h5>
+        <p>{{ InterakcijaMaketaDTO.getMaketa.getDimenzije }}</p>
+        <hr>
+        <h5>Opis:</h5>
+        <p>{{ InterakcijaMaketaDTO.getMaketa.getOpis }}</p>
+        <hr>
+        <h5>Materijal:</h5>
+        <p>{{ InterakcijaMaketaDTO.getNapravljenaOd.getMaterijal }}</p>
+    </div>
+
+    <hr>
+    {% if jeAdmin %}
+        {% if InterakcijaMaketaDTO.getOtvoren %}
+            {% if InterakcijaMaketaDTO.getNapravljenaOd.getCijena %}
+            <div class="d-flex justify-content-center p-2"><h5>Predložena cijena: {{ InterakcijaMaketaDTO.getNapravljenaOd.getCijena }}</h5></div>
+            <div class="d-flex justify-content-center p-2"><p>Korisnik još nije potvrdio cijenu</p></div>
+            {% else %}
+            <form action="" method="post" name="cijena">
+                {% csrf_token %}
+		        <div class="form-group">
+		            <h3 class="h3 mb-3 font-weight-normal">Predlaganje cijene:</h3>
+		  	        {{ form.custom_cijena.errors }}
+		  	        {{ form.custom_cijena }}
+		        </div>
+                <button type="submit" class="btn btn-primary">Predloži cijenu</button>
+            </form>
+            {% endif %}
+        {% else %}
+            {% if InterakcijaMaketaDTO.getMaketa.getPrihvacena %}
+            <div class="bg-success text-light d-flex justify-content-center p-2"><h5>Cijena {{ InterakcijaMaketaDTO.getNapravljenaOd.getCijena }} kn prihvaćena!</h5></div>
+            {% else %}
+            <div class="bg-danger text-light d-flex justify-content-center p-2"><h5>Cijena {{ InterakcijaMaketaDTO.getNapravljenaOd.getCijena }} kn odbijena!</h5></div>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        {% if InterakcijaMaketaDTO.getOtvoren %}
+            {% if InterakcijaMaketaDTO.getNapravljenaOd.getCijena %}
+                <div class="bg-success text-light d-flex justify-content-center p-2"><h5>Predložena cijena: {{ InterakcijaMaketaDTO.getNapravljenaOd.getCijena }} kn</h5></div>
+                <form action="" method="post" name="approve" class="d-flex flex-row justify-content-around p-3">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success" name="approve" value="1">Prihvati cijenu</button>
+                    <button type="submit" class="btn btn-danger" name="approve" value="0">Odbij cijenu</button>
+                </form>
+            {% else %}
+            <div class="d-flex justify-content-center p-2"><h5>Admin još nije ponudio cijenu za ovu maketu</h5></div>
+            {% endif %}
+        {% else %}
+            {% if InterakcijaMaketaDTO.getMaketa.getPrihvacena %}
+                <div class="bg-success text-light d-flex justify-content-center p-2"><h5>Cijena {{ InterakcijaMaketaDTO.getNapravljenaOd.getCijena }} kn prihvaćena!</h5></div>
+                <form action="" method="post" name="purchase" class="d-flex flex-row justify-content-center p-3">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success" name="purchase" value="1">Dodaj maketu u košaricu</button>
+                </form>
+            {% else %}
+            <div class="bg-danger text-light d-flex justify-content-center p-2"><h5>Cijena {{ InterakcijaMaketaDTO.getNapravljenaOd.getCijena }} kn odbijena!</h5></div>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+</div>
+{% endblock content %}
+
+
+
+<!-- <form action="" method="post" name="approve" class="d-flex flex-row justify-content-around p-3">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success" name="approve" value="1">odobri</button>
+    <button type="submit" class="btn btn-danger" name="approve" value="0">odbij</button>
+</form> -->

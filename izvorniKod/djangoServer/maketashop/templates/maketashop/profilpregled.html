@@ -1,0 +1,105 @@
+{%extends "./base.html"%}
+{% load static %}
+
+{% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/profil.css' %}"> {% endblock mycss %}
+
+{% block content %}
+<div class="container p-3">
+  <div class="row">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-body">
+                  <div class="card-title row align-items-center justify-content-between">
+                    {% if ProfilPregledDTO.getKorisnik.getSlikaBool == False %}
+                          <div class="image-container col-3">
+                              <img src="{% static ProfilPregledDTO.getProfilna %}" class="profile-img" />
+                            </div>
+                            {% endif %}
+                  </div>
+                  <div class="row">
+                      <div class="col-12">
+                          <ul class="nav nav-tabs mb-4">
+                                  <h4>Informacije</h4>
+                                  
+
+                          </ul>
+                          <div class="tab-content ml-1">
+                              <div>
+                                {% if ProfilPregledDTO.getKorisnik.getImePrezimeBool == False %}
+                                  <div class="row">
+                                      <div class="col-6">
+                                          <label style="font-weight:bold;">Ime i prezime</label>
+                                      </div>
+                                      <div class="col-3">
+                                        {{ ProfilPregledDTO.getKorisnik.getIme }}
+                                        {{ ProfilPregledDTO.getKorisnik.getPrezime }}
+                                      </div>
+                                  </div>
+                                  <hr />
+                                  {% endif %}
+
+                                  <div class="row">
+                                      <div class="col-6">
+                                          <label style="font-weight:bold;">Korisničko ime</label>
+                                      </div>
+                                      <div class="col-3">
+                                        {{ ProfilPregledDTO.getKorisnik.getKorisnickoIme }}
+                                      </div>
+                                  </div>
+                                  <hr />
+                                  <!-- {% if ProfilPregledDTO.getKorisnik.getRodendanBool == False %}
+                                  <div class="row">
+                                    <div class="col-6">
+                                        <label style="font-weight:bold;">Datum rođenja</label>
+                                    </div>
+                                    <div class="col-3">
+                                        {{ ProfilPregledDTO.getKorisnik.getRodendan }}
+                                    </div>
+                                  </div>
+                                  <hr />
+                                  {% endif %} -->
+                                  {% if ProfilPregledDTO.getKorisnik.getDatumBool == False %}
+                                  <div class="row">
+                                    <div class="col-6">
+                                        <label style="font-weight:bold;">Datum registracije</label>
+                                    </div>
+                                    <div class="col-3">
+                                      {{ ProfilPregledDTO.getKorisnik.getDatum }}
+                                    </div>
+                                    </div>
+                                  <hr />
+                                  {% endif %}
+                                  {% if ProfilPregledDTO.getKorisnik.getEmailBool == False %}
+                                  <div class="row">
+                                      <div class="col-6">
+                                          <label style="font-weight:bold;">Adresa elektronicke poste</label>
+                                      </div>
+                                      <div class="col-3">
+                                        {{ ProfilPregledDTO.getKorisnik.getEmail }}
+                                      </div>
+                                  </div>
+                                  <hr />
+                                  {% endif %}
+                                  {% if ProfilPregledDTO.getKorisnik.getAdresaBool == False %}
+                                  <div class="row">
+                                      <div class="col-6">
+                                          <label style="font-weight:bold;">Adresa</label>
+                                      </div>
+                                      <div class="col-3">
+                                        {{ ProfilPregledDTO.getAdresa }}
+                                      </div>
+                                  </div>
+                                  {% endif %}
+                              </div>
+                            </div>
+                      </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

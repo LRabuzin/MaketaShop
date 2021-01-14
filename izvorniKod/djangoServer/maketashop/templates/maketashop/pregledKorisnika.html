@@ -4,50 +4,53 @@
 {% block content %}
 
 <div class="container">
-	<hr>
-	<div>
-		<h5>Pretraži prema korisničkom imenu</h5>
-	</div>
-	<nav class="navbar navbar-light">
-	  <form class="form-inline">
-		<div class="input-group">
-		  <div class="input-group-prepend">
-			<span class="input-group-text" id="basic-addon1">@</span>
-		  </div>
-		  <input type="text" class="form-control" placeholder="Korisničko_ime" aria-label="Username" aria-describedby="basic-addon1">
-		</div>
-	  </form>
-	</nav>
-	<hr>
+    <hr>
+    <div>
+        <h5>Pretraži prema korisničkom imenu</h5>
+    </div>
+    <nav class="navbar navbar-light">
+        <div class="input-group">
+		  <form action="" method="post" name="search" class="d-flex flex-row justify-content-around p-3">
+		  {% csrf_token %}
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <input id = "searchterm" name = "searchterm" type="text" class="form-control" placeholder="Korisničko_ime" {% if AdminUserListDTO.getSearchTerm != " "%} value="{{AdminUserListDTO.getSearchTerm}}" {% endif %} aria-label="Username" aria-describedby="basic-addon1">
+		  <button type="submit" class="btn btn-outline-success" name="search" value="1">
+			Pretraži
+		  </button>
+		  </form>
+        </div>
+    </nav>
+    <hr>
     <div class="row">
-		<div class="col">nekiKorisnik1</div>
-		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
-		<div class="w-100"></div>
-		<hr>
-		<div class="col">nekiKorisnik2</div>
-		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
-		<div class="w-100"></div>
-		<hr>
-		<div class="col">nekiKorisnik3</div>
-		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
-		<div class="w-100"></div>
-		<hr>
-		<div class="col">nekiKorisnik4</div>
-		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
-		<div class="w-100"></div>
-		<hr>
-		<div class="col">nekiKorisnik5</div>
-		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
-		<div class="w-100"></div>
-		<hr>
-		<div class="col">nekiKorisnik6</div>
-		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
-		<div class="w-100"></div>
-		<hr>
-		<div class="col">nekiKorisnik7</div>
-		<button type="button" class="btn btn-outline-success">Zabrani rad</button>
-		
-	</div>
-	<hr>
+        {% for k in AdminUserListDTO.getKorisnici %}
+		{% if k.getJeAdmin == False %}
+		<a href="{% url 'profilpregled' k.getKorisnikId %}">{{ k.getKorisnickoIme }}</a>
+		<!-- <form action="" method="post" name="userlink" class="d-flex flex-row justify-content-around p-3">
+		{% csrf_token %}
+		<button class="btn btn-link" type="submit" name="userlink" value="{{ k.getKorisnikId }}">
+			{{ k.getKorisnickoIme }}
+		</button>
+		</form> -->
+		<form action="" method="post" name="pristup" class="d-flex flex-row justify-content-around p-3">
+		{% csrf_token %}
+		<input type="hidden" name="id" value="{{ k.getKorisnikId }}" />
+		{% if k.getDozvoljenPristup == True and k.getJeAdmin == False %}
+			<button type="submit" class="btn  btn-outline-danger" name="pristup" value="1">
+			Zabrani rad
+			</button>
+		{% else %}
+			<button type="submit" class="btn  btn-outline-success" name="pristup" value="1">
+			Dopusti rad
+			</button>		
+		{% endif %}
+		</form>		
+        <div class="w-100"></div>
+        <hr>
+		{% endif %}
+        {% endfor %}
+    </div>
+    <hr>
 </div>
 {% endblock content %}

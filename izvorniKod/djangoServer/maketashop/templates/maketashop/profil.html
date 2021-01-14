@@ -4,7 +4,7 @@
 {% block mycss %} <link rel="stylesheet" href="{% static 'maketashop/profil.css' %}"> {% endblock mycss %}
 
 {% block content %}
-<form action="" method="POST" name="priv" class="container p-3">
+<form action="" method="POST" name="priv" class="container p-3" enctype="multipart/form-data">
     {% csrf_token %}
   <div class="row">
       <div class="col-12">
@@ -13,14 +13,19 @@
                   <div class="card-title row align-items-center justify-content-between">
                       
                           <div class="image-container col-3">
-                              <img src="{% static baza_data.profilnaid.putdodatoteke %}" style="width: 150px; height: 150px" />
+                              <img src="{% static ProfilDTO.getSlika %}" class="profile-img" />
                             </div>
-                            <div class="col-3">
-                                      <input type="button" class="btn btn-secondary" value="Promijeni sliku" />
+                            <div class="col-8 d-flex flex-row justify-content-around">
+                                      <input type="file" class="" name="profilna" />
+                                      <!-- <div class="form-group" id="btnBlock1"> -->
+                                        <!-- <br /> -->
+                                      <button type="submit" class="btn btn-success">Promijeni profilnu sliku</button>
+                                      <!-- </div> -->
+                                     
                             </div>
                             <div class="form-check col-3">
-                                {{ form.pic }}
-                                {{ form.pic.label_tag }}
+                                <!-- {{ form.pic }}
+                                {{ form.pic.label_tag }} -->
                             </div>
                                   
                           
@@ -29,7 +34,7 @@
                   <div class="row">
                       <div class="col-12">
                           <ul class="nav nav-tabs mb-4">
-                                  Informacije
+                                  <h4>Informacije</h4>
                           </ul>
                           <div class="tab-content ml-1">
                               <div>
@@ -39,8 +44,8 @@
                                           <label style="font-weight:bold;">Ime i prezime</label>
                                       </div>
                                       <div class="col-3">
-                                        {{ baza_data.ime }}
-                                        {{ baza_data.prezime }}
+                                        {{ ProfilDTO.getIme }}
+                                        {{ ProfilDTO.getPrezime }}
                                       </div>
                                       <div class="form-check col-3">
                                         {{ form.name_surname }}
@@ -53,31 +58,31 @@
                                           <label style="font-weight:bold;">Korisničko ime</label>
                                       </div>
                                       <div class="col-3">
-                                        {{ baza_data.korisnickoime }}
+                                        {{ ProfilDTO.getKorisnickoIme }}
                                       </div>
                                   </div>
                                   <hr />
 
-                                  <div class="row">
+                                  <!-- <div class="row">
                                     <div class="col-6">
                                         <label style="font-weight:bold;">Datum rođenja</label>
                                     </div>
                                     <div class="col-3">
-                                        {{ baza_data.rodendan }}
+                                        {{ ProfilDTO.getRodendan|date:"d.m.Y." }}
                                     </div>
                                     <div class="form-check col-3">
                                         {{ form.birth_date }}
                                         {{ form.birth_date.label_tag }}
                                       </div>
                                     </div>
-                                  <hr />
+                                  <hr /> -->
 
                                   <div class="row">
                                     <div class="col-6">
                                         <label style="font-weight:bold;">Datum registracije</label>
                                     </div>
                                     <div class="col-3">
-                                        {{ baza_data.datumregistracije }}
+                                        {{ ProfilDTO.getDatumRegistracije|date:"d.m.Y." }}
                                     </div>
                                     <div class="form-check col-3">
                                         {{ form.register_date }}
@@ -91,7 +96,7 @@
                                           <label style="font-weight:bold;">Adresa elektronicke poste</label>
                                       </div>
                                       <div class="col-3">
-                                        {{ baza_data.email }}
+                                        {{ ProfilDTO.getEmail }}
                                       </div>
                                       <div class="form-check col-3">
                                         {{ form.email }}
@@ -104,7 +109,7 @@
                                           <label style="font-weight:bold;">Adresa</label>
                                       </div>
                                       <div class="col-3">
-                                        {{ baza_data.adresa }}
+                                        {{ ProfilDTO.getAdresa }}
                                       </div>
                                       <div class="form-check col-3">
                                         {{ form.address }}
@@ -114,7 +119,7 @@
                                   <hr />
                                   <div class="row justify-content-around">
                                       <div class="col-6">
-                                        <input type="button" class="btn btn-secondary" value="Uredi informacije" />
+                                        
                                       </div>
                                       <div class="col-3">
 

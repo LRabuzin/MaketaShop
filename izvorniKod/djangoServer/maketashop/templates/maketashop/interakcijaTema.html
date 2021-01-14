@@ -1,0 +1,42 @@
+{%extends "./base.html"%}
+{% load static %}
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'maketashop/inbox.css' %}"> {% endblock mycss %}
+{% block content %}
+<div class="container p-3">
+    <h2>Predložena tema - {{ InterakcijaTemaDTO.getNaslov }}</h2>
+    <hr>
+    <h4>{{ InterakcijaTemaDTO.getTema.getIme }}</h4>
+    <p>
+        {{ InterakcijaTemaDTO.getTema.getTekst }}
+    </p>
+
+    <hr>
+    {% if jeAdmin %}
+        {% if InterakcijaTemaDTO.getOtvoren %}
+        <form action="" method="post" name="approve" class="d-flex flex-row justify-content-around p-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success" name="approve" value="1">Prihvati</button>
+            <button type="submit" class="btn btn-danger" name="approve" value="0">Odbij</button>
+        </form>
+        {% else %}
+            {% if InterakcijaTemaDTO.getTema.getOdobrena %}
+            <div class="bg-success d-flex justify-content-center p-2 text-light"><h5>Tema odobrena!</h5></div>
+            {% else %}
+            <div class="bg-danger d-flex justify-content-center p-2 text-light"><h5>Tema odbijena!</h5></div>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        {% if InterakcijaTemaDTO.getOtvoren %}
+        <div class="d-flex justify-content-center p-2"><h5>Admin još nije ni odobrio ni odbio temu</h5></div>
+        {% else %}
+            {% if InterakcijaTemaDTO.getTema.getOdobrena %}
+            <div class="bg-success d-flex justify-content-center p-2 text-light"><h5>Tema odobrena!</h5></div>
+            {% else %}
+                <div class="bg-danger d-flex justify-content-center p-2 text-light"><h5>Tema odbijena!</h5></div>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+</div>
+{% endblock content %}
