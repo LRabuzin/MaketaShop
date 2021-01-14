@@ -153,18 +153,92 @@
 			\end{figure}
 			
 			
-			\subsection{Ispitivanje sustava}
+		\subsection{Ispitivanje sustava}
 			
-			 \textit{Potrebno je provesti i opisati ispitivanje sustava koristeći radni okvir Selenium\footnote{\url{https://www.seleniumhq.org/}}. Razraditi \textbf{minimalno 4 ispitna slučaja} u kojima će se ispitati redovni slučajevi, rubni uvjeti te poziv funkcionalnosti koja nije implementirana/izaziva pogrešku kako bi se vidjelo na koji način sustav reagira kada nešto nije u potpunosti ostvareno. Ispitni slučaj se treba sastojati od ulaza (npr. korisničko ime i lozinka), očekivanog izlaza ili rezultata, koraka ispitivanja i dobivenog izlaza ili rezultata.\\ }
 			 
-			 \textit{Izradu ispitnih slučajeva pomoću radnog okvira Selenium moguće je provesti pomoću jednog od sljedeća dva alata:}
-			 \begin{itemize}
-			 	\item \textit{dodatak za preglednik \textbf{Selenium IDE} - snimanje korisnikovih akcija radi automatskog ponavljanja ispita	}
-			 	\item \textit{\textbf{Selenium WebDriver} - podrška za pisanje ispita u jezicima Java, C\#, PHP koristeći posebno programsko sučelje.}
-			 \end{itemize}
-		 	\textit{Detalji o korištenju alata Selenium bit će prikazani na posebnom predavanju tijekom semestra.}
-			
-			\eject 
+			 Korištenjem extenzije za Chrome preglednik Selenium isprobali smo sljedeće obrasce uporabe UC7, UC11, UC19 i UC4.
+			 \\
+			 \noindent \textbf{Ispitni slučaj 1: Pregled web shopa kao administrator}
+			 \\
+			 \textbf{Ulaz}
+			 \\
+			 \indent 1. Odabir gumba za prikaz webshopa iz padajućeg izbornika na zaglavlju stranice \\
+			 \textbf{Očekivani rezultat}
+			 \\
+			 \indent 1. Prikaz webshopa. \\
+			 \textbf{Rezultat}
+			 \\
+			 \indent Očekivani rezultat je zadovoljen. Pritiskom na spomenuti gumb preusmjereni smo na stranicu webshopa. Na slici je prikazano izvršavanje testa
+			 \\ \\
+			 \begin{figure}[H]
+			 	\centering
+			 	\includegraphics[scale=0.7]{"slike/test7"}
+			 	\caption{Rezultat ispitnog slučaja 1}
+			 	\label{fig:rezultat-ispitnog-slucaja-7}
+			 \end{figure}
+			 
+			 \noindent \textbf{Ispitni slučaj 2: Ocjenjivanje priče}
+			 \\
+			 \textbf{Ulaz}
+			 \\
+			 \indent 1. Navigacija do stranice neke priče \\
+			 \indent 2. Odabir opcije "sviđa mi se"/"ne sviđa mi se" \\
+			 \textbf{Očekivani rezultat}
+			 \\
+			 \indent 1. Osvježenje stranice i ažuriranje broja ocjena priče\\
+			 \textbf{Rezultat}
+			 \\
+			 \indent Očekivani rezultat je zadovoljen. Navigirali smo se do stranice priče i odabrali opciju "sviđa mi se" kao prijavljeni korisnik. Na slici je prikazano izvršavanje testa
+			 \\ \\
+			 \begin{figure}[H]
+			 	\centering
+			 	\includegraphics[scale=0.7]{"slike/test8"}
+			 	\caption{Rezultat ispitnog slučaja 2}
+			 	\label{fig:rezultat-ispitnog-slucaja-8}
+			 \end{figure}
+			 
+			 \noindent \textbf{Ispitni slučaj 3: Upravljanje postavkama o privatnosti}
+			 \\
+			 \textbf{Ulaz}
+			 \\
+			 \indent 1. Navigacija do stranice vlastitog profila \\
+			 \indent 2. Mijenjanje postavka privatnosti" \\
+			 \indent 3. Pritisak gumba "Spremi postavke privatnosti" \\
+			 \textbf{Očekivani rezultat}
+			 \\
+			 \indent 1. Osvježenje stranice i ažuriranje postavka privatnosti\\
+			 \textbf{Rezultat}
+			 \\
+			 \indent Očekivani rezultat je zadovoljen. Navigirali smo se do stranice vlastitog profila i postavili adresu elektroničke pošte da bude privatna. Na slici je prikazano izvršavanje testa
+			 \\ \\
+			 \begin{figure}[H]
+			 	\centering
+			 	\includegraphics[scale=0.7]{"slike/test9"}
+			 	\caption{Rezultat ispitnog slučaja 3}
+			 	\label{fig:rezultat-ispitnog-slucaja-9}
+			 \end{figure}
+			 
+			 \noindent \textbf{Ispitni slučaj 4: Registracija korisnika}
+			 \\
+			 \textbf{Ulaz}
+			 \\
+			 \indent 1. Navigacija do stranice za registraciju \\
+			 \indent 2. Upisivanja podataka" \\
+			 \indent 3. Pritisak gumba "Kreiraj račun" \\
+			 \textbf{Očekivani rezultat}
+			 \\
+			 \indent 1. Registracija korisnika\\
+			 \indent 2. Preusmjeravanje na početnu stranicu
+			 \textbf{Rezultat}
+			 \\
+			 \indent Očekivani rezultat nije zadovoljen. Izostavili smo korisničko ime pri ispunjavanju podataka. Iskočila je poruka upozorenja da se to polje popuni. Na slici je prikazan krajnji dio izvršavanja testa.
+			 \\ \\
+			 \begin{figure}[H]
+			 	\centering
+			 	\includegraphics[scale=0.7]{"slike/test10"}
+			 	\caption{Rezultat ispitnog slučaja 4}
+			 	\label{fig:rezultat-ispitnog-slucaja-10}
+			 \end{figure}
 		
 		
 		\section{Dijagram razmještaja}
